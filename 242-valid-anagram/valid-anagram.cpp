@@ -10,13 +10,18 @@ public:
         if (!s_length)
           return false;
 
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
-       
-        for (int i = 0; i < s_length; i++)
-          if (s[i] != t[i])
-            return false;
+        vector<int> count(26,0);
 
+        for (int i = 0; i < s_length; i++)
+        {
+          count[s[i]-'a']++;
+          count[t[i]-'a']--;
+        }
+
+        for (auto c: count)
+          if (c)
+            return false;
+        
         return true;
     }
 };
