@@ -23,8 +23,10 @@ public:
         return;
     
       if (left == 0 && right ==0)
+      {
         res.push_back(track);
- 
+        return;
+      }
       if (left > 0)
       {
         track.push_back('(');
