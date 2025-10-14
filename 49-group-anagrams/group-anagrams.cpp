@@ -20,9 +20,8 @@ public:
            mp[key].push_back(s);
         }
 
-        
         for (auto& iter: mp)
-           res.push_back(iter.second);    
+           res.push_back(move(iter.second));    
 
         return res;
     }
