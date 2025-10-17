@@ -8,15 +8,17 @@ public:
         int n = temperatures.size();
         vector<int> res(n, 0);
  
-        stack<int> s;
-        for (int i = n-1; i >= 0; i--)
+        stack<int> st;
+        for (int i = 0 ; i < n; i++)
         {
-           while(!s.empty() && temperatures[i] >= temperatures[s.top()] )
-             s.pop();
-           
-           res[i] = s.empty() ? 0 : (s.top()-i);
+           while(!st.empty() && temperatures[i] > temperatures[st.top()] )
+           {
+              int idx = st.top();
+              res[idx] = i - idx;
+              st.pop(); 
+           }
 
-           s.push(i);
+           st.push(i);
         }
         
         return res;
