@@ -46,7 +46,8 @@ public:
          return;
 
        //choose
-       board[i][j] = -board[i][j];
+       char tmp = board[i][j];
+       board[i][j] = '#';
 
        dfs(board, i+1, j, word, idx+1);  
        dfs(board, i-1, j, word, idx+1);    
@@ -54,6 +55,6 @@ public:
        dfs(board, i, j-1, word, idx+1);
 
        // unchoose
-       board[i][j] = -board[i][j];
+       board[i][j] = tmp;
     }
 };
