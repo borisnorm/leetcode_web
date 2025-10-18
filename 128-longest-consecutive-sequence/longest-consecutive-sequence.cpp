@@ -1,28 +1,23 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        // 转化成哈希集合，方便快速查找是否存在某个元素
-        unordered_set<int> set(nums.begin(), nums.end());
+        if (nums.empty()) return 0;
 
-        int res = 0;
+        unordered_set<int> s(nums.begin(), nums.end()); // 去重 + O(1) 查找
+        int ans = 0;
 
-        for (int num : set) {
-            if (set.find(num - 1) != set.end()) {
-                // num 不是连续子序列的第一个，跳过
-                continue;
+        for (int x : s) {
+            // 只有在 x-1 不存在时，x 才可能是一个连续段的起点
+            if (!s.count(x - 1)) {
+                int cur = x;
+                int len = 1;
+                while (s.count(cur + 1)) {
+                    cur++;
+                    len++;
+                }
+                ans = max(ans, len);
             }
-            // num 是连续子序列的第一个，开始向上计算连续子序列的长度
-            int curNum = num;
-            int curLen = 1;
-
-            while (set.find(curNum + 1) != set.end()) {
-                curNum += 1;
-                curLen += 1;
-            }
-            // 更新最长连续序列的长度
-            res = max(res, curLen);
         }
-
-        return res;
+        return ans;
     }
 };
