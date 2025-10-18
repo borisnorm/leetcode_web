@@ -1,32 +1,22 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        if (nums.empty())
-          return 0;
-
-        unordered_set<int> nums_set(nums.begin(), nums.end());
-
+        unordered_map<int,int> len; // 只在区间两端保存长度
         int ans = 0;
-        int cur_len = 0;
-        int cur_num = 0;
-        for (int num : nums_set)   // for (int num: nums_set)
-        {
-           if (!nums_set.count(num-1))
-           {
-              // this num is the start point
-              cur_len = 1;
-              cur_num = num;
 
-              while (nums_set.count(cur_num+1))
-              {
-                cur_len++;
-                cur_num = cur_num + 1;
-              }
-           }
+        for (int x : nums) {
+            if (len.count(x)) continue;   // 重复元素，跳过
+            int L = len.count(x - 1) ? len[x - 1] : 0;
+            int R = len.count(x + 1) ? len[x + 1] : 0;
+            int sum = L + 1 + R;
 
-           ans = max (ans, cur_len);
+            // 只更新新区间的左右端点
+            if (L > 0) len[x - L] = sum;
+            if (R > 0) len[x + R] = sum;
+            len[x] = sum; // x 可能是单点段的端点（也可不存，但存更直观）
+
+            ans = max(ans, sum);
         }
-
         return ans;
     }
 };
