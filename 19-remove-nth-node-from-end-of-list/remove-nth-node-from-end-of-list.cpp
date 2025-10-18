@@ -14,40 +14,32 @@ public:
         if (!head)
           return head;
 
-        int cnt = 0;
-        ListNode* tail = head;
-        while (tail)
-        {
-          cnt++;
-          tail = tail->next;
-        }
-
-        if (cnt < n)
-          return nullptr;
-        // n = 1, idx = cnt - 1;
-        // n = 2  idx = cnt - 2;
-        // n = 3, idx = cnt - 3
-
-        int idx = 0;
         ListNode dummy(0);
         ListNode* dummy_head = &dummy;
         dummy_head->next = head;
 
-        ListNode* cur = head;
-        ListNode* pre = dummy_head;
-        while (cur)
-        {
-          if (idx == cnt - n)   // cnt >= n
-          {
-             pre->next = cur->next;
-             break;
-          }
-           
-          idx++;
-          pre = cur;
-          cur = cur->next;
-        }
+        ListNode* preNth = findFromEnd(dummy_head, (n+1));
+        if (!preNth || !preNth->next)
+          return dummy_head->next;
 
-       return dummy_head->next;
+        preNth->next = preNth->next->next;
+
+        return dummy_head->next;
+    }
+
+    ListNode* findFromEnd(ListNode* head, int n)
+    {
+       ListNode* fast = head;
+       for (int i = 0; i < n; i++)
+         fast = fast->next;
+
+       ListNode* slow = head;
+       while (fast)
+       {
+          slow = slow->next;
+          fast = fast->next;
+       }
+
+       return slow;
     }
 };
