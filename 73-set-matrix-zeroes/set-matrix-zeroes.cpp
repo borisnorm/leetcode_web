@@ -21,9 +21,14 @@ public:
               }
 
           for (int i = 0; i < m; i++)
+            if (row[i])
               for (int j = 0; j < n; j++)
-                if (row[i] || col[j])
-                  matrix[i][j] = 0;
+                matrix[i][j] = 0;
+        
+           for (int j = 0; j < n; j++)
+             if (col[j])
+               for (int i = 0; i < m; i++)
+                 matrix[i][j] = 0;
     }
 
 
