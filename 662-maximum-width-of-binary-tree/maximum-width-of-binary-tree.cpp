@@ -37,10 +37,10 @@ public:
               long long cur = node_pair.second - base;
 
               if (i == 0)
-                left = node_pair.second;;
+                left = cur;
             
               if (i == queue_size - 1)
-                right = node_pair.second;;
+                right = cur;
                
               if (node->left)
                 node_queue.push(make_pair(node->left, 2*cur+1));
