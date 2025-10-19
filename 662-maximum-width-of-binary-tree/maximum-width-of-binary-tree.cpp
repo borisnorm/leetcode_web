@@ -15,7 +15,7 @@ public:
          if (!root)
           return 0;
 
-         queue<pair<TreeNode*, int>> node_queue;
+         queue<pair<TreeNode*, long long>> node_queue;
          node_queue.push(make_pair(root, 0));
 
          int ans = 0;
