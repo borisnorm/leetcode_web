@@ -18,7 +18,7 @@ public:
         minHeap.push(num);
 
       // swap
-      if (maxHeap.size() > minHeap.size()+1)
+      if (maxHeap.size() > minHeap.size()+1 )
       {
           minHeap.push(maxHeap.top());
           maxHeap.pop();
