@@ -30,67 +30,34 @@ public:
         node->isEnd = true;
     }
     
-    /*
-    bool search(string word) {
-        vector<TrieNode*> frontier = {root};
-        for (char c : word)
-        {
-            vector<TrieNode*> nextFrontier;
-
-            if (c == '.')
-            {
-               for (TrieNode* node : frontier)
-               {
-                  if (!node)
-                    continue;
-
-                  for (TrieNode* child : node->children)
-                    if (child)
-                      nextFrontier.push_back(child);
-               }
-
-            }
-            else
-            {
-               int idx = c -'a';
-               for(TrieNode* node : frontier)
-               {
-                 if (node && node->children[idx])
-                   nextFrontier.push_back(node->children[idx]);
-               }
-            }
-
-            if (nextFrontier.empty())
-              return false;
-            
-            frontier.swap(nextFrontier);
-        }
-
-        for (TrieNode* node: frontier)
-          if (node && node->isEnd)
-            return true;
-
-        return false;
-    }
-*/
-
-
-
-       bool search(string word) {
-        return searchWord(word, root, 0);
+    bool search(string word) 
+    {
+      return searchWord(word, root, 0);
     }
     
     bool searchWord(string &word, TrieNode *p, int i) {
+        if (!p)
+          return false;
         if (i == word.size()) 
           return p->isEnd;
 
-        if (word[i] == '.') {
-            for (auto &a : p->children) {
-                if (a && searchWord(word, a, i + 1)) return true;
-            }
+        char c = word[i];
+        if (c == '.') 
+        {
+          for (auto &child : p->children) 
+          {
+            if (child && searchWord(word, child, i + 1)) 
+              return true;
+          }
+          return false;
+        } 
+        else 
+        {
+            int idx = c - 'a';
+            TrieNode* child = p->children[idx];
+            if (child)
+              return searchWord(word, child, i + 1);
             return false;
-        } else {
-            return p->children[word[i] - 'a'] && searchWord(word, p->children[word[i] - 'a'], i + 1);
         }
     }
 
