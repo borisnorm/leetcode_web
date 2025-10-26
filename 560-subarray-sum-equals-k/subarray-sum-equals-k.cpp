@@ -10,7 +10,7 @@ public:
 
         for (int num: nums)
         {
-            prefixSum += num;
+           prefixSum += num;
            if (prefixSumCount.find(prefixSum - k) != prefixSumCount.end())
              count += prefixSumCount[prefixSum - k];
 
