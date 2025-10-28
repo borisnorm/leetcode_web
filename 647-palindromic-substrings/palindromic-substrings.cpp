@@ -18,12 +18,10 @@ public:
             return cnt;
         };
 
-        for (int i = 0; i < 2*n-1; i++)
+        for (int i = 0; i < n; i++)
         {
-           int l = i/2;
-           int r = l + i%2;
-
-           ans += expand(l, r);   
+           ans += expand(i, i);
+           ans += expand(i, i+1);   
         }
 
         return ans;
