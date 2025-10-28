@@ -4,8 +4,9 @@ public:
         if (s.empty())
           return 0;
         int n = s.size(); 
-        int ans = 0;
+        long long ans = 0;
         
+        /*
         auto expand = [&](int l, int r){
             int cnt = 0;
              
@@ -17,13 +18,29 @@ public:
             }
             return cnt;
         };
+        */
 
         for (int i = 0; i < n; i++)
         {
-           ans += expand(i, i);
-           ans += expand(i, i+1);   
+           ans += expand(s, i, i);
+           ans += expand(s, i, i+1);   
         }
 
         return ans;
+    }
+
+    long long expand(const string &s, int l, int r)
+    {
+        long long cnt = 0;
+        int n = s.size();
+
+        while (l >= 0 && r < n && s[l] == s[r])
+        {
+           l--;
+           r++;
+           cnt++;
+        }
+
+        return cnt;
     }
 };
