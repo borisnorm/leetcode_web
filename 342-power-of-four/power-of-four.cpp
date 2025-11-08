@@ -7,10 +7,11 @@ public:
 
         while (n)
         {
-          if (n%4 != 0)
-            break;
-          n = n / 4;
+           if (n%4 != 0)
+             break;
+           n = n / 4;
         }
+        
         return (n==1);
     }
 };
