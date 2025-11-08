@@ -7,19 +7,19 @@ public:
        vector<string> res;
 
        int left = 0;
-       int cur = left;
+       int right = left;
         string num_str;
        for (int i = 1; i < nums.size(); i++)
        {
-          if (nums[cur] + 1 == nums[i])
+          if (nums[right] + 1 == nums[i])
           {
-            cur++;
+            right++;
           }
           else
           {
-             if (left != cur)
+             if (left != right)
              {
-               num_str = to_string(nums[left]) + "->" + to_string(nums[cur]);
+               num_str = to_string(nums[left]) + "->" + to_string(nums[right]);
                res.push_back(num_str);
              }
              else
@@ -29,13 +29,13 @@ public:
              }
 
              left = i;
-             cur = left;
+             right = left;
           }
        }
 
-       if (left != cur)
+       if (left != right)
        {
-         num_str = to_string(nums[left]) + "->" + to_string(nums[cur]);
+         num_str = to_string(nums[left]) + "->" + to_string(nums[right]);
          res.push_back(num_str);
        }
        else
