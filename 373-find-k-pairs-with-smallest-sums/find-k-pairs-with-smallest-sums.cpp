@@ -1,31 +1,33 @@
 class Solution {
 public:
     vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
-        
-        auto cmp = [](const vector<int> &a, const vector<int> &b){
-            return (a[0] + a[1]) > (b[0] + b[1]);  // a top, b new  if(false) a down b up 小顶堆
-        };
-
-        priority_queue<vector<int>, vector<vector<int>>, decltype(cmp)> pq(cmp);
-        
-        for (int i = 0; i < nums1.size(); i++)
-          pq.push({nums1[i], nums2[0], 0});
-        
         vector<vector<int>> res;
+        int n1 = nums1.size(), n2 = nums2.size();
+        if (n1 == 0 || n2 == 0 || k <= 0) return res;
 
-        while(!pq.empty() && k > 0)
-        {
-           vector<int> cur = pq.top();
-           pq.pop();
-           
-           k--;
+        // 小顶堆：{sum, i, j}
+        using T = tuple<int, int, int>;
+        auto cmp = [](const T& a, const T& b) {
+            return get<0>(a) > get<0>(b);   // sum 小的优先
+        };
+        priority_queue<T, vector<T>, decltype(cmp)> pq(cmp);
 
-           int next_idx = cur[2] + 1;
-           if (next_idx < nums2.size())
-             pq.push({cur[0], nums2[next_idx], next_idx});
-            
-           res.push_back({cur[0], cur[1]});
-             
+        // 初始化：固定 i=0，放入前 min(k, n2) 列
+        int cols = min(k, n2);
+        for (int j = 0; j < cols; ++j) {
+            pq.emplace(nums1[0] + nums2[j], 0, j);
+        }
+
+        while (k-- > 0 && !pq.empty()) {
+            auto [sum, i, j] = pq.top();
+            pq.pop();
+            res.push_back({nums1[i], nums2[j]});
+
+            // 推入同一列的下一个元素 (i+1, j)
+            if (i + 1 < n1) {
+                int ni = i + 1;
+                pq.emplace(nums1[ni] + nums2[j], ni, j);
+            }
         }
 
         return res;
