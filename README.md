@@ -4,6 +4,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Array
 |  |
 | ------- |
+| [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 ## Design
@@ -36,4 +37,8 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
+## Hash Table
+|  |
+| ------- |
+| [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
 <!---LeetCode Topics End-->
