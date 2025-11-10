@@ -37,8 +37,7 @@ public:
               l2 = l2->next;
            }
 
-           if (cur->next)
-             cur = cur->next;
+            cur = cur->next;  // l1/l2 没有与 cur 同步, 因为 l1/l2 在 赋值给 cur->next 后,自己又向后走了 l1 = l1->next;
         }
 
         if (!l1)
