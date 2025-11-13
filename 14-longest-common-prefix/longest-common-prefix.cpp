@@ -13,7 +13,7 @@ public:
             char c = strs[0][col];
             for (int row = 1; row < m; row++)
             {
-              if (strs[row].size() == col || strs[row][col] != c)
+              if (strs[row].size() <= col || strs[row][col] != c)
                 return strs[0].substr(0, col);  
             }
          }
