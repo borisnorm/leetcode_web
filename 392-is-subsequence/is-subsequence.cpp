@@ -10,12 +10,10 @@ public:
 
         while (i < m && j < n)
         {
-            if (s[i] == t[j])
-            {
+          if (s[i] == t[j])
               i++;
-            }
 
-            j++;
+          j++;
         }
 
         return (i == m) ? true : false;
