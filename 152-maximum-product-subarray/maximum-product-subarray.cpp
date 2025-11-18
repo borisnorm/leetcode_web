@@ -5,21 +5,23 @@ public:
             return 0;
           
           int n = nums.size();
+          vector<long long> dpMax(n, 1);
+          vector<long long> dpMin(n, 1);
+          dpMax[0] = nums[0];
+          dpMin[0] = nums[0];
 
-          long long maxVal = nums[0];
-          long long minVal = nums[0];
           long long ans = nums[0];
 
           for (int i = 1; i < n; i++)
           {
               long long x = nums[i];
-              if (x < 0)
-                swap(maxVal, minVal);
+              long long dpMaxVal = dpMax[i-1] * x;
+              long long dpMinVal = dpMin[i-1] * x;
             
-              maxVal = max(x, maxVal * x);
-              minVal = min(x, minVal * x);
-
-              ans = max(ans, maxVal);
+              dpMax[i] = max({x, dpMaxVal, dpMinVal});
+              dpMin[i] = min({x, dpMaxVal, dpMinVal});
+              
+              ans = max(ans, dpMax[i]);
           }
 
           return (int)ans;
@@ -27,5 +29,3 @@ public:
 };
 
 
-       //   vector<long long> dpMax(n, 1);
-       //   vector<long long> dpMin(n, 1);
