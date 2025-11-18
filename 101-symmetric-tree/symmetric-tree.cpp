@@ -23,7 +23,7 @@ public:
         if (!left && !right)
           return true;
         
-        if (!left || !right)
+        if (!(left && right))
           return false;
 
         if (left->val != right->val)
