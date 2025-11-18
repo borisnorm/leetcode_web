@@ -15,22 +15,22 @@ public:
         if (!root)
           return -1;
 
-        int secondMin = -1;
+        long long secondMin = LONG_MAX;
         int minVal = root->val;
 
         dfs(root, minVal, secondMin);
-        return secondMin;
+        return (secondMin == LONG_MAX) ? -1 : secondMin;
     }
 
-    void dfs(TreeNode* node, int minVal, int& secondMin)
+    void dfs(TreeNode* node, int minVal, long long& secondMin)
     {
         if (!node)
           return;
 
         if (node->val > minVal)
         {
-            if (secondMin == -1 || node->val < secondMin)
-              secondMin = node->val;
+            if (secondMin == -1 || (long long)node->val < secondMin)
+              secondMin = (long long)node->val;
             return;
         }
 
