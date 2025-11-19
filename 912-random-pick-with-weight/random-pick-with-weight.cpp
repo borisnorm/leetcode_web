@@ -6,6 +6,7 @@ public:
 
     Solution(vector<int>& w) {
        prefixSum.resize(w.size());
+       
        prefixSum[0] = w[0];
        
        for (int i = 1 ; i < w.size(); i++)
