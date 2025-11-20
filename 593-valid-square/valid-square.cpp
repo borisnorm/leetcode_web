@@ -3,12 +3,14 @@ public:
   
     using T = vector<int>;
     
-    long long cal_dist(T& x, T& y)
+    long long dist(T& x, T& y)
     {
        long long dist_val = (x[0]-y[0])*(x[0]-y[0]) + (x[1]-y[1])*(x[1]-y[1]);
        return dist_val;
     }
 
+    // 时间 O(1)
+    // 空间 O(1)
     bool validSquare(vector<int>& p1, vector<int>& p2, vector<int>& p3, vector<int>& p4) {
         // distancance p1 -> p2 == p3 -> p2
         vector<T> points = {p1, p2, p3, p4};
@@ -16,10 +18,11 @@ public:
         vector<long long> dist_vec;
         for (int i = 0; i < 4; i++)
           for (int j = i + 1; j < 4; j++)
-            dist_vec.push_back(cal_dist(points[i], points[j]));
+            dist_vec.push_back(dist(points[i], points[j]));
 
         sort(dist_vec.begin(), dist_vec.end());
 
+        // 避免出现重合点
         if (dist_vec[0] == 0)
            return false;
         
