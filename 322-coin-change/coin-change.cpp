@@ -1,14 +1,12 @@
 class Solution {
 public:
 
-    vector<int> track;
-    vector<vector<int>> res;
     int coinChange(vector<int>& coins, int amount) {
-        if (coins.empty())
-          return -1;
-
         if (amount == 0)
           return 0;
+
+        if (coins.empty() || amount < 0)
+          return -1;
 
         vector<int> dp(amount+1, INT_MAX);
         dp[0] = 0;
