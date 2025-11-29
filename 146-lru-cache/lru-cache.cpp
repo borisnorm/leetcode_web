@@ -1,50 +1,52 @@
 class LRUCache {
-private:
-    int cap;
-    unordered_map<int, pair<int, list<int>::iterator>> cache;
-    list<int> l; // 存放 key的 是 key 的 LRU list
-
+    int capacity;
+    list<pair<int, int>> kvl;
+    unordered_map<int, list<pair<int, int>>::iterator> key2it; 
 public:
     LRUCache(int capacity) {
-        this->cap = capacity;
+        this->capacity = capacity;
     }
-
+    
     int get(int key) {
-        if (cache.find(key) == cache.end()) {
-            return -1;
-        }
-        // 将 key 变为最近使用
-        makeRecently(key);
-        return cache[key].first;
+        if (!key2it.count(key))
+          return -1;
+        
+        auto it = key2it[key];
+        int val = it->second;
+        updateLRUentry(key, val);
+
+        return val;
+    }
+    
+    void put(int key, int value) {
+        
+        if (!key2it.count(key) && kvl.size() == capacity)
+          removeLRUentry();
+        
+        updateLRUentry(key, value);
     }
 
-    void put(int key, int val) {
-        if (cache.find(key) != cache.end())
-        {
-           // delete and then re-insert again
-           l.erase(cache[key].second);
-        }
-        else
-        {
-           if (l.size() >= this->cap)
-           {
-              // 链表头部就是最久未使用的 key
-              cache.erase(l.front());
-              l.pop_front();
-           }
-        }
-     
-       l.push_back(key);
-       cache[key] = {val, prev(l.end())};
-    }
-
-    void makeRecently(int key)
+    void updateLRUentry(int key, int val)
     {
-       int val = cache[key].first;
-       // 删除 key，重新插入到队尾
-       l.erase(cache[key].second);  // 使用 l.erase 需要传递 value 的 iterator 进去 而不是 first value 本身,  l.erase(cache[key].second);
-       l.push_back(key);            // 重新放回去
-       cache[key] = {val, prev(l.end())};
+       if (key2it.count(key))
+       {
+          auto it = key2it[key];
+          kvl.erase(it);
+       }
+
+       kvl.push_front({key, val});
+       auto it = kvl.begin();
+       key2it[key] = it;
+    }
+    
+    void removeLRUentry()
+    {
+       auto it = prev(kvl.end());
+
+       int key = it->first;
+       key2it.erase(key);
+
+       kvl.pop_back();
     }
 };
 
