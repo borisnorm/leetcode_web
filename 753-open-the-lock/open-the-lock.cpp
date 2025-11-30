@@ -34,7 +34,7 @@ public:
         while (!q.empty())
         {
            int q_size = q.size();
-           steps++;
+
            for (int i = 0; i < q_size; i++)
            {
               string cur = q.front();
@@ -46,13 +46,15 @@ public:
                    continue;
                 
                  if (nei == target)
-                   return steps;
+                   return steps + 1;
 
                   visited.insert(nei);
 
                   q.push(nei);
               }
            }
+
+           steps++;
         }
 
         return -1;
