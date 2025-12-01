@@ -17,19 +17,23 @@ public:
         if (!root)
           return res;
         
-        preorder_traverse(root, res);
+        stack<TreeNode*> nodes_stack;
+        nodes_stack.push(root);
+
+        while (!nodes_stack.empty())
+        {
+           TreeNode* node = nodes_stack.top();
+           nodes_stack.pop();
+
+           res.push_back(node->val);
+
+           if (node->right)
+             nodes_stack.push(node->right);
+           if (node->left)
+             nodes_stack.push(node->left);
+        }
 
         return res;
 
-    }
-
-    void preorder_traverse(TreeNode* root, vector<int>& res)
-    {
-        if (!root)
-          return;
-
-        res.push_back(root->val);
-        preorder_traverse(root->left, res);
-        preorder_traverse(root->right, res);
     }
 };
