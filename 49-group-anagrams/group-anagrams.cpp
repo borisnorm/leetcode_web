@@ -13,8 +13,8 @@ public:
            string key;
            for (int i = 0; i < 26; i++)
            {
-              key.push_back('#');
-              key += to_string(cnt[i]);
+              // key.push_back('#');
+              key += "#" + to_string(cnt[i]);
            } 
 
            mp[key].push_back(s);
