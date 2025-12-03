@@ -11,7 +11,7 @@ public:
         for (int num: nums)
         {
            prefixSum += num;
-           if (prefixSumCount.find(prefixSum - k) != prefixSumCount.end())
+           if (prefixSumCount.count(prefixSum - k))
              count += prefixSumCount[prefixSum - k];
 
            prefixSumCount[prefixSum]++;
