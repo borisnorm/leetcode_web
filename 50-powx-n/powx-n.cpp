@@ -15,9 +15,7 @@ public:
         while (exp)
         {
            if (exp & 0x1)
-           {
               result *= x;
-           }
 
            x = x * x;
            exp >>= 1;
