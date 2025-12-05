@@ -2,23 +2,20 @@ class Solution {
 public:
     int addDigits(int num) {
 
-       int sum = num;
        const int MAX_DIGIT = 9;
        
-       while (sum > MAX_DIGIT)
+       while (num > MAX_DIGIT)
        {
-          int n = sum;
-          
-          sum = 0;
-          while (n)
+          int sum = 0;
+          while (num)
           {
-            int digit = n % 10;
+            int digit = num % 10;
             sum += digit;
-
-            n = n / 10;
+            num = num / 10;
           }
+          num = sum;
        }
 
-       return sum;   
+       return num;   
     }
 };
