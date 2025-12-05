@@ -4,7 +4,7 @@ public:
 
         if (n <= 0)
           return false;
-          
+
         if (n == 1)
           return true;
 
@@ -14,6 +14,7 @@ public:
            if (digit != 0)
              return false;
            n = n / 3;
+
            if (n == 1)
              return true;
         }
