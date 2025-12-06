@@ -2,25 +2,21 @@ class Solution {
 public:
     bool checkPerfectNumber(int num) {
         
-        if (num == 0)
-          return false;
+         if (num <= 1)
+           return false;
 
-        unordered_set<int> divisors;
-        for (int i = 1; i < num; i++)
-          if (num % i == 0)
-            divisors.insert(i);
-    
-     
-        int sum = 0;
-        for (auto& it: divisors)
-        {
-           sum += it;
-        }
+         int sum = 1;
 
-        if (sum == num)
-          return true;
+         for (int i = 2; (long long)i * i <= num; i++)
+         {
+            // sum += divisor + remaining(num/i) 
+            if (num % i == 0)
+            {
+               int remain = num / i;
+               sum += i + ((remain != i) ? remain : 0);
+            }
+         }
 
-        return false;
-
+         return (num == sum) ? true : false;
     }
 };
