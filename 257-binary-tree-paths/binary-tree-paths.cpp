@@ -11,6 +11,42 @@
  */
 class Solution {
 public:
+
+    vector<string> binaryTreePaths(TreeNode* root)
+    {
+        if (!root)
+          return {};
+
+        stack<pair<TreeNode*, string>> st;
+        string path;
+        vector<string> res;
+        
+        st.push({root, path});
+        while (!st.empty())
+        {
+           auto [node, path] = st.top();
+           st.pop();
+
+           if (!path.empty())
+             path += "->";
+           path += to_string(node->val);
+
+           if (!node->left && !node->right)
+           {
+             res.push_back(path);
+           }
+
+           if (node->right)
+             st.push({node->right, path});
+
+           if (node->left)
+             st.push({node->left, path});
+        }
+
+        return res;
+    }
+
+/*
     vector<string> binaryTreePaths(TreeNode* root) {
          if (!root)
            return {};
@@ -43,4 +79,8 @@ public:
         if (root->right)
           binaryTreeTraverse(root->right, str, res);
     } 
+
+    */
+
+
 };
