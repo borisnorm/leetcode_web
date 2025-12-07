@@ -11,10 +11,8 @@ class Solution {
         */
         s = s.trim();
         int n = s.length();
-        StringBuilder sb   = new StringBuilder();
-        List<String> words = new ArrayList<String>();
 
-        
+        List<String> words = new ArrayList<String>();
         while (i < n)
         {
           int start = i;
@@ -29,6 +27,7 @@ class Solution {
             i++;
         }
 
+        StringBuilder sb   = new StringBuilder();
         for (int k = words.size() - 1; k >= 0; k--)
         {
            if (sb.length() > 0)
