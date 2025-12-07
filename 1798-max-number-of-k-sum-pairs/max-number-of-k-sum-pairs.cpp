@@ -1,43 +1,28 @@
 class Solution {
 public:
     int maxOperations(vector<int>& nums, int k) {
-        unordered_map<int, int> nums2idx;
-        int n = nums.size();
-        int cnt = 0;
 
-        for (int i = 0; i < n; i++)
-        { 
-           int target = k - nums[i];
-           bool ignored = false;
-           if (nums2idx.count(target))
-           {
-              int pre_idx = nums2idx[target];
-              int cur_idx = i;
+      int n = nums.size();
+      sort(nums.begin(), nums.end());
+      int l = 0;
+      int r = n - 1;
+      int opscnt = 0;
 
-              nums[pre_idx] = INT_MAX;
-              nums[cur_idx] = INT_MAX;
-              
-              nums2idx[target]--;
-              if (nums2idx[target] <= 0)
-                nums2idx.erase(target);
-
-              ignored = true;     
-
-              cnt++;        
-           }
-           else
-             nums2idx[nums[i]]++;
-        }
-
-        int write = 0;
-        for (int i = 0; i < n; i++)
+      while (l < r)
+      {
+        int sum = nums[l] + nums[r];
+        if (sum < k)
+          l++;
+        else if (sum > k)
+          r--;
+        else
         {
-          if (nums[i] != INT_MAX)
-            nums[write++] = nums[i];
+           opscnt++;
+           l++;
+           r--;
         }
+      }
 
-        nums.resize(write);
-
-        return cnt;
+      return opscnt;
     }
 };
