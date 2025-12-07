@@ -4,7 +4,7 @@ public:
         
         unordered_map<int, int> nums1_mp;
         for (auto& num: nums1)
-            nums1_mp[num]++;
+          nums1_mp[num]++;
        
         unordered_map<int, int> nums2_mp;
         for (auto& num: nums2)
