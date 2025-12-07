@@ -1,6 +1,22 @@
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+
+        vector<int> res;
+        unordered_set<int> nums1_set(nums1.begin(), nums1.end());
+        unordered_set<int> intersect_set;
+
+        for (auto num: nums2)
+        {
+           if (nums1_set.count(num))
+             intersect_set.insert(num);
+        }
+
+        res = vector<int>(intersect_set.begin(), intersect_set.end());
+        return res;
+    }
+    /*
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         
         unordered_map<int, int> nums1_mp;
         for (auto& num: nums1)
@@ -20,4 +36,5 @@ public:
 
         return res;
     }
+    */
 };
