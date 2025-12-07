@@ -15,12 +15,12 @@ public:
             if (flowerbed[i] == 1)
               continue;
             
-            int left = (i == 0) ? 0 : flowerbed[i-1];
+            int left =  (i == 0)       ? 0 : flowerbed[i-1];
             int right = (i == len -1 ) ? 0 : flowerbed[i+1];
 
             if (left == 0 && right == 0 && flowerbed[i] == 0)
             {
-                flowerbed[i] = 1;
+                flowerbed[i] = 1;  //还要查 左侧 是否还种了树
                 n--;
             }
          }
