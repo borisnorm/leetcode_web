@@ -10,6 +10,61 @@
  */
 class Solution {
 public:
+
+    int pairSum(ListNode* head) {
+          if (!head || !head->next)
+            return 0;
+
+          ListNode dummy(0);
+          ListNode* dummy_head = &dummy;
+          dummy_head->next = head;
+
+          ListNode* slow = dummy_head;
+          ListNode* fast = head;
+          while (fast && fast->next)
+          {
+              slow = slow->next;
+              fast = fast->next->next;
+          }
+
+          ListNode* tail = slow;
+
+          ListNode* pre = nullptr;
+          ListNode* cur = slow->next;
+          ListNode* nxt = nullptr;
+
+          tail->next = nullptr;
+
+          while(cur)
+          {
+             nxt = cur->next;
+             cur->next = pre;
+             pre = cur;
+             cur = nxt;
+          } 
+    
+          ListNode* second = pre;
+          ListNode* first  = head;
+          
+          int maxSum = INT_MIN;
+          while(first && second)
+          {
+             maxSum = max(maxSum, first->val + second->val);
+
+             first = first->next;
+             second = second->next;
+          }
+
+          return maxSum;
+
+          
+
+
+          
+
+    }
+
+    /*
     int pairSum(ListNode* head) {
         
         if (!head || !head->next)
@@ -49,4 +104,6 @@ public:
 
         return maxSum;
     }
+
+    */
 };
