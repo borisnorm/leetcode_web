@@ -23,15 +23,17 @@ public:
         if (!node)
           return 0;
 
+        /* init local cnt */
         int count = 0;
-
         if (node->val >= maxVal)
           count = 1;
 
-        int newMax = max(maxVal, node->val);
+        /* update the max val */
+        maxVal = max(maxVal, node->val);
 
-        count += dfs(node->left, newMax);
-        count += dfs(node->right, newMax);
+        /* aggregate global count through dfs */
+        count += dfs(node->left, maxVal);
+        count += dfs(node->right, maxVal);
 
         return count;
     }
