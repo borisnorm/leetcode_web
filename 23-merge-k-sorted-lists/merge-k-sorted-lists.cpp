@@ -11,6 +11,53 @@
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
+        if (lists.empty())
+          return nullptr;
+        
+        int interval = 1;
+        int n = (int)lists.size();
+
+        while (interval < n)
+        {
+           for (int i = 0; i + interval < n; i+= interval *2)
+             lists[i] = mergeTwo(lists[i], lists[i+interval]);
+        
+           interval *= 2;
+        }
+
+        return lists[0];
+    }
+
+    ListNode* mergeTwo(ListNode* a, ListNode* b)
+    {
+        ListNode dummy(0);
+        ListNode* dummy_head = &dummy;
+
+        while (a && b)
+        {
+
+           if (a->val <= b->val)
+           {
+             dummy_head->next = a;
+             a = a->next;
+           }
+           else
+           {
+             dummy_head->next = b;
+             b = b->next;
+           }
+
+           dummy_head = dummy_head->next;
+
+        }
+
+        dummy_head->next = a ? a : b;
+
+        return dummy.next;
+    }
+
+/*
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
         int n = lists.size();
         
         auto cmp = [](const ListNode* a, const ListNode* b){
@@ -42,8 +89,7 @@ public:
         tail->next = nullptr;
 
         return dummy.next;
-
-        // Merge-Sort
-        // Combine
     }
+
+    */
 };
