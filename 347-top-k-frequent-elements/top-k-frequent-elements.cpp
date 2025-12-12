@@ -25,7 +25,7 @@ public:
               return a.second > b.second;   
         };
 
-        priority_queue<pair<int, int>,  vector<pair<int, int>>, decltype(cmp)> pq(cmp);  //最大堆
+        priority_queue<pair<int, int>,  vector<pair<int, int>>, decltype(cmp)> pq;  //最大堆
 
         for (auto& iter: mp)
         {
