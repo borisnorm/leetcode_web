@@ -42,6 +42,12 @@ public:
         }
 
         /* update board based on status */
+        // 0 = 00  死 → 死  
+        // 1 = 01  活 → 活
+        // 2 = 10  活 → 死
+        // 3 = 11  死 → 活
+        // 最终状态
+
         for (int i = 0; i < m; i++)
           for (int j = 0; j < n; j++)
             board[i][j] = board[i][j] % 2;
