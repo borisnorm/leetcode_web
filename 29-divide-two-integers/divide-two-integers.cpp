@@ -22,7 +22,7 @@ public:
               multiple <<= 1;
            }
 
-           a   -= temp;
+           a   -= temp;  // a 在这里是 余数的意思
            res += multiple;
         }
 
