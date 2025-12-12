@@ -21,7 +21,7 @@ public:
            }
 
            next += to_string(cnt);
-           next += s.back();
+           next += s[s.size()-1];
 
            s = next;
         }
