@@ -4,7 +4,7 @@ public:
         int n = s.size();
 
         int sign = 1;
-        long long res = 0;
+        int res = 0;
 
         int i = 0;
         while (i < n && s[i] == ' ')
