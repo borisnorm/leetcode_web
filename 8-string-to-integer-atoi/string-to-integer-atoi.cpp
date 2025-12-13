@@ -28,16 +28,23 @@ public:
         {
             int digit = s[i] - '0';
             
-            if (sign >0)
+            // 4. 溢出检测
+            if (res > INT_MAX / 10 || (res == INT_MAX / 10 && digit > 7)) {
+                return sign == 1 ? INT_MAX : INT_MIN;
+            }
+
+            /*
+            if (sign > 0)
             {
               if (res > INT_MAX / 10 || (res == INT_MAX / 10 && digit > 7))
-                  return  INT_MAX;
+                return  INT_MAX;
             }
             else
             {
-               if (res > INT_MAX / 10 || (res == INT_MAX / 10 && digit > 8)) 
-                  return  INT_MIN;
+              if (res > INT_MAX / 10 || (res == INT_MAX / 10 && digit > 8)) 
+                return  INT_MIN;
             }
+            */
 
             res = res*10 + digit;
             
