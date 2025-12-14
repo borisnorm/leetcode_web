@@ -42,7 +42,7 @@ public:
 
             col[c] = true;
             diag1[row - c + n - 1] = true;
-            diag2[row +c] = true;
+            diag2[row + c] = true;
 
             dfs(row + 1, n);
 
