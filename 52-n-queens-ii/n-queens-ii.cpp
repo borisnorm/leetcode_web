@@ -11,8 +11,8 @@ public:
     int totalNQueens(int n) {
 
         col.assign(n, false);
-        diag1.assign(2*n, false);
-        diag2.assign(2*n, false);
+        diag1.assign(2*n-1, false);
+        diag2.assign(2*n-1, false);
 
         dfs(0, n);
 
@@ -33,7 +33,7 @@ public:
             if (col[c])
               continue;
             
-            if (diag1[row - c + n])
+            if (diag1[row - c + n - 1])
               continue;
             
             if (diag2[row + c ])
@@ -41,14 +41,14 @@ public:
             
 
             col[c] = true;
-            diag1[row - c +n ] = true;
+            diag1[row - c + n - 1] = true;
             diag2[row +c] = true;
 
             dfs(row + 1, n);
 
 
             col[c] = false;
-            diag1[row -c + n] = false;
+            diag1[row - c + n - 1] = false;
             diag2[row + c] = false;
        }
     }
