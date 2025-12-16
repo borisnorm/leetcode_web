@@ -10,7 +10,6 @@ public:
           if (m != n )
             return false;
         
-          string t;
           for (int i = 0; i < m; i++)
           {
              s = s.substr(1, m - 1) + s[0];
