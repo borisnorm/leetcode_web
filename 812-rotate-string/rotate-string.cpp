@@ -2,6 +2,21 @@ class Solution {
 public:
     bool rotateString(string s, string goal) {
 
+         int m = s.size();
+         int n = goal.size();
+
+         if (m != n)
+           return false;
+         
+         string s2 = s + s;
+         if (s2.find(goal) != string::npos)
+           return true;
+        
+         return false;
+    }
+   /*
+    bool rotateString(string s, string goal) {
+
           int m = s.size();
           int n = goal.size();
 
@@ -23,4 +38,6 @@ public:
 
           return false;
     }
+
+    */
 };
