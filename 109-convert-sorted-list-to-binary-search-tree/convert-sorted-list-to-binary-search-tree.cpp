@@ -25,7 +25,9 @@ public:
          if (!head)
            return nullptr;
 
-         return build(head, nullptr);   
+         //return build(head, nullptr);  
+         
+         return build2(head);
     }
 
     TreeNode* build(ListNode* head, ListNode* tail)
@@ -46,6 +48,37 @@ public:
 
          node->left = build(head, slow);
          node->right = build(slow->next, tail);
+        
+         return node;
+    }
+
+    TreeNode* build2(ListNode* head)
+    {
+         if (!head)
+           return nullptr;
+
+        if (!head->next) 
+           return new TreeNode(head->val); // 单节点直接返回，避免断链边界坑
+       
+         ListNode* slow = head;
+         ListNode* fast = head->next;
+        
+         ListNode* pre = nullptr;
+         while (fast && fast->next)
+         {
+            pre  = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+         }
+
+         if (pre)
+           pre->next = nullptr;
+
+         TreeNode* node = new TreeNode(slow->val);
+
+         node->left = (slow == head) ? nullptr : build2(head);
+         //node->left = build2(head);
+         node->right = build2(slow->next);
         
          return node;
     }
