@@ -1,8 +1,11 @@
 class Solution {
 public: 
   bool judgeSquareSum(int c) {
+      if (c <= 1)
+        return true;
+
       long long l = 0;
-      long long r = sqrt(c);
+      long long r = (long long)sqrt(c);
       while (l <= r)
       {
          long long sum = l * l + r * r;
