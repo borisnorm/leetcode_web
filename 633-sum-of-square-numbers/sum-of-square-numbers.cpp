@@ -1,5 +1,23 @@
 class Solution {
-public:
+public: 
+  bool judgeSquareSum(int c) {
+      long long l = 0;
+      long long r = sqrt(c);
+      while (l <= r)
+      {
+         long long sum = l * l + r * r;
+
+         if (sum < c)
+           l++;
+         else if (sum > c)
+           r--;
+         else
+           return true;
+      }
+
+      return false;
+  }
+/*
     bool judgeSquareSum(int c) {
         
         unordered_set<long long> squares;
@@ -14,4 +32,5 @@ public:
 
         return false;
     }
+*/
 };
