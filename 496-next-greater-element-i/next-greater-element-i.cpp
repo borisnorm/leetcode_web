@@ -19,6 +19,7 @@ public:
                    int target = nums1[i];
                    for (int j = nums2_val2idx[nums1[i]] + 1; j < n; j++)   
                    {
+                      // find the first number greater than nums[i] in nums2 
                       if (nums2[j] > target)
                       {
                          res[i] = nums2[j];
