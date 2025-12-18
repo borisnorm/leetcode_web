@@ -13,11 +13,10 @@ public:
         long long n = columnNumber;
         while (n)
         {
-           n--;
-           char digit = (n % 26) + 'A';
+           char digit = ((n-1) % 26) + 'A';
            // char digit = (columnNumber % 26) + 'A';
            res += digit;
-           n = n/26;
+           n = (n-1)/26;
         }
 
         reverse(res.begin(), res.end());
