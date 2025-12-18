@@ -1,5 +1,40 @@
 class Solution {
 public:
+
+   vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+      
+         unordered_map<int, int> val2nxt;
+         stack<int> st;
+         vector<int> res;
+
+         for (int v: nums2)
+         {
+            while(!st.empty() && v > st.top())
+            {
+               val2nxt[st.top()] = v;
+               st.pop(); 
+            }
+
+            st.push(v);
+         }
+
+         for (int v: nums1)
+         {
+            if(val2nxt.count(v))
+            {
+               res.push_back(val2nxt[v]);
+            }
+            else
+            {
+               res.push_back(-1);
+            }
+         }
+
+        return res;
+
+
+   }
+    /*
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
            map<int, int> nums2_val2idx;
 
@@ -32,4 +67,7 @@ public:
 
            return res;
     }
+
+    */
+
 };
