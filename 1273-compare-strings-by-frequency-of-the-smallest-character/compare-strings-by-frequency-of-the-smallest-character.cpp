@@ -3,7 +3,7 @@ public:
     vector<int> numSmallerByFrequency(vector<string>& queries, vector<string>& words) {
         
         int m = words.size();
-        vector<int> fwordFreq(m, 0);
+        vector<char> fwordFreq(m, 0);
 
         int idx = 0;
         for (string word : words)
