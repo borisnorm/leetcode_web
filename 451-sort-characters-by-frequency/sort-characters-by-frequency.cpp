@@ -1,34 +1,34 @@
 class Solution {
 public:
     string frequencySort(string s) {
-        unordered_map<char, int> char2freq;
-        for (char c : s) char2freq[c]++;
+       
+       unordered_map<char, int> char2freq;
+       
+       for (char c: s)
+         char2freq[c]++;
+    
+       int n = s.size();
+       // convert 0-based to 1-based
+       // 因为 统计的频率都是 1 开始的
+       vector<string> buckets(n+1);
+       for (auto & [c, freq]: char2freq)
+       {
+          buckets[freq].append(freq, c);
+       }
 
-        using It = unordered_map<char, int>::iterator;
-        auto cmp = [](const It& a, const It& b) {
-            return a->second < b->second; // freq 大的优先
-        };
+       string res;
+       for (int i = n; i >= 0; i--)
+       {
+          if (!buckets[i].empty())
+            res += buckets[i];
+       }
 
-        priority_queue<It, vector<It>, decltype(cmp)> pq(cmp);
-
-        for (auto it = char2freq.begin(); it != char2freq.end(); ++it)
-            pq.push(it);
-
-        string res;
-        while (!pq.empty()) {
-            auto it = pq.top();
-            pq.pop();
-
-            res.append(it->second, it->first);
-        }
-        return res;
+       return res;
+ 
     }
-};
+    
 
-
-/*
-class Solution {
-public:
+    /*
     string frequencySort(string s) {
         
          unordered_map<char, int> char2freq;
@@ -39,20 +39,28 @@ public:
               //return a.second < b.second;
          };
 
-         priority_queue<T, vector<T>, decltype(cmp)> pq;
+         // priority queue 默认是大顶堆
+         priority_queue<T, vector<T>, decltype(cmp)> pq(cmp);
          for (char c: s)
            char2freq[c]++;
         
-         //for (auto& it : char2freq)
+         // 错误的, for rang 对于 map 而言, 返回的 kv pair 的 键值对, 不是 iterator
+         //for (unordered_map<char, int>::iterator it : char2freq)
+         //  pq.push(it);
+
          for (auto it = char2freq.begin(); it != char2freq.end(); it++)
            pq.push(it);
 
          string res;
          while (!pq.empty())
          {
-            auto& it = pq.top();
+            // 不能 &, pop 后 it 引用会被 干掉
+            //auto& it = pq.top();
+            auto it = pq.top();
             pq.pop();
 
+            // append 操作可以替代 循环;
+            //res.append(it->second, it->first);
             int cnt = it->second;
             int c   = it->first;
 
@@ -62,5 +70,5 @@ public:
 
          return res;
     }
+    */
 };
-*/
