@@ -12,11 +12,12 @@ public:
       for (int i = 0; i < n; i++)
       {
           int v = arr[i];
-          while (!st.empty() && v <= arr[st.top()])
+          while (!st.empty() && arr[st.top()] >= arr[i])
           {
              st.pop();
           }
-
+          // 求的是 arr[k] < arr[i] 
+          //设 j = ple[i]，它是左边最近的 < arr[i] 的位置。
           ple[i] = st.empty() ? -1 : st.top();
 
           st.push(i);
@@ -26,10 +27,11 @@ public:
       for (int i = n - 1; i >= 0; i--)
       {
          int v = arr[i];
-         while (!st.empty() && v < arr[st.top()])
+         while (!st.empty() && arr[st.top()] > arr[i])
           st.pop();
 
-        nle[i] = st.empty() ? n : st.top();
+        // 求的是 arr[k] <= arr[i] 中的 k 是右边界
+        nle[i] = st.empty() ? n : st.top();  
 
          st.push(i);
       }
@@ -37,8 +39,8 @@ public:
       long long res = 0;
       for (int i = 0; i < n; i++)
       {
-         long long left = i - ple[i];
-         long long right = nle[i] - i;
+         long long left = i - ple[i];   // left=i−(ple[i]+1)+1=i−ple[i]
+         long long right = nle[i] - i;  // right=(nle[i]−1)−i+1=nle[i]−i
 
          long long contrib = ((long long)arr[i] * left) % MOD;
          contrib = (contrib * right) % MOD;
