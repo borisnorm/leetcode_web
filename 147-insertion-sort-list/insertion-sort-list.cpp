@@ -24,6 +24,7 @@ ListNode* insertionSortList(ListNode* head) {
     while (cur)
     {
        ListNode* nxt = cur->next;
+       cur->next = nullptr;
        
        ListNode* pre = &dummy;
        while (pre->next && pre->next->val < cur->val)
