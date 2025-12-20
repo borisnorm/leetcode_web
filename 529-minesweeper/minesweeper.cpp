@@ -5,16 +5,16 @@ public:
         int m = board.size();
         int n = board[0].size();
         
-        int x = click[0];
-        int y = click[1];
+        int i = click[0];
+        int j = click[1];
 
-        if (board[x][y] == 'M')
+        if (board[i][j] == 'M')
         {
-            board[x][y] = 'X';
+            board[i][j] = 'X';
             return board;
         }
 
-        dfs(board, x, y);
+        dfs(board, i, j);
         return board;
     
     }
@@ -27,10 +27,12 @@ public:
         if (i < 0 || i >= m || j < 0 || j >=n)
           return;
         
-        if (board[i][j] == 'B' || board[i][j] == 'X')
+        if (board[i][j] != 'E')
           return;
+        //if (board[i][j] == 'B' || board[i][j] == 'X')
+        //  return;
         
-        if (board[i][j] == 'E')
+        //if (board[i][j] == 'E')
         {
            int cnt = 0;
            
@@ -38,7 +40,7 @@ public:
                {-1, -1}, {-1, 0}, {-1, 1},
                {0,  -1},          {0, 1}, 
                {1,  -1}, {1, 0},  {1, 1} 
-              };
+               };
 
            for (auto dir: dirs)
            {
