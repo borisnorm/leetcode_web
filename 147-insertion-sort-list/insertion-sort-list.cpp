@@ -10,6 +10,34 @@
  */
 class Solution {
 public:
+
+ListNode* insertionSortList(ListNode* head) {
+    if (!head || !head->next)
+      return head;
+    
+
+    ListNode dummy(0);
+    //ListNode* dummy_head = &dummy;
+    //dummy_head->next = head;
+
+    ListNode* cur = head;
+    while (cur)
+    {
+       ListNode* nxt = cur->next;
+       
+       ListNode* pre = &dummy;
+       while (pre->next && pre->next->val < cur->val)
+         pre = pre->next;
+    
+       cur->next = pre->next;
+       pre->next = cur;
+
+       cur = nxt;
+    }
+
+    return dummy.next;
+}
+   /*
     ListNode* insertionSortList(ListNode* head) {
             if (!head || !head->next)
               return head;
@@ -56,6 +84,6 @@ public:
             }
 
             return dummy.next;      
-
     }
+    */
 };
