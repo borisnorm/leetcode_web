@@ -12,10 +12,25 @@ class Solution {
 public:
     
     ListNode* head;
+    vector<int> nums;
     Solution(ListNode* head) {
         this->head = head;
+
+        ListNode* cur = head;
+        while (cur)
+        {
+           nums.push_back(cur->val);
+           cur = cur->next;
+        }
     }
-    
+
+    int getRandom() {
+        int cnt = nums.size();
+        // a % b 的结果范围是 [0, b-1]
+        int idx = rand() % cnt;
+        return nums[idx];
+    }
+    /*
     int getRandom() {
         int res = 0;
         int cnt = 0;
@@ -35,7 +50,7 @@ public:
         }
 
         return res;
-    }
+    }*/
 };
 
 /**
