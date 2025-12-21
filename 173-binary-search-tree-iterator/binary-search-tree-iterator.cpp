@@ -15,6 +15,9 @@ class BSTIterator {
 public:
     void pushLeft(TreeNode* node)
     {
+       //一次返回一个最小值
+       //用一个栈，模拟递归中序遍历的“调用栈”
+       //栈顶元素：当前最小的未访问节点
        // top of the stack is the smallest number;
        while (node)
        {
