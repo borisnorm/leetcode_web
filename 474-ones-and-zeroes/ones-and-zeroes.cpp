@@ -21,6 +21,7 @@ public:
             {
                 for (int j = n; j >= one_cnt; j--)
                 {
+                    //dp[i][j] = 最多用 i 个 0、j 个 1 时，最多能选多少个字符串
                     dp[i][j] = max(dp[i][j],  dp[i-zero_cnt][j-one_cnt] + 1);
                 }
             }
