@@ -10,6 +10,42 @@
  */
 class Solution {
 public:
+
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if (!head || !head->next || left == right)
+          return head;
+        
+
+        ListNode dummy(0);
+        ListNode* dummy_head = &dummy;
+        dummy_head->next = head;
+         
+        ListNode* pre = dummy_head;
+        ListNode* cur = pre->next;
+        ListNode* nxt = nullptr;
+
+        for (int i = 1; i < left; i++)
+        {
+           pre = pre->next;
+        }
+
+        cur = pre->next;
+        for (int i = 0; i < (right - left); i++)
+        {
+            nxt = cur->next;
+            
+            cur->next = nxt->next;
+            nxt->next = pre->next;
+
+            pre->next = nxt;
+        }
+
+        return dummy.next;
+
+    }
+
+
+    /*
     ListNode* reverseBetween(ListNode* head, int left, int right) {
                if (!head || !head->next || left == right)
                  return head;
@@ -32,7 +68,7 @@ public:
                   pre = cur;
                   cur = cur->next;
                }
-              ListNode* newHead = cur;
+               ListNode* newHead = cur;
              // if (!cur)
              //   return head;
 
@@ -46,7 +82,6 @@ public:
                  step++;
                  cur = cur->next;  
               }
-
               ListNode* newHeadtail = cur;
               if (newHeadtail)
                 newHeadtail->next = nullptr;
@@ -79,5 +114,6 @@ public:
         }
         
         return pre;
-    }
+    } 
+    */
 };
