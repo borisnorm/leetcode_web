@@ -34,7 +34,7 @@ public:
         {
            res.push_back(path);
         }
-        else
+        //else
         {
           dfs(root->left, targetSum, path);
           dfs(root->right, targetSum, path);
