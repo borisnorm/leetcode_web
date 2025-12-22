@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
-               if (!head || !head->next)
+               if (!head || !head->next || left == right)
                  return head;
                 
                ListNode dummy(0);
@@ -33,8 +33,8 @@ public:
                   cur = cur->next;
                }
               ListNode* newHead = cur;
-              if (!cur)
-                return head;
+             // if (!cur)
+             //   return head;
 
               while(cur)
               {
@@ -47,15 +47,13 @@ public:
                  cur = cur->next;  
               }
 
-              
-              if (cur)
-              {
-                ListNode* newHeadtail = cur;
+              ListNode* newHeadtail = cur;
+              if (newHeadtail)
                 newHeadtail->next = nullptr;
-              }
-
+   
               pre->next = reverseList(newHead);
-              newHead->next = nxt;
+              newHeadtail = newHead;  // 翻转前的 原表头 head 就是 翻转后的尾节点 tail
+              newHeadtail->next = nxt;
 
               return dummy.next;
     }
