@@ -1,33 +1,6 @@
 class Solution {
 public:
     int maxEnvelopes(vector<vector<int>>& envelopes) {
-        // 按宽度升序，宽度相同则高度降序
-        sort(envelopes.begin(), envelopes.end(), [](const auto& a, const auto& b) {
-            return a[0] < b[0] || (a[0] == b[0] && a[1] > b[1]);
-        });
-        
-        int n = envelopes.size();
-        vector<int> dp(n, 1);
-        int result = 1;
-        
-    // 2. 对高度做 LIS
-        vector<int> lis;
-        for (auto& e : envelopes) {
-            int h = e[1];
-            auto it = lower_bound(lis.begin(), lis.end(), h);
-            if (it == lis.end())
-                lis.push_back(h);
-            else
-                *it = h;
-        }
-        return lis.size();
-    }
-};
-
-/*
-class Solution {
-public:
-    int maxEnvelopes(vector<vector<int>>& envelopes) {
         
         if (envelopes.empty())
           return 0;
@@ -46,8 +19,34 @@ public:
 
         sort(envelopes.begin(), envelopes.end(), cmp);
 
+        vector<int> lis;
+
+
+       //lis 做的事情是：
+       //对每一个可能的长度 k+1
+       //维护一个 “存在性证明”
+       //而这个证明形式是： 
+       //存在一条长度为 k+1 的递增链，
+       //且它的结尾最小可以做到 lis[k]
+       //👉 一旦 lis[k] 存在，就说明：
+       //长度为 k+1 的嵌套方案是存在的
+
+
+        for (int i = 0; i < n; i++)
+        {
+           int h = envelopes[i][1];
+            
+           auto it = lower_bound(lis.begin(), lis.end(), h);
+
+           if (it == lis.end())
+             lis.push_back(h);
+           else
+             *it = h;
+        }
+
+        return lis.size();
+        /*
         int maxNum = 0;
-      
         for (int i = 0; i < n; i++)
         {
            vector<int> envlop_i = envelopes[i];
@@ -72,7 +71,7 @@ public:
         //    maxNum = max(maxNum, dp[i]);
 
         return maxNum;
+       */
     }
 };
 
-*/
