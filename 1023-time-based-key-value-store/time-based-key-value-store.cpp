@@ -1,28 +1,40 @@
 class TimeMap {
 public:
-    unordered_map<string, vector<pair<int, string>>> mp;
-
-    TimeMap() {}
-
-    void set(string key, string value, int timestamp) {
-        mp[key].push_back({timestamp, value});
+    unordered_map<string, vector<pair<string, int>>> kv;
+    TimeMap() {
+        
     }
-
+    
+    void set(string key, string value, int timestamp) {
+        kv[key].push_back({value, timestamp});
+    }
+    
     string get(string key, int timestamp) {
-        auto it = mp.find(key);
-        if (it == mp.end()) return "";
+        
+        if (!kv.count(key))
+          return "";
 
-        auto &vec = it->second; // sorted by timestamp
-        // 找第一个 timestamp > 给定 timestamp 的位置
-        int l = 0, r = (int)vec.size(); // [l, r)
-        while (l < r) {
-            int mid = l + (r - l) / 2;
-            if (vec[mid].first <= timestamp) l = mid + 1;
-            else r = mid;
-        }
-        // l 是第一个 > timestamp 的位置
-        if (l == 0) return "";
-        return vec[l - 1].second;
+        auto it = kv.find(key);
+        //vector<pair<string, int>> vals;
+        auto& vals = it->second;
+    
+        int l = 0;
+        int r = vals.size();
+
+        while (l < r)
+        {
+          int mid = l + (r-l)/2;
+          
+          if (vals[mid].second <= timestamp)
+            l = mid + 1;
+          else
+            r = mid;
+        }   
+
+        if (l < 1)
+          return "";
+
+        return vals[l-1].first;
     }
 };
 
