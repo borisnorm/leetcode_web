@@ -1,35 +1,66 @@
 class MyHashMap {
 public:
     
-    unordered_map<int, int> kv;
+    int const BUCKETS_BASE = 769;
+    vector<vector<pair<int, int>>> kv_buckets;
+
+    int hash_key(int key)
+    {
+       return key % BUCKETS_BASE;
+    }
+
     MyHashMap() {
-        
+        kv_buckets.resize(BUCKETS_BASE);
     }
     
     void put(int key, int value) {
-        
-        if (!kv.count(key))
-        {
-            kv[key] = value;
-            return;
-        }
+         int bucket_idx = hash_key(key);
+         auto& bucket = kv_buckets[bucket_idx];
 
-        auto it = kv.find(key);
-        it->second = value;
+         for (auto& it: bucket)
+         {
+            if (it.first == key)
+            {
+              it.second = value;
+              return;
+            }
+         }
+
+         bucket.push_back({key, value});
     }
     
     int get(int key) {
-        if (!kv.count(key))
-          return -1;
+         int bucket_idx = hash_key(key);
+         auto& bucket = kv_buckets[bucket_idx];
         
-        return kv[key];
+         for (auto& it: bucket)
+         {
+            if (it.first == key)
+            {
+               return it.second;
+            }
+         }
+
+         return -1;
     }
     
     void remove(int key) {
-        if (!kv.count(key))
-          return;
-        
-        kv.erase(key);
+        int bucket_idx = hash_key(key);
+        auto& bucket = kv_buckets[bucket_idx];
+         for (auto& it: bucket)
+         {
+            if (it.first == key)
+            {
+               auto last = bucket.back();
+
+               it.first = last.first;
+               it.second = last.second;
+               bucket.pop_back();
+
+               return;
+            }
+         }
+
     }
 };
 
