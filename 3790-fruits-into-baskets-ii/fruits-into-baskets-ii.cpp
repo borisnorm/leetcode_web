@@ -21,13 +21,9 @@ public:
              }
            }
 
-           //if (!ith_filled)
-           //  unplaced++;
+           if (!ith_filled)
+             unplaced++;
         }
-
-        for (int num: filled)
-          if (!num)
-            unplaced++;
 
         return unplaced;
     }
