@@ -1,76 +1,48 @@
 class MinStack {
 public:
-
-    stack<int> min;
+    
     stack<int> st;
-
+    stack<int> min;
     MinStack() {
         
     }
     
     void push(int val) {
-        
-        st.push(val);
 
-        stack<int> st_tmp;
-        while(!min.empty() && val > min.top())
-        {
-           int st_val = min.top();
-           st_tmp.push(st_val);
-           min.pop();
-        }
+       st.push(val);
 
-        min.push(val);
-
-        while (!st_tmp.empty())
-        {
-           int st_val = st_tmp.top();
-           min.push(st_val);
-           st_tmp.pop();
-        }
+       if (min.empty())
+         min.push(val);
+       else
+       {
+          int minVal = min.top();
+          if (val < minVal)
+            minVal = val;
+          min.push(minVal);
+       } 
        
-        
     }
     
     void pop() {
         if (st.empty())
           return;
         
-        stack<int> st_tmp;
-        int val = st.top();
         st.pop();
-        
-        while(!min.empty() && min.top() != val)
-        {
-           int st_val = min.top();
-           st_tmp.push(st_val);
-           min.pop();
-        }
-
         min.pop();
-
-        while(!st_tmp.empty())
-        {
-            int st_val = st_tmp.top();
-            min.push(st_val);
-            st_tmp.pop();
-        }
-
     }
     
     int top() {
+        if (st.empty())
+          return INT_MAX;
         
-       if (st.empty())
-         return INT_MAX;
-       
-       return st.top();
+        return st.top();
     }
     
     int getMin() {
-      if (min.empty())
-         return INT_MAX;
-
-       return min.top();
+        if (min.empty())
+          return INT_MAX;
+        
+        return min.top();
     }
 };
 
