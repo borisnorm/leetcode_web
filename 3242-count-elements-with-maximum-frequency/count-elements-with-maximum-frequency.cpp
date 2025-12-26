@@ -11,12 +11,14 @@ public:
 
         int maxFreq = 0;
         int maxFreqCnt = 0;
+    
         for (int num: nums)
         {
+            // individual
             num2freq[num]++;
-
             int f = num2freq[num];
 
+            // maxFreq
             if (f > maxFreq)
             {
                maxFreq = f;
@@ -24,12 +26,16 @@ public:
             }
             else if (f == maxFreq)
             {
+            // aggregate
                 maxFreqCnt += f;
             }
         }
 
         return maxFreqCnt;
     }
+
+
+   // [2, 2, 3, 3, 2]
 
     /*
     int maxFrequencyElements(vector<int>& nums) {
