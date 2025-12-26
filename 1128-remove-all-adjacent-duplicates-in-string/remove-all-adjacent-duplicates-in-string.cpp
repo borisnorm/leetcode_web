@@ -1,6 +1,29 @@
 class Solution {
 public:
     string removeDuplicates(string s) {
+         string st;
+         int n = s.size();
+         if (n == 0)
+           return {};
+
+         for(int i = 0; i < n; i++)
+         {
+            char c = s[i];
+            if (!st.empty() && s[i] == st.back())
+            {
+              st.pop_back();
+            }
+            else
+            {
+              st.push_back(c);
+            }
+         }
+
+         return st;
+    }
+
+   /*
+    string removeDuplicates(string s) {
         string res;
         int n = s.size();
         if (n == 0)
@@ -32,4 +55,5 @@ public:
 
         return res;
     }
+    */
 };
