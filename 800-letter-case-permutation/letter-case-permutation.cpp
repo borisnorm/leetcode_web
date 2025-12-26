@@ -25,14 +25,13 @@ public:
           return;
        }
        
-       
-       /*
+      /*
        // 正确 但 彻底在 破坏 backtrack 的结构
        if (isdigit(s[pos]))
        {
          permutation += s[pos];
          pos++;
-         if (pos == n)
+         if (pos == n && permutation.size() == s.size())
          {
             res.push_back(permutation);
             return;
@@ -40,14 +39,8 @@ public:
        }
        */
        
-
-       if (isdigit(s[pos]))
-       {
-          permutation.push_back(s[pos]);
-          backtrack(s, pos + 1, permutation);
-          permutation.pop_back();
-       }
-       else if (isalpha(s[pos]))
+       
+       if (isalpha(s[pos]))
        {
           char c = s[pos];
           
@@ -56,6 +49,12 @@ public:
           permutation.pop_back();
 
           permutation.push_back(toupper(s[pos]));
+          backtrack(s, pos + 1, permutation);
+          permutation.pop_back();
+       }
+       else if (isdigit(s[pos]))
+       {
+          permutation.push_back(s[pos]);
           backtrack(s, pos + 1, permutation);
           permutation.pop_back();
        }
