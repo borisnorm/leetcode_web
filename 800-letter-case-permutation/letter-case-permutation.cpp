@@ -26,6 +26,8 @@ public:
        }
        
        
+       /*
+       // 正确 但 彻底在 破坏 backtrack 的结构
        if (isdigit(s[pos]))
        {
          permutation += s[pos];
@@ -36,6 +38,7 @@ public:
             return;
          }
        }
+       */
        
 
        if (isdigit(s[pos]))
