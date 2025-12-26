@@ -25,13 +25,18 @@ public:
           return;
        }
        
-       /*
+       
        if (isdigit(s[pos]))
        {
          permutation += s[pos];
          pos++;
+         if (pos == n)
+         {
+            res.push_back(permutation);
+            return;
+         }
        }
-       */
+       
 
        if (isdigit(s[pos]))
        {
