@@ -5,6 +5,33 @@ public:
         int n = arr.size();
         if (n == 0)
           return {};
+
+        vector<int> pos = arr;
+        sort(pos.begin(), pos.end());
+
+        pos.erase(unique(pos.begin(), pos.end()), pos.end());
+
+        unordered_map<int, int> num2pos;
+        for (int i = 0; i < pos.size(); i++)
+          num2pos[pos[i]] = i + 1;
+
+        vector<int> res;
+        for (int i = 0; i < n; i++)
+          res.push_back(num2pos[arr[i]]);        
+        
+        return res;
+    }
+};
+
+/*
+ 正确
+class Solution {
+public:
+    vector<int> arrayRankTransform(vector<int>& arr) {
+        
+        int n = arr.size();
+        if (n == 0)
+          return {};
         
         vector<int> res;
         map<int, int> arr2pos;
@@ -24,6 +51,10 @@ public:
         return res;
     }
 };
+
+*/
+
+
 /*
 class Solution {
 public:
