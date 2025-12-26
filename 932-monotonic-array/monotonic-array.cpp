@@ -6,6 +6,31 @@ public:
           return false;
         
         int n = nums.size();
+       
+        bool isIncrease = false;
+        bool isDecrease = false;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+           if (nums[i] < nums[i+1])
+             isIncrease = true;
+        
+           if (nums[i] > nums[i+1])
+             isDecrease = true;
+           
+        }
+
+        return (isIncrease && isDecrease) ? false : true;
+
+
+    }
+  /*
+    bool isMonotonic(vector<int>& nums) {
+        
+        if (nums.empty())
+          return false;
+        
+        int n = nums.size();
         vector<int> status(n, 0);
         // 1 5 7 4 1 2
         int preStatus = 0;
@@ -28,4 +53,6 @@ public:
 
         return true;
     }
+
+    */
 };
