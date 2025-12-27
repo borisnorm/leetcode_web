@@ -5,8 +5,11 @@ public:
          
          int n = nums.size();
 
-         int odd_n = (n%2) ? (n/2 + 1) : n/2;
-         int even_n = n/2;
+        // int odd_n = (n%2) ? (n/2 + 1) : n/2;
+       //  int even_n = n/2;
+
+       //✅ (n + 1) / 2 才是始终正确的公式
+      //❌ n / 2 + 1 在 n 为偶数时会多算 1
 
          vector<int> odd;
          vector<int> even;
