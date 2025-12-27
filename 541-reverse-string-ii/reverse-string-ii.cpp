@@ -6,11 +6,13 @@ public:
         if (n == 0 || k == 0)
           return s;
 
+        /*
         if (n < k)
         {
           reverse(s.begin(), s.end());
           return s;
         }
+        */
 
         bool isReversed = false;
         for (int i = 0; i < n; i+=k)
