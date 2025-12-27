@@ -1,5 +1,41 @@
 class Solution {
 public:
+
+ vector<int> sortEvenOdd(vector<int>& nums){
+         
+         int n = nums.size();
+
+         int odd_n = (n%2) ? (n/2 + 1) : n/2;
+         int even_n = n/2;
+
+         vector<int> odd;
+         vector<int> even;
+
+         for (int i = 0; i < n; i++)
+         {
+            if (i & 0x1)
+              odd.push_back(nums[i]);
+            else
+              even.push_back(nums[i]);
+         }
+
+        sort(odd.begin(), odd.end(), greater<int>());
+        sort(even.begin(), even.end());
+    
+        int odd_idx = 0;
+        int even_idx = 0;
+        for (int i = 0; i < n; i++)
+        {
+           if (i & 0x1)
+             nums[i] = odd[odd_idx++];
+           else
+             nums[i] = even[even_idx++];
+        }
+
+        return nums;
+ }
+
+/*
     vector<int> sortEvenOdd(vector<int>& nums) {
         
         int n = nums.size();
@@ -44,4 +80,5 @@ public:
 
         return nums;
     }
+    */
 };
