@@ -1,5 +1,24 @@
 class Solution {
 public:
+int duplicateNumbersXOR(vector<int>& nums) {
+      
+      int n = nums.size();
+      if (n == 0)
+        return 0;
+    
+      int duplicate_num_xor = 0;
+      unordered_set<int> num_set;
+      for (int num: nums)
+      {
+        if (num_set.count(num))
+          duplicate_num_xor ^= num;
+        else
+          num_set.insert(num);
+      }
+      
+      return duplicate_num_xor;
+    }
+    /*
     int duplicateNumbersXOR(vector<int>& nums) {
         
         int n = nums.size();
@@ -19,4 +38,5 @@ public:
         return duplicate_num_xor;          
  
     }
+    */
 };
