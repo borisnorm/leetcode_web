@@ -10,6 +10,7 @@ public:
              banned_set.insert(word);
            }
 
+           // 使用& 就可以重新赋值了 进而改变原值了
            for (char& c: paragraph)
            {
                if (isalpha(c))
