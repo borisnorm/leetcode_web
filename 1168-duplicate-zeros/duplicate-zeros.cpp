@@ -16,6 +16,7 @@ public:
            {
              for (int j = n - 1; j-1 >= i; j--)
              {
+                 // 已经包括 复制 0了
                  arr[j] = arr[j-1];
              }
 
