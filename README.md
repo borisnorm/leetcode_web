@@ -41,4 +41,12 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
+## Two Pointers
+|  |
+| ------- |
+| [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
+## String
+|  |
+| ------- |
+| [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
 <!---LeetCode Topics End-->
