@@ -9,12 +9,13 @@ public:
            {
              if (__builtin_popcount(h) + __builtin_popcount(m) == turnedOn)
              {
-                string time_str = to_string(h) + ":";
-                if (m < 10)
-                  time_str += "0";
-                
-                time_str += to_string(m);
+                //string time_str = to_string(h) + ":";
+                //if (m < 10)
+                 // time_str += "0"; 
+                //time_str += to_string(m);
                
+                string time_str = to_string(h) + ":" + ((m < 10) ? "0":"") + to_string(m);
+
                 res.push_back(time_str);
              }
            }
