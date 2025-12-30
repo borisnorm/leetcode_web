@@ -11,6 +11,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
+| [2426-maximum-profit-from-trading-stocks](https://github.com/borisnorm/leetcode_web/tree/master/2426-maximum-profit-from-trading-stocks) |
 ## Design
 |  |
 | ------- |
@@ -81,4 +82,8 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
+## Dynamic Programming
+|  |
+| ------- |
+| [2426-maximum-profit-from-trading-stocks](https://github.com/borisnorm/leetcode_web/tree/master/2426-maximum-profit-from-trading-stocks) |
 <!---LeetCode Topics End-->
