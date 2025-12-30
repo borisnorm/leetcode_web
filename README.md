@@ -10,12 +10,14 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
+| [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 ## Design
 |  |
 | ------- |
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
+| [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 ## Prefix Sum
 |  |
 | ------- |
@@ -61,8 +63,14 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
+| [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 ## Data Stream
 |  |
 | ------- |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
+| [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
+## Binary Search
+|  |
+| ------- |
+| [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 <!---LeetCode Topics End-->
