@@ -35,14 +35,17 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
+| [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 ## Depth-First Search
 |  |
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
+| [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 ## Binary Tree
 |  |
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
+| [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 ## Hash Table
 |  |
 | ------- |
@@ -72,5 +75,10 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Binary Search
 |  |
 | ------- |
+| [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
+## Binary Search Tree
+|  |
+| ------- |
+| [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 <!---LeetCode Topics End-->
