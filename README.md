@@ -5,6 +5,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
+| [0163-missing-ranges](https://github.com/borisnorm/leetcode_web/tree/master/0163-missing-ranges) |
 | [0243-shortest-word-distance](https://github.com/borisnorm/leetcode_web/tree/master/0243-shortest-word-distance) |
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
