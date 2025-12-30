@@ -98,4 +98,8 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
+## Linked List
+|  |
+| ------- |
+| [0850-insert-into-a-sorted-circular-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0850-insert-into-a-sorted-circular-linked-list) |
 <!---LeetCode Topics End-->
