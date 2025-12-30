@@ -41,12 +41,15 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
+| [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
 ## Two Pointers
 |  |
 | ------- |
+| [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
 ## String
 |  |
 | ------- |
+| [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
 <!---LeetCode Topics End-->
