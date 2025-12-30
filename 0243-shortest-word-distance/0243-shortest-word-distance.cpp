@@ -1,27 +1,26 @@
 class Solution {
 public:
     int shortestDistance(vector<string>& wordsDict, string word1, string word2) {
-         vector<int> word1_idx;
-         vector<int> word2_idx;
-
+        
          int n = wordsDict.size();
+         int p1 = -1;
+         int p2 = -1;
+
+         int minDist = INT_MAX;
          for (int i = 0; i < n; i++)
          {
-            string word = wordsDict[i];
-            if (word == word1)
-              word1_idx.push_back(i);
-            else if (word == word2)
-              word2_idx.push_back(i);
-         }
-
-         int w1_sz = word1_idx.size();
-         int w2_sz = word2_idx.size();
-         int minDist = INT_MAX;
-         for (int i = 0; i < w1_sz; i++)
-         {
-            for (int j = 0; j < w2_sz; j++)
+            if (wordsDict[i] == word1)
             {
-                minDist = min(minDist, abs(word1_idx[i] - word2_idx[j]));
+                 p1 = i;
+
+                 if (p2 != -1)
+                   minDist = min(minDist, abs(p1-p2));
+            }
+            else if (wordsDict[i] == word2)
+            {
+                 p2 = i;
+                 if (p1 != -1)
+                   minDist = min(minDist, abs(p1-p2));
             }
          }
 
