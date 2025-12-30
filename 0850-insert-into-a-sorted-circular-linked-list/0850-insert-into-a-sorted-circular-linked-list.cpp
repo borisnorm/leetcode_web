@@ -6,79 +6,49 @@ public:
     Node* next;
 
     Node() {}
-
-    Node(int _val) {
-        val = _val;
-        next = NULL;
-    }
-
-    Node(int _val, Node* _next) {
-        val = _val;
-        next = _next;
-    }
+    Node(int _val) : val(_val), next(nullptr) {}
+    Node(int _val, Node* _next) : val(_val), next(_next) {}
 };
 */
 
 class Solution {
 public:
     Node* insert(Node* head, int insertVal) {
-         // pivot
-         // head < x < pivot, insert before pivot
-         // x > pivot(node), insret after the pivot (1)take over the next link or (2) link back to header  
-         if (!head)
-         {
-            head = new Node(insertVal);
-            head->next = head;
-            return head;
-         }
+        // ç©ºè¡¨ï¼æ°å»ºä¸ä¸ªèªç¯èç¹
+        if (!head) {
+            Node* node = new Node(insertVal);
+            node->next = node;
+            return node;
+        }
 
-         // minDiff = min(mindiff, (insertVal - node->val));
-         // prev < insertVal < nxtVal
+        Node* cur = head;
+        while (true) {
+            Node* nxt = cur->next;
 
-         Node* cur = head;
-         Node* nxt = nullptr;
+            // Case 1: æ­£å¸¸éå¢æ®µ
+            if (cur->val <= nxt->val) {
+                if (cur->val <= insertVal && insertVal <= nxt->val) {
+                    break;
+                }
+            }
+            // Case 2: æç¹ï¼æå¤§->æå°ï¼
+            else { // cur->val > nxt->val
+                if (insertVal >= cur->val || insertVal <= nxt->val) {
+                    break;
+                }
+            }
 
-         while (true)
-         {
-            nxt = cur->next;
+            cur = cur->next;
 
-            if (cur->val <= nxt->val)
-            {
-              if (cur->val <= insertVal && insertVal <= nxt->val)
-              {
-                Node* newNode = new Node(insertVal);
-                cur->next = newNode;
-                newNode->next = nxt;
-
+            // è½¬äºä¸åè¿æ²¡æï¼æ¯å¦å¨ç¸ç­
+            if (cur == head) {
                 break;
-              }
             }
-            else  // cur->val > nxt->val
-            { 
-              //if ( cur->val <= insertVal || insertVal <= nxt->val)
-              // ä¸¤ç§å¯è½æ§,  4--> 1, å¯ä»¥æå¥ 5, ææ¯ 1
-              if (insertVal >= cur->val || insertVal <= nxt->val)
-              {
-                Node* newNode = new Node(insertVal);
-                cur->next = newNode;
-                newNode->next = nxt;
+        }
 
-                break;
-              }
-            }
-
-            cur = nxt;       
-                   
-            if (cur == head)
-            {
-               Node* newNode = new Node(insertVal);
-               newNode->next = head->next;
-               head->next = newNode;
-              break;
-            }
-         }
-
-
-         return head;       
+        Node* node = new Node(insertVal);
+        node->next = cur->next;
+        cur->next = node;
+        return head;
     }
 };
