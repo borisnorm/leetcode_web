@@ -1,37 +1,31 @@
 class Solution {
 public:
     int longestMountain(vector<int>& arr) {
-        
         int n = arr.size();
-        if (n < 3)
-          return 0;
+        if (n < 3) return 0;
 
-        int i = 0;
         int maxLen = 0;
-        //for (int i = 1; i < n; i++)
-        while(i < n)
-        {
-           int start = i;
-           int j = start + 1;
+        int i = 0;
 
-           while (j < n && arr[j-1] < arr[j])
-             j++;
-           int peak = j-1; 
-           
-             
-           while (j < n && arr[j-1] > arr[j])
-             j++;
-           
-           int end = j;
-           int len = end - start;
+        while (i < n) {
+            int start = i;
 
+            // 1) 先走严格上升
+            while (i + 1 < n && arr[i] < arr[i + 1]) i++;
+            int peak = i;
 
-           if (start < peak && peak + 1 < end)
-             maxLen = max(maxLen, len);
+            // 2) 再走严格下降
+            while (i + 1 < n && arr[i] > arr[i + 1]) i++;
+            int end = i;
 
-           //if (start == end)
-             i++;
-         }
+            // 3) 必须同时有上升和下降，且长度>=3
+            if (start < peak && peak < end) {
+                maxLen = max(maxLen, end - start + 1);
+            }
+
+            // 4) 关键：如果没动（平台或无法形成上升），前进一格避免死循环
+            if (end == start) i++;
+        }
 
         return maxLen;
     }
