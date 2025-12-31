@@ -2,10 +2,10 @@ class Solution {
 public:
 
    vector<string> below_10 = {
-    "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
+    "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
 
    vector<string> below_20 = {
-   "", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" 
+     "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" 
    };
 
    vector<string> below_100 = {
@@ -15,7 +15,7 @@ public:
        if (num == 0)
          return "";
 
-       if (num <= 10)
+       if (num < 10)
          return below_10[num] + " ";
 
        if (num < 20)
