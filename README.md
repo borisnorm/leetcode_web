@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
 | [0163-missing-ranges](https://github.com/borisnorm/leetcode_web/tree/master/0163-missing-ranges) |
 | [0243-shortest-word-distance](https://github.com/borisnorm/leetcode_web/tree/master/0243-shortest-word-distance) |
+| [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
@@ -44,6 +45,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
 | [0261-graph-valid-tree](https://github.com/borisnorm/leetcode_web/tree/master/0261-graph-valid-tree) |
+| [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 ## Binary Tree
@@ -68,6 +70,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0243-shortest-word-distance](https://github.com/borisnorm/leetcode_web/tree/master/0243-shortest-word-distance) |
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
+| [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
 ## Queue
 |  |
@@ -96,6 +99,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0261-graph-valid-tree](https://github.com/borisnorm/leetcode_web/tree/master/0261-graph-valid-tree) |
+| [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 ## Sorting
 |  |
@@ -117,4 +121,9 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0261-graph-valid-tree](https://github.com/borisnorm/leetcode_web/tree/master/0261-graph-valid-tree) |
+| [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
+## Topological Sort
+|  |
+| ------- |
+| [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 <!---LeetCode Topics End-->
