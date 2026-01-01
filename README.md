@@ -43,6 +43,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
+| [0261-graph-valid-tree](https://github.com/borisnorm/leetcode_web/tree/master/0261-graph-valid-tree) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 ## Binary Tree
@@ -94,6 +95,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Breadth-First Search
 |  |
 | ------- |
+| [0261-graph-valid-tree](https://github.com/borisnorm/leetcode_web/tree/master/0261-graph-valid-tree) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 ## Sorting
 |  |
@@ -107,4 +109,12 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0756-pour-water](https://github.com/borisnorm/leetcode_web/tree/master/0756-pour-water) |
+## Union Find
+|  |
+| ------- |
+| [0261-graph-valid-tree](https://github.com/borisnorm/leetcode_web/tree/master/0261-graph-valid-tree) |
+## Graph
+|  |
+| ------- |
+| [0261-graph-valid-tree](https://github.com/borisnorm/leetcode_web/tree/master/0261-graph-valid-tree) |
 <!---LeetCode Topics End-->
