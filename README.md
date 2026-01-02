@@ -39,6 +39,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
+| [0285-inorder-successor-in-bst](https://github.com/borisnorm/leetcode_web/tree/master/0285-inorder-successor-in-bst) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 ## Depth-First Search
 |  |
@@ -47,6 +48,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0261-graph-valid-tree](https://github.com/borisnorm/leetcode_web/tree/master/0261-graph-valid-tree) |
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
+| [0285-inorder-successor-in-bst](https://github.com/borisnorm/leetcode_web/tree/master/0285-inorder-successor-in-bst) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0323-number-of-connected-components-in-an-undirected-graph](https://github.com/borisnorm/leetcode_web/tree/master/0323-number-of-connected-components-in-an-undirected-graph) |
 ## Binary Tree
@@ -54,6 +56,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
+| [0285-inorder-successor-in-bst](https://github.com/borisnorm/leetcode_web/tree/master/0285-inorder-successor-in-bst) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 ## Hash Table
 |  |
@@ -92,6 +95,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
+| [0285-inorder-successor-in-bst](https://github.com/borisnorm/leetcode_web/tree/master/0285-inorder-successor-in-bst) |
 ## Dynamic Programming
 |  |
 | ------- |
