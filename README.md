@@ -120,6 +120,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0323-number-of-connected-components-in-an-undirected-graph](https://github.com/borisnorm/leetcode_web/tree/master/0323-number-of-connected-components-in-an-undirected-graph) |
+| [1142-minimum-knight-moves](https://github.com/borisnorm/leetcode_web/tree/master/1142-minimum-knight-moves) |
 ## Sorting
 |  |
 | ------- |
