@@ -1,26 +1,24 @@
 class Logger {
 public:
-    unordered_map<string, int> msg2nextSlot;
+    unordered_map<string, int> msg2tm;
     Logger() {
         
     }
     
     bool shouldPrintMessage(int timestamp, string message) {
-         if (!msg2nextSlot.count(message))
+         if (!msg2tm.count(message))
          {
-           msg2nextSlot[message] = timestamp + 10;
+           msg2tm[message] = timestamp;
            return true;
          }
-         else
-         {
-            if (timestamp < msg2nextSlot[message])
-              return false;
-            else
-            {
-               msg2nextSlot[message] = timestamp + 10;
-               return true;
-            }
-         }
+
+          if (timestamp - msg2tm[message] >= 10)
+          {
+            msg2tm[message] = timestamp;
+            return true;
+          }
+
+          return false;
     }
 };
 
