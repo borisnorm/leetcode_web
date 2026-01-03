@@ -11,6 +11,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
+| [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 | [0756-pour-water](https://github.com/borisnorm/leetcode_web/tree/master/0756-pour-water) |
 | [2426-maximum-profit-from-trading-stocks](https://github.com/borisnorm/leetcode_web/tree/master/2426-maximum-profit-from-trading-stocks) |
@@ -20,6 +21,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
+| [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 ## Prefix Sum
 |  |
@@ -30,6 +32,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
+| [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 ## Stack
 |  |
 | ------- |
@@ -64,6 +67,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
+| [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 ## Two Pointers
 |  |
 | ------- |
@@ -118,6 +122,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Simulation
 |  |
 | ------- |
+| [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0756-pour-water](https://github.com/borisnorm/leetcode_web/tree/master/0756-pour-water) |
 ## Union Find
 |  |
