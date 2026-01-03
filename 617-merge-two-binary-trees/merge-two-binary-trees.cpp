@@ -9,14 +9,50 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-/*
+
 class Solution {
 public:
     TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+          if (!root1 && !root2)
+            return nullptr;
+          
+          int val = (root1 ? root1->val : 0) + 
+                    (root2 ? root2->val : 0);
+          TreeNode* root = new TreeNode(val);
 
+          queue<tuple<TreeNode*, TreeNode*, TreeNode*>> q;
+          q.push({root, root1, root2});
+
+          while (!q.empty())
+          {
+             auto [n, n1, n2] = q.front();
+             q.pop();
+             
+             TreeNode* l1 = n1 ? n1->left : nullptr;
+             TreeNode* l2 = n2 ? n2->left : nullptr;
+
+             if (l1 || l2)
+             {
+                int val = (l1 ? l1->val : 0) + (l2 ? l2->val: 0);
+                n->left = new TreeNode(val);
+                q.push({n->left, l1, l2});
+             }
+
+             TreeNode* r1 = n1 ? n1->right : nullptr;
+             TreeNode* r2 = n2 ? n2->right : nullptr;
+
+             if (r1 || r2)
+             {
+                int val = (r1 ? r1->val : 0) + (r2 ? r2->val : 0);
+                n->right = new TreeNode(val);
+                q.push({n->right, r1, r2});
+             }
+          }
+
+          return root;
     }
 };
-*/
+
 /*
 
 class Solution {
@@ -82,7 +118,7 @@ public:
 
 */
 
-
+/*
 class Solution {
 public:
     TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
@@ -101,3 +137,4 @@ public:
           return root;
     }
 };
+*/
