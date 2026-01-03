@@ -23,6 +23,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
 | [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
+| [0359-logger-rate-limiter](https://github.com/borisnorm/leetcode_web/tree/master/0359-logger-rate-limiter) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 ## Prefix Sum
 |  |
@@ -69,6 +70,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
+| [0359-logger-rate-limiter](https://github.com/borisnorm/leetcode_web/tree/master/0359-logger-rate-limiter) |
 ## Two Pointers
 |  |
 | ------- |
@@ -90,6 +92,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
+| [0359-logger-rate-limiter](https://github.com/borisnorm/leetcode_web/tree/master/0359-logger-rate-limiter) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 ## Binary Search
 |  |
