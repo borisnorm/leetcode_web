@@ -32,16 +32,22 @@ public:
         vector<vector<int>> res;
         int lastCol = INT_MIN;
 
+        vector<int> colVal;
         for(auto& [col, row, val]: nodes)
         {
-            if (col != lastCol)
+            if (lastCol != INT_MIN && col != lastCol)
             {
-               res.push_back({});
-               lastCol = col;
+               res.push_back((colVal));
+               colVal.clear();
             }
 
-            res.back().push_back(val);
+            colVal.push_back(val);
+
+            lastCol = col;
         }
+
+        if (!colVal.empty())
+          res.push_back(colVal);
 
         return res;
     }
