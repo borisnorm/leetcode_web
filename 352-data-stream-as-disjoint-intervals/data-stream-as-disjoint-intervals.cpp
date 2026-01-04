@@ -29,7 +29,7 @@ public:
 
       if (mergeLeft && mergeRight)
       {
-          prev->second = next->second;
+          prev->second = max(value, next->second);
           mp.erase(next);
       }
       else if (mergeLeft)
@@ -39,9 +39,8 @@ public:
       else if (mergeRight)
       {
          int nextEnd = next->second;
-         mp[value] = nextEnd;
          mp.erase(next);
-      
+         mp[value] = nextEnd;
       }
       else
       {
