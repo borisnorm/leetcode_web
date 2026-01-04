@@ -14,8 +14,20 @@ public:
        if (next == mp.begin())
          prev = mp.end();
        else if (next == mp.end())
+       {
+         // 1.
+         //prev = next;
+         //prev--;
+
+        // 2.
+        //prev = --next;
+        
+         //3.
          prev = std::prev(next);
+        
+        // 错误的 先将  next 给了 prev,再--;
          //prev = next--;
+       }
        else
          prev = std::prev(next);
          //prev = next--;
@@ -29,7 +41,7 @@ public:
 
       if (mergeLeft && mergeRight)
       {
-          prev->second = max(value, next->second);
+          prev->second = next->second;
           mp.erase(next);
       }
       else if (mergeLeft)
