@@ -1,57 +1,64 @@
 class SummaryRanges {
-private:
-    map<int, int> intervals; // start -> end mapping
-    
 public:
-    SummaryRanges() {}
+    map<int, int> mp;
+    SummaryRanges() {
+        
+    }
     
     void addNum(int value) {
-        // Find the first interval whose start is > value
-        auto next = intervals.upper_bound(value);
         
-        // Check previous interval (if exists)
-        auto prev = next;
-        if (next != intervals.begin()) {
-            --prev;
-        } else {
-            prev = intervals.end();
-        }
-        
-        // Check if value already covered by previous interval
-        if (prev != intervals.end() && prev->first <= value && value <= prev->second) {
-            return; // Already in an interval
-        }
-        
-        // Determine merge scenarios
-        bool mergePrev = (prev != intervals.end() && prev->second + 1 == value);
-        bool mergeNext = (next != intervals.end() && value + 1 == next->first);
-        
-        if (mergePrev && mergeNext) {
-            // Merge all three: prev interval + value + next interval
-            prev->second = next->second;
-            intervals.erase(next);
-        } else if (mergePrev) {
-            // Extend previous interval
-            prev->second = value;
-        } else if (mergeNext) {
-            // Extend next interval backwards
-            int nextEnd = next->second;
-            intervals.erase(next);
-            intervals[value] = nextEnd;
-        } else {
-            // Create new interval
-            intervals[value] = value;
-        }
+       // first > value
+       auto next = mp.upper_bound(value);
+
+       map<int, int>::iterator prev;
+       if (next == mp.begin())
+         prev = mp.end();
+       else if (next == mp.end())
+         prev = std::prev(next);
+         //prev = next--;
+       else
+         prev = std::prev(next);
+         //prev = next--;
+
+    
+      if (prev != mp.end() && prev->first <= value && value <= prev->second)
+        return;
+    
+      bool mergeLeft = ((prev != mp.end()) && (prev->second + 1 == value)) ? true : false;
+      bool mergeRight = ((next != mp.end()) && (value + 1 == next->first)) ? true : false;
+
+      if (mergeLeft && mergeRight)
+      {
+          prev->second = next->second;
+          mp.erase(next);
+      }
+      else if (mergeLeft)
+      {
+         prev->second = value;
+      }
+      else if (mergeRight)
+      {
+         int nextEnd = next->second;
+         mp[value] = nextEnd;
+         mp.erase(next);
+      
+      }
+      else
+      {
+         mp[value] = value;
+      }
     }
     
     vector<vector<int>> getIntervals() {
-        vector<vector<int>> result;
-        for (const auto& [start, end] : intervals) {
-            result.push_back({start, end});
-        }
-        return result;
+        vector<vector<int>> res;
+        for (auto [start, end]: mp)
+          res.push_back({start, end});
+
+
+        return res;
     }
 };
+
 /**
  * Your SummaryRanges object will be instantiated and called as such:
  * SummaryRanges* obj = new SummaryRanges();
