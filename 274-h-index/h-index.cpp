@@ -1,6 +1,24 @@
 class Solution {
 public:
+   int hIndex(vector<int>& citations) {
+       
+       int n = citations.size();
+       
+       sort(citations.begin(), citations.end());
 
+       int cnt = 0;
+       int h = 0;
+       for (int i = n - 1; i >= 0; i--)
+       {
+          cnt++;
+          if (cnt <= citations[i])
+            h = max(h, cnt);
+       }
+    
+       return h;
+   }
+
+/*
    int hIndex(vector<int>& citations) {
       int n = citations.size();
       
@@ -25,6 +43,7 @@ public:
 
       return 0;
   }
+  */
     /*
     int hIndex(vector<int>& citations) {
         if (citations.empty())
