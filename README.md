@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
 | [0163-missing-ranges](https://github.com/borisnorm/leetcode_web/tree/master/0163-missing-ranges) |
 | [0243-shortest-word-distance](https://github.com/borisnorm/leetcode_web/tree/master/0243-shortest-word-distance) |
+| [0249-group-shifted-strings](https://github.com/borisnorm/leetcode_web/tree/master/0249-group-shifted-strings) |
 | [0256-paint-house](https://github.com/borisnorm/leetcode_web/tree/master/0256-paint-house) |
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
@@ -74,6 +75,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0001-two-sum](https://github.com/borisnorm/leetcode_web/tree/master/0001-two-sum) |
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
+| [0249-group-shifted-strings](https://github.com/borisnorm/leetcode_web/tree/master/0249-group-shifted-strings) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0359-logger-rate-limiter](https://github.com/borisnorm/leetcode_web/tree/master/0359-logger-rate-limiter) |
@@ -89,6 +91,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0243-shortest-word-distance](https://github.com/borisnorm/leetcode_web/tree/master/0243-shortest-word-distance) |
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
+| [0249-group-shifted-strings](https://github.com/borisnorm/leetcode_web/tree/master/0249-group-shifted-strings) |
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
 ## Queue
