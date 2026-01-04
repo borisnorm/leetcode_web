@@ -1,24 +1,6 @@
 class Solution {
 public:
-   int hIndex(vector<int>& citations) {
-       
-       int n = citations.size();
-       
-       sort(citations.begin(), citations.end());
 
-       int cnt = 0;
-       int h = 0;
-       for (int i = n - 1; i >= 0; i--)
-       {
-          cnt++;
-          if (cnt <= citations[i])
-            h = max(h, cnt);
-       }
-    
-       return h;
-   }
-
-/*
    int hIndex(vector<int>& citations) {
       int n = citations.size();
       
@@ -43,7 +25,7 @@ public:
 
       return 0;
   }
-  */
+  
     /*
     int hIndex(vector<int>& citations) {
         if (citations.empty())
@@ -58,10 +40,11 @@ public:
         {
            //citations[i] ≤ citations[i+1] ≤ ... ≤ citations[n-1]
            //这 n-i 篇论文中，最少的引用数 = citations[i]
+           // citations 数量是核心 核心中的核心  
            //n表示发的 paper 的总数量, i 是当前 paper,  n-1 - i + 1 = n - i;
-           int published_h_papers = n - i;  
-           if (citations[i] >= published_h_papers)
-             h = max(h, published_h_papers);
+           int published_papers = n - i;  
+           if (citations[i] >= published_papers)
+             h = max(h, published_papers);
         }
 
         return h;
