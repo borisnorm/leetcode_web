@@ -15,25 +15,20 @@ public:
     long long sum = 0;
 
     int sumRootToLeaf(TreeNode* root) {
-        int path = 0;
-        dfs(root, 0);
-
-        return sum;
+        return dfs(root, 0);
     }
 
-    void dfs(TreeNode* root, int path)
+    int dfs(TreeNode* root, int path)
     {
        if (!root)
-         return;
+         return 0;
     
        path = path << 1 | root->val;
        
        if (!root->left && !root->right)
-       {
-          sum += path;
-       }
+          return path;
 
-       dfs(root->left, path);
-       dfs(root->right, path);
+      return dfs(root->left, path) + dfs(root->right, path);
+       
     }
 };
