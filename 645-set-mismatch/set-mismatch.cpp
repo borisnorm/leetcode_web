@@ -1,5 +1,36 @@
 class Solution {
 public:
+
+  vector<int> findErrorNums(vector<int>& nums) {
+       
+       int n = nums.size();
+       int dup = 0;
+       int miss = 0;
+       vector<int> res;
+       for (int i = 0; i < n; i++)
+       {
+          int x = abs(nums[i]);
+          if (nums[x-1] < 0)
+            dup = x;
+          else
+            nums[x-1] = -nums[x-1];
+       }
+
+       for (int i = 0; i < n; i++)
+       {
+          if (nums[i] > 0)
+          {
+            miss = i + 1;
+            break;
+          }
+       }
+    
+       res.push_back(dup);
+       res.push_back(miss);
+
+       return res;
+  }
+/*
     vector<int> findErrorNums(vector<int>& nums) {
         int n = nums.size();
 
@@ -23,4 +54,6 @@ public:
         
         return res;
     }
+
+    */
 };
