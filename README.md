@@ -17,6 +17,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 | [0756-pour-water](https://github.com/borisnorm/leetcode_web/tree/master/0756-pour-water) |
 | [1126-minimum-cost-to-connect-sticks](https://github.com/borisnorm/leetcode_web/tree/master/1126-minimum-cost-to-connect-sticks) |
+| [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 | [2426-maximum-profit-from-trading-stocks](https://github.com/borisnorm/leetcode_web/tree/master/2426-maximum-profit-from-trading-stocks) |
 ## Design
 |  |
@@ -27,6 +28,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0359-logger-rate-limiter](https://github.com/borisnorm/leetcode_web/tree/master/0359-logger-rate-limiter) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
+| [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 ## Prefix Sum
 |  |
 | ------- |
@@ -79,12 +81,14 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0359-logger-rate-limiter](https://github.com/borisnorm/leetcode_web/tree/master/0359-logger-rate-limiter) |
+| [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 ## Two Pointers
 |  |
 | ------- |
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
+| [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 ## String
 |  |
