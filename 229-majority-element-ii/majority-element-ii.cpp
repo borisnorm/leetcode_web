@@ -2,7 +2,7 @@ class Solution {
 public:
  vector<int> majorityElement(vector<int>& nums) {
       int cand1 = 0;
-      int cand2 = 1;
+      int cand2 = 0;
       int cnt1 = 0;
       int cnt2 = 0;
 
