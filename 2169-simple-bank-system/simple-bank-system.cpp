@@ -11,9 +11,18 @@ public:
           accounts_balance[i] = balance[i-1];
     }
     
+
+    bool isValid(int account)
+    {
+       if (account < 1 || account > nAccounts)
+         return false;
+    
+       return true;
+    }
+
     bool transfer(int account1, int account2, long long money) {
 
-         if ( account1 > nAccounts || account2 > nAccounts || account1 < 1 || account2 < 1 || accounts_balance[account1] < money )
+         if (!isValid(account1) || !isValid(account2) || accounts_balance[account1] < money)
            return false;
         
          if (account1 == account2)
@@ -26,14 +35,14 @@ public:
     }
     
     bool deposit(int account, long long money) {
-         if (account > nAccounts || account < 1)
+         if (!isValid(account))
            return false;
          accounts_balance[account] += money;
          return true;
     }
     
     bool withdraw(int account, long long money) {
-         if (account > nAccounts || account < 1  || accounts_balance[account] < money )
+         if (!isValid(account) || accounts_balance[account] < money )
            return false;
         accounts_balance[account] -= money;
 
