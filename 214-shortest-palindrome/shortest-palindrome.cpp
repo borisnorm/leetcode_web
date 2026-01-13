@@ -13,9 +13,10 @@ public:
        int m = t.size();
 
        vector<int> lps(m, 0);
+       int j = 0;
        for (int i = 1; i < m; i++)
        {
-          int j = lps[i-1];
+          //int j = lps[i-1];
 
           while (j > 0 && t[i] != t[j])
             j = lps[j-1];
