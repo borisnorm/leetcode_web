@@ -2,7 +2,8 @@ class Solution {
 public:
     int longestMountain(vector<int>& arr) {
         int n = arr.size();
-        if (n < 3) return 0;
+        if (n < 3) 
+           return 0;
 
         int maxLen = 0;
         int i = 0;
@@ -31,6 +32,9 @@ public:
             }
 
             // 4) 关键：如果没动（平台或无法形成上升），前进一格避免死循环
+            // arr = [1, 1, 1, 3, 2]
+            // arr = [1, 2, 2, 3, 1]
+            // 索引   0  1  2  3  4
             if (end == start) 
               i++;
         }
