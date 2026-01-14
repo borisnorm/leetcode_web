@@ -1,6 +1,42 @@
 class Solution {
 public:
 
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+
+        // 频次 没有 0的说法 , 如果有, 那就是不存在
+        unordered_map<int, int> num2freq;
+        for (int num: nums)
+          num2freq[num]++;
+        
+        int n = nums.size();
+
+        //最大频次也就是 所有元素都是同一个, 共n个
+        vector<vector<int>> bucket(n+1);
+
+        for (auto it: num2freq)
+        {
+           bucket[it.second].push_back(it.first);
+        }
+        
+        int cnt = 0;
+        vector<int> res;
+        for (int i = n; i >= 0 && cnt < k; i--)
+        {
+            auto val_vec = bucket[i];
+
+            for (int j = 0; j < val_vec.size(); j++)
+            {   
+                res.push_back(val_vec[j]);
+                cnt++;
+                if (cnt == k)
+                  break;
+            }
+        }
+
+        return res;
+
+    }
+
     /*
     struct better{
       void operation(pair<int, int>& a, pair<int, int>& b) const {
@@ -10,6 +46,7 @@ public:
     };
     */
 
+  /*
     vector<int> topKFrequent(vector<int>& nums, int k) {
 
         if (nums.empty())
@@ -31,8 +68,13 @@ public:
 
         for (auto it: num2freq)
         {
+           // push 消耗的是 当前 pq.size 的复杂度 也就是 n LogK, k= pq.size(), 不是 n
+           // 例如已经有2个元素了, 它的幅度就是  log2,
+           // 有3个元素的时候, 就是 log3
+           // 由于一直在空着 size 的增长, 上限就是 K 了,所以 复杂度控制在 logK
            pq.push({it.first, it.second});
 
+           // 小顶堆, 是将 小的元素 pop 出去是
            if (pq.size() > k)
              pq.pop();
         }
@@ -50,4 +92,6 @@ public:
 
         return res;
     }
+
+    */
 };
