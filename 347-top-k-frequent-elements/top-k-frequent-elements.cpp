@@ -20,10 +20,12 @@ public:
         
         int cnt = 0;
         vector<int> res;
-        for (int i = n; i >= 0 && cnt < k; i--)
+        // 这里 i >= 1, 频次不能是 0  否则没有意义了
+        for (int i = n; i >= 1 && cnt < k; i--)
         {
             auto val_vec = bucket[i];
 
+            //对于 val_vec 空的情况,  j < val_vec.size() 已经屏蔽了这种可能
             for (int j = 0; j < val_vec.size(); j++)
             {   
                 res.push_back(val_vec[j]);
