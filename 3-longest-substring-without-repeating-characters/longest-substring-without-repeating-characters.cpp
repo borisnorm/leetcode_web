@@ -1,12 +1,21 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        unordered_map<char, int> window;
         
+        if (s.empty())
+          return 0;
+ 
+        int n = s.size();
+
         int left = 0;
         int right = 0;
-        int res = 0;
 
+        // 使用 char c 作为index 也是可以的
+        //int char2freq[128] = {0};
+          int window[128] = {0};
+        //unordered_map<char, int> window;
+
+        int maxLen = 0;
         while (right < s.size())
         {
             char c = s[right];
@@ -20,8 +29,8 @@ public:
               window[d]--;
             }
 
-            res = max(res, right-left);
+            maxLen = max(maxLen, right-left);
         }
-        return res;
+        return maxLen;
     }
 };
