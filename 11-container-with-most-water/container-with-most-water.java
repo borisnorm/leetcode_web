@@ -1,17 +1,20 @@
 class Solution {
     public int maxArea(int[] height) {
+        if (height == null || height.length == 0)
+          return 0;
+
         int n = height.length;
         int l = 0;
         int r = n - 1;
-        int area = 0;
+        int maxArea = 0;
 
         while (l < r)
         {
            int w = r - l;
            int h = Math.min(height[l], height[r]);
-           int tmp_area = h * w;
+           int area = h * w;
 
-           area = Math.max(area, tmp_area);
+           maxArea = Math.max(maxArea, area);
 
            // for next higher height for shorter side;
            // higher height can get large area, even with less width.
@@ -22,6 +25,6 @@ class Solution {
              r--;
         }
 
-        return area;
+        return maxArea;
     }
 }
