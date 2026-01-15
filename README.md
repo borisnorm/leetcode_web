@@ -8,6 +8,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0163-missing-ranges](https://github.com/borisnorm/leetcode_web/tree/master/0163-missing-ranges) |
 | [0243-shortest-word-distance](https://github.com/borisnorm/leetcode_web/tree/master/0243-shortest-word-distance) |
 | [0249-group-shifted-strings](https://github.com/borisnorm/leetcode_web/tree/master/0249-group-shifted-strings) |
+| [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [0256-paint-house](https://github.com/borisnorm/leetcode_web/tree/master/0256-paint-house) |
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0286-walls-and-gates](https://github.com/borisnorm/leetcode_web/tree/master/0286-walls-and-gates) |
@@ -34,6 +35,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Prefix Sum
 |  |
 | ------- |
+| [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [0303-range-sum-query-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0303-range-sum-query-immutable) |
 | [0304-range-sum-query-2d-immutable](https://github.com/borisnorm/leetcode_web/tree/master/0304-range-sum-query-2d-immutable) |
 ## Matrix
@@ -92,6 +94,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
+| [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
 | [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
@@ -141,6 +144,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Sorting
 |  |
 | ------- |
+| [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 ## Linked List
 |  |
@@ -173,9 +177,11 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Greedy
 |  |
 | ------- |
+| [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [1126-minimum-cost-to-connect-sticks](https://github.com/borisnorm/leetcode_web/tree/master/1126-minimum-cost-to-connect-sticks) |
 ## Heap (Priority Queue)
 |  |
 | ------- |
+| [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [1126-minimum-cost-to-connect-sticks](https://github.com/borisnorm/leetcode_web/tree/master/1126-minimum-cost-to-connect-sticks) |
 <!---LeetCode Topics End-->
