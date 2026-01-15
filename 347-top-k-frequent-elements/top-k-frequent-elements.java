@@ -8,6 +8,16 @@ class Solution {
         
        List<Integer>[] bucket = new List[n+1];
 
+       for (int num : num2freq.keySet())
+       {
+          int freq = num2freq.get(num);
+
+          if (bucket[freq] == null)
+            bucket[freq] = new ArrayList<>();
+
+          bucket[freq].add(num); 
+       }
+      /* 正确
        for (Map.Entry<Integer, Integer> e: num2freq.entrySet())
        {
            int val = e.getKey();
@@ -18,6 +28,7 @@ class Solution {
 
            bucket[freq].add(val);
        }
+       */
 
        int[] res = new int[k];
 
