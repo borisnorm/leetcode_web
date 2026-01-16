@@ -1,6 +1,19 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> num_set;
+        for (int num: nums)
+        {
+           if (num_set.count(num))
+             return true;
+            
+           num_set.insert(num);
+        }
+        return false;
+    }
+
+/*
+    bool containsDuplicate(vector<int>& nums) {
         unordered_map<int, int> num2freq;
 
         for (int num: nums)
@@ -12,4 +25,5 @@ public:
         
         return false;
     }
+*/
 };
