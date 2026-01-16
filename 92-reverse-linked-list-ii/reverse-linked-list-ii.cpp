@@ -24,13 +24,16 @@ public:
         ListNode* cur = pre->next;
         ListNode* nxt = nullptr;
 
+        // 从 head 到 left 需要 move = left - 1
+        // 然后 线下 pre = dummy_head, 就是 left 的前一个节点了
         for (int i = 1; i < left; i++)
         {
            pre = pre->next;
         }
 
+       // 指向当下这个节点
         cur = pre->next;
-        for (int i = 0; i < (right - left); i++)
+        for (int i = 0; i < (right - left) && cur && cur->next; i++)
         {
             nxt = cur->next;
             
