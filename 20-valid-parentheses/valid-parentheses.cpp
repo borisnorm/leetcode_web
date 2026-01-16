@@ -1,5 +1,38 @@
 class Solution {
 public:
+
+   bool isValid(string s) {
+        if (s.empty())
+          return false;
+        
+        unordered_map<char, char> l2r = {
+            {'(', ')'}, {'[', ']'}, {'{', '}'}
+        };
+
+        stack<char> st;
+
+        for (char c : s)
+        {
+           if (l2r.count(c))
+           {
+              st.push(c);
+           }
+           else
+           {
+              // more right parenthese
+              if (st.empty())
+                return false;
+              
+              if (c != l2r[st.top()])
+                return false;
+
+              st.pop();
+           }
+        }
+        // more left parenthese check
+        return st.empty() ? true : false;
+   } 
+/*
    bool isValid(string s) {
       // more left
       // more right
@@ -21,6 +54,7 @@ public:
            if (st.empty())
              return false;
            
+           //使用 st.top() 要先判断是否为 空
            if (c == matchedChar(st.top()))
            {
               st.pop();
@@ -51,7 +85,9 @@ public:
         return  ' ';
 
    }
-    /*
+   */
+
+  /*
     bool isValid(string s) {
        stack<char> st;
        unordered_map<char, char> mp = {
