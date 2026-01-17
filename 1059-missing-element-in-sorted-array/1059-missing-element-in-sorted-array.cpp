@@ -11,7 +11,7 @@ public:
         if (miss(n-1) < k)
           return nums[n-1] + (k - miss(n-1));
         
-        int l = 1;
+        int l = 0;
         int r = n;
 
         // first >= k
