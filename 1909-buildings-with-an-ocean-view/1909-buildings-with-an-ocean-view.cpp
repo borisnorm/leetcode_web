@@ -3,6 +3,25 @@ public:
     vector<int> findBuildings(vector<int>& heights) {
         int n = heights.size();
 
+        int maxRightHeight = 0;
+        vector<int> res;
+        for (int i = n -1; i >= 0; i--)
+        {
+            if (heights[i] > maxRightHeight)
+            {
+              res.push_back(i);
+
+              maxRightHeight = heights[i];
+            }
+        }
+
+        reverse(res.begin(), res.end());
+        return res;
+    }
+/*
+    vector<int> findBuildings(vector<int>& heights) {
+        int n = heights.size();
+
         stack<int> st;
 
         for (int i = 0; i < n; i++)
@@ -23,7 +42,7 @@ public:
 
             res.insert(res.begin(), idx);
         }
-
         return res;
     }
+    */
 };

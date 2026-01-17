@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/buildings-with-an-ocean-view">1909. Buildings With an Ocean View</a></h2><h3>Medium</h3><hr><p>There are <code>n</code> buildings in a line. You are given an integer array <code>heights</code> of size <code>n</code> that represents the heights of the buildings in the line.</p>
+<h2><a href="https://leetcode.com/problems/buildings-with-an-ocean-view/">1909. Buildings With an Ocean View</a></h2><h3>Medium</h3><hr><p>There are <code>n</code> buildings in a line. You are given an integer array <code>heights</code> of size <code>n</code> that represents the heights of the buildings in the line.</p>
 
 <p>The ocean is to the right of the buildings. A building has an ocean view if the building can see the ocean without obstructions. Formally, a building has an ocean view if all the buildings to its right have a <strong>smaller</strong> height.</p>
 
