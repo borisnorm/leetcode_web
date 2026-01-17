@@ -3,14 +3,18 @@ public:
 int makeTheIntegerZero(int num1, int num2) {
 
     if (num1 == 0)
-      return -1;
+      return 0;
 
     for (long long k = 0; k <= 60; k++)
     {
         long long x = num1 - k * num2;
 
+        if (x < 0)
+          continue;
+
         int pc = __builtin_popcountll(x);
 
+        
         if (pc <= k && k <= x)
           return (int)k;
     }
