@@ -14,8 +14,9 @@ int makeTheIntegerZero(int num1, int num2) {
 
         int pc = __builtin_popcountll(x);
 
-        
-        if (pc <= k && k <= x)
+        // k 表示项数 构成 2^i + 2^i+1 + 2^i+2 .. 2^k 的项数
+        // 2^i 可以在 [0, 60]中重复取值, 所以 x = 2^0 + 2^0 + 2^0 ...
+         if (pc <= k && k <= x)
           return (int)k;
     }
 
