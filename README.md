@@ -20,6 +20,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 | [0756-pour-water](https://github.com/borisnorm/leetcode_web/tree/master/0756-pour-water) |
+| [1059-missing-element-in-sorted-array](https://github.com/borisnorm/leetcode_web/tree/master/1059-missing-element-in-sorted-array) |
 | [1126-minimum-cost-to-connect-sticks](https://github.com/borisnorm/leetcode_web/tree/master/1126-minimum-cost-to-connect-sticks) |
 | [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 | [2426-maximum-profit-from-trading-stocks](https://github.com/borisnorm/leetcode_web/tree/master/2426-maximum-profit-from-trading-stocks) |
@@ -123,6 +124,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
+| [1059-missing-element-in-sorted-array](https://github.com/borisnorm/leetcode_web/tree/master/1059-missing-element-in-sorted-array) |
 ## Binary Search Tree
 |  |
 | ------- |
