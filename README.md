@@ -23,6 +23,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [1059-missing-element-in-sorted-array](https://github.com/borisnorm/leetcode_web/tree/master/1059-missing-element-in-sorted-array) |
 | [1126-minimum-cost-to-connect-sticks](https://github.com/borisnorm/leetcode_web/tree/master/1126-minimum-cost-to-connect-sticks) |
 | [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
+| [1909-buildings-with-an-ocean-view](https://github.com/borisnorm/leetcode_web/tree/master/1909-buildings-with-an-ocean-view) |
 | [2426-maximum-profit-from-trading-stocks](https://github.com/borisnorm/leetcode_web/tree/master/2426-maximum-profit-from-trading-stocks) |
 ## Design
 |  |
@@ -51,6 +52,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
+| [1909-buildings-with-an-ocean-view](https://github.com/borisnorm/leetcode_web/tree/master/1909-buildings-with-an-ocean-view) |
 ## Tree
 |  |
 | ------- |
@@ -193,4 +195,8 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [1126-minimum-cost-to-connect-sticks](https://github.com/borisnorm/leetcode_web/tree/master/1126-minimum-cost-to-connect-sticks) |
+## Monotonic Stack
+|  |
+| ------- |
+| [1909-buildings-with-an-ocean-view](https://github.com/borisnorm/leetcode_web/tree/master/1909-buildings-with-an-ocean-view) |
 <!---LeetCode Topics End-->
