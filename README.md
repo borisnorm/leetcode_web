@@ -52,6 +52,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
+| [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 | [1909-buildings-with-an-ocean-view](https://github.com/borisnorm/leetcode_web/tree/master/1909-buildings-with-an-ocean-view) |
 ## Tree
 |  |
@@ -62,6 +63,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
+| [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 ## Depth-First Search
 |  |
@@ -75,6 +77,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0323-number-of-connected-components-in-an-undirected-graph](https://github.com/borisnorm/leetcode_web/tree/master/0323-number-of-connected-components-in-an-undirected-graph) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
+| [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 ## Binary Tree
 |  |
 | ------- |
@@ -84,6 +87,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
+| [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 ## Hash Table
 |  |
@@ -113,6 +117,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0249-group-shifted-strings](https://github.com/borisnorm/leetcode_web/tree/master/0249-group-shifted-strings) |
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
+| [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 ## Queue
 |  |
 | ------- |
