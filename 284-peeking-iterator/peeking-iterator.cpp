@@ -19,44 +19,53 @@
 
 class PeekingIterator : public Iterator {
 public:
-   
-    int idx;
-    int n;
-    vector<int> iter_nums;
+    // cache for next available val
+    int nextVal;
+    // status
+    bool hasNextVal;
 	PeekingIterator(const vector<int>& nums) : Iterator(nums) {
 	    // Initialize any member here.
 	    // **DO NOT** save a copy of nums and manipulate it directly.
 	    // You should only use the Iterator interface methods.
+        if (this->Iterator::hasNext())
+        {
+           nextVal = this->Iterator::next();
+           hasNextVal = true;
+        }
+        else
+        {
+            nextVal = INT_MAX;
+            hasNextVal = false;
+        }
 
-        n   = nums.size();
-        idx = 0;
-        for (int i = 0; i < n; i++)
-          iter_nums.push_back(nums[i]);
-	    
 	}
 	
     // Returns the next element in the iteration without advancing the iterator.
 	int peek() {
-        if (!hasNext())
-          return -1;
-        
-        return iter_nums[idx];
+        return nextVal;
 	}
 	
 	// hasNext() and next() should behave the same as in the Iterator interface.
 	// Override them if needed.
 	int next() {
-	     if (!hasNext())
-           return -1;
-        
-         int val = iter_nums[idx];
-         idx++;
-         return val;
 
-        // point to next
+        int val = nextVal;
+
+	    if (this->Iterator::hasNext())
+        {
+           nextVal = this->Iterator::next();
+           hasNextVal = true;
+        }
+        else
+        {
+            nextVal = INT_MAX;
+            hasNextVal = false;
+        }
+
+        return val;
 	}
 	
 	bool hasNext() const {
-        return idx < n ? true: false;
+	    return hasNextVal;
 	}
 };
