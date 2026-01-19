@@ -49,8 +49,9 @@ public:
                 if (stop == target)
                   return bus;
 
-                auto &nextRoutes = stop2route[stop];
-                for (int nextR : nextRoutes)
+                //auto &nextRoutes = stop2route[stop];
+                //for (int nextR : nextRoutes)
+                for (int nextR: stop2route[stop])
                 {
                     if (!visited_route[nextR])
                     {
@@ -58,7 +59,7 @@ public:
                       q.push(nextR);
                     }
                 }
-                nextRoutes.clear();  
+                //nextRoutes.clear();  
                 
              }
           } 
