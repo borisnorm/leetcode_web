@@ -31,7 +31,7 @@ public:
     }
 
     double dfs(unordered_map<string, vector<pair<string, double>>>& graph,
-               string cur, string target, unordered_set<string>& visited)
+               const string& cur, const string& target, unordered_set<string>& visited)
     {
 
         if (!graph.count(cur) || !graph.count(target))
