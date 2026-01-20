@@ -19,8 +19,10 @@ public:
 
         while (cur)
         {
-           int gcd = getGreatestCommonDivisor(pre->val, cur->val);
-           ListNode* node = new ListNode(gcd);
+          // int gcdVal = getGreatestCommonDivisor(pre->val, cur->val);
+           
+           int gcdVal = std::gcd(pre->val, cur->val);
+           ListNode* node = new ListNode(gcdVal);
         
            pre->next = node;
            node->next = cur;
