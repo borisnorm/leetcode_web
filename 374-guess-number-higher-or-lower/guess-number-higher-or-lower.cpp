@@ -26,7 +26,7 @@ public:
              l = mid + 1;
         }  
 
-        return mid;
+        return -1;
     }
 /*
     int guessNumber(int n) {
