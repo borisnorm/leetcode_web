@@ -13,10 +13,10 @@ public:
 
         int l = 0;
         int r = n;
-        long long mid;
+        
         while (l <= r)
         {
-           mid = l + (r - l)/2;
+           long long mid = l + (r - l)/2;
 
            int ans = guess(mid);
            if (ans == 0)
