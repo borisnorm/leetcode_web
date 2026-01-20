@@ -33,7 +33,7 @@ public:
     }
 
 
-    int getGreatestCommonDivisor(int a, int b)
+    int getGreatestCommonDivisor(int& a, int& b)
     {
         int maxGCD = 1;
         for (int i = 1; i <= min(a, b); i++)
