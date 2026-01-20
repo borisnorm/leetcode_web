@@ -16,18 +16,17 @@ public:
             outDegree[a]++;
         }
 
-        int cnt = 0;
 
-        int judge = 0;
+        int judge = -1;
         for (int i = 1; i <= n; i++)
         {
             if (outDegree[i] == 0 && inDegree[i] == (n-1))
             {
                judge = i;
-               cnt++;
+               break;
             }
         }
 
-        return cnt == 1 ? judge : -1;
+        return judge;
     }
 };
