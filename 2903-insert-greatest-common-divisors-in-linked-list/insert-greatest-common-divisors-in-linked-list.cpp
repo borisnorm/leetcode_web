@@ -21,7 +21,8 @@ public:
         {
           // int gcdVal = getGreatestCommonDivisor(pre->val, cur->val);
            
-           int gcdVal = std::gcd(pre->val, cur->val);
+          // int gcdVal = std::gcd(pre->val, cur->val);
+           int gcdVal = getGreatestCommonDivisor2(pre->val, cur->val);
            ListNode* node = new ListNode(gcdVal);
         
            pre->next = node;
@@ -34,6 +35,18 @@ public:
         return head;
     }
 
+    int getGreatestCommonDivisor2(int a, int b)
+    {
+        while (b != 0)
+        {
+           int r = a % b;
+           // the answer is b, but b is given to a, and then updated by r
+           a = b;
+           b = r;
+        }
+
+        return a;
+    }
 
     int getGreatestCommonDivisor(int& a, int& b)
     {
