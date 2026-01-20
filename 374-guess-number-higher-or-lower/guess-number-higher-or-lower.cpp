@@ -18,11 +18,12 @@ public:
         {
            mid = l + (r - l)/2;
 
-           if (guess(mid) == 0)
+           int ans = guess(mid);
+           if (ans == 0)
              return mid;
-           else if (guess(mid) == - 1)
+           else if (ans == - 1)
              r = mid - 1;
-           else if (guess(mid) == 1)
+           else if (ans == 1)
              l = mid + 1;
         }  
 
