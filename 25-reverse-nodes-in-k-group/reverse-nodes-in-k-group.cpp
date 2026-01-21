@@ -33,13 +33,15 @@ public:
         for (int i = 0 ; i < k ; i++)
         {
            next = cur->next;
+           
            cur->next = pre;
-
            pre = cur;
+
            cur = next;  
         }
 
         // 2->1->[反转后 3->4->5] 实际上就是 2->1->4->3-5
+        // 在 reverseGroup 里面 新的 head 变成了 cur[3]
         head->next = reverseKGroup(cur, k);
 
         return pre;
