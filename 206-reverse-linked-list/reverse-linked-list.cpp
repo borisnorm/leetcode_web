@@ -8,34 +8,42 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
         if (!head || !head->next)
           return head;
 
-        ListNode dummy(0);
+        ListNode  dummy(0);
         ListNode* dummy_head = &dummy;
         dummy_head->next = head;
+        // cur not change, pre not change
+        // nxt change
 
+        //ListNode* pre = nullptr;  // pre 要进行指向 next, 所以不能为 nullptr;
         ListNode* pre = dummy_head;
-        ListNode* cur = head;
+        ListNode* cur = head;    // not change
         ListNode* nxt = nullptr;
 
-        while (cur->next)
+        while(cur->next)
         {
-            nxt = cur->next;
-            
-            cur->next = nxt->next;
-            nxt->next = pre->next;
+           nxt = cur->next;
+           
+           // cur 不动, 但 nxt 移动后,  cur->next 旧空了, 需要立即补上
+           // 要检查 nxt(cur->next) 是否合法, 否则 nxt->next 直接报错 UB, undefined behavior
+           cur->next = nxt->next;
 
-            pre->next = nxt;
+            // 这里一定要是 pre->next 不能是 cur, 否则逻辑全乱了
+           nxt->next = pre->next;   
+
+           // 保证 pre 不动
+           pre->next = nxt;
         }
 
         return dummy.next;
-
     }
-
+    
 /*
     ListNode* reverseList(ListNode* head) {
         if (!head || !head->next)
