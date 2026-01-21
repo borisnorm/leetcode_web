@@ -46,6 +46,7 @@ public:
           return node;
 
         ListNode* head = node;
+        
         ListNode* pre = head;
         ListNode* cur = head->next;
         ListNode* nxt;
