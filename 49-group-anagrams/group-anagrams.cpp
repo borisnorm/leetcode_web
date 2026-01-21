@@ -20,8 +20,10 @@ public:
             string key;
             for (int i = 0; i < 26; i++)
             { 
-               string freq_str = '#' +  to_string(freq[i]); 
-               key += freq_str;
+               //string freq_str = '#' +  to_string(freq[i]); 
+               //key += freq_str;
+               key += to_string(freq[i]);
+               key += '#';
             }
 
             //group by key
