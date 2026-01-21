@@ -14,6 +14,33 @@ public:
         if (!head || !head->next)
           return head;
 
+        ListNode dummy(0);
+        ListNode* dummy_head = &dummy;
+        dummy_head->next = head;
+
+        ListNode* pre = dummy_head;
+        ListNode* cur = head;
+        ListNode* nxt = nullptr;
+
+        while (cur->next)
+        {
+            nxt = cur->next;
+            
+            cur->next = nxt->next;
+            nxt->next = pre->next;
+
+            pre->next = nxt;
+        }
+
+        return dummy.next;
+
+    }
+
+/*
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next)
+          return head;
+
         //  尾插法, pre 要初始化为 nullptr,  把旧节点从 list 拆下来,  放到新的 尾部
 
         //  node_0 --> node_1 --> node_2 --> nullptr;
@@ -54,4 +81,8 @@ public:
 
         return pre;
     }
+
+
+    */
+
 };
