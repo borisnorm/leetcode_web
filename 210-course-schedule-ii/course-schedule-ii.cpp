@@ -10,7 +10,7 @@ public:
          {
             // u -> v  
             // 字面上 a --依赖于--> b
-            // 形式上是  b (u) --> a (v) 
+            // 形式上是  b (v) --> a (a) 
             int a = pre[0];
             int b = pre[1];
 
