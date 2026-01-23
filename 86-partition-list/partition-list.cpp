@@ -10,12 +10,47 @@
  */
 class Solution {
 public:
+  ListNode* partition(ListNode* head, int x) {
+      if (!head || !head->next)
+        return head;
+     
+      ListNode dummyLess;
+      ListNode* less = &dummyLess;
+
+      ListNode dummyGreater;
+      ListNode* greater = &dummyGreater;
+
+      ListNode* cur = head;
+
+      while (cur)
+      {
+         if (cur->val < x)
+         {
+            less->next = cur;
+            less = less->next;
+         }
+         else
+         {
+            greater->next = cur;
+            greater = greater->next;
+         }
+
+         cur = cur->next;
+      }
+
+      greater->next = nullptr;
+      less->next = dummyGreater.next;
+
+      return dummyLess.next;
+  }
+/*
     ListNode* partition(ListNode* head, int x) {
         if (!head || !head->next)
           return head;
 
         ListNode dummy_less;
         ListNode dummy_greater;
+
         ListNode *less_tail = &dummy_less;
         ListNode *greater_tail = &dummy_greater;
 
@@ -38,5 +73,6 @@ public:
 
         return dummy_less.next;
     }
+*/
 
 };
