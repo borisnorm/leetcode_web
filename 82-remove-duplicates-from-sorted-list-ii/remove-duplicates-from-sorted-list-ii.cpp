@@ -10,19 +10,52 @@
  */
 class Solution {
 public:
+  ListNode* deleteDuplicates(ListNode* head) {
+      if (!head || !head->next)
+        return head;
+    
+      ListNode dummy(0);
+      ListNode* dummy_head = &dummy;
+      dummy_head->next = head;
+
+      ListNode* pre = dummy_head;
+      ListNode* cur = head;
+
+      while (cur)
+      {
+         if (cur->next && cur->val == cur->next->val)
+         {
+            int dupVal = cur->val;
+
+            while (cur && cur->val == dupVal)
+              cur = cur->next;
+            
+            // 情况 1: cur->val != dupVal;
+            // 情况 2: cur == nullptr;
+            pre->next = cur;
+         }
+         else
+         {
+            pre = cur;
+            cur = cur->next;
+         }
+      }
+
+      return dummy.next;
+  }
+/*
     ListNode* deleteDuplicates(ListNode* head) {
         
         if (!head || !head->next)
           return head;
 
-        ListNode dummy(INT_MAX);
+        ListNode dummy(0);
         ListNode* dummy_head = &dummy;
         dummy_head->next = head;
 
         ListNode* pre = dummy_head;
         ListNode* slow = head;
         ListNode* fast = head->next;
-        int preVal = INT_MAX;
        
         bool isDuplicate = false;
         while (fast)
@@ -58,4 +91,5 @@ public:
         
         return dummy.next;
     }
+    */
 };
