@@ -106,6 +106,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Two Pointers
 |  |
 | ------- |
+| [0082-remove-duplicates-from-sorted-list-ii](https://github.com/borisnorm/leetcode_web/tree/master/0082-remove-duplicates-from-sorted-list-ii) |
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
 | [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
@@ -168,6 +169,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Linked List
 |  |
 | ------- |
+| [0082-remove-duplicates-from-sorted-list-ii](https://github.com/borisnorm/leetcode_web/tree/master/0082-remove-duplicates-from-sorted-list-ii) |
 | [0850-insert-into-a-sorted-circular-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0850-insert-into-a-sorted-circular-linked-list) |
 ## Simulation
 |  |
