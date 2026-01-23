@@ -1,12 +1,12 @@
 class Solution {
 public:
     int countPrimes(int n) {
-       if (n <=2)
+       if (n < 2)
          return 0;
-    
+       
        vector<bool> isPrime(n, true);
        //最小的质数是2
-       // 
+       //2 是最小的质数
        isPrime[0] = false;
        isPrime[1] = false;
 
