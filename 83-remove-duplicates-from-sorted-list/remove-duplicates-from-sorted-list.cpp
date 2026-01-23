@@ -13,6 +13,28 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
         if (!head || !head->next)
           return head;
+        
+        ListNode* cur = head;
+
+        while(cur && cur->next)
+        {
+           if (cur->val == cur->next->val)
+           {
+               ListNode* nxt = cur->next;
+               cur->next = nxt->next;
+           }
+           else
+           {
+              cur = cur->next;
+           }
+        }
+
+        return head;
+    }
+/*
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (!head || !head->next)
+          return head;
 
         ListNode* pre = head;
         ListNode* cur = head->next;
@@ -25,8 +47,7 @@ public:
               pre->next = nxt;
 
               delete cur; 
-              cur = pre;
-              
+              cur = pre;   
            }
 
            pre = cur;
@@ -35,4 +56,5 @@ public:
 
         return head;
     }
+*/
 };
