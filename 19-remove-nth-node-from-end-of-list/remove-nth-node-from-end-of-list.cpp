@@ -13,6 +13,40 @@ public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         if (!head)
           return head;
+        
+        ListNode dummy(0);
+        ListNode* dummy_head = &dummy;
+        dummy_head->next = head;
+
+        ListNode* slow = dummy_head;
+        ListNode* fast = dummy_head;
+
+        // get 倒数 第 n + 1 个节点 也就是 n 的前一个节点
+        for (int i = 0; i < n + 1 && fast; i++)
+        {
+           fast = fast->next;
+        }
+
+        while (fast)
+        {
+           slow = slow->next;
+           fast = fast->next;
+        }
+
+        ListNode* del = slow->next;
+        slow->next = del->next;
+
+        delete del;
+
+        return dummy.next;
+    }
+};
+/*
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if (!head)
+          return head;
 
         ListNode dummy(0);
         ListNode* dummy_head = &dummy;
@@ -30,6 +64,7 @@ public:
     ListNode* findFromEnd(ListNode* head, int n)
     {
        ListNode* fast = head;
+       // 0表示从 dummy 开始的节点 
        for (int i = 0; i < n; i++)
          fast = fast->next;
 
@@ -43,3 +78,4 @@ public:
        return slow;
     }
 };
+*/
