@@ -14,23 +14,6 @@ public:
         if (!head || !head->next)
           return head;
         
-        ListNode* cur = head;
-        ListNode* nxt = head->next;
-
-        cur->next = swapPairs(nxt->next);
-
-        nxt->next = cur;
-
-        return nxt;
-    }
-};
- /*
-class Solution {
-public:
-    ListNode* swapPairs(ListNode* head) {
-        if (!head || !head->next)
-          return head;
-        
         ListNode  dummy(0);
         ListNode* dummy_head = &dummy;
         dummy_head->next = head;
@@ -55,7 +38,26 @@ public:
     }
 };
 
+/*
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if (!head || !head->next)
+          return head;
+        
+        ListNode* cur = head;
+        ListNode* nxt = head->next;
+
+        cur->next = swapPairs(nxt->next);
+
+        nxt->next = cur;
+
+        return nxt;
+    }
+};
 */
+
+
 
  /*
 class Solution {
