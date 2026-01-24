@@ -46,7 +46,7 @@ public:
            if (!kth)
              break;
         
-           
+           cur = pre->next;
            for (int i = 1; i < k; i++)
            {
               nxt = cur->next;
@@ -57,8 +57,6 @@ public:
            }
 
            pre = cur;
-           cur = cur->next;
-
         }
 
         return dummy.next;
