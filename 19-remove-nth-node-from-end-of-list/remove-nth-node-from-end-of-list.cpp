@@ -8,6 +8,40 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+ class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+         if (!head)
+           return head;
+
+         ListNode  dummy;
+         ListNode* dummy_head = &dummy;
+         dummy_head->next = head;
+
+         int cnt = 0;
+         ListNode* cur = head;
+         while (cur)
+         {
+            cnt++;
+            cur = cur->next;
+         }
+
+         cur = dummy_head;
+         for (int i = 0; i < cnt - n; i++)
+         {
+            cur = cur->next;
+         }
+
+         ListNode* del = cur->next;
+         cur->next = del->next;
+         delete del;
+
+         return dummy.next;
+
+         
+    }
+ };
+/*
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
@@ -41,6 +75,7 @@ public:
         return dummy.next;
     }
 };
+*/
 /*
 class Solution {
 public:
