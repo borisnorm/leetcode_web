@@ -170,6 +170,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0082-remove-duplicates-from-sorted-list-ii](https://github.com/borisnorm/leetcode_web/tree/master/0082-remove-duplicates-from-sorted-list-ii) |
+| [0369-plus-one-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0369-plus-one-linked-list) |
 | [0850-insert-into-a-sorted-circular-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0850-insert-into-a-sorted-circular-linked-list) |
 ## Simulation
 |  |
@@ -209,4 +210,8 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [1909-buildings-with-an-ocean-view](https://github.com/borisnorm/leetcode_web/tree/master/1909-buildings-with-an-ocean-view) |
+## Math
+|  |
+| ------- |
+| [0369-plus-one-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0369-plus-one-linked-list) |
 <!---LeetCode Topics End-->
