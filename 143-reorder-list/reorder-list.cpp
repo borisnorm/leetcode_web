@@ -30,16 +30,16 @@ public:
 
         right = reverseList(right);
         
-        while (left && right)
+        while (right)
         {
-           ListNode* leftnode = left;
-           ListNode* rightnode = right;
+           ListNode* left_nxt  = left->next;
+           ListNode* right_nxt = right->next;
 
-           right = right->next;
-           left = left->next;
+           left->next = right;
+           right->next = left_nxt;
 
-           leftnode->next = rightnode;
-           rightnode->next = left;
+           left = left_nxt;
+           right = right_nxt;
              
         }
 
@@ -57,8 +57,8 @@ public:
         // (pre)1 (head)--> 2(cur)--> 3
         // (pre)2 -> 1(head)->3(cur)
        
-        ListNode* pre = head;
-        ListNode* cur = head->next;
+        ListNode* pre = nullptr;
+        ListNode* cur = head;
         ListNode* nxt = nullptr;
 
         while (cur)
@@ -66,12 +66,9 @@ public:
            nxt = cur->next;
            cur->next = pre;
            pre = cur;
-           head->next = nxt;
-
-           cur = head->next;
+           cur = nxt;
         }
 
         return pre;
     }
 };
-
