@@ -55,12 +55,12 @@ public:
         // head insert
        
         // (pre)1 (head)--> 2(cur)--> 3
-        // (pre)2 -> 1(head)->3
+        // (pre)2 -> 1(head)->3(cur)
        
         ListNode* pre = head;
         ListNode* cur = head->next;
         ListNode* nxt = nullptr;
-        
+
         while (cur)
         {
            nxt = cur->next;
