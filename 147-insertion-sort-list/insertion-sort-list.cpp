@@ -11,6 +11,46 @@
 class Solution {
 public:
 
+  ListNode* insertionSortList(ListNode* head) {
+        if (!head || !head->next)
+          return head;
+        
+        ListNode dummy(0);
+        ListNode* dummy_head = &dummy;
+        
+        ListNode* pre_sorted = dummy_head;
+        ListNode* cur_sorted = nullptr;
+
+        ListNode* cur = head;
+        ListNode* nxt = nullptr;
+        while(cur)
+        {
+           nxt = cur->next;
+           cur->next = nullptr;
+
+           pre_sorted = dummy_head;
+           cur_sorted = dummy_head->next;
+
+           while (cur_sorted && cur_sorted->val < cur->val)
+           {
+             pre_sorted = cur_sorted;
+             cur_sorted = cur_sorted->next;
+           }
+
+           pre_sorted->next = cur;
+           cur->next = cur_sorted;
+
+           cur = nxt;
+        }
+
+        return dummy.next;
+  }
+};
+
+/*
+class Solution {
+public:
+
 ListNode* insertionSortList(ListNode* head) {
     if (!head || !head->next)
       return head;
@@ -38,6 +78,8 @@ ListNode* insertionSortList(ListNode* head) {
 
     return dummy.next;
 }
+};
+*/
    /*
     ListNode* insertionSortList(ListNode* head) {
             if (!head || !head->next)
@@ -87,4 +129,3 @@ ListNode* insertionSortList(ListNode* head) {
             return dummy.next;      
     }
     */
-};
