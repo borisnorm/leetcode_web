@@ -31,6 +31,7 @@ public:
               pre->next = nxt;
               delete cur;
 
+              // 删除完后, cur 更新为 nxt 
               cur = nxt;
            }
            else
@@ -43,3 +44,27 @@ public:
         return dummy_head->next;
     }
 };
+
+/*
+
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode dummy(0);
+        dummy.next = head;
+
+        ListNode* cur = &dummy;
+
+        while (cur->next) {
+            if (cur->next->val == val) {
+                cur->next = cur->next->next; // 删除 cur->next
+            } else {
+                cur = cur->next; // 正常前进
+            }
+        }
+
+        return dummy.next;
+    }
+};
+
+*/
