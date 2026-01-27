@@ -37,7 +37,6 @@ public:
            cur = cur->next;
         }
 
-
         cur = head;
         cur_cpy = dummy.next;
         while(cur)
