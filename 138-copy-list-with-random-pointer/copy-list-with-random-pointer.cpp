@@ -26,6 +26,8 @@ public:
         Node* cur = head;
 
         unordered_map<Node*, Node*> origin2cpy;
+        // 1. 先让 copy 成链
+        // 2. 再让 cur->cpy 成 map 为 random 做准备 
         while(cur)
         {
            cur_cpy->next = new Node(cur->val);
@@ -39,11 +41,12 @@ public:
 
         cur = head;
         cur_cpy = dummy.next;
+        // tail 作为key copy构建 random
         while(cur)
         {
            Node* random = cur->random;
 
-           cur_cpy->random = origin2cpy[random];
+           cur_cpy->random = random ? origin2cpy[random] : nullptr;
 
            cur_cpy = cur_cpy->next;
            cur = cur->next;
