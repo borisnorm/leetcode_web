@@ -13,7 +13,64 @@ public:
     }
 };
 */
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if (!head)
+           return head;
+        
+        Node* cur = head;
+        Node* nxt = nullptr;
+        // construct orig-cpy-orig-cpy list
+        while(cur)
+        {
+           nxt = cur->next;
 
+           Node* cpy = new Node(cur->val);
+           cpy->next = nxt;
+           cur->next = cpy;
+           
+           cur = nxt;
+        }
+
+        cur = head;
+        while(cur)
+        {
+           if (cur->random)
+           {
+              Node* cpy = cur->next;
+              //Node* cur_random = cur->random;
+              // origin --> cpy--> random --> random_cpy
+              cpy->random = cur->random->next;
+           }
+
+           cur = cur->next->next;
+        }
+
+        Node dummy(0);
+        Node* dummy_head = &dummy;
+        Node* cur_cpy = dummy_head;
+        
+        cur = head;
+        while(cur)
+        {
+           cur_cpy->next = cur->next;
+
+           nxt = cur->next->next;
+           cur->next = nxt;
+
+           cur_cpy = cur_cpy->next;
+
+           // 对于 最后一个节点, cur->next 实际上是  nxt, 跳了2步的,已经到了 null, 那再次判断的时候 就是 null->next;
+           cur = cur->next;
+
+        }
+        
+
+        return dummy.next;
+    }
+};
+/*
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
@@ -41,6 +98,9 @@ public:
        return orig2cpy[head];
     }
 };
+
+*/
+
 /*
 class Solution {
 public:
