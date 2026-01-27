@@ -17,6 +17,47 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
+        if (!head)
+          return head;
+        
+        Node dummy(0);
+        Node* cur_cpy = &dummy;
+
+        Node* cur = head;
+
+        unordered_map<Node*, Node*> origin2cpy;
+        while(cur)
+        {
+           cur_cpy->next = new Node(cur->val);
+           cur_cpy = cur_cpy->next;
+
+           // cur_cpy 已经从 dummy 跳到了 cur_cpy 上
+           origin2cpy[cur] = cur_cpy;
+
+           cur = cur->next;
+        }
+
+
+        cur = head;
+        cur_cpy = dummy.next;
+        while(cur)
+        {
+           Node* random = cur->random;
+
+           cur_cpy->random = origin2cpy[random];
+
+           cur_cpy = cur_cpy->next;
+           cur = cur->next;
+        }
+
+        return dummy.next;
+        
+    }
+};
+/*
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
          if (!head)
            return head;
 
@@ -31,6 +72,8 @@ public:
 
          unordered_map<Node*, Node*> node_cpy_map;
     
+         // 1. 先让 copy 成链
+         // 2. 再让 cur->cpy 成 map 为 random 做准备 
          while (tail)
          {
             tail_cpy->next = new Node(tail->val);
@@ -44,6 +87,7 @@ public:
          tail = head;
          tail_cpy = dummy_cpy_head->next;
 
+         // tail 作为key copy构建 random
          while (tail)
          {
             Node* neighbor = tail->random;
@@ -58,3 +102,5 @@ public:
          return dummy_cpy_head->next;
     }
 };
+
+*/
