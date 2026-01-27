@@ -54,13 +54,12 @@ public:
         cur = head;
         while(cur)
         {
-           cur_cpy->next = cur->next;
+           Node* cpy = cur->next;
+           cur_cpy->next = cpy;
 
-           nxt = cur->next->next;
-           cur->next = nxt;
+           cur->next = cpy->next;
 
            cur_cpy = cur_cpy->next;
-
            // 对于 最后一个节点, cur->next 实际上是  nxt, 跳了2步的,已经到了 null, 那再次判断的时候 就是 null->next;
            cur = cur->next;
 
