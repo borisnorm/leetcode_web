@@ -20,25 +20,25 @@ public:
        if (!head)
          return head;
     
-       unordered_map<Node*, Node*> origin2cpy;
+       unordered_map<Node*, Node*> orig2cpy;
 
        Node* cur = head;
        while(cur)
        {
-           origin2cpy[cur] = new Node(cur->val);
+           orig2cpy[cur] = new Node(cur->val);
            cur = cur->next;
        }
 
        cur = head;
        while(cur)
        {
-          origin2cpy[cur]->next = origin2cpy[cur->next];
-          origin2cpy[cur]->random = origin2cpy[cur->random];
+          orig2cpy[cur]->next   = cur->next ? orig2cpy[cur->next]: nullptr;
+          orig2cpy[cur]->random = cur->random ? orig2cpy[cur->random]: nullptr;
 
           cur = cur->next;
        }
 
-       return origin2cpy[head];
+       return orig2cpy[head];
     }
 };
 /*
