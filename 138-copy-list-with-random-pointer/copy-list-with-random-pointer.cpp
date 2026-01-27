@@ -17,6 +17,34 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
+       if (!head)
+         return head;
+    
+       unordered_map<Node*, Node*> origin2cpy;
+
+       Node* cur = head;
+       while(cur)
+       {
+           origin2cpy[cur] = new Node(cur->val);
+           cur = cur->next;
+       }
+
+       cur = head;
+       while(cur)
+       {
+          origin2cpy[cur]->next = origin2cpy[cur->next];
+          origin2cpy[cur]->random = origin2cpy[cur->random];
+
+          cur = cur->next;
+       }
+
+       return origin2cpy[head];
+    }
+};
+/*
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
         if (!head)
           return head;
         
@@ -56,6 +84,8 @@ public:
         
     }
 };
+*/
+
 /*
 class Solution {
 public:
