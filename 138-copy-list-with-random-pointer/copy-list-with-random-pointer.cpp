@@ -65,7 +65,6 @@ public:
            cur = cur->next;
 
         }
-        
 
         return dummy.next;
     }
