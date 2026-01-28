@@ -43,8 +43,13 @@ public:
 
         return dummy.next;
     }
-    
+};
+
+
+
 /*
+class Solution {
+public:
     ListNode* reverseList(ListNode* head) {
         if (!head || !head->next)
           return head;
@@ -90,7 +95,36 @@ public:
         return pre;
     }
 
-
+};
     */
 
+/*
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next)
+          return head;
+        
+
+        ListNode* newHead = reverseList(head->next);
+
+        ListNode* nxt = head->next;
+        nxt->next = head;
+        // head 是 2, nxt 是 3
+        //  1--> 2 <--3 <-- 4 <---5
+        //         -->3
+
+        // head 是 4, nxt 是 5
+        // 4 -> 5 -> null
+        // 完成上一步后 是
+        // 4 -> 5
+        //   <- 5
+        // 所以需要下面的断链
+
+        head->next = nullptr;
+    
+        return newHead;
+    
+    }
 };
+*/
