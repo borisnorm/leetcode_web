@@ -24,8 +24,13 @@ public:
         vector<int> dp(target+1, 0);
         dp[0] = 1;
 
-        for (int& num : nums)
+        int n = nums.size();
+        //for (int& num : nums)
+        for (int i = 0; i < n; i++)
         {
+           int num = nums[i];
+            // 上一行 的 nums[i] 计算出来的 dp[sum] 会被 下一行所使用
+           
            // 下面判断的是 sum - num >= 0 才可以
            for (int sum = target; sum >= num; sum--)
            {
