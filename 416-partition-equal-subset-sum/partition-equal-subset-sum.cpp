@@ -13,12 +13,12 @@ public:
            max_num = max(max_num, num);
         }
 
-        if (sum & 1)
-          return false;
-
         int target = sum/2;
 
-        if (max_num > target)
+        if (sum & 0x1) // 奇数的 sum, 平分到2个 subset 里面去
+          return false;
+
+        if (max_num > target)  // max_num 太大 也无法平分
           return false;
 
         vector<int> dp(target+1, 0);
@@ -26,9 +26,14 @@ public:
 
         for (int& num : nums)
         {
+           // 下面判断的是 sum - num >= 0 才可以
            for (int sum = target; sum >= num; sum--)
-             if (dp[sum - num])
-                dp[sum] = 1;
+           {
+            
+              dp[sum] =  dp[sum] || dp[sum-num];
+              //if (dp[sum - num])
+              //  dp[sum] = 1;
+           }
         }
 
         return dp[target] ? true : false;
