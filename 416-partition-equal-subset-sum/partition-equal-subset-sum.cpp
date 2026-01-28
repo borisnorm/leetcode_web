@@ -7,13 +7,13 @@ public:
         int sum = 0;
         int max_num = 0;
 
-        for (int& x: nums)
+        for (int& num: nums)
         {
-           sum+= x;
-           max_num = max(max_num, x);
+           sum += num;
+           max_num = max(max_num, num);
         }
 
-        if (sum & 1 )
+        if (sum & 1)
           return false;
 
         int target = sum/2;
@@ -24,11 +24,11 @@ public:
         vector<int> dp(target+1, 0);
         dp[0] = 1;
 
-        for (int& x : nums)
+        for (int& num : nums)
         {
-           for (int s = target; s >= x; s--)
-             if (dp[s-x])
-                dp[s] = 1;
+           for (int sum = target; sum >= num; sum--)
+             if (dp[sum - num])
+                dp[sum] = 1;
         }
 
         return dp[target] ? true : false;
