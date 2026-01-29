@@ -1,3 +1,31 @@
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        
+        int n = prices.size();
+        if (n == 0)
+          return 0;
+        
+        vector<vector<int>> dp(n, vector<int>(2, 0));
+        //dp[i][j] : the max amount money it can get on ith day(0-based) on either hold or not hold stock
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+
+        for (int i = 1; i < n; i++)
+        {
+           //hold
+           dp[i][1] = max(dp[i-1][1], dp[i-1][0]-prices[i]);
+
+           // not hold
+           dp[i][0] = max(dp[i-1][0], dp[i-1][1]+prices[i]);
+        }  
+
+        return dp[n-1][0];
+
+    }
+};
+/*
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -18,7 +46,14 @@ public:
 
         return maxProfit;
 
-        /*
+    }
+};
+*/
+
+/*
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
         int sum = 0;
         int n = prices.size();
         vector<int> dp(n, 0);
@@ -54,7 +89,6 @@ public:
         }
 
         return dp[n-1];
-
-        */
     }
 };
+*/
