@@ -21,7 +21,7 @@ public:
         for (int i = 1; i < n; i++)
         {
            dp[i][0] = 0;
-           dp[i][1] = max(dp[i-1][1], dp[i-1][0]-prices[i]);  //hold
+           dp[i][1] = max(dp[i-1][1], -prices[i]);  //hold
            dp[i][2] = max(dp[i-1][2], dp[i-1][1]+prices[i]);  //not hold
            dp[i][3] = max(dp[i-1][3], dp[i-1][2]-prices[i]);  //hold
            dp[i][4] = max(dp[i-1][4], dp[i-1][3]+prices[i]);  //not hold
