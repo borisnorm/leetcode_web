@@ -2,7 +2,6 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) {
 
-    /*
        int min_price = INT_MAX;
        int max_profit = 0;
 
@@ -14,15 +13,15 @@ public:
             max_profit = max(max_profit, (p-min_price));
        }
 
-       return maxprofit;
-       */
+       return max_profit;
 
 
+      /*
        int n = prices.size();
        int maxProfit = 0;
        int minPrice = INT_MAX;
        // 不能 一次循环 直接找出 minPrice  与 maxPrice, 因为 有 时序关系在 控制着, 
-       // 只能变计算 max profit, 边前进
+       // 只能边计算 max profit, 边前进
 
        for (int i = 1; i < n; i++)
        {
@@ -33,6 +32,7 @@ public:
        }
 
        return maxProfit;
+        */
 
        /*
        // Time Limit Exceeded
@@ -56,3 +56,27 @@ public:
     };
    
 };
+
+/*
+class Solution {
+public:
+     //Greedy（贪心）解法
+    int maxProfit(vector<int>& prices) {
+        int minPrice = INT_MAX;   // 到目前为止的最低买入价
+        int maxProfit = 0;        // 最大利润
+
+        for (int price : prices) {
+            // 更新最低买入价
+            minPrice = min(minPrice, price);
+
+            // 如果今天卖出，能获得的利润
+            int profit = price - minPrice;
+
+            // 更新最大利润
+            maxProfit = max(maxProfit, profit);
+        }
+
+        return maxProfit;
+    }
+};
+*/
