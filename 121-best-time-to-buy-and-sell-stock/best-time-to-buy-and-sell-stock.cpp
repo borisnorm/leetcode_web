@@ -1,22 +1,9 @@
+
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
 
-       int min_price = INT_MAX;
-       int max_profit = 0;
 
-       for (int p: prices)
-       {
-          if (p < min_price)
-            min_price = p;
-          else
-            max_profit = max(max_profit, (p-min_price));
-       }
-
-       return max_profit;
-
-
-      /*
        int n = prices.size();
        int maxProfit = 0;
        int minPrice = INT_MAX;
@@ -32,9 +19,16 @@ public:
        }
 
        return maxProfit;
-        */
 
-       /*
+    };
+   
+};
+
+/*
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+
        // Time Limit Exceeded
 
        int n = prices.size();
@@ -51,11 +45,9 @@ public:
        }
  
        return maxProfit;
-       */
-
-    };
-   
+    }; 
 };
+*/
 
 /*
 class Solution {
@@ -77,6 +69,29 @@ public:
         }
 
         return maxProfit;
+    }
+};
+*/
+
+
+/*  
+// 贪心 greedy
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+
+       int min_price = INT_MAX;
+       int max_profit = 0;
+
+       for (int p: prices)
+       {
+          if (p < min_price)
+            min_price = p;
+          else
+            max_profit = max(max_profit, (p-min_price));
+       }
+
+       return max_profit;
     }
 };
 */
