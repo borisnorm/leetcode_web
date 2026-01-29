@@ -14,7 +14,8 @@ public:
         dp[0][0] = 0; // not hold anything
         dp[0][1] = -prices[0]; // hold the 1st stock
         dp[0][2] = 0; // not hold the 1st stock
-        dp[0][3] = INT_MIN/2; // hold the 2nd stock;
+      //  dp[0][3] = INT_MIN/2; // hold the 2nd stock;
+        dp[0][3] = -prices[0]; // hold the 2nd stock;
         dp[0][4] = 0; // not hold the 2nd stock;
 
         // dp[i][j]: the max amount benefit on the ith day(0-based) either with hold or not hold stock
