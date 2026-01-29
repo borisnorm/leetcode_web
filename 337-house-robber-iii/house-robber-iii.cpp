@@ -16,7 +16,6 @@ public:
         return max(res.first, res.second); // 返回两种情况的最大值
     }
     
-private:
     // 返回{不抢当前节点的最大值, 抢当前节点的最大值}
     pair<int, int> dfs(TreeNode* node) {
         if (!node) return {0, 0}; // 空节点，两种情况都是0
@@ -28,8 +27,8 @@ private:
         int notRob = max(l.first, l.second) + max(r.first, r.second);
         
         // 抢当前节点：必须不抢左右子节点，加上当前节点的值
-        int robCur = node->val + l.first + r.first;
+        int rob = node->val + l.first + r.first;
         
-        return {notRob, robCur}; // 返回当前节点的两种情况
+        return {notRob, rob}; // 返回当前节点的两种情况
     }
 };
