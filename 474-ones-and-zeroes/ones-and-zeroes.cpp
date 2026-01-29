@@ -30,6 +30,9 @@ public:
                 }
             }
          }
+         
+         // 时间复杂度 O(len(strs) x m x n )
+         // 空间复杂度 O(m x n)
 
 
          return dp[m][n];
