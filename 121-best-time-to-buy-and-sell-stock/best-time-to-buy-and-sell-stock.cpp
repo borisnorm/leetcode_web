@@ -13,12 +13,11 @@ public:
 
           for (int i = 1; i < n; i++)
           {
-             // hold stock
-             dp[i][1] = max(dp[i-1][1], -prices[i]);
-
-
              // not hold any stock
              dp[i][0] = max(dp[i-1][0],  dp[i-1][1]+prices[i]);
+            
+             // hold stock
+             dp[i][1] = max(dp[i-1][1], -prices[i]);
           }
 
           return dp[n-1][0];
