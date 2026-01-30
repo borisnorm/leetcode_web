@@ -1,4 +1,26 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices, int fee) {
+        int n = prices.size();
+        if (n <= 1)
+          return 0;
+        
+        int not_hold = 0;
+        int hold = -prices[0];
+       
+        for (int i = 1; i < n; i++)
+        {
+           not_hold = max(not_hold, hold + prices[i]-fee);
+           hold     = max(hold,     not_hold - prices[i]);
 
+           //hold = newHold;
+           //not_hold = new_notHold;             
+        }
+
+        return not_hold;
+    }
+};
+/*
 class Solution {
 public:
     int maxProfit(vector<int>& prices, int fee) {
@@ -22,6 +44,7 @@ public:
     }
 };
 
+*/
 
 
 /*
