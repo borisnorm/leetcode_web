@@ -23,21 +23,17 @@ public:
         vector<vector<int>> dp(n, vector<int>(2*k+1, INT_MIN/2));
 
         // dp[i][j] the max amount profit on ith day(0-based) either on hold or not hold stock; 
-        dp[0][0] = 0;
-       // dp[0][1] = -prices[0];
-        
+        dp[0][0] = 0;        
         for (int j = 1; j < 2*k; j+=2) 
         {
            dp[0][j] = -prices[0];     //hold
            dp[0][j+1] = 0;   // not hold
         }
         
-      
-
         for (int i = 1; i < n; i++)
         {
-            //dp[i][0] = dp[i-1][0];
-            dp[i][0] = 0;
+            dp[i][0] = dp[i-1][0];
+            //dp[i][0] = 0;
 
             for (int j = 1; j < 2*k; j+=2)
             {
