@@ -7,19 +7,21 @@ public:
         
         int not_hold = 0;
         int hold = -prices[0];
-       
+
         for (int i = 1; i < n; i++)
         {
-           not_hold = max(not_hold, hold + prices[i]-fee);
-           hold     = max(hold,     not_hold - prices[i]);
+            int pre_hold = hold;
+            int pre_not_hold = not_hold;
 
-           //hold = newHold;
-           //not_hold = new_notHold;             
+            hold = max(pre_hold, pre_not_hold-prices[i]);
+            not_hold = max(pre_not_hold, pre_hold+prices[i]-fee);
         }
 
         return not_hold;
     }
 };
+
+
 /*
 class Solution {
 public:
@@ -34,9 +36,9 @@ public:
         for (int i = 1; i < n; i++)
         {
            int new_notHold = max(not_hold, hold+prices[i]-fee);
-           int newHold = max(hold, not_hold-prices[i]);
+           int new_hold = max(hold, not_hold-prices[i]);
 
-           hold = newHold;
+           hold = new_hold;
            not_hold = new_notHold;             
         }
 
@@ -71,4 +73,28 @@ public:
     }
 };
 
+*/
+
+/*
+//错误
+class Solution {
+public:
+    int maxProfit(vector<int>& prices, int fee) {
+        int n = prices.size();
+        if (n <= 1)
+          return 0;
+        
+        int not_hold = 0;
+        int hold = -prices[0];
+       
+        for (int i = 1; i < n; i++)
+        {
+           // 更新后的 not_hold被下面 的 hold 个引用了
+           not_hold = max(not_hold, hold + prices[i]-fee);
+           hold     = max(hold,     not_hold - prices[i]);           
+        }
+
+        return not_hold;
+    }
+};
 */
