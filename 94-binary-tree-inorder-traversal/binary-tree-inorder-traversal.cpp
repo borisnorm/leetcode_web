@@ -12,6 +12,41 @@
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
+        // left root right
+        if (!root)
+          return {};
+        
+        stack<TreeNode*> st;
+        vector<int> nums;
+        
+        TreeNode* cur = root;
+        while (cur || !st.empty())
+        {
+            while (cur)
+            {
+               st.push(cur);
+               cur = cur->left;
+            }
+            
+            // 此时的 cur 已经是 nullptr 了
+            cur = st.top();
+            st.pop();
+
+            nums.push_back(cur->val);
+
+            cur = cur->right;
+            //if (node->right)
+            //  st.push(node->right);
+        }
+
+        return nums;
+    }
+};
+/*
+
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
          if (!root)
            return {};
          vector<int> res;
@@ -33,5 +68,6 @@ public:
 
         inorderTraverse(root->right, nums);
     }
-
 };
+
+*/
