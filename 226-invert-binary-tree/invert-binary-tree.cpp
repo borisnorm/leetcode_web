@@ -12,6 +12,23 @@
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
+        if (!root)
+          return nullptr;
+        
+        swap(root->left, root->right);
+
+        invertTree(root->right);
+        invertTree(root->left);
+
+        return root;
+    }
+};
+
+ /*
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
       queue<TreeNode*> nodes_queue;
       
       if (!root)
@@ -26,7 +43,8 @@ public:
         {
            TreeNode* node = nodes_queue.front();
            nodes_queue.pop();
-           TreeNode* left = node->left;
+
+           TreeNode* left  = node->left;
            TreeNode* right = node->right;
 
            node->left  = right;
@@ -34,6 +52,7 @@ public:
            
            if (node->left)
              nodes_queue.push(node->left);
+
            if (node->right)
              nodes_queue.push(node->right);                
         }
@@ -42,3 +61,5 @@ public:
       return root;
     }
 };
+
+*/
