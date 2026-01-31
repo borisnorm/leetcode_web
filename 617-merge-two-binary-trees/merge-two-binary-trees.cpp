@@ -10,6 +10,7 @@
  * };
  */
 
+/*
 class Solution {
 public:
     TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
@@ -52,8 +53,8 @@ public:
           return root;
     }
 };
+*/
 
-/*
 
 class Solution {
 public:
@@ -96,7 +97,7 @@ public:
     }
 };
 
-*/
+
 
 /*
 // 正确
