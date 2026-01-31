@@ -11,6 +11,14 @@
  */
 class Solution {
 public:
+
+/*
+   int minDepth(TreeNode* root)
+   {
+    
+   }
+   */
+ 
     int minDepth(TreeNode* root) {
         if (!root)
           return 0;
@@ -23,4 +31,5 @@ public:
 
         return min(minLeft, minRight) + 1; 
     }
+    
 };
