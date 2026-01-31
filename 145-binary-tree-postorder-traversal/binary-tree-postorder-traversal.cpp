@@ -12,6 +12,45 @@
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
+         if (!root)
+           return {};
+        
+        vector<int> res;
+        stack<TreeNode*> st;
+        
+        TreeNode* cur = root;
+        TreeNode* last = nullptr;
+
+        while(cur || !st.empty())
+        {
+           while (cur)
+           {
+              st.push(cur);
+              cur = cur->left;
+           }
+
+           TreeNode* node = st.top();
+
+           if (node->right && last != node->right)
+           {
+              cur = node->right;
+           }
+           else
+           {
+              st.pop();
+              res.push_back(node->val);
+              last = node;
+           } 
+        }
+
+        return res;
+     
+    }
+};
+/*
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
          vector<int> res;         
          if (!root)
            return res;
@@ -49,3 +88,5 @@ public:
         return res;
     }
 };
+
+*/
