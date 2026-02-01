@@ -27,6 +27,8 @@ public:
             if (used[i])
               continue;
 
+             // if (i > 0 && nums[i] == nums[i-1] && !used[i-1])  同层去重 树层去重  效率更高
+             // if (i > 0 && nums[i] == nums[i-1] && used[i-1])  不同层去重 树枝去重
             if (i > 0 &&  nums[i] == nums[i-1] && !used[i-1])
               continue;
 
