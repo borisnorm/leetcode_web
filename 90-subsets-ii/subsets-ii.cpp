@@ -18,16 +18,21 @@ public:
        unordered_set<int> num_set;
        for(int i = start; i < nums.size(); i++)
        {
-          if (num_set.count(nums[i]))
-            continue;
+          //if (num_set.count(nums[i]))
+          //  continue;
           //if (!path.empty() && nums[i] != path.back())
           //  continue;
           //if (!path.empty() && i > 0 && nums[i] == nums[i-1] && nums[i] != path.back())
           //  continue;
+
+          if (i > start && nums[i] == nums[i-1])
+            continue;
+
           path.push_back(nums[i]);
-          num_set.insert(nums[i]);
+          //num_set.insert(nums[i]);
           backtrack(nums, i+1, path, res);
           path.pop_back();
        }
     }
 };
+
