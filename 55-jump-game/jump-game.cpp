@@ -9,6 +9,7 @@ public:
          for (int i = 0; i < n-1; i++)
          {
             farthest = max(farthest, i + nums[i]);
+            //fastest是 取值范围
             if (farthest <= i)
               return false;
          }
