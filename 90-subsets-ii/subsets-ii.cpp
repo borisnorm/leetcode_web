@@ -46,7 +46,7 @@ public:
 };
 */
 
-/*
+
 class Solution {
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
@@ -78,8 +78,9 @@ public:
        }
     }
 };
-*/
 
+
+/*
 class Solution {
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
@@ -101,6 +102,7 @@ public:
        unordered_set<int> num_set;
        for(int i = start; i < nums.size(); i++)
        {
+          // 这是重点
           if (num_set.count(nums[i]))
             continue;
 
@@ -112,3 +114,4 @@ public:
        }
     }
 };
+*/
