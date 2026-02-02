@@ -25,9 +25,11 @@ public:
         unordered_set<int> num_set;
         for (int i = start; i < n; i++)
         {
+           //这是重点
            if (num_set.count(nums[i]))
              continue;
 
+           //这是重点
            if (!path.empty() && nums[i] < path.back())
            {
              //if (i >= 1 && nums[i] < nums[i-1] && path.back() == nums[i-1])
