@@ -25,6 +25,7 @@ public:
         for (int i = 0; i < letter_comb.size(); i++)
         {
             letter.push_back(letter_comb[i]);
+            //是 start + 1,  不是 i+1, i+1没有意义的
             backtrack(digits, start+1, letter, res);
             letter.pop_back();
         }
