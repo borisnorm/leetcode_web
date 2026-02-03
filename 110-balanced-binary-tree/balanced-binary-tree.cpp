@@ -14,24 +14,31 @@ public:
     bool isBalanced(TreeNode* root) {
         if (!root)
           return true;
-        
-       int leftDepth = getDepth(root->left);
-       int rightDepth = getDepth(root->right);
 
-       if (abs(leftDepth - rightDepth) > 1)
-         return false;
-    
-        return isBalanced(root->left) && isBalanced(root->right);
+        if (getHeight(root) < 0)
+          return false;
+
+        return true;
     }
 
-    int getDepth(TreeNode* root)
+    int getHeight(TreeNode* root)
     {
        if (!root)
          return 0;
       
-       int leftDepth = getDepth(root->left);
-       int rightDepth = getDepth(root->right);
+       //左树 先验模式
+       int leftHeight = getHeight(root->left);
+       if (leftHeight < 0)
+         return -1;
+       
+       //右树 先验模式 所以 return 的时候就不需要在对 左右子树进行单独验证了
+       int rightHeight= getHeight(root->right);
+       if (rightHeight < 0)
+         return -1;
 
-       return max(leftDepth, rightDepth) + 1;
+       if (abs(leftHeight - rightHeight) > 1)
+         return -1;
+
+       return max(leftHeight, rightHeight) + 1;
     }
 };
