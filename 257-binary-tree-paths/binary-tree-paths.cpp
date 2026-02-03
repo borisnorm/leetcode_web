@@ -45,8 +45,12 @@ public:
 
         return res;
     }
+};
+
 
 /*
+class Solution {
+public:
     vector<string> binaryTreePaths(TreeNode* root) {
          if (!root)
            return {};
@@ -79,8 +83,6 @@ public:
         if (root->right)
           binaryTreeTraverse(root->right, str, res);
     } 
-
-    */
-
-
+    
 };
+*/
