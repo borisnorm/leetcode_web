@@ -17,6 +17,7 @@ public:
        // while(num <= target)
         {
           
+          // 不能加这个 if
           //if (left <= right)
           {
              for (int i = left; i <= right; i++)
@@ -24,7 +25,7 @@ public:
              top++;
           }
 
-
+         // 不能加这个 if
          // if (top <= bottom)
           {
               for (int i = top; i <= bottom; i++)
@@ -33,7 +34,7 @@ public:
           }
          
 
-          if (left <= right)
+         // if (left <= right)
           {
              for (int i = right; i >= left; i--)
                 res[bottom][i] = num++;
@@ -41,7 +42,7 @@ public:
           }
        
 
-          if (top <= bottom)
+          //if (top <= bottom)
           {
              for (int i = bottom; i >= top; i--)
                res[i][left] = num++;
