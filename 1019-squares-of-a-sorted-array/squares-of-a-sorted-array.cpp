@@ -14,6 +14,10 @@ public:
         for (int i = 0; i < n; i++)
             nums[i] = nums[i]*nums[i];
 
+        // 规律
+        //[-5, 2, 1, 3]
+        //[25, 4, 1, 9]
+        //大的在两端, 小的在中间
         while (left <= right)
         {
            if (nums[left] <= nums[right])
