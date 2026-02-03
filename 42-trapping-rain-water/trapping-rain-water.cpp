@@ -21,7 +21,7 @@ public:
             r_max = max(r_max, height[r]);
 
             
-            if (l_max < r_max)
+            if (l_max <= r_max)
             {
                ans += l_max - height[l];  
                l++;
