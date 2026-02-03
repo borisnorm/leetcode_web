@@ -16,6 +16,7 @@ public:
 
              while (window_sum >= target)
              {
+                // 题目要求 the minimal length of a subarray whose sum is greater than or equal to target.
                 minLen = min(minLen, (r-l));
                 window_sum -= nums[l];
                 l++;
