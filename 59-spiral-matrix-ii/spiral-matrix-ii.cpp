@@ -8,39 +8,46 @@ public:
         int right = n - 1;
         int top = 0;
         int bottom = n -1;
-        int target = n * n;
+    
         int num = 1;
+        int target = n * n;
         vector<vector<int>> res(n, vector<int>(n));
         
         while (left <= right && top <= bottom)
+       // while(num <= target)
         {
-          if (left <= right)
+          
+          //if (left <= right)
           {
              for (int i = left; i <= right; i++)
-               res[top][i] = num++; 
+               res[top][i] = num++;
+             top++;
           }
-          top++;
 
-          if (top <= bottom)
+
+         // if (top <= bottom)
           {
               for (int i = top; i <= bottom; i++)
                 res[i][right] = num++;
+               right--;
           }
-          right--;
+         
 
           if (left <= right)
           {
              for (int i = right; i >= left; i--)
                 res[bottom][i] = num++;
+               bottom--;
           }
-          bottom--;
+       
 
           if (top <= bottom)
           {
              for (int i = bottom; i >= top; i--)
                res[i][left] = num++;
+              left++;
           }
-          left++;
+        
         }
 
         return res;
