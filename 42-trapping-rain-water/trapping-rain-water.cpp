@@ -20,7 +20,7 @@ public:
             l_max = max(l_max, height[l]);
             r_max = max(r_max, height[r]);
 
-            
+            // 比较的是 l_max 与  r_max 不是 height[l] 与 height[r]
             if (l_max <= r_max)
             {
                ans += l_max - height[l];  
