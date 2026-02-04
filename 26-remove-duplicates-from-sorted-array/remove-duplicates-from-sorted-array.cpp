@@ -5,9 +5,12 @@ public:
           return 0;
         
         int n = nums.size();
-        
+
         // [0, slow), slow is next avail write pos
+        // slow - 1 是 最后一个合法位置
         int slow = 1;
+        //fast 从哪开始，取决于：“有没有一部分元素在一开始就已经被处理/确认过了”
+        // 根据题意nums[0] 已经处理完了 fast 要从下一个开始
         for (int fast = 1; fast < n; fast++)
         {
            if (nums[fast] != nums[slow-1])
