@@ -11,7 +11,8 @@ public:
         {
             if (nums[fast] != 0)
             {
-                swap(nums[slow], nums[fast]);
+                if (slow != fast)
+                  swap(nums[slow], nums[fast]);
                 slow++;
             }
         }
