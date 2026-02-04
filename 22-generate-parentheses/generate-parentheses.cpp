@@ -6,6 +6,8 @@ public:
          if (n <= 0)
            return res;
          
+         // n pair parenthese 的意思是 
+         // n 个左括号, n个右括号
          int left = n;
          int right = n;
          
@@ -19,7 +21,7 @@ public:
         if (right < left)
           return;
 
-        if (right < 0)
+        if (left < 0 || right < 0)
           return;
          
         if (left == 0 && right == 0)
