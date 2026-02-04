@@ -11,11 +11,15 @@ public:
         {
             if (nums[fast] != 0)
             {
-                if (slow != fast)
-                  swap(nums[slow], nums[fast]);
+                //if (slow != fast)
+                //  swap(nums[slow], nums[fast]);
+                nums[slow] = nums[fast];
                 slow++;
             }
         }
+
+        for(int i = slow; i < n; i++)
+          nums[i] = 0;
 
     }
 };
