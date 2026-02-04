@@ -3,7 +3,7 @@ public:
     int evalRPN(vector<string>& tokens) {
         
         stack<long long> st;
-        for (string t: tokens)
+        for (string& t: tokens)
         {
             if (t == "+" || t == "-" || t == "*" || t == "/")
             {
