@@ -18,11 +18,11 @@ public:
 
     void backtrack(int left, int right)
     {
-        if (right < left)
-          return;
+        //if (right < left)
+        //  return;
 
-        if (left < 0 || right < 0)
-          return;
+        //if (left < 0 || right < 0)
+        //  return;
          
         if (left == 0 && right == 0)
         {
@@ -30,14 +30,14 @@ public:
             return;
         }
 
-        //if (left > 0)
+        if (left > 0)
         {
             track.push_back('(');
             backtrack(left-1, right);
             track.pop_back();
         }
 
-        //if (right > left)
+        if (right > left)
         {
            track.push_back(')');
            backtrack(left, right-1);
