@@ -30,14 +30,14 @@ public:
             return;
         }
 
-        if (left > 0)
+        //if (left > 0)
         {
             track.push_back('(');
             backtrack(left-1, right);
             track.pop_back();
         }
 
-        if (right > left)
+        //if (right > left)
         {
            track.push_back(')');
            backtrack(left, right-1);
