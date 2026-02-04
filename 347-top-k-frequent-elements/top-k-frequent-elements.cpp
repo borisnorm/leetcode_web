@@ -10,11 +10,19 @@ public:
         
         int n = nums.size();
 
+        // 基于 频率的桶
         //最大频次也就是 所有元素都是同一个, 共n个
+        // 1-based 的 freq频率 bucket
+        // 这是频次 bucket
+        // 1, 2, 3, 4, 5, 6 
+        //            5代表出现5次, 6代表出现6次
         vector<vector<int>> bucket(n+1);
 
         for (auto it: num2freq)
         {
+           // 频次 作为 bucket 的 idx
+           // 相同 高频的 不同 val 会作为 被bucket 的 content
+           // 这些 val 被 unordered_map 过滤后已经是唯一的了
            bucket[it.second].push_back(it.first);
         }
         
