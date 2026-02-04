@@ -1,36 +1,38 @@
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
-        stack<long long> ops_stack;
-
-        for (auto &t : tokens)
+        
+        stack<long long> st;
+        for (string t: tokens)
         {
-          if (t == "+" || t == "-" || t == "*" || t == "/")
-          {
-             long long a = ops_stack.top(); 
-             ops_stack.pop();
-             long long b = ops_stack.top();
-             ops_stack.pop();
-             long long res = 0;
+            if (t == "+" || t == "-" || t == "*" || t == "/")
+            {
+                //注意顺序 第一个 top 与 pop 出来的是 b, 不是 a
+                long long b = st.top(); 
+                st.pop();
 
-             if (t == "+")
-               res = b + a;
-             else if (t == "-")
-               res = b - a;
-             else if (t == "*")
-               res = b*a;
-             else if (t == "/")
-               res = b/a;
-             
-            ops_stack.push(res);
-             
-          }
-          else
-          {
-             ops_stack.push(stoll(t));
-          }
+                long long a = st.top();
+                st.pop();
+
+                long long res = 0;
+                
+                if (t == "+")
+                  res = a + b;
+                 else if (t == "-")
+                  res = a - b;
+                 else if (t == "*")
+                  res = a * b;
+                 else if (t == "/")
+                  res = a / b;
+                
+                st.push(res);
+            }
+            else
+            {
+               st.push(stoll(t));
+            }
         }
 
-        return ops_stack.top();
+        return (int)st.top();
     }
 };
