@@ -10,6 +10,7 @@ public:
          sort(nums.begin(), nums.end());  //关键
 
          long long best = nums[0] + nums[1] + nums[2];
+         // for (int i = 0; i + 3 < n; i++
          for (int i = 0; i < n - 2; i++)
          {
            int l = i + 1;
@@ -17,7 +18,7 @@ public:
 
            while (l < r)
            {
-             long long sum = nums[i] + nums[l] + nums[r];
+             long long sum = 1LL*nums[i] + nums[l] + nums[r];
               
               if (llabs(sum - target) < llabs(best - target))
                 best = sum;
