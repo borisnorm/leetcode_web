@@ -25,12 +25,15 @@ public:
             }
         }
 
+       /* 
+        // 已经在 nums1上有序了
         while (i >=0 && k >= 0)
         {
            nums1[k] = nums1[i];
            i--;
            k--;
         }
+        */
 
         while (j >=0 && k >= 0)
         {
