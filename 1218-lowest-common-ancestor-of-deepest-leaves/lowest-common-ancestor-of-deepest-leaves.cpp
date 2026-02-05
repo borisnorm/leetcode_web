@@ -14,8 +14,8 @@ public:
  int getDepth(TreeNode* root, TreeNode** lca) {
     if (!root) return 0;
 
-    TreeNode* l_lca = root;
-    TreeNode* r_lca = root;
+    TreeNode* l_lca = nullptr;
+    TreeNode* r_lca = nullptr;
 
     int ld = getDepth(root->left,  &l_lca);
     int rd = getDepth(root->right, &r_lca);
