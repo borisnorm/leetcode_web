@@ -9,7 +9,6 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-/*
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
@@ -43,8 +42,9 @@ public:
        return max(leftHeight, rightHeight) + 1;
     }
 };
-*/
 
+/*
+// 也可以 work, 但性能很差
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
@@ -69,3 +69,40 @@ public:
 
     }
 };
+*/
+
+/* 
+// 与上面的版本一样, 也可以 work
+ class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        if (!root)
+          return true;
+
+        if (getBSTHeight(root) == -1)
+          return false;
+
+        return true;  
+    }
+
+    int getBSTHeight(TreeNode* root)
+    {
+       if (!root)
+         return 0;
+
+       int leftHeight = getBSTHeight(root->left);
+       if (leftHeight == -1)
+         return -1;
+        
+       int rightHeight = getBSTHeight(root->right);
+       if (rightHeight == -1)
+         return -1;
+    
+       if (abs(leftHeight - rightHeight) > 1)
+         return -1;
+    
+       return max(leftHeight, rightHeight) + 1;
+    }
+ };
+
+ */
