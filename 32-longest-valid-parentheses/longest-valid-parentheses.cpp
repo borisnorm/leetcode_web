@@ -7,7 +7,7 @@ public:
       // (2)它真的被用来算“第一个合法 ()”的长度。
       st.push(-1);  
 
-      int ans = 0;
+      int res = 0;
       int n = s.size();
       for (int i = 0; i < n; i++)
       {
@@ -38,11 +38,11 @@ public:
               // 当前合法区间长度
               // (last_invalid, i] —— 左开右闭区间
               //长度 = 当前下标 − 最近一个不合法下标？
-              ans = max(ans, i - st.top());
+              res = max(res, i - st.top());
            }
         }
       }
 
-      return ans;
+      return res;
     }
 };
