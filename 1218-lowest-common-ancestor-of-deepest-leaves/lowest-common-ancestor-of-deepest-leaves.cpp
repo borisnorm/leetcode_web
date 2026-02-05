@@ -9,6 +9,72 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+class Solution {
+public:
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        if (!root)
+          return nullptr;
+
+        return getDepth(root).second;
+    }
+
+private:
+    pair<int, TreeNode*> getDepth(TreeNode* root)
+    {
+        if (!root)
+        {
+           return {0, nullptr};
+        }
+
+        auto [l_depth, l_lca] = getDepth(root->left);
+        auto [r_depth, r_lca] = getDepth(root->right);
+
+        TreeNode* lca = nullptr;
+        int maxDepth = 0;
+        if (l_depth > r_depth)
+        {
+           maxDepth = l_depth;
+           lca = l_lca;
+        }
+        else if (l_depth < r_depth)
+        {
+           maxDepth = r_depth;
+           lca = r_lca;
+        }
+        else
+        {
+           //相等的情况取哪一个都可以的
+           maxDepth = l_depth;
+           lca = root;
+        }
+
+        return {maxDepth+1, lca};
+    }
+/*
+    pair<int, TreeNode*> getDepth(TreeNode* node) {
+        if (!node) 
+          return {0, nullptr};
+
+        auto [l_depth, l_lca] = d(node->left);
+        auto [r_depth, r_lca] = dfs(node->right);
+
+        // Step: compute current depth
+        int d = max(dl, dr) + 1;
+
+        // Step: choose lca based on depth comparison
+        if (dl == dr) {
+            return {d, node};
+        } else if (dl > dr) {
+            return {d, al};
+        } else {
+            return {d, ar};
+        }
+    }
+    */
+};
+
+/*
 class Solution {
 public:
  int getDepth(TreeNode* root, TreeNode** lca) {
@@ -37,6 +103,8 @@ TreeNode* lcaDeepestLeaves(TreeNode* root) {
     return ans;
 }
 };
+
+*/
 
 /*
 class Solution {
