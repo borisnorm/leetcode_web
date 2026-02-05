@@ -45,35 +45,27 @@ public:
 };
 */
 
-
- class Solution {
+class Solution {
 public:
-     bool isBalanced(TreeNode* root) {
+    bool isBalanced(TreeNode* root) {
         if (!root)
           return true;
-
-        if (getBSTHeight(root) == -1)
-          return false;
-
-        return true;  
-    }
-
-    int getBSTHeight(TreeNode* root)
-    {
-       if (!root)
-         return 0;
-
-       int leftHeight = getBSTHeight(root->left);
-       if (leftHeight == -1)
-         return -1;
         
-       int rightHeight = getBSTHeight(root->right);
-       if (rightHeight == -1)
-         return -1;
-    
-       if (abs(leftHeight - rightHeight) > 1)
-         return -1;
-    
-       return max(leftHeight, rightHeight) + 1;
+        int leftHeight = getDepth(root->left);
+        int rightHeight = getDepth(root->right);
+
+        if (abs(leftHeight - rightHeight) > 1)
+          return false;
+        
+        return isBalanced(root->left) && isBalanced(root->right);
     }
- };
+
+    int getDepth(TreeNode* root)
+    {
+        if (!root)
+          return 0;
+        
+        return max(getDepth(root->left), getDepth(root->right)) + 1;
+
+    }
+};
