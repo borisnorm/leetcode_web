@@ -7,10 +7,16 @@ public:
 
         int m = s.size();
         int n = t.size();
-         
+        
+         if (n > m)
+           return "";
+           
         unordered_map<char, int> need;
         unordered_map<char, int> window;
-
+         // get t freq
+         // slide window on s to match t
+         // calculate len on matched case
+         // return minLen
         for (char c : t)
           need[c]++;
 
@@ -22,19 +28,17 @@ public:
 
         while (r < m)
         {
-            char c = s[r];
-            r++;
-
+            char c = s[r];  // [l, r)
             if (need.count(c))
             {
                window[c]++;
                if (window[c] == need[c])
                  valid++;
             }
+            r++;
 
             while (valid == need.size())
             {
-              
                if (r - l  < len)
                {
                  len = r - l;
@@ -42,7 +46,6 @@ public:
                }
 
                char d = s[l];
-
                if (need.count(d))
                {
                  if(window[d] == need[d])
