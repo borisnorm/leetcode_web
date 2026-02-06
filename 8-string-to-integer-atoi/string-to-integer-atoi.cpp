@@ -28,26 +28,31 @@ public:
            int digit = s[i] - '0';
            res = res * 10 + digit;
 
+           if (res > INT_MAX)
+             return sign > 0 ? INT_MAX : INT_MIN;
             /*
-            // res 现在是绝对值
             if (sign == 1 && res > INT_MAX)
                 return INT_MAX;
 
-             // INT_MIN的绝对值
+             //  res 现在是绝对值 与 INT_MIN的绝对值 对比
             if (sign == -1 && res > (long long)INT_MAX + 1) 
                 return INT_MIN;
             */
-          
+           /* 
+            下面的写法也是正确的
            if (sign > 0)
            {
               if (res > INT_MAX)
                return INT_MAX;
            }
-            else
+           else
+           {
               if (res > (long long)INT_MAX + 1)
                 return INT_MIN;
-        
-            i++;
+           }
+           */
+
+          i++;
         }
 
         return (int) (res * sign) ;
