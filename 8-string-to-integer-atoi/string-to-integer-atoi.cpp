@@ -11,6 +11,8 @@ public:
         if (i == n)
           return 0;
         
+        // i 不可以在没有判断 是 '+' 或是 '-' 的前提下 随便++
+        // 一旦遇到数字就错过了
         if (i < n && (s[i]=='+' || s[i]=='-'))
         {
           sign = (s[i]=='-') ? -1 : 1;
@@ -19,30 +21,32 @@ public:
         if (i == n)
           return 0;
 
+        // res 现在是绝对值
         long long res = 0;
         while (i < n && '0' <= s[i] && s[i] <='9')
         {
            int digit = s[i] - '0';
            res = res * 10 + digit;
 
-            //if (res * sign > INT_MAX) return INT_MAX;
-           // if (res * sign < INT_MIN) return INT_MIN;
-
-        
-                        // ✅ 提前检查：在乘以sign之前就检查边界
+            /*
+            // res 现在是绝对值
             if (sign == 1 && res > INT_MAX)
                 return INT_MAX;
-            if (sign == -1 && res > (long long)INT_MAX + 1)  // INT_MIN的绝对值
+
+             // INT_MIN的绝对值
+            if (sign == -1 && res > (long long)INT_MAX + 1) 
                 return INT_MIN;
-         
-          /*
+            */
+          
            if (sign > 0)
-             if (res > INT_MAX)
+           {
+              if (res > INT_MAX)
                return INT_MAX;
+           }
             else
               if (res > (long long)INT_MAX + 1)
                 return INT_MIN;
-            */
+        
             i++;
         }
 
