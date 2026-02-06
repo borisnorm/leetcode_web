@@ -1,6 +1,30 @@
 class Solution {
 public:
     int findMin(vector<int>& nums) {
+         if (nums.empty())
+           return -1;
+        
+        int n = nums.size();
+        int l = 0;
+        int r = n - 1;
+        while (l < r)
+        {
+           long long mid = l + (r - l)/2;
+
+           if (nums[mid] < nums[r])
+             r = mid;
+           else
+             l = mid + 1;
+        }
+
+        return nums[l];
+    }
+};
+
+/*
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
         if (nums.empty()) return -1;
 
         int left = 0;
@@ -22,3 +46,5 @@ public:
         return ans;
     }
 };
+
+*/
