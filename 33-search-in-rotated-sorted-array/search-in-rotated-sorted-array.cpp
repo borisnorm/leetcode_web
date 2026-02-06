@@ -8,6 +8,9 @@ public:
         int l = 0;
         int r = n - 1;
 
+        if (n == 1)
+          return nums[0] == target ? 0 : -1;
+
         while (l <= r)
         {
             int mid = l + (r - l)/2;
