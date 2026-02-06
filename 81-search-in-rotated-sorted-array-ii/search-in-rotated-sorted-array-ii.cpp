@@ -21,14 +21,18 @@ public:
           if (nums[mid] == target)
             return true;
           
-          //全相同就收缩 重新判定
+          // corner case
+          // 全相同就收缩 重新判定
+          // 处理重复元素: 当左中右三个值相等时,无法判断哪边有序
+          // 只能缩小搜索范围
           if (nums[l] == nums[mid] && nums[mid] == nums[r])
           {
              l++;
              r--;
-             //continue;
+             continue;
           }
-          else if (nums[mid] <= nums[r])
+
+          if (nums[mid] <= nums[r])
           {
             // pivot in left side
             if (nums[mid] < target && target <= nums[r])
