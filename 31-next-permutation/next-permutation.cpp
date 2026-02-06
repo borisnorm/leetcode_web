@@ -18,11 +18,12 @@ public:
         }
     
         // go throught from end to front, find first j > i
-        // then swap them, to gurantee the min prefix and max suffix
-        // as suffix is been in decrasing order, which is the max number in ascending order
         int j = n - 1;
         while (j >= 0 && nums[j] <= nums[i])
           j--;
+          
+        // then swap them, to gurantee the min prefix and max suffix
+        // as suffix is been in decrasing order, which is the max number in ascending order
         swap(nums[i], nums[j]);
         
         //reverse the suffix to the end 
