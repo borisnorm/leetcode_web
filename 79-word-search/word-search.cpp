@@ -9,6 +9,11 @@ public:
         int m = board.size();
         int n = board[0].size();
 
+        // Step 0 (optional pruning): frequency check
+        if (!freqOk(board, word)) 
+          return false;
+
+        // dfs + backtrack
         for (int i = 0 ; i < m; i++)
         {
           for (int j = 0; j < n; j++)
@@ -51,4 +56,20 @@ public:
 
        return found;
     }
+
+      bool freqOk(const vector<vector<char>>& board, const string& word) {
+        array<int, 128> cntB{};
+        array<int, 128> cntW{};
+        for (auto& row : board)
+            for (char c : row)
+                cntB[(int)c]++;
+
+        for (char c : word) cntW[(int)c]++;
+
+        for (int i = 0; i < 128; i++) {
+            if (cntW[i] > cntB[i]) return false;
+        }
+        return true;
+    }
+
 };
