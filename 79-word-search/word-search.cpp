@@ -39,23 +39,16 @@ public:
 
        //choose
        char tmp = board[i][j];
-       board[i][j] = -board[i][j];
+       board[i][j] = '#';
 
-       if (dfs(board, i+1, j, word, idx+1))
-         return true;
-
-       if (dfs(board, i-1, j, word, idx+1))
-         return true;
-
-       if (dfs(board, i, j+1, word, idx+1))
-         return true;
-
-       if (dfs(board, i, j-1, word, idx+1))
-         return true;
+       bool found = dfs(board, i+1, j, word, idx+1) || 
+                    dfs(board, i-1, j, word, idx+1) ||
+                    dfs(board, i, j+1, word, idx+1) ||
+                    dfs(board, i, j-1, word, idx+1);
 
        // unchoose
-       board[i][j] = -board[i][j];
+       board[i][j] = tmp;
 
-       return false;
+       return found;
     }
 };
