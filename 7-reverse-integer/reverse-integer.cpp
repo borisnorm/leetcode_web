@@ -1,13 +1,14 @@
 class Solution {
 public:
     int reverse(int x) {
-        int res = 0;
 
+        int res = 0;
         while (x)
         {
            int digit = x % 10;
            x = x/10;
   
+           // return 0 是题意 要求
            if (res > INT_MAX/10 || (res == INT_MAX/10) && digit > 7)
              return 0;
             
@@ -18,6 +19,5 @@ public:
         } 
 
         return res;   
-     
     }
 };
