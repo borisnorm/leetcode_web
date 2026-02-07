@@ -10,7 +10,7 @@ public:
         int n = board[0].size();
 
         // Step 0 (optional pruning): frequency check
-        if (!freqOk(board, word)) 
+        if (!freqchk(board, word)) 
           return false;
 
         // dfs + backtrack
@@ -57,17 +57,29 @@ public:
        return found;
     }
 
-      bool freqOk(const vector<vector<char>>& board, const string& word) {
-        array<int, 128> cntB{};
-        array<int, 128> cntW{};
-        for (auto& row : board)
-            for (char c : row)
-                cntB[(int)c]++;
+    //如果 word 里某个字符出现的次数，比整个 board 里该字符的总次数还多，那一定不可能找到路径
+    bool freqchk(vector<vector<char>>& board, string& word)
+    {
+       // 这是错误的
+       //int[128] board_freq;
+       //int[128] word_freq;
 
-        for (char c : word) cntW[(int)c]++;
+       int board_freq[128];
+       int word_freq[128];
 
-        for (int i = 0; i < 128; i++) {
-            if (cntW[i] > cntB[i]) return false;
+        for (auto s: board)
+        {
+          for (char c: s)
+            board_freq[c]++;
+        }
+
+       for (char c: word)
+         word_freq[c]++;
+        
+        for (int i = 0; i < 128; i++)
+        {
+          if (board_freq[i] < word_freq[i])
+            return false;
         }
         return true;
     }
