@@ -4,6 +4,56 @@ public:
             int m = nums1.size();
             int n = nums2.size();
 
+            if (m > n)
+              return findMedianSortedArrays(nums2, nums1);
+
+            
+            int l = 0;
+            int r = m;
+
+            while (l <= r)
+            {
+               int p1 = l + (r-l)/2;
+               // gurantee n1 left has more elements
+               int p2 = (m+n+1)/2 - p1;
+
+               int maxL1 = (p1 == 0) ? INT_MIN : nums1[p1-1];
+               int minR1 = (p1 == m) ? INT_MAX : nums1[p1];
+
+               int maxL2 = (p2 == 0) ? INT_MIN : nums2[p2-1];
+               int minR2 = (p2 == n) ? INT_MAX : nums2[p2];
+
+               if (maxL1 <= minR2 && maxL2 <= minR1)
+               {
+                  // odd number
+                  if ((m+n)%2 == 1)
+                  {
+                    return max(maxL1, maxL2);
+                  }
+
+                  return (max(maxL1, maxL2) + min(minR1, minR2))/2.0;
+               }
+               else if (maxL1 > minR2)
+               {
+                  r = p1 - 1;
+               }
+               else
+               {
+                  l = p1 + 1;
+               }
+            }
+
+            return 0.0;
+    }
+};
+
+/*
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+            int m = nums1.size();
+            int n = nums2.size();
+
             if (!m && !n)
               return 0;
             
@@ -70,3 +120,5 @@ public:
         return res;
     }
 };
+
+*/
