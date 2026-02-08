@@ -26,8 +26,8 @@ public:
          if (!head)
            return nullptr;
 
-         if (!head->next)
-           return new TreeNode(head->val);
+         //if (!head->next)
+         //  return new TreeNode(head->val);
         
          ListNode* slow = head;
          ListNode* fast = head;
@@ -45,7 +45,7 @@ public:
 
          TreeNode* node = new TreeNode(slow->val);
 
-         node->left  = sortedListToBST(head);
+         node->left = (slow == head) ? nullptr : sortedListToBST(head);
          node->right = sortedListToBST(slow->next);
         
          return node;
