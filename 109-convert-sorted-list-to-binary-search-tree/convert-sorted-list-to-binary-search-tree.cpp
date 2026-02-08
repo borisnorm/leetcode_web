@@ -19,24 +19,16 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-/*
+
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
          if (!head)
            return nullptr;
-         
-         return build(head);
-    }
 
-    TreeNode* build(ListNode* head)
-    {
-         if (!head)
-           return nullptr;
-
-        if (!head->next) 
-           return new TreeNode(head->val); // 单节点直接返回，避免断链边界坑
-       
+         if (!head->next)
+           return new TreeNode(head->val);
+        
          ListNode* slow = head;
          ListNode* fast = head;
         
@@ -53,16 +45,16 @@ public:
 
          TreeNode* node = new TreeNode(slow->val);
 
-         node->left = (slow == head) ? nullptr : build2(head);
-         //node->left = build2(head);
-         node->right = build2(slow->next);
+         node->left  = sortedListToBST(head);
+         node->right = sortedListToBST(slow->next);
         
          return node;
     }
+
 };
-*/
 
 
+/*
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
@@ -93,5 +85,5 @@ public:
         
          return node;
     }
-
 };
+*/
