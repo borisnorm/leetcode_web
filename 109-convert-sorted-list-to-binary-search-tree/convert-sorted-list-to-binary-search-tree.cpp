@@ -19,40 +19,17 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+/*
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
          if (!head)
            return nullptr;
-
-         //return build(head, nullptr);  
          
-         return build2(head);
+         return build(head);
     }
 
-    TreeNode* build(ListNode* head, ListNode* tail)
-    {
-         if (head == tail)
-           return nullptr;
-       
-         ListNode* slow = head;
-         ListNode* fast = head->next;
-        
-         while (fast != tail && fast->next != tail)
-         {
-            slow = slow->next;
-            fast = fast->next->next;
-         }
-
-         TreeNode* node = new TreeNode(slow->val);
-
-         node->left  = build(head, slow);
-         node->right = build(slow->next, tail);
-        
-         return node;
-    }
-
-    TreeNode* build2(ListNode* head)
+    TreeNode* build(ListNode* head)
     {
          if (!head)
            return nullptr;
@@ -82,4 +59,40 @@ public:
         
          return node;
     }
+};
+*/
+
+
+class Solution {
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+         if (!head)
+           return nullptr;
+
+        return build(head, nullptr);  
+    }
+
+    TreeNode* build(ListNode* head, ListNode* tail)
+    {
+         if (head == tail)
+           return nullptr;
+       
+         ListNode* slow = head;
+         ListNode* fast = head->next;
+        
+         while (fast != tail && fast->next != tail)
+         {
+            slow = slow->next;
+            fast = fast->next->next;
+         }
+
+         TreeNode* node = new TreeNode(slow->val);
+
+         node->left  = build(head, slow);
+         node->right = build(slow->next, tail);
+        
+         return node;
+    }
+
+    
 };
