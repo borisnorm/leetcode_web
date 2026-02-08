@@ -11,6 +11,62 @@
  */
 class Solution {
 public:
+
+    vector<int> rightSideView(TreeNode* root) {
+        if (!root)
+          return {};
+
+         vector<int> res;
+         dfs(root, 0, res);
+         return res;
+    };
+
+    void dfs(TreeNode* root, int depth, vector<int>& res)
+    {
+        if (!root)
+          return;
+        
+        if (depth == res.size())
+          res.push_back(root->val);
+        
+        //right first
+        dfs(root->right, depth+1, res);
+
+        //left second
+        dfs(root->left, depth+1, res);
+    }
+};
+
+
+/*
+class Solution {
+public:
+    vector<int> res;
+    vector<int> rightSideView(TreeNode* root) {
+        if (!root)
+          return {};
+
+         dfs(root, 0);
+         return res;
+    };
+
+    void dfs(TreeNode* root, int depth)
+    {
+        if (!root)
+          return;
+        
+        if (depth == res.size())
+          res.push_back(root->val);
+        
+        // right first
+        dfs(root->right, depth+1);
+        dfs(root->left, depth+1);
+    }
+};
+*/
+/*
+class Solution {
+public:
     vector<int> rightSideView(TreeNode* root) {
          vector<int> res;
          if (!root)
@@ -41,6 +97,7 @@ public:
          }
 
          return res;
-         
     }
 };
+
+*/
