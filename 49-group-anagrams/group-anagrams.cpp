@@ -17,7 +17,6 @@ public:
         
            for (int i = 0; i < 26; i++)
              key += to_string(freq[i]) + "#";
- 
            
            key2group[key].push_back(s);
         }
