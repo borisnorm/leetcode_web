@@ -3,6 +3,33 @@ public:
 
     vector<vector<string>> groupAnagrams(vector<string>& strs)
     {
+       if (strs.empty())
+         return {};
+       
+       vector<vector<string>> res; 
+       unordered_map<string, vector<string>> key2group;
+       for (string& s: strs)
+       {
+          string key = s;
+          sort(key.begin(), key.end());
+          key2group[key].push_back(s);
+       }
+
+       for (auto [key, group]: key2group)
+       {
+          res.push_back(group);
+       }
+
+       return res;
+    }
+};
+
+/*
+class Solution {
+public:
+
+    vector<vector<string>> groupAnagrams(vector<string>& strs)
+    {
         if (strs.empty())
           return {};
 
@@ -36,9 +63,8 @@ public:
         }
 
         return res;
-
-
     }
+*/
     
 /*    
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
@@ -71,5 +97,6 @@ public:
         return res;
     }
 
-    */
+    
 };
+*/
