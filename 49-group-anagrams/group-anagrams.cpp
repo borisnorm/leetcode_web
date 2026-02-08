@@ -15,10 +15,16 @@ public:
           key2group[key].push_back(s);
        }
 
+    /*
        for (auto& [key, group]: key2group)
        {
           res.push_back(group);
        }
+    */
+    for (auto& kv_pair: key2group)
+    {
+       res.push_back(kv_pair.second);
+    }
 
        return res;
     }
