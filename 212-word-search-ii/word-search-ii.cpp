@@ -1,15 +1,16 @@
 
-class TrieNode{
-  public: 
-    unordered_map<char, TrieNode*> children;
-    string word;
-    TrieNode(){word = "";}
-};
-
+    struct TrieNode
+    {
+ // public: 
+      unordered_map<char, TrieNode*> children;
+      string word;
+      TrieNode(){word = "";}
+    };
 
 class Solution {
 public:
-    
+
+
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
         if (board.empty() || words.empty())
           return {};
