@@ -46,7 +46,7 @@ public:
 
          TreeNode* node = new TreeNode(slow->val);
 
-         node->left = build(head, slow);
+         node->left  = build(head, slow);
          node->right = build(slow->next, tail);
         
          return node;
@@ -61,7 +61,7 @@ public:
            return new TreeNode(head->val); // 单节点直接返回，避免断链边界坑
        
          ListNode* slow = head;
-         ListNode* fast = head->next;
+         ListNode* fast = head;
         
          ListNode* pre = nullptr;
          while (fast && fast->next)
