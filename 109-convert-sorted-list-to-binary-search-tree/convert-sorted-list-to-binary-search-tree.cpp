@@ -26,8 +26,8 @@ public:
          if (!head)
            return nullptr;
 
-         //if (!head->next)
-         //  return new TreeNode(head->val);
+         if (!head->next)
+           return new TreeNode(head->val);
         
          ListNode* slow = head;
          ListNode* fast = head;
@@ -45,6 +45,8 @@ public:
 
          TreeNode* node = new TreeNode(slow->val);
 
+         //slow 已经被用掉, 如何 slow==head, 也就是只有一个节点的时候
+         //那就是错误了
          node->left = (slow == head) ? nullptr : sortedListToBST(head);
          node->right = sortedListToBST(slow->next);
         
