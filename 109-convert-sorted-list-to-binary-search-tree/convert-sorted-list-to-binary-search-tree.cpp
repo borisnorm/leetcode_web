@@ -78,7 +78,7 @@ public:
            return nullptr;
        
          ListNode* slow = head;
-         ListNode* fast = head->next;
+         ListNode* fast = head;
         
          while (fast != tail && fast->next != tail)
          {
