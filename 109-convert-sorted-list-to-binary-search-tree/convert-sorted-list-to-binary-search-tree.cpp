@@ -21,6 +21,46 @@
  */
 class Solution {
 public:
+    TreeNode* sortedListToBST(ListNode* head) {
+         if (!head)
+           return nullptr;
+
+         if (!head->next)
+           return new TreeNode(head->val);
+
+         ListNode* p = head;
+         int n = 0;
+         while (p)
+         {
+            n++;
+            p = p->next;
+         }
+         return build(head, 0, n-1);
+    }
+
+    TreeNode* build(ListNode*& cur, int l, int r)
+    {
+       //inorder bst
+       if (l > r)
+         return nullptr;
+        
+       int mid = l + (r-l)/2;
+
+       TreeNode* left = build(cur, l, mid-1);
+
+       TreeNode* root = new TreeNode(cur->val);
+       cur = cur->next;
+
+       root->left = left;
+       root->right = build(cur, mid+1, r);
+
+       return root;
+    }
+};
+
+/*
+class Solution {
+public:
     ListNode* cur = nullptr;
     TreeNode* sortedListToBST(ListNode* head) {
          if (!head)
@@ -37,8 +77,8 @@ public:
             p = p->next;
          }
 
-         cur = head;
-         return build(0, n-1);
+        cur = head;
+        return build(0, n-1);
     }
 
     TreeNode* build(int l, int r)
@@ -60,6 +100,9 @@ public:
        return root;
     }
 };
+
+*/
+
 
 
 /*
