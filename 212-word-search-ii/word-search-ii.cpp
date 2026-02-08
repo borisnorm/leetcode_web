@@ -4,7 +4,7 @@ public:
 
     struct TrieNode
     {
- // public: 
+      public: 
       unordered_map<char, TrieNode*> children;
       string word;
       TrieNode(){word = "";}
