@@ -15,7 +15,7 @@ public:
           key2group[key].push_back(s);
        }
 
-       for (auto [key, group]: key2group)
+       for (auto& [key, group]: key2group)
        {
           res.push_back(group);
        }
