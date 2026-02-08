@@ -1,4 +1,7 @@
 
+class Solution {
+public:
+
     struct TrieNode
     {
  // public: 
@@ -6,10 +9,6 @@
       string word;
       TrieNode(){word = "";}
     };
-
-class Solution {
-public:
-
 
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
         if (board.empty() || words.empty())
