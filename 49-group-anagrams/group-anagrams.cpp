@@ -3,6 +3,38 @@ public:
 
     vector<vector<string>> groupAnagrams(vector<string>& strs)
     {
+        if (strs.empty())
+          return {};
+        
+        unordered_map<string, vector<string>>  key2group;
+        vector<vector<string>> res;
+        for(string& s: strs)
+        {
+           int freq[26] = {0};
+           string key = "";
+           for(char c: s)
+             freq[c-'a']++;;
+        
+           for (int i = 0; i < 26; i++)
+             key += to_string(freq[i]) + "#";
+ 
+           
+           key2group[key].push_back(s);
+        }
+
+        for (auto& [key, group]: key2group)
+          res.push_back(group);
+        
+        return res; 
+    }
+};
+
+/*
+class Solution {
+public:
+
+    vector<vector<string>> groupAnagrams(vector<string>& strs)
+    {
        if (strs.empty())
          return {};
        
@@ -15,20 +47,20 @@ public:
           key2group[key].push_back(s);
        }
 
-    /*
        for (auto& [key, group]: key2group)
        {
           res.push_back(group);
-       }
-    */
-    for (auto& kv_pair: key2group)
-    {
-       res.push_back(kv_pair.second);
-    }
-
+       } 
+    // 也是正确的
+     // for (auto& kv_pair: key2group)
+     // {
+     //  res.push_back(kv_pair.second);
+     // }
        return res;
     }
 };
+
+*/
 
 /*
 class Solution {
