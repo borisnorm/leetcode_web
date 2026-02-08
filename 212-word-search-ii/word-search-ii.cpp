@@ -1,11 +1,9 @@
 
 class TrieNode{
   public: 
-         unordered_map<char, TrieNode*> children;
-         string word;
-         TrieNode(){
-            word = "";
-         }
+    unordered_map<char, TrieNode*> children;
+    string word;
+    TrieNode(){word = "";}
 };
 
 
@@ -16,10 +14,11 @@ public:
         if (board.empty() || words.empty())
           return {};
 
-        TrieNode* root = buildTrie(words);
         int m = board.size();
         int n = board[0].size();
-        
+               
+        //words 全部进入到 Trie 中去了, 直接把 trie传给 dfs
+        TrieNode* root = buildTrie(words);
         unordered_set<string> found_words;
 
         for (int i = 0; i < m; i++)
@@ -42,11 +41,10 @@ public:
          return;
        
        char c = board[i][j];
-       if (node->children.find(c) == node->children.end())
+       if (!node->children.count(c))
          return;
-
+    
        node = node->children[c];
-
        if (!node->word.empty())
          foundWords.insert(node->word);
 
