@@ -11,7 +11,7 @@ public:
         for(string& s: strs)
         {
            int freq[26] = {0};
-           string key = "";
+           string key;
            for(char c: s)
              freq[c-'a']++;;
         
