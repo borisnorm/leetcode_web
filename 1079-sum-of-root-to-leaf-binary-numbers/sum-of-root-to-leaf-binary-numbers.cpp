@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ /*
 class Solution {
 public:
 
@@ -35,7 +36,7 @@ public:
 
             if (node->right)
               st.push({node->right, cur});
-              
+
             if (node->left)
               st.push({node->left, cur});
 
@@ -45,33 +46,35 @@ public:
     }
 
 };
+*/
 
-/*
 class Solution {
 public:
 
     long long sum = 0;
 
     int sumRootToLeaf(TreeNode* root) {
-        return dfs(root, 0);
+        return (int)dfs(root, 0);
     }
 
-    int dfs(TreeNode* root, int path)
+    long long dfs(TreeNode* root, long long path)
     {
        if (!root)
          return 0;
     
        path = path << 1 | root->val;
-       
        if (!root->left && !root->right)
           return path;
 
+      long long left = dfs(root->left, path);
+      long long right = dfs(root->right, path);
+
       //父节点只是把左右子树的结果 加起来
-      return dfs(root->left, path) + dfs(root->right, path);
+      return left + right;
        
     }
 };
-*/
+
 
 
 /*
