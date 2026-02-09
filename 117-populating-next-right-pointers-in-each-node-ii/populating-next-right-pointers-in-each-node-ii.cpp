@@ -15,6 +15,7 @@ public:
         : val(_val), left(_left), right(_right), next(_next) {}
 };
 */
+
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -45,12 +46,56 @@ public:
                cur = cur->next;
            }
 
+           //进入到下一层, cur 在 tail 那里就已经被更新过了
            cur = dummy.next;
         }
 
         return root;
     }
 };
+
+/*
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (!root)
+          return nullptr;
+        
+        if (root->left)
+        {
+            if (root->right)
+              root->left->next = root->right;
+            else
+              root->left->next = findNext(root->next);
+        }
+
+        if (root->right)
+          root->right->next = findNext(root->next);
+
+        connect(root->right);
+        connect(root->left);
+
+        return root;
+    }
+
+    Node* findNext(Node* node)
+    {
+       while (node)
+       {
+          if (node->left)
+            return node->left;
+        
+          if (node->right)
+            return node->right;
+        
+          node = node->next;
+       }
+
+       return nullptr;
+    }
+};
+*/
+
 /*
 class Solution {
 public:
