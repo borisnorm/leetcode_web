@@ -15,6 +15,39 @@ public:
     int pathSum(TreeNode* root, int targetSum) {
         if (!root)
           return 0;
+        
+        unordered_map<long long, int> prefixSum;
+        prefixSum[0] = 1;
+        
+        return dfs(root, targetSum, 0, prefixSum);
+    }
+
+    int dfs(TreeNode* root, int targetSum, long long curSum, unordered_map<long long, int>& prefixSum)
+    {
+       if (!root)
+         return 0;
+    
+       curSum += root->val;
+       
+       int cnt = prefixSum[curSum - targetSum];
+
+       prefixSum[curSum]++;
+       int left_cnt = dfs(root->left, targetSum, curSum, prefixSum); 
+       int right_cnt = dfs(root->right, targetSum, curSum, prefixSum);
+       prefixSum[curSum]--;
+
+       return left_cnt + right_cnt + cnt;
+    }
+};
+
+
+/*
+class Solution {
+public:
+    
+    int pathSum(TreeNode* root, int targetSum) {
+        if (!root)
+          return 0;
 
         return countPath(root, (long long)targetSum) + pathSum(root->left, targetSum) + pathSum(root->right, targetSum);
     }
@@ -32,3 +65,5 @@ public:
        return leftcnt + rightcnt + cnt;
     }
 };
+
+*/
