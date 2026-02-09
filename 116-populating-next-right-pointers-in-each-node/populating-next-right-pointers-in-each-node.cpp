@@ -15,7 +15,38 @@ public:
         : val(_val), left(_left), right(_right), next(_next) {}
 };
 */
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (!root)
+          return nullptr;
+        
+        Node* leftmost = root;
+        
+        while(leftmost->left)
+        {
+           Node* cur = leftmost;
+           while (cur)
+           {
+              // the same parent
+              cur->left->next = cur->right;
 
+              // different parent
+              if (cur->next)
+                cur->right->next = cur->next->left;
+
+              // next sibling
+              cur = cur->next;
+           }
+           // come back to the leftmost and to next left
+           leftmost = leftmost->left;
+        }
+
+        return root;
+    }
+};
+
+/*
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -53,3 +84,5 @@ public:
         return root;
     }
 };
+
+*/
