@@ -29,10 +29,11 @@ public:
         //long long r = dfs(root->right, maxSum);
         //l = max(l, 0LL);
         //r = max(r, 0LL);
-
+        
+         //l = max(l, 0); 会报错
         //不是 0 有问题，而是 std::max 的两个参数类型不一致，模板无法推导。
         //加上 0LL（你写成 OLL，本质是 0LL）后，类型统一成 long long，编译器就开心了。
-         long long l = max(dfs(root->left, maxSum), 0LL);
+        long long l = max(dfs(root->left, maxSum), 0LL);
         long long r = max(dfs(root->right, maxSum), 0LL);
 
         long long sum = l + r + root->val;
