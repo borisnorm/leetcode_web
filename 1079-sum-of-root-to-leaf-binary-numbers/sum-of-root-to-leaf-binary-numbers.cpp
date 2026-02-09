@@ -33,10 +33,12 @@ public:
                 sum += cur;
             }
 
-            if (node->left)
-              st.push({node->left, cur});
             if (node->right)
               st.push({node->right, cur});
+              
+            if (node->left)
+              st.push({node->left, cur});
+
         }
 
         return sum;
