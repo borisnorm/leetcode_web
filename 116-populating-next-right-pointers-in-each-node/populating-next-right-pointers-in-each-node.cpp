@@ -37,7 +37,7 @@ public:
               if (pre)
               {
                 pre->next = cur;
-                cur->next = nullptr;
+                //cur->next = nullptr;
               }
 
               pre = cur;
