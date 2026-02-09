@@ -22,9 +22,11 @@ public:
         if (!root)
           return nullptr;
 
+        //same parent
         if (root->left && root->right)
           root->left->next = root->right;
         
+        //different parent
         if (root->right && root->next)
           root->right->next = root->next->left;
         
@@ -69,11 +71,17 @@ public:
         
         Node* leftmost = root;
         
+        //本层 为 下一层 生成 next 链接
+        //本层（父节点层）负责为「下一层（子节点层）」生成完整的 next 链。
+        //所以要事先检查 下一层是否存在, 不存在就 没有必要继续了
         while(leftmost->left)
         {
+           //从本层最左节点开始, 不断 next, 构建 下一层的 next 链接
            Node* cur = leftmost;
            while (cur)
            {
+              //perfect tree 的 left 与 right 都是 存在的所以不用检查
+
               // the same parent
               cur->left->next = cur->right;
 
@@ -87,7 +95,6 @@ public:
            // come back to the leftmost and to next left
            leftmost = leftmost->left;
         }
-
         return root;
     }
 };
