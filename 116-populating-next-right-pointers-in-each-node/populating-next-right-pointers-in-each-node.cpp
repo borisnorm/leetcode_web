@@ -15,6 +15,26 @@ public:
         : val(_val), left(_left), right(_right), next(_next) {}
 };
 */
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (!root)
+          return nullptr;
+
+        if (root->left && root->right)
+          root->left->next = root->right;
+        
+        if (root->right && root->next)
+          root->right->next = root->next->left;
+        
+        connect(root->left);
+        connect(root->right);
+
+        return root;
+    }
+};
+/*
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -39,6 +59,7 @@ public:
         return root;
     }
 };
+*/
 /*
 class Solution {
 public:
