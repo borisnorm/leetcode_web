@@ -21,6 +21,31 @@ public:
         if (!root)
           return nullptr;
         
+        if (root->left)
+        {
+           Node* cur = root->left;
+
+           //same parent
+           root->left->next = root->right;
+
+           //different parent
+           if (root->next)
+             root->right->next = root->next->left;
+        }
+
+        connect(root->left);
+        connect(root->right);
+
+        return root;
+    }
+};
+/*
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (!root)
+          return nullptr;
+        
         Node* leftmost = root;
         
         while(leftmost->left)
@@ -45,6 +70,8 @@ public:
         return root;
     }
 };
+
+*/
 
 /*
 class Solution {
