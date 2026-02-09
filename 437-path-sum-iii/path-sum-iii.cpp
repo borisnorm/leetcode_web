@@ -24,11 +24,11 @@ public:
       if (!node)
         return 0;
 
-       int count = (node->val == targetSum) ? 1 : 0;
+       int cnt = (node->val == targetSum) ? 1 : 0;
 
-       count +=countPath(node->left, (targetSum - node->val));
-       count +=countPath(node->right, (targetSum - node->val));
+       long long leftcnt = countPath(node->left, (targetSum - node->val));
+       long long rightcnt = countPath(node->right, (targetSum - node->val));
 
-       return count;
+       return leftcnt + rightcnt + cnt;
     }
 };
