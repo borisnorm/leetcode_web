@@ -9,7 +9,40 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+class Solution {
+public:
+    int maxPathSum(TreeNode* root) {
+         if (!root)
+          return INT_MIN;
+         long long maxSum = LLONG_MIN;
+         dfs(root, maxSum);
 
+         return maxSum;
+    }   
+
+    long long dfs(TreeNode* root, long long& maxSum)
+    {
+        if (!root)
+          return 0;
+        
+       // long long l = dfs(root->left, maxSum);
+        //long long r = dfs(root->right, maxSum);
+        //l = max(l, 0LL);
+        //r = max(r, 0LL);
+
+        //不是 0 有问题，而是 std::max 的两个参数类型不一致，模板无法推导。
+        //加上 0LL（你写成 OLL，本质是 0LL）后，类型统一成 long long，编译器就开心了。
+         long long l = max(dfs(root->left, maxSum), 0LL);
+        long long r = max(dfs(root->right, maxSum), 0LL);
+
+        long long sum = l + r + root->val;
+        maxSum = max(maxSum, sum);
+
+        return max(l, r) + root->val;
+    }
+};
+
+/*
 class Solution {
 public:
     int max_sum = INT_MIN;
@@ -37,7 +70,7 @@ public:
         return max(left_sum, right_sum) + node->val;
     }
 };
-
+*/
 
 /*
 class Solution {
