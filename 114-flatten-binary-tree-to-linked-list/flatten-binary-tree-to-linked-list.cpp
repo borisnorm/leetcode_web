@@ -9,35 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-//https://claude.ai/chat/605c88a0-62f1-425a-888e-4d0a0935fbf9
-class Solution {
-public:
-    TreeNode* prev = nullptr;  // 全局指针，记录上一个访问的节点
-    
-    void flatten(TreeNode* root) {
-        if (!root) return;  // 空节点直接返回
-        
-        // 前序遍历顺序：根 → 左 → 右
-        
-        // 1. 先处理当前节点（根）
-        if (prev) {  // 如果有前驱节点
-            prev->right = root;  // 前驱的right指向当前节点
-            prev->left = nullptr;  // 前驱的left置空
-        }
-        prev = root;  // 更新prev为当前节点
-        
-        // 2. 保存左右子树（因为修改会破坏原结构）
-        TreeNode* left = root->left;  // 保存左子树指针
-        TreeNode* right = root->right;  // 保存右子树指针
-        
-        // 3. 递归处理左子树
-        flatten(left);
-        
-        // 4. 递归处理右子树
-        flatten(right);
-    }
-};
-/*
+
 class Solution {
 public:
     TreeNode* prev = nullptr;
@@ -54,7 +26,6 @@ public:
         prev = root;
     }
 };
-*/
 
 /*
  class Solution {
@@ -91,6 +62,39 @@ public:
     }
  };
  */
+
+/*
+//https://claude.ai/chat/605c88a0-62f1-425a-888e-4d0a0935fbf9
+class Solution {
+public:
+    TreeNode* prev = nullptr;  // 全局指针，记录上一个访问的节点
+    
+    void flatten(TreeNode* root) {
+        if (!root) return;  // 空节点直接返回
+        
+        // 前序遍历顺序：根 → 左 → 右
+        
+        // 1. 先处理当前节点（根）
+        if (prev) {  // 如果有前驱节点
+            prev->right = root;  // 前驱的right指向当前节点
+            prev->left = nullptr;  // 前驱的left置空
+        }
+        prev = root;  // 更新prev为当前节点
+        
+        // 2. 保存左右子树（因为修改会破坏原结构）
+        TreeNode* left = root->left;  // 保存左子树指针
+        TreeNode* right = root->right;  // 保存右子树指针
+        
+        // 3. 递归处理左子树
+        flatten(left);
+        
+        // 4. 递归处理右子树
+        flatten(right);
+    }
+};
+*/
+
+
 /* 
 class Solution {
 public:
