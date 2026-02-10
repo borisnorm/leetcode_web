@@ -19,6 +19,7 @@ public:
 };
 */
 
+/*
 class Solution {
 public:
     Node* cloneGraph(Node* node) {
@@ -26,6 +27,9 @@ public:
           return nullptr;
 
         unordered_map<Node*, Node*> cur2clone;
+    
+       //不必这么写, cloned_node 在内部 while 循环中使用
+       // dfs 这么写完全是为了 返回 原始 root node
        // Node* cloned_node = new Node(node->val);
        // cur2clone[node] = cloned_node;
 
@@ -56,6 +60,7 @@ public:
         return cur2clone[node];
     }
 };
+*/
 
 /*
 class Solution {
@@ -90,6 +95,37 @@ public:
 };
 
 */
+
+
+class Solution {
+public:
+unordered_map<Node*, Node*> cur2clone;
+    Node* cloneGraph(Node* node) {
+        if (!node)
+          return nullptr;
+        return dfs(node);
+    }
+
+    Node* dfs(Node* node)
+    {
+        if (!node)
+          return nullptr;
+        
+        if (cur2clone.count(node))
+          return cur2clone[node];
+        
+        Node* cloned_node = new Node(node->val);
+        cur2clone[node] = cloned_node;
+
+        for (Node* nei : node->neighbors)
+        {
+           cloned_node->neighbors.push_back(dfs(nei));
+        }
+
+        return cloned_node;
+    }
+};
+
 
 /*
 class Solution {
