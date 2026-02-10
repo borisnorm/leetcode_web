@@ -21,6 +21,40 @@ public:
 
 class Solution {
 public:
+
+    unordered_map<Node*, Node*> cur2clone;
+
+    Node* cloneGraph(Node* node) {
+        if (!node)
+          return nullptr;
+
+        return dfs(node);
+    }
+
+    Node* dfs(Node* node)
+    {
+        if (!node)
+          return nullptr;
+        
+        if (cur2clone.count(node))
+          return cur2clone[node];
+        
+        Node* cloned_node = new Node(node->val);
+        cur2clone[node] = cloned_node;
+
+        for (Node* nei : node->neighbors)
+        {
+           cloned_node->neighbors.push_back(dfs(nei));
+        }
+
+        return cloned_node;
+    }
+};
+
+
+/*
+class Solution {
+public:
     unordered_map<Node*, Node*> cloned_graph_map;
     Node* cloneGraph(Node* node) {
       if (!node)
@@ -33,10 +67,12 @@ public:
     {
       if (cloned_graph_map[node])
         return cloned_graph_map[node];
-       
+    
+      
       Node* cloned_node = new Node(node->val);
       cloned_graph_map[node] = cloned_node;
 
+      //遍历 cur 的 neibor, 给clone设置 neibor
       for (Node* neighbor: node->neighbors)
       {
          cloned_node->neighbors.push_back(dfs(neighbor));
@@ -46,3 +82,4 @@ public:
     }
 
 };
+*/
