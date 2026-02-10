@@ -9,6 +9,24 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+class Solution {
+public:
+    TreeNode* prev = nullptr;
+    void flatten(TreeNode* root) {
+        if (!root)
+          return;
+        
+        flatten(root->right);
+        flatten(root->left);
+       
+        root->right = prev;
+        root->left   = nullptr;
+
+        prev = root;
+    }
+};
+
+/*
  class Solution {
 public:
 
@@ -22,12 +40,19 @@ public:
             TreeNode* prev = cur;
             if (prev->left)
             {
+                //进入左端
                 prev = prev->left;
+                //进入左端的最右端
                 while (prev->right)
-                    prev = prev->right;
+                   prev = prev->right;
 
+                //左端的最右端 链接 当前节点的右端
                 prev->right = cur->right;
+
+                //当前节点的右端 链接 当前节点的左端
                 cur->right = cur->left;
+
+                //当前节点的左端设置为 null
                 cur->left = nullptr;
             }
 
@@ -35,6 +60,7 @@ public:
         }
     }
  };
+ */
 /* 
 class Solution {
 public:
@@ -63,24 +89,6 @@ public:
 
            prev = cur;
         }
-    }
-};
-*/
-/*
-class Solution {
-public:
-    TreeNode* prev = nullptr;
-    void flatten(TreeNode* root) {
-        if (!root)
-          return;
-        
-        flatten(root->right);
-        flatten(root->left);
-
-        root->right = prev;
-        root->left   = nullptr;
-
-        prev = root;
     }
 };
 */
