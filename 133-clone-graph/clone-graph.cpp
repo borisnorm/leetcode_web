@@ -21,17 +21,16 @@ public:
 
 class Solution {
 public:
-
-    unordered_map<Node*, Node*> cur2clone;
-
     Node* cloneGraph(Node* node) {
         if (!node)
           return nullptr;
 
-        return dfs(node);
+        unordered_map<Node*, Node*> cur2clone;
+
+        return dfs(node, cur2clone);
     }
 
-    Node* dfs(Node* node)
+    Node* dfs(Node* node, unordered_map<Node*, Node*>& cur2clone)
     {
         if (!node)
           return nullptr;
@@ -44,7 +43,7 @@ public:
 
         for (Node* nei : node->neighbors)
         {
-           cloned_node->neighbors.push_back(dfs(nei));
+           cloned_node->neighbors.push_back(dfs(nei, cur2clone));
         }
 
         return cloned_node;
