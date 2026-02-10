@@ -26,6 +26,45 @@ public:
           return nullptr;
 
         unordered_map<Node*, Node*> cur2clone;
+       // Node* cloned_node = new Node(node->val);
+       // cur2clone[node] = cloned_node;
+
+       cur2clone[node] = new Node(node->val);
+
+        queue<Node*> q;
+        q.push(node);
+
+        while(!q.empty())
+        {
+           Node* cur = q.front();
+           q.pop();
+
+           Node* cloned_node = cur2clone[cur];
+
+           for (Node* nei: cur->neighbors)
+           {
+              if (!cur2clone.count(nei))
+              {
+                cur2clone[nei] = new Node(nei->val);
+                q.push(nei);
+              }
+
+              cloned_node->neighbors.push_back(cur2clone[nei]);
+           }
+        }
+
+        return cur2clone[node];
+    }
+};
+
+/*
+class Solution {
+public:
+    Node* cloneGraph(Node* node) {
+        if (!node)
+          return nullptr;
+
+        unordered_map<Node*, Node*> cur2clone;
 
         return dfs(node, cur2clone);
     }
@@ -50,11 +89,13 @@ public:
     }
 };
 
+*/
 
 /*
 class Solution {
 public:
     unordered_map<Node*, Node*> cloned_graph_map;
+
     Node* cloneGraph(Node* node) {
       if (!node)
         return node;
