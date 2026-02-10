@@ -15,18 +15,18 @@ public:
         : val(_val), left(_left), right(_right), next(_next) {}
 };
 */
-
+/*
 class Solution {
 public:
     Node* connect(Node* root) {
         if (!root)
           return nullptr;
 
-        //same parent
+        //same parent  且 下一层都存在
         if (root->left && root->right)
           root->left->next = root->right;
         
-        //different parent
+        //different parent 且 下一层都存在
         if (root->right && root->next)
           root->right->next = root->next->left;
         
@@ -36,6 +36,7 @@ public:
         return root;
     }
 };
+*/
 /*
 class Solution {
 public:
@@ -62,7 +63,7 @@ public:
     }
 };
 */
-/*
+
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -74,7 +75,8 @@ public:
         //本层 为 下一层 生成 next 链接
         //本层（父节点层）负责为「下一层（子节点层）」生成完整的 next 链。
         //所以要事先检查 下一层是否存在, 不存在就 没有必要继续了
-        while(leftmost->left)
+       // while(leftmost->left)
+        while(leftmost)
         {
            //从本层最左节点开始, 不断 next, 构建 下一层的 next 链接
            Node* cur = leftmost;
@@ -83,10 +85,11 @@ public:
               //perfect tree 的 left 与 right 都是 存在的所以不用检查
 
               // the same parent
-              cur->left->next = cur->right;
+              if (cur->left)
+                cur->left->next = cur->right;
 
               // different parent
-              if (cur->next)
+              if (cur->right && cur->next)
                 cur->right->next = cur->next->left;
 
               // next sibling
@@ -99,7 +102,6 @@ public:
     }
 };
 
-*/
 
 /*
 class Solution {
