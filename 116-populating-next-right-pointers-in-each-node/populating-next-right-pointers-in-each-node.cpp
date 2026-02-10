@@ -15,6 +15,44 @@ public:
         : val(_val), left(_left), right(_right), next(_next) {}
 };
 */
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (!root)
+          return nullptr;
+        
+        Node* leftmost = root;
+        
+        //本层 为 下一层 生成 next 链接
+        //本层（父节点层）负责为「下一层（子节点层）」生成完整的 next 链。
+        //所以要事先检查 下一层是否存在, 不存在就 没有必要继续了
+        while(leftmost)
+        {
+           //从本层最左节点开始, 不断 next, 构建 下一层的 next 链接
+           Node* cur = leftmost;
+           while (cur)
+           {
+              //perfect tree 的 left 与 right 都是 存在的所以不用检查
+
+              // the same parent
+              if (cur->left)
+                cur->left->next = cur->right;
+
+              // different parent
+              if (cur->right && cur->next)
+                cur->right->next = cur->next->left;
+
+              // next sibling
+              cur = cur->next;
+           }
+           // come back to the leftmost and to next left
+           leftmost = leftmost->left;
+        }
+        return root;
+    }
+};
+
 /*
 class Solution {
 public:
@@ -63,7 +101,7 @@ public:
     }
 };
 */
-
+/*
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -75,8 +113,7 @@ public:
         //本层 为 下一层 生成 next 链接
         //本层（父节点层）负责为「下一层（子节点层）」生成完整的 next 链。
         //所以要事先检查 下一层是否存在, 不存在就 没有必要继续了
-       // while(leftmost->left)
-        while(leftmost)
+        while(leftmost->left)
         {
            //从本层最左节点开始, 不断 next, 构建 下一层的 next 链接
            Node* cur = leftmost;
@@ -85,11 +122,10 @@ public:
               //perfect tree 的 left 与 right 都是 存在的所以不用检查
 
               // the same parent
-              if (cur->left)
-                cur->left->next = cur->right;
+              cur->left->next = cur->right;
 
               // different parent
-              if (cur->right && cur->next)
+              if (cur->next)
                 cur->right->next = cur->next->left;
 
               // next sibling
@@ -101,7 +137,7 @@ public:
         return root;
     }
 };
-
+*/
 
 /*
 class Solution {
