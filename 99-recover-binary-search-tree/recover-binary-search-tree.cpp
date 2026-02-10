@@ -9,17 +9,61 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     void recoverTree(TreeNode* root) {
-         TreeNode* cur = nullptr;
-         TreeNode* pre = nullptr;
+        if (!root)
+          return;
+        
+        TreeNode* first = nullptr;
+        TreeNode* second = nullptr;
+
+        dfs(root, first, second);
+
+        if (first && second)
+          swap(first->val, second->val);
+    }
+
+    TreeNode* prev = nullptr;
+    void dfs(TreeNode* root, TreeNode*& first, TreeNode*& second)
+    {
+        if (!root)
+          return;
+        
+        //left
+        dfs(root->left, first, second);
+
+        //root 
+        if (prev)
+        {
+           if (prev->val > root->val)
+           {
+              if (!first)
+                first = prev;
+            
+              second = root;
+           }
+        }
+        prev = root;
+
+        //right;
+
+        dfs(root->right, first, second);
+    }
+};
+
+/*
+class Solution {
+public:
+    void recoverTree(TreeNode* root) {
+
          TreeNode* first = nullptr;
          TreeNode* second = nullptr;
 
-
          stack<TreeNode*> st;
-         cur = root;
+         TreeNode* cur = root;
+         TreeNode* pre = nullptr;
          
          while (cur || !st.empty())
          {
@@ -42,9 +86,12 @@ public:
             }
             
             pre = cur;
+
             cur = cur->right;
          }
 
-         swap(first->val, second->val);
+         if (first && second)
+           swap(first->val, second->val);
     }
 };
+*/
