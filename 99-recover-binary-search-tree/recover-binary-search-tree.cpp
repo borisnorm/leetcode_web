@@ -10,6 +10,66 @@
  * };
  */
 
+class Solution{
+  public: 
+    void recoverTree(TreeNode* root)
+    {
+      TreeNode* cur = root;
+      TreeNode* prev = nullptr;
+
+      TreeNode* first = nullptr;
+      TreeNode* second = nullptr;
+
+      while(cur)
+      {
+         //如果没有左子树
+         if (cur->left == nullptr)
+         {
+            detect(prev, cur, first, second);
+            prev = cur;
+
+            cur = cur->right;
+         }
+         else
+         {
+            TreeNode* pred = cur->left;
+            while (pred->right && pred->right != cur)
+              pred = pred->right;
+            
+            //没有右子树的
+            if (pred->right == nullptr)
+            {
+              pred->right = cur;
+              cur = cur->left;
+            }
+            else
+            {
+                pred->right = nullptr;
+
+                detect(prev, cur, first, second);
+                prev = cur;
+
+                cur = cur->right;
+            }
+         }
+      }
+      if (first && second)
+       swap(first->val, second->val);
+    }
+
+    void detect(TreeNode* prev, TreeNode* cur, TreeNode*& first, TreeNode*& second)
+    {
+      if (prev && prev->val > cur->val)
+      {
+         if (!first)
+           first = prev;
+         
+          second = cur;
+      }
+    }
+};
+
+/*
 class Solution {
 public:
     void recoverTree(TreeNode* root) {
@@ -52,6 +112,7 @@ public:
         dfs(root->right, first, second);
     }
 };
+*/
 
 /*
 class Solution {
