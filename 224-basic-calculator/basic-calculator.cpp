@@ -1,8 +1,8 @@
 class Solution {
 public:
     int calculate(string s) {
-        long res = 0;
-        long num = 0;
+        long long res = 0;
+        long long num = 0;
         int  sign = 1;
 
         stack<int> st;
@@ -35,7 +35,7 @@ public:
               sign = 1;
               
               //也可以在这里设置 num 为0的
-              //num = 0;
+              num = 0;
            }
            else if (c == ')')
            {
@@ -52,7 +52,7 @@ public:
 
         }
 
-        // 最后把剩余的数字加上
+        // 最后把剩余的数字加上, 循环到最后的 数字 或是 ) 就退出了
         res += sign * num;
 
         return res;
