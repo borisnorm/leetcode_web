@@ -24,7 +24,7 @@ public:
         tail = new Node(0, 0);
        
         head->next = tail;
-        tail->next = head;
+        tail->prev = head;
     }
     
     int get(int key) {
@@ -96,6 +96,70 @@ public:
         delete node;
     }
 };
+
+/*
+class LRUCache {
+public:
+    int cap;
+ 
+    list<pair<int, int>> kvl;
+    unordered_map<int, list<pair<int, int>>::iterator > key2it;
+
+    LRUCache(int capacity) {
+       cap = capacity;
+    }
+    
+    int get(int key) {
+        if (!key2it.count(key))
+          return -1;
+        
+        auto it =key2it[key];
+        int val = it->second;
+
+        updateLRUentry(key, val);
+
+        return val;
+    }
+    
+    void put(int key, int value) {
+        if (!key2it.count(key) && kvl.size() == cap)
+        {
+          removeLRUentry();
+        }
+
+        updateLRUentry(key, value);
+    }
+
+    void updateLRUentry(int key, int val)
+    {
+        // delete it from list if found
+        if (key2it.count(key))
+        {
+            kvl.erase(key2it[key]);
+        }
+
+        // add it to front of list
+        kvl.push_front({key, val});
+
+        // update it of key2it
+        key2it[key] = kvl.begin();
+    }
+
+    void removeLRUentry()
+    {
+        // find the last one it and key in kvl
+        auto it = prev(kvl.end());
+
+        // delete it from kv2it with key
+        key2it.erase(it->first);
+
+        // delete it from the end;
+        kvl.pop_back();
+    }
+};
+*/
+
+
 /*
 class LRUCache {
     int capacity;
