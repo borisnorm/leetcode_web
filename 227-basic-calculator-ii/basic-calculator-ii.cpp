@@ -10,6 +10,10 @@ public:
 
        stack<long long> st;
 
+        // 1. op + num as unit to be hanled 
+        // 2. num and temp res is stored in stack
+        // 3. collect the stack
+
        for (int i = 0; i < n; i++)
        {
           char c = s[i];
@@ -27,16 +31,16 @@ public:
                st.push(-num);
              else if (op == '*')
              {
-               int top = st.top();
+               int preNum = st.top();
                st.pop();
 
-               st.push(top * num);
+               st.push(preNum * num);
              }
              else if (op == '/')
              {
-                int top = st.top();
+                int preNum = st.top();
                 st.pop();
-                st.push(top/num);
+                st.push(preNum/num);
              }
 
              op = c;
