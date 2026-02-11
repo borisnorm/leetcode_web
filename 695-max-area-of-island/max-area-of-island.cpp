@@ -1,12 +1,12 @@
 class Solution {
 public:
     int maxAreaOfIsland(vector<vector<int>>& grid) {
+
+        if (grid.empty() || grid[0].empty())
+          return 0;
+
         int m = grid.size();
-        if (m <= 0)
-          return 0;
         int n = grid[0].size();
-        if (n <= 0)
-          return 0;
 
         int maxArea = 0;
         for (int i = 0; i < m; i++)
