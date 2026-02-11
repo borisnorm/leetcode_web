@@ -12,8 +12,8 @@ public:
 
           if (isdigit(c))
             num = num * 10 + (c - '0');
-        
           // operator 运算法 or 字符串 末尾
+          
           if ((!isdigit(c) && c != ' ') || (i == s.size()-1))
           {
              if (op == '+')
