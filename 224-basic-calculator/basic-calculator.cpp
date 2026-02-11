@@ -2,7 +2,6 @@ class Solution {
 public:
     int calculate(string s) {
         long res = 0;
-
         long num = 0;
         int  sign = 1;
 
@@ -34,7 +33,9 @@ public:
 
               res = 0;
               sign = 1;
-              num = 0;
+              
+              //也可以在这里设置 num 为0的
+              //num = 0;
            }
            else if (c == ')')
            {
