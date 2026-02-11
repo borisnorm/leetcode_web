@@ -34,15 +34,17 @@ public:
 
               res = 0;
               sign = 1;
+              num = 0;
            }
            else if (c == ')')
            {
-              int prevSign =  st.top(); st.pop();
-              int prevRes  =  st.top(); st.pop();
-
               res += sign * num;
+
               sign = 1;
               num = 0;
+
+              int prevSign =  st.top(); st.pop();
+              int prevRes  =  st.top(); st.pop();
 
               res = prevRes + prevSign * res;
            }
