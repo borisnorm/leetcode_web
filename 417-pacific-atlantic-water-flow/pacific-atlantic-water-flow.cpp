@@ -2,10 +2,9 @@
 class Solution {
 public:
     vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
-         if (heights.empty())
+         if (heights.empty() || heights[0].empty())
            return {};
-         if (heights[0].empty())
-           return {};
+
          int m = heights.size();
          int n = heights[0].size();
 
@@ -40,6 +39,7 @@ public:
     {
         vis[r][c] = 1;
         static int dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        
         int m = vis.size();
         int n = vis[0].size();
 
@@ -55,7 +55,4 @@ public:
             dfs(nr, nc, vis, heights);
         }
     }
-    
-
-
 };
