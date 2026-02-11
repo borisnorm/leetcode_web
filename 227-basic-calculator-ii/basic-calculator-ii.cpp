@@ -5,10 +5,10 @@ public:
        int n = s.size();
     
        int num = 0;
-       int res = 0;
+       long long res = 0;
        char op = '+';
 
-       stack<int> st;
+       stack<long long> st;
 
        for (int i = 0; i < n; i++)
        {
