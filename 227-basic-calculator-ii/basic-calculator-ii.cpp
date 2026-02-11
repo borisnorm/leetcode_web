@@ -1,12 +1,16 @@
 class Solution {
 public:
     int calculate(string s) {
-       stack<int> st;
-       long long num = 0;
 
+       int n = s.size();
+    
+       int num = 0;
+       int res = 0;
        char op = '+';
 
-       for (int i = 0; i < s.size(); i++)
+       stack<int> st;
+
+       for (int i = 0; i < n; i++)
        {
           char c = s[i];
 
@@ -14,7 +18,8 @@ public:
             num = num * 10 + (c - '0');
           // operator 运算法 or 字符串 末尾
           
-          if ((!isdigit(c) && c != ' ') || (i == s.size()-1))
+          //为了处理最后一个数, 因为最后结尾的都是数字, op 就会是一个数字字符 c 
+          if ((!isdigit(c) && c != ' ') || (i == n-1))
           {
              if (op == '+')
                st.push(num);
@@ -39,13 +44,12 @@ public:
           }
        }
 
-       int res = 0;
        while (!st.empty())
        {
           res += st.top();
           st.pop();
        }
 
-       return res;
+       return (int)res;
     }
 };
