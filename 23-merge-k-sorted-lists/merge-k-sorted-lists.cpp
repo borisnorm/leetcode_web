@@ -14,9 +14,9 @@ public:
         if (lists.empty())
           return nullptr;
         
-        int interval = 1;
         int n = (int)lists.size();
 
+        // Divide and Conquer 
         // n 是 奇数  11
         // interval  1, 2, 4, 8
         //            Merge 外    从 2 跳到 4 需要 2 * interval, 进行滚动 合并
@@ -27,6 +27,7 @@ public:
         //            Merge 内   需要 i, i + interval 才可以
         // 公式 很明显是    lists[i] = mergeTwo(list[i], list[i+interval]);
         // 正因为这个 interval 我们才需要将 interval 初始化 为 1; 
+        int interval = 1;
         while (interval < n)
         {
            for (int i = 0; i + interval < n; i+= interval *2)
@@ -78,8 +79,11 @@ public:
         priority_queue<T, vector<T>, decltype(cmp)> pq;
 
         for (auto* head : lists)
+        { 
+          // 这一步判空 很重要
           if (head)
             pq.push(head);
+        }
         
         ListNode dummy(0);
         ListNode* cur = &dummy;
