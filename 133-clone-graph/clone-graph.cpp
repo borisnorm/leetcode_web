@@ -18,7 +18,42 @@ public:
     }
 };
 */
+// clone graph 的核心是在 构造 nei 关系的时候, cur 与  nei 必须同时存续, 否则就会 漏边, 关系是双向的
+// 而 unordered_map 可以帮助我们破解 建立关系中的循环依赖问题
+class Solution {
+public:
+    Node* cloneGraph(Node* node) {
+        if (!node)
+          return nullptr;
+        
+        unordered_map<Node*, Node*> cur2cpy;
+        queue<Node*> q;
+        q.push(node);
 
+        while (!q.empty())
+        {
+            Node* cur = q.front();
+            q.pop();
+        
+            if (!cur2cpy.count(cur))
+               cur2cpy[cur] = new Node(node->val);
+            Node* cloned_node = cur2cpy[cur];
+
+            for (Node* nei : cur->neighbors)
+            {
+               if (!cur2cpy.count(nei))
+               {
+                  cur2cpy[nei] = new Node(nei->val);
+                  q.push(nei);
+               }
+               Node* cloned_nei = cur2cpy[nei];
+               cloned_node->neighbors.push_back(cloned_nei);
+            }
+        }
+
+        return cur2cpy[node];
+    }
+};
 /*
 class Solution {
 public:
@@ -97,6 +132,7 @@ public:
 */
 
 
+/*
 class Solution {
 public:
 unordered_map<Node*, Node*> cur2clone;
@@ -125,6 +161,7 @@ unordered_map<Node*, Node*> cur2clone;
         return cloned_node;
     }
 };
+*/
 
 
 /*
