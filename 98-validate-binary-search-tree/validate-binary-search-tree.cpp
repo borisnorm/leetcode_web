@@ -15,29 +15,27 @@ public:
     bool isValidBST(TreeNode* root) {
         if (!root)
           return true;
-        
+          
+        //带约束传递的前序遍历
         return _isValidBST(root, nullptr, nullptr);
         
     }
 
-    bool _isValidBST(TreeNode* root, TreeNode* left, TreeNode* right)
+    bool _isValidBST(TreeNode* root, TreeNode* low, TreeNode* high)
     {
         if (!root)
           return true;
         
-        if (left)
-          if (root->val <= left->val)
+        if (low && root->val <= low->val)
             return false;
         
-        if (right)
-          if (root->val >= right->val)
+        if (high && root->val >= high->val)
             return false;
            
-        bool isLeftBST = _isValidBST(root->left, left, root);
-        bool isRightBST = _isValidBST(root->right, root, right); 
+        bool isLeftBST = _isValidBST(root->left, low, root);
+        bool isRightBST = _isValidBST(root->right, root, high); 
 
         return isLeftBST && isRightBST;
-       
     }
  };
 
