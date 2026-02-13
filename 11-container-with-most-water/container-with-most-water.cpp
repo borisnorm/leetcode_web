@@ -20,6 +20,9 @@ public:
            // for next higher height for shorter side;
            // higher height can get large area, even with less width.
            // 在短板一侧 向前移动找更大的挡板, 去计算可能的更大值, 挡板越大,蓄水越多
+           //  area = w * min(height[l], height[r])
+           // height[r] 即使变大,  你的 height[l]依旧没有变化, w 变小, area 必然变小
+           // 所以移动的是 短板
             if (height[l] < height[r])
               l++;
             else
