@@ -15,42 +15,47 @@ public:
     unordered_map<int, int> val2idx;
 
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        if (preorder.empty() || inorder.empty())
+          return nullptr;
+        int n = inorder.size();
         // inorder 的作用是什么 
         // left -> root -> right
         for (int i = 0; i < inorder.size(); i++)
           val2idx[inorder[i]] = i;
         
         // 包含当前 root,的 pre-order[start, end]  以及 in-order[start, end]
-        return build(preorder, 0, preorder.size()-1, inorder, 0, inorder.size()-1);
+        return build(preorder, 0, n-1, inorder, 0, n-1);
     }
 
-    TreeNode* build(vector<int>& preorder, int preStart, int preEnd, 
-                    vector<int>& inorder, int inStart, int inEnd)
+    TreeNode* build(vector<int>& preorder, int preL, int preR, 
+                    vector<int>& inorder, int inL, int inR)
     {
        // check preorder availbility 因为 root 从它这里来
-       if (preStart > preEnd)
+       if (preL > preR)
          return nullptr;
 
        // get root from pre-order
-       int rootval = preorder[preStart];
+       int rootval = preorder[preL];
+       TreeNode* root = new TreeNode(rootval);
        
        // get inorder pivot idx from root->idx map 
-       int in_idx = val2idx[rootval];
-       int leftSize = in_idx - inStart;  // get left size of inorder, meantime it is the size of left child for pre-order
+       int inIdx = val2idx[rootval];
+       int leftSize = inIdx - inL;  // get left size of inorder, meantime it is the size of left child for pre-order
     
-       TreeNode* root = new TreeNode(rootval);
        //
        // pre-order
        // root, left[L-root, L-left, L-right] right[R-root, R-left, R-right]
        // left [preStart + 1, preStart+leftsize]    |   right [preStart+leftSize+1, preEnd]
-       root->left = build(preorder, preStart+1, preStart + leftSize,
-                          inorder,  inStart, in_idx-1);
+       // (preSart + leftSize) - (preStart + 1) + 1 = leftsize
+       // end = start + len - 1
+       root->left = build(preorder, preL + 1, preL + leftSize,  
+                          inorder,  inL, inIdx-1);
      
        // inorder
        // left[L-left, L-root, L-right], root, right[R-left, R-root, R-right]
        // left [inorder_start, idx-1]   [idx+1, inorder_end]
-       root->right = build(preorder, preStart + leftSize + 1, preEnd,
-                           inorder, in_idx + 1, inEnd);
+       root->right = build(preorder, preL + leftSize + 1, preR,
+                           inorder, inIdx + 1, inR);
        return root;
     }
 };
