@@ -11,6 +11,39 @@
  */
 class Solution {
 public:
+    unordered_map<int, int> val2idx;
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        if (preorder.empty() || inorder.empty())
+           return nullptr;
+        
+        int n = inorder.size();
+        for (int i = 0; i < n; i++)
+          val2idx[inorder[i]] = i;
+        
+        int preIdx = 0;
+        return build(preorder, preIdx, inorder, 0, n-1);
+    }
+
+    TreeNode* build(vector<int>& preorder, int& preIdx, vector<int>& inorder, int inL, int inR)
+    {
+        if (inL > inR)
+          return nullptr;
+        
+        int rootval = preorder[preIdx++];
+        TreeNode* root = new TreeNode(rootval);
+
+        int inIdx = val2idx[rootval];
+        int leftSize = inIdx - inL;
+
+        root->left = build(preorder, preIdx, inorder, inL, inIdx-1);
+        root->right = build(preorder, preIdx, inorder, inIdx+1, inR);
+
+        return root;
+    }
+};
+/*
+class Solution {
+public:
     
     unordered_map<int, int> val2idx;
 
@@ -60,3 +93,5 @@ public:
        return root;
     }
 };
+
+*/
