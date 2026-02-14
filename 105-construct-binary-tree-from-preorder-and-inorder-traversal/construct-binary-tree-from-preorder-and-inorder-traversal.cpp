@@ -38,9 +38,10 @@ public:
        int rootval = preorder[preL];
        TreeNode* root = new TreeNode(rootval);
        
-       // get inorder pivot idx from root->idx map 
+       // get inorder pivot idx from root->idx map
+       // get left size of inorder, meantime it is the size of left child for pre-order 
        int inIdx = val2idx[rootval];
-       int leftSize = inIdx - inL;  // get left size of inorder, meantime it is the size of left child for pre-order
+       int leftSize = inIdx - inL;  // (inIdx - 1) - inL + 1
     
        //
        // pre-order
