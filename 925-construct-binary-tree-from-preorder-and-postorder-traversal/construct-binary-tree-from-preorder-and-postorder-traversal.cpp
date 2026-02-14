@@ -15,6 +15,46 @@ public:
     TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
         if (preorder.empty() || postorder.empty())
           return nullptr;
+        int n = postorder.size();
+
+        for (int i = 0; i < n; i ++)
+          val2idx[postorder[i]] = i;
+        
+        return build(preorder, 0, n-1, postorder, 0, n-1);
+    }
+
+    TreeNode* build(vector<int>& preorder, int preL, int preR, vector<int>& postorder, int postL, int postR)
+    {
+        if (postL > postR)
+          return nullptr;
+        
+        int rootval = preorder[preL++];
+        TreeNode* root = new TreeNode(rootval);
+
+        if (postL == postR)
+          return root;
+
+        int leftRootVal = preorder[preL];
+        int postIdx = val2idx[leftRootVal];
+        int leftSize = postIdx - postL + 1;
+
+        root->left = build(preorder, preL, preL + leftSize - 1, 
+                          postorder, postL, postIdx);
+        root->right = build(preorder,preL + leftSize, preR,
+                        postorder, postIdx+1, postR-1);
+        return root;
+
+    }
+};
+
+
+/*
+class Solution {
+public:
+    unordered_map<int, int> val2idx;
+    TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
+        if (preorder.empty() || postorder.empty())
+          return nullptr;
 
         // 1 [2 4 5] [3 6 7]
         // [4 5 2] [6 7 3] 1
@@ -53,3 +93,4 @@ public:
         return root;
     }
 };
+*/
