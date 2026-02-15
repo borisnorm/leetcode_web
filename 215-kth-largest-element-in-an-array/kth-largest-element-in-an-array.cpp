@@ -2,20 +2,27 @@ class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
         int n = nums.size();
-        int targetIdx = n - k;
-
+        // 第 k 大 = 第 n-k 小
+        int targetIdx = n - k;  // 第k大 ⇢ 第 (n-k) 小
+        
         return quickSelect(nums, 0, n-1, targetIdx);
     }
 
     int quickSelect(vector<int>& nums, int l, int r, int k)
     {
+        // 基础情况 只有一个元素
         if (l == r)
           return nums[l];
         
+        //✅ 当前数组没有完全排序
+        // ✅ 但 pivot 被放到了“最终正确位置”
+        // 分区, 返回 pivot的最终位置
         int pivotIdx = partition(nums, l, r);
 
+        // 如果 pivot 正好在目标位置, 直接返回
         if (pivotIdx == k)
           return nums[k];
+        // 如果 pivot 在目标位置的右边, 在左半部分查找, 
         else if (pivotIdx > k)
           return quickSelect(nums, l, pivotIdx-1, k);
         else
@@ -36,6 +43,12 @@ public:
                 i++;
             }
         }
+        // 循环结束后，i 是第一个 >= pivot 的位置
+        //i 位置的性质：
+
+        //左边 [l, i-1]：所有元素 < pivot ✓
+        //右边 [i+1, r]：所有元素 >= pivot ✓
+        //i 位置：放 pivot 正好！
 
         //把pivot 放到正确的位置(所有小于它的元素之后)
         swap(nums[i], nums[r]);
