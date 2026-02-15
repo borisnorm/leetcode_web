@@ -8,7 +8,48 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if (!head || !head->next || k == 0 )
+          return head;
+        
+        ListNode dummy(0);
+        dummy.next = head;
 
+        ListNode* pre = &dummy;
+        ListNode* cur = head;
+        ListNode* nxt = nullptr;
+
+        while(true)
+        {
+            int cnt = 0;
+            ListNode* prob = cur;
+            while (prob && cnt < k)
+            {
+              cnt++;
+              prob = prob->next;
+            }
+            
+            if (cnt < k)
+              break;
+
+            for (int i = 1; i < k; i++)
+            {
+                nxt = cur->next;
+                cur->next = nxt->next;
+                nxt->next = pre->next;
+                pre->next = nxt;
+            }
+
+            pre = cur;
+            cur = cur->next;
+        }
+        
+        return dummy.next;
+    }
+};
+/*
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
@@ -63,7 +104,7 @@ public:
         
     }
 };
-
+*/
  /*
 
 class Solution {
