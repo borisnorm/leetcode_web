@@ -62,6 +62,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0285-inorder-successor-in-bst](https://github.com/borisnorm/leetcode_web/tree/master/0285-inorder-successor-in-bst) |
+| [0298-binary-tree-longest-consecutive-sequence](https://github.com/borisnorm/leetcode_web/tree/master/0298-binary-tree-longest-consecutive-sequence) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
@@ -75,6 +76,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0285-inorder-successor-in-bst](https://github.com/borisnorm/leetcode_web/tree/master/0285-inorder-successor-in-bst) |
+| [0298-binary-tree-longest-consecutive-sequence](https://github.com/borisnorm/leetcode_web/tree/master/0298-binary-tree-longest-consecutive-sequence) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0323-number-of-connected-components-in-an-undirected-graph](https://github.com/borisnorm/leetcode_web/tree/master/0323-number-of-connected-components-in-an-undirected-graph) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
@@ -86,6 +88,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0285-inorder-successor-in-bst](https://github.com/borisnorm/leetcode_web/tree/master/0285-inorder-successor-in-bst) |
+| [0298-binary-tree-longest-consecutive-sequence](https://github.com/borisnorm/leetcode_web/tree/master/0298-binary-tree-longest-consecutive-sequence) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
