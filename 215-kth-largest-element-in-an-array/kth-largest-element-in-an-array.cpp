@@ -38,12 +38,27 @@ public:
         for (int num: nums)
           pq.push(num);
         
-        int cnt = 0;
         int kthLargest = 0;
+        /*
         for(int i = 0; i < k; i++)
         {
             kthLargest = pq.top();
             pq.pop();
+        }
+        */
+
+        //pq 没有 for-range的用法
+        // 使用正常的 sz loop
+        int cnt = 0;
+        int q_sz = pq.size();
+        for (int i = 0; i < q_sz; i++)
+        {
+            kthLargest = pq.top();
+            pq.pop();
+            cnt++;
+
+            if (cnt == k)
+              break;
         }
         return kthLargest;        
     }
