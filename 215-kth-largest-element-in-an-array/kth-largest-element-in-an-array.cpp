@@ -1,41 +1,4 @@
-class Solution {
-public:
-    int findKthLargest(vector<int>& nums, int k) {
-        int n = nums.size();
-        int target = n - k;
-        return quickSelect(nums, 0, n - 1, target);
-    }
 
-private:
-    int quickSelect(vector<int>& nums, int left, int right, int target) {
-        while (left <= right) {
-            int pivotIndex = left + rand() % (right - left + 1);
-            int pivot = nums[pivotIndex];
-
-            
-            int lt = left, i = left, gt = right;
-
-            while (i <= gt) {
-                if (nums[i] < pivot)
-                    swap(nums[lt++], nums[i++]);
-                else if (nums[i] > pivot)
-                    swap(nums[i], nums[gt--]);
-                else
-                    i++;
-            }
-
-            if (target < lt)
-                right = lt - 1;
-            else if (target > gt)
-                left = gt + 1;
-            else
-                return nums[target];
-        }
-
-        return -1; 
-    }
-};
-/*
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -69,8 +32,8 @@ public:
 
     int partition(vector<int>& nums, int l, int r)
     {
-       // int randomIdx = l + rand() % (r - l + 1);
-       // swap(nums[randomIdx], nums[r]); // 交换到末尾
+        int randomIdx = l + rand() % (r - l + 1);
+        swap(nums[randomIdx], nums[r]); // 交换到末尾
 
         //int pivotIdx = l + rand() % (r - l + 1);
         int pivot = nums[r]; //选最右边的元素作为 pivot
@@ -99,7 +62,7 @@ public:
         return i;
     }
 };
-*/
+
 /*
 class Solution {
 public:
