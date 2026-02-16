@@ -1,4 +1,43 @@
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        int n = nums.size();
+        int targetIdx = n - k; 
+        int l = 0;
+        int r = n - 1;
 
+        while (l <= r)
+        {
+           int pivotIdx = l + rand() %(r-l + 1);
+           int pivot = nums[pivotIdx];
+
+           int lt = l;
+           int i = l;
+           int gt = r;
+
+           while (i <= gt)
+           {
+              if (nums[i] < pivot)
+                swap(nums[lt++], nums[i++]);
+              else if (nums[i] > pivot)
+                swap(nums[i], nums[gt--]);
+              else
+                i++;
+           }
+
+           if (targetIdx < lt)
+             r = lt - 1;
+           else if (targetIdx > gt)
+             l = gt + 1;
+           else
+             return nums[targetIdx];
+        }
+
+        //return nums[targetIdx];
+        return -1;
+    }
+};
+/*
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -32,7 +71,8 @@ public:
 
     int partition(vector<int>& nums, int l, int r)
     {
-        int randomIdx = l + rand() % (r - l + 1);
+         // 随机化 pivoidIdx
+        int pivotIdx = l + rand() % (r - l + 1);
         swap(nums[randomIdx], nums[r]); // 交换到末尾
 
         //int pivotIdx = l + rand() % (r - l + 1);
@@ -62,7 +102,7 @@ public:
         return i;
     }
 };
-
+*/
 /*
 class Solution {
 public:
