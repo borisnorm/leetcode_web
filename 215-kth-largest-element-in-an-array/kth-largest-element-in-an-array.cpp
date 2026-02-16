@@ -4,10 +4,6 @@ public:
         int n = nums.size();
         // 第 k 大 = 第 n-k 小
         int targetIdx = n - k;  // 第k大 ⇢ 第 (n-k) 小
-        
-
-        std::mt19937 rng((uint32_t)std::chrono::steady_clock::now().time_since_epoch().count());
-        std::shuffle(nums.begin(), nums.end(), rng);
 
         return quickSelect(nums, 0, n-1, targetIdx);
     }
