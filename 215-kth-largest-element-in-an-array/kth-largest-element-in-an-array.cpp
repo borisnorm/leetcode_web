@@ -31,6 +31,9 @@ public:
 
     int partition(vector<int>& nums, int l, int r)
     {
+        int randomIdx = l + rand() % (r - l + 1);
+        swap(nums[randomIdx], nums[r]); // 交换到末尾
+
         int pivot = nums[r]; //选最右边的元素作为 pivot
         int i = l; // i指向下一个小于 pivot 的元素应该放的位置
 
