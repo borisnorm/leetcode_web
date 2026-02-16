@@ -5,6 +5,10 @@ public:
         // 第 k 大 = 第 n-k 小
         int targetIdx = n - k;  // 第k大 ⇢ 第 (n-k) 小
         
+
+        std::mt19937 rng((uint32_t)std::chrono::steady_clock::now().time_since_epoch().count());
+        std::shuffle(nums.begin(), nums.end(), rng);
+
         return quickSelect(nums, 0, n-1, targetIdx);
     }
 
@@ -31,9 +35,10 @@ public:
 
     int partition(vector<int>& nums, int l, int r)
     {
-        int randomIdx = l + rand() % (r - l + 1);
-        swap(nums[randomIdx], nums[r]); // 交换到末尾
+       // int randomIdx = l + rand() % (r - l + 1);
+       // swap(nums[randomIdx], nums[r]); // 交换到末尾
 
+        //int pivotIdx = l + rand() % (r - l + 1);
         int pivot = nums[r]; //选最右边的元素作为 pivot
         int i = l; // i指向下一个小于 pivot 的元素应该放的位置
 
