@@ -67,6 +67,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
+| [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 ## Depth-First Search
 |  |
@@ -82,6 +83,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
+| [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 ## Binary Tree
 |  |
 | ------- |
@@ -93,6 +95,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
+| [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 ## Hash Table
 |  |
