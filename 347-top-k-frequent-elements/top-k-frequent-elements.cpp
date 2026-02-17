@@ -21,7 +21,7 @@ public:
             nth_element(num2freq_vec.begin(), num2freq_vec.begin() + k , num2freq_vec.end(), cmp);
 
             for (int i = 0; i < k; i++)
-              res.push_back(num2freq_vec[i].first);
+              res.push_back(move(num2freq_vec[i].first));
             
             return res;
     }
