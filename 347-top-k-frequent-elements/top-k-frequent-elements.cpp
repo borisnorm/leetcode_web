@@ -28,8 +28,10 @@ public:
         {
             for (auto& num: freqBuckets[i])
             {
+                res.push_back(num); 
                 cnt++;
-                res.push_back(num);
+                if (cnt == k)
+                  break;
             }
         }
 
