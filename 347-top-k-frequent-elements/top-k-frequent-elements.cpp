@@ -2,6 +2,46 @@ class Solution {
 public:
 
     vector<int> topKFrequent(vector<int>& nums, int k) {
+         if (nums.empty() || k <= 0)
+           return {};
+        
+         vector<int> res;
+
+        int n = nums.size();
+        if (n < k)
+          return {};
+        // freq buckets counting
+        // 1.count freq using unordered_map <key, freq>
+        // 2.setup freq buckets vector idx = freq,  ele = vector<int> of key
+        // 3.scan freq bucket from right to left and count k elements
+
+        unordered_map<int, int> num2freq;
+        for (int num: nums)
+          num2freq[num]++;
+        
+        vector<vector<int>> freqBuckets(n+1);
+        for (auto& [num, freq]: num2freq)
+           freqBuckets[freq].push_back(num);
+        
+        int cnt = 0;
+        for (int i = n; i >= 1 && cnt < k; i--)
+        {
+            for (auto& num: freqBuckets[i])
+            {
+                cnt++;
+                res.push_back(num);
+            }
+        }
+
+        return res;
+    }
+};
+
+/*
+class Solution {
+public:
+
+    vector<int> topKFrequent(vector<int>& nums, int k) {
 
         // 频次 没有 0的说法 , 如果有, 那就是不存在
         unordered_map<int, int> num2freq;
@@ -46,6 +86,15 @@ public:
         return res;
 
     }
+
+*/
+
+
+
+
+
+
+
 
     /*
     struct better{
@@ -103,5 +152,6 @@ public:
         return res;
     }
 
-    */
+   
 };
+   */
