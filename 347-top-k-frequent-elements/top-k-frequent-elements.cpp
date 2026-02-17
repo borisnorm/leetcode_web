@@ -15,7 +15,7 @@ public:
              return a.second > b.second;  
         };
 
-        priority_queue<T, vector<T>, decltype(cmp)> pq;
+        priority_queue<T, vector<T>, decltype(cmp)> pq(cmp);
         for(auto& p: num2freq)
         {
            pq.push(p);
@@ -23,12 +23,22 @@ public:
              pq.pop();
         }
 
+        int cnt = 0;
+        while (!pq.empty() && cnt < k)
+        {
+           auto& p = pq.top();
+           res.push_back(p.first);
+           pq.pop();
+           cnt++;
+        }
+        /*
         for (int i = 0; i < k; i++)
         {
             auto& p = pq.top();
-            res.push_back(p.first);
             pq.pop();
+            res.push_back(p.first);
         }
+        */
 
         return res;
     }
