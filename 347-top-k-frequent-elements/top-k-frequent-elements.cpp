@@ -1,6 +1,43 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
+        if (nums.empty() || k <= 0)
+           return {};
+        
+        int n = nums.size();
+        vector<int> res;
+        unordered_map<int, int> num2freq;
+        for (auto& num: nums)
+          num2freq[num]++;
+        
+        using T = pair<int, int>;
+        auto cmp = [](const T& a, const T& b){
+             return a.second > b.second;  
+        };
+
+        priority_queue<T, vector<T>, decltype(cmp)> pq;
+        for(auto& p: num2freq)
+        {
+           pq.push(p);
+           if (pq.size() > k)
+             pq.pop();
+        }
+
+        for (int i = 0; i < k; i++)
+        {
+            auto& p = pq.top();
+            res.push_back(p.first);
+            pq.pop();
+        }
+
+        return res;
+    }
+};
+
+/*
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
             if (nums.empty() || k <= 0)
               return {};
             int n = nums.size();
@@ -26,6 +63,7 @@ public:
             return res;
     }
 };
+*/
 /*
 class Solution {
 public:
