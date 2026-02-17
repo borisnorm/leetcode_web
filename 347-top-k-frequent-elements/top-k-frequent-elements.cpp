@@ -40,7 +40,8 @@ private:
         return a.first < b.first; // tie-break (optional): smaller num first
     }
 
-    void quickSelect(vector<T>& nums, int l, int r, int target) {
+    void quickSelect(vector<T>& nums, int l, int r, int target) 
+    {
         while (l <= r) 
         {
             int pivotIdx = l + rand() % (r - l + 1);
@@ -51,15 +52,14 @@ private:
             // [lt..gt]  equal to pivot
             // [gt+1..r] worse than pivot
             int lt = l, i = l, gt = r;
-            while (i <= gt) {
-                if (better(nums[i], pivot)) {
-                    swap(nums[i++], nums[lt++]);
-                } else if (better(pivot, nums[i])) {
-                    swap(nums[i], nums[gt--]);
-                } else {
-                    // equal
-                    i++;
-                }
+            while (i <= gt) 
+            {
+               if (better(nums[i], pivot)) 
+                 swap(nums[i++], nums[lt++]);
+               else if (better(pivot, nums[i])) 
+                 swap(nums[i], nums[gt--]);
+               else 
+                    i++; // equal
             }
 
             if (target < lt) 
