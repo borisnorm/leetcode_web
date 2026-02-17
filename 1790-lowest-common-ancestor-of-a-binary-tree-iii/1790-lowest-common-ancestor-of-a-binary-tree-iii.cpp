@@ -12,18 +12,20 @@ public:
 class Solution {
 public:
     Node* lowestCommonAncestor(Node* p, Node * q) {
-          if (!(p && q))
-            return nullptr;
-        
-          Node* cur_p = p;
-          Node* cur_q = q;
-          
-          while (cur_p != cur_q)
-          {
-              cur_p = cur_p ? cur_p->parent : q;
-              cur_q = cur_q ? cur_q->parent : p;
-          }
+        if (!p)
+          return q;
+        if (!q)
+          return p;
 
-          return cur_p;
+        Node* a = p;
+        Node* b = q;
+
+        while (a != b)
+        {
+            a = (a == nullptr) ? q : a->parent;
+            b = (b == nullptr) ? p : b->parent;
+        }
+
+        return a;
     }
 };
