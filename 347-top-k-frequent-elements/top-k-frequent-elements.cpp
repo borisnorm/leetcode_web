@@ -26,9 +26,9 @@ public:
         int cnt = 0;
         for (int i = n; i >= 1 && cnt < k; i--)
         {
-            auto& freq_grp = freqBuckets[i];
-           // for (auto& num: freqBuckets[i])
-            for(auto& num: freq_grp)
+            //auto& freq_grp = freqBuckets[i];
+            //for(auto& num: freq_grp)
+            for (auto& num: freqBuckets[i])
             {
                 res.push_back(num); 
                 cnt++;
@@ -40,6 +40,8 @@ public:
         return res;
     }
 };
+
+
 
 /*
 class Solution {
