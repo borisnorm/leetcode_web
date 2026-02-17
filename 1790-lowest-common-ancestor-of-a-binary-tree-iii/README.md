@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/">1790. Lowest Common Ancestor of a Binary Tree III</a></h2><h3>Medium</h3><hr><p>Given two nodes of a&nbsp;binary tree <code>p</code> and <code>q</code>, return <em>their&nbsp;lowest common ancestor (LCA)</em>.</p>
+<h2><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii">1790. Lowest Common Ancestor of a Binary Tree III</a></h2><h3>Medium</h3><hr><p>Given two nodes of a&nbsp;binary tree <code>p</code> and <code>q</code>, return <em>their&nbsp;lowest common ancestor (LCA)</em>.</p>
 
 <p>Each node will have a reference to its parent node. The definition for <code>Node</code> is below:</p>
 
