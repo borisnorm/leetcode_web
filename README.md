@@ -69,6 +69,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
+| [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
 ## Depth-First Search
 |  |
 | ------- |
@@ -84,6 +85,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
+| [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
 ## Binary Tree
 |  |
 | ------- |
@@ -97,6 +99,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
+| [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
 ## Hash Table
 |  |
 | ------- |
@@ -109,6 +112,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0359-logger-rate-limiter](https://github.com/borisnorm/leetcode_web/tree/master/0359-logger-rate-limiter) |
 | [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
+| [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
 ## Two Pointers
 |  |
 | ------- |
