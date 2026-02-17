@@ -2,7 +2,7 @@ class Solution {
 public:
     int calculate(string s) {
         long long res = 0;
-        long long num = 0;
+        long long num = 0;  //⚠ 结果在 int 范围 ≠ 中间过程在 int 范围。 num 也是一样的
         int  sign = 1;
 
         stack<int> st;
