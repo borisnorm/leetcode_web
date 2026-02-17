@@ -26,6 +26,7 @@ public:
         int cnt = 0;
         for (int i = n; i >= 1 && cnt < k; i--)
         {
+            auto& freq_grp = freqBuckets[i];
             for (auto& num: freqBuckets[i])
             {
                 res.push_back(num); 
