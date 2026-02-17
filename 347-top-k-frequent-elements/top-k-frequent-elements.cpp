@@ -1,6 +1,79 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
+        if (nums.empty() || k <= 0) return {};
+
+        unordered_map<int,int> num2freq;
+        num2freq.reserve(nums.size() * 2);
+        for (int x : nums) num2freq[x]++;
+
+        int m = (int)num2freq.size();
+        k = min(k, m);
+
+        vector<pair<int,int>> a; // {num, freq}
+        a.reserve(m);
+        for (auto &p : num2freq) a.push_back(p);
+
+        srand((unsigned)time(nullptr));
+        int target = k - 1;                 // we need top k in [0..k-1]
+        quickSelect(a, 0, m - 1, target);
+
+        vector<int> res;
+        res.reserve(k);
+        for (int i = 0; i < k; i++) res.push_back(a[i].first);
+
+        // Optional: if you want output ordered by freq desc:
+        // sort(a.begin(), a.begin() + k, [&](const auto& x, const auto& y){ return better(x,y); });
+
+        return res;
+    }
+
+private:
+    using T = pair<int,int>; // {num, freq}
+
+    // "better" means should come earlier (higher freq first).
+    // You can add tie-break here if needed.
+    static bool better(const T& x, const T& y) {
+        if (x.second != y.second) return x.second > y.second; // higher freq first
+        return x.first < y.first; // tie-break (optional): smaller num first
+    }
+
+    static bool equalByBetter(const T& x, const T& y) {
+        // x and y are equal under ordering if neither is better than the other
+        return !better(x, y) && !better(y, x);
+    }
+
+    void quickSelect(vector<T>& a, int l, int r, int target) {
+        while (l <= r) {
+            int pivotIdx = l + rand() % (r - l + 1);
+            T pivot = a[pivotIdx];
+
+            // 3-way partition under "better" ordering:
+            // [l..lt-1] better than pivot
+            // [lt..gt]  equal to pivot
+            // [gt+1..r] worse than pivot
+            int lt = l, i = l, gt = r;
+            while (i <= gt) {
+                if (better(a[i], pivot)) {
+                    swap(a[i++], a[lt++]);
+                } else if (better(pivot, a[i])) {
+                    swap(a[i], a[gt--]);
+                } else {
+                    // equal
+                    i++;
+                }
+            }
+
+            if (target < lt) r = lt - 1;
+            else if (target > gt) l = gt + 1;
+            else return; // target in equal region => done
+        }
+    }
+};
+/*
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         if (nums.empty() || k <= 0)
            return {};
         
@@ -31,19 +104,20 @@ public:
            pq.pop();
            cnt++;
         }
-        /*
-        for (int i = 0; i < k; i++)
-        {
-            auto& p = pq.top();
-            pq.pop();
-            res.push_back(p.first);
-        }
-        */
+        
+        //for (int i = 0; i < k; i++)
+       // {
+        //    auto& p = pq.top();
+        //    pq.pop();
+        //    res.push_back(p.first);
+       // }
+        //
 
         return res;
     }
 };
 
+*/
 /*
 class Solution {
 public:
