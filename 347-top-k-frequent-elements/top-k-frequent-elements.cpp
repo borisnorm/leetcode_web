@@ -4,23 +4,24 @@ public:
         if (nums.empty() || k <= 0) return {};
 
         unordered_map<int,int> num2freq;
-        num2freq.reserve(nums.size() * 2);
-        for (int x : nums) num2freq[x]++;
+        for (int num : nums) 
+          num2freq[num]++;
 
-        int m = (int)num2freq.size();
-        k = min(k, m);
+        int n = (int)num2freq.size();
+        //k = min(k, m);
 
-        vector<pair<int,int>> a; // {num, freq}
-        a.reserve(m);
-        for (auto &p : num2freq) a.push_back(p);
+        vector<pair<int,int>> num2freq_vec; // {num, freq}
+        for (auto &p : num2freq) 
+          num2freq_vec.push_back(p);
 
-        srand((unsigned)time(nullptr));
+        //srand((unsigned)time(nullptr));
         int target = k - 1;                 // we need top k in [0..k-1]
-        quickSelect(a, 0, m - 1, target);
+        quickSelect(num2freq_vec, 0, n - 1, target);
 
         vector<int> res;
-        res.reserve(k);
-        for (int i = 0; i < k; i++) res.push_back(a[i].first);
+        //res.reserve(k);
+        for (int i = 0; i < k; i++) 
+          res.push_back(num2freq_vec[i].first);
 
         // Optional: if you want output ordered by freq desc:
         // sort(a.begin(), a.begin() + k, [&](const auto& x, const auto& y){ return better(x,y); });
@@ -33,20 +34,17 @@ private:
 
     // "better" means should come earlier (higher freq first).
     // You can add tie-break here if needed.
-    static bool better(const T& x, const T& y) {
-        if (x.second != y.second) return x.second > y.second; // higher freq first
-        return x.first < y.first; // tie-break (optional): smaller num first
+    static bool better(const T& a, const T& b) {
+        if (a.second != b.second) 
+           return a.second > b.second; // higher freq first
+        return a.first < b.first; // tie-break (optional): smaller num first
     }
 
-    static bool equalByBetter(const T& x, const T& y) {
-        // x and y are equal under ordering if neither is better than the other
-        return !better(x, y) && !better(y, x);
-    }
-
-    void quickSelect(vector<T>& a, int l, int r, int target) {
-        while (l <= r) {
+    void quickSelect(vector<T>& nums, int l, int r, int target) {
+        while (l <= r) 
+        {
             int pivotIdx = l + rand() % (r - l + 1);
-            T pivot = a[pivotIdx];
+            T pivot = nums[pivotIdx];
 
             // 3-way partition under "better" ordering:
             // [l..lt-1] better than pivot
@@ -54,19 +52,22 @@ private:
             // [gt+1..r] worse than pivot
             int lt = l, i = l, gt = r;
             while (i <= gt) {
-                if (better(a[i], pivot)) {
-                    swap(a[i++], a[lt++]);
-                } else if (better(pivot, a[i])) {
-                    swap(a[i], a[gt--]);
+                if (better(nums[i], pivot)) {
+                    swap(nums[i++], nums[lt++]);
+                } else if (better(pivot, nums[i])) {
+                    swap(nums[i], nums[gt--]);
                 } else {
                     // equal
                     i++;
                 }
             }
 
-            if (target < lt) r = lt - 1;
-            else if (target > gt) l = gt + 1;
-            else return; // target in equal region => done
+            if (target < lt) 
+              r = lt - 1;
+            else if (target > gt) 
+              l = gt + 1;
+            else 
+              return; // target in equal region => done
         }
     }
 };
