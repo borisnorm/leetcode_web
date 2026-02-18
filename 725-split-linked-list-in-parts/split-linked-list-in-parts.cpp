@@ -30,9 +30,10 @@ public:
         {
            res[i]=cur;
            //res.push_back(cur);  //是追加到末尾，不是覆盖已有位置 造成size = k+1, k+2. 
-           int sz = base + (remain > 0 ? 1 : 0);
-           remain--;
+           int sz = base + (i < remain ? 1 : 0);
+           //remain--;
 
+           // 走 len-1 步，到本段的最后一个节点
            for (int j = 0; j < sz-1; j++)
               cur = cur->next;
            
