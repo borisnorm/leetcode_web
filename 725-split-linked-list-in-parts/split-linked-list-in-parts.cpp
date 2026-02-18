@@ -29,6 +29,7 @@ public:
         for (int i = 0; i < k && cur; i++)
         {
            res[i]=cur;
+           //res.push_back(cur);  //是追加到末尾，不是覆盖已有位置 造成size = k+1, k+2. 
            int sz = base + (remain > 0 ? 1 : 0);
            remain--;
 
