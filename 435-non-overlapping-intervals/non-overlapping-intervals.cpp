@@ -14,8 +14,8 @@ public:
 
         int lastEnd = intervals[0][1];
         int cnt = 1;
+        int removed = 0;
 
-        //for (auto& interval : intervals)
         for (int i = 1; i < n; i++)
         {
            //不重叠的 new_start >= lastEnd
@@ -24,9 +24,14 @@ public:
               cnt++;
               lastEnd = intervals[i][1];
            }
+           else
+           {
+              removed++;
+           }
         }
 
-        return n - cnt;
+        return removed;
+        //return n - cnt;
 
     }
 };
