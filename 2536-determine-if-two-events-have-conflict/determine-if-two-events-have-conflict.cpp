@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     
@@ -8,7 +9,8 @@ public:
         return false;
    }
 };
-/*
+*/
+
 class Solution {
 public:
     
@@ -25,22 +27,21 @@ public:
 
         //if (event1.start < event2.end && event2.start < event1.end)
         if (lessThan(e1_start, e2_end) && lessThan(e2_start, e1_end))
-          return false;
+          return true;
         
-        return true;
+        return false;
     }
 
     eventTimer* buildEvtTimer(const string& event_str)
     {
         eventTimer* evtTimer = new eventTimer();
+        stringstream ss(event_str);
         string part;
-        if (getline(event_str, part, ':'))
-        {
-          evt.hour = stoi(part);
-        }
+        if (getline(ss, part, ':'))
+          evtTimer->hour = stoi(part);
 
-        if (getline(event_str, part, ':'))
-         evt.min = stoi(part);
+        if (getline(ss, part, ':'))
+          evtTimer->min = stoi(part);
         
         return evtTimer;
     }
@@ -49,8 +50,9 @@ public:
     {
         if (e1->hour < e2->hour)
           return true;
-        else
-          return e1.min < e2.min;
+        else if (e1->hour == e2->hour)
+          return e1->min <= e2->min;
+        
+        return false;
     }
 };
-*/
