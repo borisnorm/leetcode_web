@@ -12,16 +12,16 @@ public:
         int n = intervals.size();
         sort(intervals.begin(), intervals.end(), cmp);
 
-        int x_end = intervals[0][1];
+        int lastEnd = intervals[0][1];
         int cnt = 1;
 
-        for (auto& interval : intervals)
+        //for (auto& interval : intervals)
+        for (int i = 0; i < n; i++)
         {
-           int start = interval[0];
-           if (start >= x_end)
+           if (intervals[i][0] >= lastEnd)
            {
               cnt++;
-              x_end = interval[1];
+              lastEnd = intervals[i][1];
            }
         }
 
