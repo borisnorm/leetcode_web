@@ -26,7 +26,7 @@ public:
          eventTimer* e2_end   = buildEvtTimer(event2[1]);
 
         //if (event1.start < event2.end && event2.start < event1.end)
-        if (lessThan(e1_start, e2_end) && lessThan(e2_start, e1_end))
+        if (lessEqualThan(e1_start, e2_end) && lessEqualThan(e2_start, e1_end))
           return true;
         
         return false;
@@ -46,7 +46,7 @@ public:
         return evtTimer;
     }
 
-    bool lessThan(eventTimer* e1, eventTimer* e2)
+    bool lessEqualThan(eventTimer* e1, eventTimer* e2)
     {
         if (e1->hour < e2->hour)
           return true;
