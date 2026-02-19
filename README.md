@@ -19,6 +19,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0346-moving-average-from-data-stream](https://github.com/borisnorm/leetcode_web/tree/master/0346-moving-average-from-data-stream) |
 | [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
+| [0487-max-consecutive-ones-ii](https://github.com/borisnorm/leetcode_web/tree/master/0487-max-consecutive-ones-ii) |
 | [0550-shortest-path-to-get-food](https://github.com/borisnorm/leetcode_web/tree/master/0550-shortest-path-to-get-food) |
 | [0756-pour-water](https://github.com/borisnorm/leetcode_web/tree/master/0756-pour-water) |
 | [1059-missing-element-in-sorted-array](https://github.com/borisnorm/leetcode_web/tree/master/1059-missing-element-in-sorted-array) |
@@ -159,6 +160,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0256-paint-house](https://github.com/borisnorm/leetcode_web/tree/master/0256-paint-house) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
+| [0487-max-consecutive-ones-ii](https://github.com/borisnorm/leetcode_web/tree/master/0487-max-consecutive-ones-ii) |
 | [2426-maximum-profit-from-trading-stocks](https://github.com/borisnorm/leetcode_web/tree/master/2426-maximum-profit-from-trading-stocks) |
 ## Breadth-First Search
 |  |
@@ -224,4 +226,8 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0369-plus-one-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0369-plus-one-linked-list) |
+## Sliding Window
+|  |
+| ------- |
+| [0487-max-consecutive-ones-ii](https://github.com/borisnorm/leetcode_web/tree/master/0487-max-consecutive-ones-ii) |
 <!---LeetCode Topics End-->
