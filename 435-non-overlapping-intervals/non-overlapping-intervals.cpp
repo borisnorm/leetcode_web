@@ -16,8 +16,9 @@ public:
         int cnt = 1;
 
         //for (auto& interval : intervals)
-        for (int i = 0; i < n; i++)
+        for (int i = 1; i < n; i++)
         {
+           //不重叠的 new_start >= lastEnd
            if (intervals[i][0] >= lastEnd)
            {
               cnt++;
