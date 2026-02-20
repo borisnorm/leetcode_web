@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     string reverseWords(string s) {
@@ -29,7 +30,6 @@ public:
         {
            while (fast < n && s[fast] == ' ')
              fast++;
-           
            if (fast == n)
              break;
 
@@ -47,7 +47,9 @@ public:
     }
 };
 
+*/
 /*
+// 有前导0 提前过滤 反转 + 无前导0 写入
 class Solution {
 public:
     string reverseWords(string s) {
@@ -100,7 +102,7 @@ public:
 };
 */
 
-/*
+// 前导0 提前过滤 反转  + 前导0 提前过滤 写入 slow
 class Solution {
 public:
     string reverseWords(string s) {
@@ -114,7 +116,6 @@ public:
 
         while (i < n && s[i] == ' ')
             i++;
-
         while (i < n)
         {
           int start = i;
@@ -129,21 +130,18 @@ public:
 
         int slow = 0;
         int fast = 0;
-    
-        while(fast < n)
-        {
-           while (fast < n && s[fast] == ' ')
+        while (fast < n && s[fast] == ' ')
              fast++;
-           if (fast == n)
-             break;
-           
+        while(fast < n)
+        {  
            if (slow != 0)
              s[slow++] = ' ';
 
            while (fast < n && s[fast] != ' ')
-           {
              s[slow++] = s[fast++];
-           }
+           
+           while (fast < n && s[fast] == ' ')
+             fast++;
         }
         
         s.resize(slow);
@@ -152,10 +150,9 @@ public:
     }
 };
 
-*/
-
 
 /*
+// 无前导 0 处置 + vector<string> 版
 class Solution {
 public:
     string reverseWords(string s) {
@@ -201,6 +198,7 @@ public:
 */
 
 /*
+// 有前导 0 处置 + vector<string> 版
 class Solution {
 public:
     string reverseWords(string s) {
