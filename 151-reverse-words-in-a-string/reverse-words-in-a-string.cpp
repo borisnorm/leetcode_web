@@ -4,10 +4,53 @@ public:
         if (s.empty())
           return "";
         
+        int n = s.size();
+        int i = 0;
+        vector<string> words;
+       
+        //split and collect words
+        while (i < n)
+        {
+          while (i < n && s[i] == ' ')
+            i++;
+          if (i == n)
+            break;
+          
+          int start = i;
+          while (i < n && s[i] != ' ')
+            i++;
+          int end = i;
+          words.push_back(s.substr(start, end-start));
+        }
+
+        //reverse words
+        reverse(words.begin(), words.end());
+
+        // contcate words
+        string res;
+        for (int i = 0; i < words.size(); i++)
+        {
+            if (i != 0)
+              res += ' ';
+
+            res += words[i];
+        }
+
+        return res;
+    }
+};
+/*
+class Solution {
+public:
+    string reverseWords(string s) {
+        if (s.empty())
+          return "";
+        
         reverse(s.begin(), s.end());
         int n = s.size();
 
         int i = 0;
+        // 目的是reverse 单词, 空格如何跳过 无所谓
         while (i < n)
         {
            while(i < n && s[i] == ' ')
@@ -44,6 +87,8 @@ public:
         return s;
     }
 };
+
+*/
 /*
 class Solution {
 public:
