@@ -19,10 +19,11 @@ public:
            int start = i;
            while (i < n && s[i] != ' ')
              i++;
-           string word = s.substr(start, i - start);
+           int end = i;
+           string word = s.substr(start, end - start);
            words.push_back(word);
            
-           //后置 leading space ' ', world 后来的空格
+           //处理 单词间空格 以及 后置 leading space ' ', world 后来的空格
            while (i < n && s[i] == ' ')
             i++;
         }
