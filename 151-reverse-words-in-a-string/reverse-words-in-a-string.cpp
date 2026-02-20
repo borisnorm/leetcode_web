@@ -4,48 +4,6 @@ public:
         if (s.empty())
           return "";
         
-        int n = s.size();
-        int i = 0;
-        vector<string> words;
-       
-        //split and collect words
-        while (i < n)
-        {
-          while (i < n && s[i] == ' ')
-            i++;
-          if (i == n)
-            break;
-          
-          int start = i;
-          while (i < n && s[i] != ' ')
-            i++;
-          int end = i;
-          words.push_back(s.substr(start, end-start));
-        }
-
-        //reverse words
-        reverse(words.begin(), words.end());
-
-        // contcate words
-        string res;
-        for (int i = 0; i < words.size(); i++)
-        {
-            if (i != 0)
-              res += ' ';
-
-            res += words[i];
-        }
-
-        return res;
-    }
-};
-/*
-class Solution {
-public:
-    string reverseWords(string s) {
-        if (s.empty())
-          return "";
-        
         reverse(s.begin(), s.end());
         int n = s.size();
 
@@ -75,6 +33,7 @@ public:
            if (fast == n)
              break;
 
+           // ' word1', ' word2', 空格+单词, 这样 merge 进去的
            if (slow != 0)
              s[slow++] = ' ';
         
@@ -88,7 +47,6 @@ public:
     }
 };
 
-*/
 /*
 class Solution {
 public:
@@ -194,6 +152,52 @@ public:
     }
 };
 
+*/
+
+
+/*
+class Solution {
+public:
+    string reverseWords(string s) {
+        if (s.empty())
+          return "";
+        
+        int n = s.size();
+        int i = 0;
+        vector<string> words;
+       
+        //split and collect words
+        while (i < n)
+        {
+          while (i < n && s[i] == ' ')
+            i++;
+          if (i == n)
+            break;
+          
+          int start = i;
+          while (i < n && s[i] != ' ')
+            i++;
+          int end = i;
+          words.push_back(s.substr(start, end-start));
+        }
+
+        //reverse words
+        reverse(words.begin(), words.end());
+
+        // contcate words
+        string res;
+        for (int i = 0; i < words.size(); i++)
+        {
+            // ' word1', ' word2', 空格+单词, 这样 merge 进去的
+            if (i != 0)
+              res += ' ';
+
+            res += words[i];
+        }
+
+        return res;
+    }
+};
 */
 
 /*
