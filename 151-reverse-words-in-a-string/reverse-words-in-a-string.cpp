@@ -3,6 +3,77 @@ public:
     string reverseWords(string s) {
         if (s.empty())
           return "";
+        
+        int n = s.size();
+        reverse(s.begin(), s.end());
+
+        int i  = 0;
+
+        while (i < n && s[i] == ' ')
+            i++;
+
+        while (i < n)
+        {
+          int start = i;
+          while (i < n && s[i] != ' ')
+            i++;
+          int end = i;
+          reverse(s.begin()+start, s.begin()+end);
+          
+          while(i < n && s[i] == ' ')
+            i++;
+        }
+
+        int slow = 0;
+        int fast = 0;
+
+        while(fast < n)
+        {
+           while (fast < n && s[fast] == ' ')
+             fast++;
+           if (fast == n)
+             break;
+           
+           if (slow != 0)
+             s[slow++] = ' ';
+             
+           while (fast < n && s[fast] != ' ')
+           {
+             s[slow++] = s[fast++];
+           }
+        }
+
+        /*
+        while (fast < n)
+        {
+           while (fast < n && s[fast] != ' ')
+           {
+              s[slow++] = s[fast++];
+           }
+
+           if (fast == n)
+             break;
+
+           if (slow != 0)
+            s[slow++] = ' ';
+
+           while (fast < n && s[fast] == ' ')
+             fast++;
+        }
+        */
+
+        s.resize(slow);
+
+        return s;
+    }
+};
+
+/*
+class Solution {
+public:
+    string reverseWords(string s) {
+        if (s.empty())
+          return "";
     
         string res;
         vector<string> words;
@@ -40,3 +111,4 @@ public:
         return res;
     }
 };
+*/
