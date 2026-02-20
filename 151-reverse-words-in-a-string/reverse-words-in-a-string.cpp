@@ -26,7 +26,8 @@ public:
 
         int slow = 0;
         int fast = 0;
-
+    
+       /*
         while(fast < n)
         {
            while (fast < n && s[fast] == ' ')
@@ -36,31 +37,30 @@ public:
            
            if (slow != 0)
              s[slow++] = ' ';
-             
+
            while (fast < n && s[fast] != ' ')
            {
              s[slow++] = s[fast++];
            }
         }
+        */
 
-        /*
+        while (fast < n && s[fast] == ' ')
+          fast++;
         while (fast < n)
         {
+           if (slow != 0)
+            s[slow++] = ' ';
+
            while (fast < n && s[fast] != ' ')
            {
               s[slow++] = s[fast++];
            }
 
-           if (fast == n)
-             break;
-
-           if (slow != 0)
-            s[slow++] = ' ';
-
            while (fast < n && s[fast] == ' ')
              fast++;
         }
-        */
+        
 
         s.resize(slow);
 
