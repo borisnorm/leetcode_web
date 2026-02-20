@@ -1,4 +1,3 @@
-/*
 class Solution {
 public:
     string reverseWords(string s) {
@@ -47,7 +46,6 @@ public:
     }
 };
 
-*/
 /*
 // 有前导0 提前过滤 反转 + 无前导0 写入
 class Solution {
@@ -102,6 +100,7 @@ public:
 };
 */
 
+/*
 // 前导0 提前过滤 反转  + 前导0 提前过滤 写入 slow
 class Solution {
 public:
@@ -149,7 +148,7 @@ public:
         return s;
     }
 };
-
+*/
 
 /*
 // 无前导 0 处置 + vector<string> 版
