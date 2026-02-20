@@ -19,10 +19,21 @@ public:
              i++;
            int end = i;
 
-           reverse(s.begin()+start, s.begin()+end);
+           //reverse(s.begin()+start, s.begin()+end);
+           reverse2(s, start, end-1);
         }
 
         return s;
+    }
+
+    void reverse2(string& s, int l, int r)
+    {
+        while(l < r)
+        {
+           swap(s[l], s[r]);
+           l++;
+           r--;
+        }
     }
 };
 /*
