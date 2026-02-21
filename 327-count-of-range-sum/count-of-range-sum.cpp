@@ -1,5 +1,79 @@
 class Solution {
 public:
+
+struct SegTree {
+    int n;
+    vector<int> tree; // tree[node] = 该节点区间内元素数量
+
+    SegTree(int n) : n(n), tree(4 * n, 0) {}
+
+    // 在位置 pos 插入一个元素
+    void update(int node, int l, int r, int pos) {
+        if (l == r) { tree[node]++; return; }
+        int mid = l + (r - l) / 2;
+        if (pos <= mid) update(2*node, l, mid, pos);
+        else            update(2*node+1, mid+1, r, pos);
+        tree[node] = tree[2*node] + tree[2*node+1]; // 回传
+    }
+
+    // 查询 [ql, qr] 内元素数量
+    int query(int node, int l, int r, int ql, int qr) {
+        if (ql > qr) return 0;
+        if (ql <= l && r <= qr) return tree[node]; // 完全覆盖
+        int mid = l + (r - l) / 2;
+        int res = 0;
+        if (ql <= mid) res += query(2*node, l, mid, ql, qr);
+        if (qr > mid)  res += query(2*node+1, mid+1, r, ql, qr);
+        return res;
+    }
+
+    void update(int pos) { update(1, 0, n-1, pos); }
+    int query(int ql, int qr) { return query(1, 0, n-1, ql, qr); }
+};
+
+int countRangeSum(vector<int>& nums, int lower, int upper) {
+    int n = nums.size();
+
+    // 1. 构建前缀和
+    vector<long long> pre(n + 1, 0);
+    for (int i = 0; i < n; i++) pre[i+1] = pre[i] + nums[i];
+
+    // 2. 离散化：收集所有需要查询/插入的值
+    vector<long long> vals(pre.begin(), pre.end());
+    for (int j = 1; j <= n; j++) {
+        vals.push_back(pre[j] - lower); // 查询上界
+        vals.push_back(pre[j] - upper); // 查询下界
+    }
+    sort(vals.begin(), vals.end());
+    vals.erase(unique(vals.begin(), vals.end()), vals.end()); // 去重
+    int m = vals.size();
+
+    // 离散化映射：值 -> 索引
+    auto getIdx = [&](long long v) {
+        return (int)(lower_bound(vals.begin(), vals.end(), v) - vals.begin());
+    };
+
+    // 3. 扫描，线段树统计
+    SegTree seg(m);
+    int cnt = 0;
+
+    for (int j = 0; j <= n; j++) {
+        if (j > 0) {
+            // 查询有多少 pre[i] 在 [pre[j]-upper, pre[j]-lower]
+            int ql = getIdx(pre[j] - upper);
+            int qr = getIdx(pre[j] - lower);
+            cnt += seg.query(ql, qr); // pre[j]-lower 一定在 vals 里
+        }
+        // 插入 pre[j]
+        seg.update(getIdx(pre[j]));
+    }
+
+    return cnt;
+}
+};
+/*
+class Solution {
+public:
     // 主函数
     int countRangeSum(vector<int>& nums, int lower, int upper) {
         
@@ -79,6 +153,8 @@ private:
         return count;
     }
 };
+
+*/
 /*
 class Solution {
 public:
