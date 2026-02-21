@@ -1,26 +1,4 @@
-class Solution {
-public:
-    int lengthOfLastWord(string s) {
-        
-        int n = s.size();
-        int i = n -1;
-
-        while (i >= 0 && s[i] == ' ')
-          i--;
-        
-        int len = 0;
-        while (i >= 0 && s[i] != ' ')
-        {
-           i--;
-           len++;
-        }
-
-        return len;
-
-    }
-};
-
-/*
+// 反向 更好
 class Solution {
 public:
     int lengthOfLastWord(string s) {
@@ -47,5 +25,58 @@ public:
         
     }
 };
+/*
+//  正向 正确
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        if (s.empty())
+          return 0;
+        
+        int n = s.size();
+        int i = 0;
+        int len = 0;
+        while (i < n)
+        {
+           while(i < n && s[i] == ' ')
+             i++;
+           if (i == n)
+             break;
 
+           int start = i;
+           while (i < n && s[i] != ' ')
+             i++;
+           int end = i;
+           len = end - start;
+        }
+
+        return len;
+    }
+};
 */
+
+/*
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        
+        int n = s.size();
+        int i = n -1;
+
+        while (i >= 0 && s[i] == ' ')
+          i--;
+        
+        int len = 0;
+        while (i >= 0 && s[i] != ' ')
+        {
+           i--;
+           len++;
+        }
+
+        return len;
+
+    }
+};
+*/
+
+
