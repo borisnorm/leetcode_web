@@ -9,6 +9,7 @@ public:
          int right = n;
 
          // [left, right)
+         // 停止时 left == right  第一个 >= target 的位置 
          while (left < right)
          {
             int mid = left + (right - left)/2;
