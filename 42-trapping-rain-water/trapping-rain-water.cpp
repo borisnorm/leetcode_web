@@ -1,9 +1,44 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
+        int n = height.size();
+        if (n < 3)
+          return 0;
+        
+        stack<int> st;
+        int res = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+           while(!st.empty() && height[i] > height[st.top()])
+           {
+              int r = i;
+              int base = st.top();
+              st.pop();
+              if (st.empty())
+                break;
+
+              int l = st.top();
+              int w = r - l - 1;
+              int h = min(height[l], height[r]) - height[base];
+
+              res += w * h;
+           }
+
+           st.push(i);
+        }
+
+        return res;
+    }
+};
+/*
+class Solution {
+public:
+    int trap(vector<int>& height) {
     
          int n = height.size();
          //只要2个的左右2段 无法储水, 至少要 3个, 水会从一边流出去
+         //左右边界处 没有挡板, 无法储水
          if (n <= 2)
            return 0;
 
@@ -40,3 +75,5 @@ public:
          return  res;
     }
 };
+
+*/
