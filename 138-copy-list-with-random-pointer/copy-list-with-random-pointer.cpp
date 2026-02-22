@@ -13,6 +13,7 @@ public:
     }
 };
 */
+/*
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
@@ -68,7 +69,8 @@ public:
         return dummy.next;
     }
 };
-/*
+*/
+
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
@@ -96,8 +98,6 @@ public:
        return orig2cpy[head];
     }
 };
-
-*/
 
 /*
 class Solution {
