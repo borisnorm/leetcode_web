@@ -8,25 +8,30 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+ /*
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         if (!head)
           return head;
+
+        if (n <= 0)
+          return head;
         
         ListNode dummy(0);
-        ListNode* dummy_head = &dummy;
-        dummy_head->next = head;
+        dummy.next = head;
 
-        ListNode* slow = dummy_head;
-        ListNode* fast = dummy_head;
+        ListNode* slow = &dummy;
+        ListNode* fast = &dummy;
 
         //快慢指针解法
         // fast 跑 n + 1 个节点 , slow 与 fast 相差 n+1个节点
         for (int i = 0; i < n + 1; i++)
         {
-           //if (!fast)
-           //  return head;
+           //defensive check 
+           //n 超过链表长度（或 n <= 0 等非法情况），
+           if (!fast)
+             return head;
            fast = fast->next;
         }
 
@@ -60,8 +65,9 @@ public:
         return dummy.next;
     }
 };
+*/
 
-/*
+
  class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
@@ -81,7 +87,15 @@ public:
          }
 
          cur = dummy_head;
-         //倒数第 n 个 = 正数第 (cnt - n + 1) 个
+         //1-based 倒数第 n 个 = 正数第 (cnt - n + 1) 个, 需要跳 cnt-n 步
+         //1-based 倒数第 n 个的前驱 = 正数的 cnt - n + 1 - 1 = cnt - n
+         //0-based 倒数第 n 个 = 正数 (cnt - n)个元素
+
+         //1-based 倒数第 n 个 = 正数第 (cnt - n + 1) 个
+         //1-based 正数(cnt  - n + 1)从 head 出发 要跳 cnt – n + 1 – 1 步 = cnt – n 步
+         //1-based 倒数第 n 个的前驱 = 正数的 第 cnt - n + 1 - 1 = cnt – n, 从 head 出发 跳 cnt – n – 1 步
+        // dummy_head 已经是  head 的前驱了, 多了1跳, 变成了 cnt - n -1 + 1 = cnt - n 步        
+
          for (int i = 0; i < cnt - n; i++)
          {
             cur = cur->next;
@@ -91,12 +105,10 @@ public:
          cur->next = del->next;
          delete del;
 
-         return dummy.next;
-
-         
+         return dummy.next;  
     }
  };
-*/
+
 
 /*
 class Solution {
