@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
 
@@ -71,7 +72,9 @@ int countRangeSum(vector<int>& nums, int lower, int upper) {
     return cnt;
 }
 };
-/*
+
+*/
+
 class Solution {
 public:
     // 主函数
@@ -154,7 +157,6 @@ private:
     }
 };
 
-*/
 /*
 class Solution {
 public:
