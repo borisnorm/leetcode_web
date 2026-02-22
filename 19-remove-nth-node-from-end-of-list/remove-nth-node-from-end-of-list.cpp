@@ -21,14 +21,31 @@ public:
         ListNode* slow = dummy_head;
         ListNode* fast = dummy_head;
 
-        // get 倒数 第 n + 1 个节点 也就是 n 的前一个节点
+        //快慢指针解法
+        // fast 跑 n + 1 个节点 , slow 与 fast 相差 n+1个节点
         for (int i = 0; i < n + 1; i++)
         {
-           if (!fast)
-             return head;
+           //if (!fast)
+           //  return head;
            fast = fast->next;
         }
 
+        // fast 比 slow 快 1 步
+        // for(int i = 0; i < 1; i++)
+        // slow 在倒数第1个节点 
+        //
+        // 1    2      3      4      5      (null)
+        //                           ^        ^
+        //                           |        |
+        //                           slow     fast
+        // fast 比 slow 快 2步
+        // for(int i = 0; i < 1 + 1; i++)
+        // n = 1 , 正好是 倒数第一个节点的 前一个节点
+        //
+        // 1    2      3      4      5      (null)
+        //                    ^               ^
+        //                    |               |
+        //                    slow          fast
         while (fast)
         {
            slow = slow->next;
@@ -64,6 +81,7 @@ public:
          }
 
          cur = dummy_head;
+         //倒数第 n 个 = 正数第 (cnt - n + 1) 个
          for (int i = 0; i < cnt - n; i++)
          {
             cur = cur->next;
