@@ -85,9 +85,8 @@ public:
         vector<long long> prefix(n + 1, 0);      // 前缀和数组
         
         // 构造前缀和
-        for (int i = 0; i < n; i++) {
-            prefix[i + 1] = prefix[i] + nums[i]; // prefix[i] 表示前 i 个元素的和
-        }
+        for (int i = 0; i < n; i++) 
+            prefix[i + 1] = prefix[i] + nums[i]; // prefix[i] 表示前 i 个元素的
         
         // 使用归并排序统计
         return mergeSort(prefix, 0, n, lower, upper);
@@ -104,14 +103,14 @@ private:
         
         int mid = left + (right - left) / 2;      // 中点
         
-        int count = 0;
+        int cnt = 0;
         
         // 递归左右两边
-        count += mergeSort(prefix, left, mid, lower, upper);
-        count += mergeSort(prefix, mid + 1, right, lower, upper);
+        //[left, mid]  [mid+1, right]
+        cnt += mergeSort(prefix, left, mid, lower, upper);
+        cnt += mergeSort(prefix, mid + 1, right, lower, upper);
         
         // 统计跨区间的情况
-        
         int j = mid + 1;
         int k = mid + 1;
         
@@ -126,34 +125,34 @@ private:
                 j++;
             
             // 中间区间数量
-            count += (j - k);
+            cnt += (j - k);
         }
         
         // 合并排序
-        vector<long long> temp;
+        vector<long long> tmp;
         
         int p1 = left;
         int p2 = mid + 1;
         
-        while (p1 <= mid && p2 <= right) {
-            if (prefix[p1] <= prefix[p2])
-                temp.push_back(prefix[p1++]);
-            else
-                temp.push_back(prefix[p2++]);
+        while (p1 <= mid && p2 <= right) 
+        {
+           if (prefix[p1] <= prefix[p2])
+              tmp.push_back(prefix[p1++]);
+           else
+              tmp.push_back(prefix[p2++]);
         }
         
         while (p1 <= mid)
-            temp.push_back(prefix[p1++]);
+          tmp.push_back(prefix[p1++]);
         
         while (p2 <= right)
-            temp.push_back(prefix[p2++]);
+          tmp.push_back(prefix[p2++]);
         
         // 拷回原数组
-        for (int i = 0; i < temp.size(); i++) {
-            prefix[left + i] = temp[i];
-        }
+        for (int i = 0; i < tmp.size(); i++)
+            prefix[left + i] = tmp[i];
         
-        return count;
+        return cnt;
     }
 };
 
