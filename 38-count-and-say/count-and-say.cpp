@@ -21,7 +21,8 @@ public:
                  cnt++;
               }
 
-              tmp += to_string(cnt) + c;
+              tmp += to_string(cnt);
+              tmp += c;
            }  
 
            res = tmp;
