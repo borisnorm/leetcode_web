@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     string countAndSay(int n) {
@@ -30,15 +31,16 @@ public:
         return res;
     }
 };
-/*
+*/
+
 class Solution {
 public:
     string countAndSay(int n) {
         string s = "1";
 
-        for (int i = 2; i <= n; i++)
+        for (int i = 1; i < n; i++)
         {
-           string next;
+           string next = "";
            int cnt = 1;
 
            for (int j = 1; j < s.size(); j++)
@@ -78,4 +80,3 @@ public:
     //131211109876543211
 };
 
-*/
