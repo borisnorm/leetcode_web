@@ -3,6 +3,67 @@ public:
     int maximalRectangle(vector<vector<char>>& matrix) {
         if (matrix.empty() || matrix[0].empty())
           return 0;
+        
+        int m = matrix.size();
+        int n = matrix[0].size();
+
+        int maxArea = 0;
+        vector<int> cols(n, 0);
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+               if (matrix[i][j] == '1')
+                 cols[j] += 1;
+               else
+                 cols[j] = 0;
+            }
+
+             int area = getMaxArea(cols);
+              maxArea = max(maxArea, area);
+        }
+
+        return maxArea;
+    }
+
+    int getMaxArea(vector<int>& nums)
+    {
+       int n = nums.size();
+
+       stack<int> st;
+
+       long long maxArea = 0;
+
+       for (int i = 0; i <= n; i++)
+       {
+          int curH = (i < n) ? nums[i] : 0;
+
+          while(!st.empty() && curH < nums[st.top()])
+          {
+              int r = i;
+              int cur = st.top();
+              st.pop();
+              int l = (st.empty()) ? - 1: st.top();
+
+              long long w = r - l - 1;
+              long long h = nums[cur];
+              long long area = w * h;
+
+              maxArea = max(maxArea, area);
+          }
+
+          st.push(i);
+       }
+
+       return (int)maxArea;
+    }
+};
+/*
+class Solution {
+public:
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        if (matrix.empty() || matrix[0].empty())
+          return 0;
 
         int m = matrix.size();
         int n = matrix[0].size();
@@ -61,3 +122,5 @@ public:
 
     }
 };
+
+*/
