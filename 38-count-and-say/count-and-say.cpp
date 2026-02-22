@@ -36,32 +36,34 @@ public:
 class Solution {
 public:
     string countAndSay(int n) {
-        string s = "1";
+        string res = "1";
 
         for (int i = 1; i < n; i++)
         {
            string next = "";
            int cnt = 1;
 
-           for (int j = 1; j < s.size(); j++)
+           // j = 0 作为基准 用于 与 cur j 进行对比, 所以 j = 1
+           // 类似 lastC = res[0]; 的用法
+           for (int j = 1; j < res.size(); j++)
            {
-              if (s[j] == s[j-1])
+              if (res[j] == res[j-1])
                 cnt++;
               else
               {
-                next += to_string(cnt);
-                next += s[j-1];
+                //当前这次 去 push 前一次的结果
+                next += to_string(cnt) + res[j-1];
                 cnt = 1;
               }
            }
 
            next += to_string(cnt);
-           next += s.back();   // j 在这里已经失效了, 
+           next += res.back();   // j 在这里已经失效了, 
 
-           s = next;     // 新的 s 经过压缩的 next, 不是 原来的 
+           res = next;     // 新的 s 经过压缩的 next, 不是 原来的 
         }
 
-        return s;
+        return res;
     }
 
     //错误的思路
