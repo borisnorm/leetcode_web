@@ -75,10 +75,13 @@ public:
            else
              l = mid + 1;
           
-           if (nums[mid] == target)
-             res = mid;
+           //if (nums[mid] == target)
+           //  res = mid;
         }
 
+        if (r >= 0 && nums[r] == target)
+          res = r;
+          
         return res;
     }
 };
