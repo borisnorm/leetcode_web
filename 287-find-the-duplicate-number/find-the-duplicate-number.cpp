@@ -18,11 +18,13 @@ public:
         {
           slow = nums[slow];
           fast = nums[nums[fast]];
-          if (slow == fast)
-            break;
+          //if (slow == fast)
+          //  break;
         }
 
         // phase 2: 找环的入口（即重复数字）
+        //slow = 0;
+        //slow = nums[0];
         slow = 0;
         // fast 留在相遇点
         while (slow != fast)
