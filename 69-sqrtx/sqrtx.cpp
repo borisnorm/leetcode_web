@@ -6,6 +6,7 @@ public:
           return x;
 
         int l = 0;
+        // 当 x = 1 的时候, r = 0 下面的循环也不走了, 直接返回 r = 0, 错误
         int r = x/2;
 
         while (l <= r)
