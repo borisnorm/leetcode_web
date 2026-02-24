@@ -4,9 +4,12 @@ public:
         if (nums.empty())
           return -1;
 
-        // phase 1: 找相遇点  
         int slow = nums[0];
-        int fast = nums[nums[0]];
+        int fast = nums[0];
+
+        // phase 1: 找相遇点  
+        slow = nums[slow];
+        fast = nums[nums[fast]];
         
         //int slow = 0;
         //int fast = 0;
@@ -24,8 +27,8 @@ public:
 
         // phase 2: 找环的入口（即重复数字）
         //slow = 0;
-        //slow = nums[0];
-        slow = 0;
+        slow = nums[0];
+        //slow = 0;
         // fast 留在相遇点
         while (slow != fast)
         {
