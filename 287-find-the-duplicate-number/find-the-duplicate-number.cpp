@@ -5,16 +5,16 @@ public:
           return -1;
 
         // phase 1: 找相遇点  
-        //int slow = nums[0];
-        //int fast = nums[nums[0]];
+        int slow = nums[0];
+        int fast = nums[nums[0]];
         
-        int slow = 0;
-        int fast = 0;
+        //int slow = 0;
+        //int fast = 0;
 
         int n = nums.size();
         //数组长度为 n+1: 有效下标是 0 到 n，所以 nums[n] 完全合法，不越界。
         //数值范围: [1, n], 所以 nums[nums[fast]] 是有效的
-        while (fast != n)
+        while (slow != fast)
         {
           slow = nums[slow];
           fast = nums[nums[fast]];
