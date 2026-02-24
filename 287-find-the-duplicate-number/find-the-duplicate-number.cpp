@@ -1,6 +1,29 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
+        
+        int slow = 0;
+        int fast = 0;
+
+        do {
+           slow = nums[slow];
+           fast = nums[nums[fast]];
+        } while(slow != fast);
+
+        slow = 0;
+        while (slow != fast)
+        {
+          slow = nums[slow];
+          fast = nums[fast];
+        }
+
+        return slow;
+    }
+};
+/*
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
         if (nums.empty())
           return -1;
 
@@ -27,9 +50,13 @@ public:
            fast = nums[fast];
         }
         
+        //slow = 当前节点 = 入环点下标 = 重复数字
+        //nums[slow] = 下一个节点 = 不是答案
         return slow; // 相遇点即为重复数字
     }
 };
+
+*/
 
 /*
 class Solution {
