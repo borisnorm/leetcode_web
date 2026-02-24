@@ -4,31 +4,22 @@ public:
         if (nums.empty())
           return -1;
 
+        // phase 1: 找相遇点  
         int slow = nums[0];
         int fast = nums[0];
-
-        // phase 1: 找相遇点  
-        slow = nums[slow];
-        fast = nums[nums[fast]];
         
-        //int slow = 0;
-        //int fast = 0;
-
-        int n = nums.size();
         //数组长度为 n+1: 有效下标是 0 到 n，所以 nums[n] 完全合法，不越界。
         //数值范围: [1, n], 所以 nums[nums[fast]] 是有效的
-        while (slow != fast)
-        {
+    
+        do {
           slow = nums[slow];
           fast = nums[nums[fast]];
-          //if (slow == fast)
-          //  break;
-        }
+          
+        }while (slow != fast);
 
         // phase 2: 找环的入口（即重复数字）
-        //slow = 0;
+        //slow =  nums[0];
         slow = nums[0];
-        //slow = 0;
         // fast 留在相遇点
         while (slow != fast)
         {
@@ -57,7 +48,7 @@ public:
         {
           int mid = (l + r) / 2;
           int cnt = 0;
-          // 统计 <= mid 的 cnt 
+          // 统计 <= mid 的 cnt
           for (int num : nums) 
           {
             if (num <= mid)
@@ -78,5 +69,4 @@ public:
         return ans;
     }
 };
-
 */
