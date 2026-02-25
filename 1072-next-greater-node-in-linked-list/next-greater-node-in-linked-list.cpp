@@ -13,6 +13,46 @@ public:
     vector<int> nextLargerNodes(ListNode* head) {
         if (!head)
           return {};
+        
+        stack<int> st;
+        vector<int> res;
+
+        ListNode* cur = head;
+
+        while (cur)
+        {
+          
+          while (!st.empty() && cur->val > res[st.top()])
+          {
+              int preIdx = st.top();
+              st.pop();
+
+              res[preIdx] = cur->val;
+          }
+
+          res.push_back(cur->val);
+          int idx = res.size()-1;
+
+          st.push(idx);
+
+          cur = cur->next;
+        }
+
+        while(!st.empty())
+        {
+           res[st.top()] = 0;
+           st.pop();
+        }
+
+        return res;
+    }
+};
+ /*
+class Solution {
+public:
+    vector<int> nextLargerNodes(ListNode* head) {
+        if (!head)
+          return {};
 
         vector<int> res;
 
@@ -34,3 +74,5 @@ public:
         return res;
     }
 };
+
+*/
