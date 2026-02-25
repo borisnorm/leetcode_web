@@ -3,20 +3,21 @@ public:
     int subarraySum(vector<int>& nums, int k) {
         // subarray equals to K 
 
-        unordered_map<int, int> prefixSumCount;
-        prefixSumCount[0] = 1;
-        int count = 0;
+        unordered_map<int, int> prefixSumCnt;
+        prefixSumCnt[0] = 1;
+        int cnt = 0;
         int prefixSum = 0;
 
         for (int num: nums)
         {
            prefixSum += num;
-           if (prefixSumCount.count(prefixSum - k))
-             count += prefixSumCount[prefixSum - k];
+           
+           if (prefixSumCnt.count(prefixSum - k))
+             cnt += prefixSumCnt[prefixSum - k];
 
-           prefixSumCount[prefixSum]++;
+           prefixSumCnt[prefixSum]++;
         }
 
-        return count;
+        return cnt;
     }
 };
