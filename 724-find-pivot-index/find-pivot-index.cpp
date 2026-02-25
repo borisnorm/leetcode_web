@@ -3,8 +3,6 @@ public:
 
     int pivotIndex(vector<int>& nums) {
         int n = nums.size();
-        int l = 0;
-        int r = n - 1;
 
         long long total = 0;
         for (int num : nums)
