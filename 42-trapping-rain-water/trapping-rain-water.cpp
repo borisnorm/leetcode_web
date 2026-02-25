@@ -11,8 +11,8 @@ public:
          int l = 0;
          int r = n-1;
 
-         int l_max = 0;
-         int r_max = 0;
+         int l_Hmax = 0;
+         int r_Hmax = 0;
 
          int res = 0;
         
@@ -21,19 +21,19 @@ public:
          while (l < r)
          {
             //2. 在 l, r 更新后, 确定 左右 板的的 最大值
-            l_max = max(l_max, height[l]);
-            r_max = max(r_max, height[r]);
+            l_Hmax = max(l_Hmax, height[l]);
+            r_Hmax = max(r_Hmax, height[r]);
 
             // 比较的是 l_max 与  r_max 不是 height[l] 与 height[r]
             // 3.找短板, 根据短板计算当前 格子的储水量, 并累加
-            if (l_max <= r_max)
+            if (l_Hmax <= r_Hmax)
             {
-               res += l_max - height[l];  
+               res += l_Hmax - height[l];  
                l++;
             }
             else
             {
-               res += r_max - height[r];
+               res += r_Hmax - height[r];
                r--;
             }
          }
