@@ -50,7 +50,7 @@ public:
     int find(int x)
     {
         if (parent[x] != x)
-          return find(parent[x]);
+          parent[x] = find(parent[x]);
 
         return parent[x];
     }
@@ -65,11 +65,13 @@ public:
     
        if (rank[rx] > rank[ry])
        {
-          parent[rx] = ry;
+          // 把 小树 并入大树, 应该把 小树 的 parent 设为 大树的 parent
+          parent[ry] = rx;
        }
        else if (rank[rx] < rank[ry])
        {
-          parent[ry] = rx;
+          //  ry 是大树,  小树的parent 应该是 大树
+          parent[rx] = ry;
        }
        else
        {
@@ -79,8 +81,6 @@ public:
 
        return true;
     }
-
-    
 };
 /*
 class Solution {
