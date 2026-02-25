@@ -14,7 +14,8 @@ public:
         sort(cells.begin(), cells.end()); // 按高度从小到大
 
         vector<vector<bool>> unlocked(n, vector<bool>(n, false)); // 标记已解锁
-        int dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        
+        vector<pair<int, int>> dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
         parent.assign(n * n, 0);
         for (int i = 0; i < n * n; i++)
@@ -22,16 +23,27 @@ public:
         
         rank.assign(n * n, 0);
         
-        for (auto& [t, r, c] : cells) 
+        for (auto& [t, x, y] : cells) 
         {
-          unlocked[r][c] = true; // 解锁当前格子
+          unlocked[x][y] = true; // 解锁当前格子
 
           // 与四邻已解锁的格子合并
-          for (auto& d : dirs) 
+          for (auto& dir : dirs) 
           {
-              int nr = r + d[0], nc = c + d[1];
-              if (nr >= 0 && nr < n && nc >= 0 && nc < n && unlocked[nr][nc])
-                unite(r * n + c, nr * n + nc); // 二维坐标映射到一维
+              int nx = x + dir.first;
+              int ny = y + dir.second;
+
+
+              if (nx < 0 || nx >= n || ny < 0 || ny >= n)
+                continue;
+
+              if (!unlocked[nx][ny])
+                continue;
+
+              //if (nr >= 0 && nr < n && nc >= 0 && nc < n && unlocked[nr][nc])
+              //  unite(r * n + c, nr * n + nc); // 二维坐标映射到一维
+
+                unite(x * n + y, nx * n + ny);
           }
 
           // 检查起点终点是否连通
