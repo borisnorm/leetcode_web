@@ -33,20 +33,18 @@ public:
               int nx = x + dir.first;
               int ny = y + dir.second;
 
-
               if (nx < 0 || nx >= n || ny < 0 || ny >= n)
                 continue;
 
               if (!unlocked[nx][ny])
                 continue;
 
-              //if (nr >= 0 && nr < n && nc >= 0 && nc < n && unlocked[nr][nc])
-              //  unite(r * n + c, nr * n + nc); // 二维坐标映射到一维
-
-                unite(x * n + y, nx * n + ny);
+              unite(x * n + y, nx * n + ny);
           }
 
-          // 检查起点终点是否连通
+         // 检查起点终点是否连通
+         // 起点(0, 0)      0 * n + 0 = 0
+         // 终点(n-1, n-1) (n-1) * n + (n-1)
          if (connected(0, (n-1) * n + (n-1))) 
            return t;
         }
