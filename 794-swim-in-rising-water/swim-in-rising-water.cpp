@@ -1,5 +1,90 @@
 class Solution {
 public:
+
+    vector<int> parent;
+    vector<int> rank;
+    int swimInWater(vector<vector<int>>& grid) {
+        int n = grid.size();
+
+        // 把每个格子的 (高度, r, c) 存起来，按高度排序
+        vector<tuple<int,int,int>> cells;
+        for (int r = 0; r < n; r++)
+           for (int c = 0; c < n; c++)
+               cells.push_back({grid[r][c], r, c});
+        sort(cells.begin(), cells.end()); // 按高度从小到大
+
+        vector<vector<bool>> unlocked(n, vector<bool>(n, false)); // 标记已解锁
+        int dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+
+        parent.assign(n * n, 0);
+        for (int i = 0; i < n * n; i++)
+          parent[i] = i;
+        
+        rank.assign(n * n, 0);
+        
+        for (auto& [t, r, c] : cells) 
+        {
+          unlocked[r][c] = true; // 解锁当前格子
+
+          // 与四邻已解锁的格子合并
+          for (auto& d : dirs) 
+          {
+              int nr = r + d[0], nc = c + d[1];
+              if (nr >= 0 && nr < n && nc >= 0 && nc < n && unlocked[nr][nc])
+                unite(r * n + c, nr * n + nc); // 二维坐标映射到一维
+          }
+
+          // 检查起点终点是否连通
+         if (connected(0, (n-1) * n + (n-1))) 
+           return t;
+        }
+
+         return n * n - 1;
+    }
+
+    bool connected(int a, int b) 
+    {
+      return find(a) == find(b);
+    }
+
+    int find(int x)
+    {
+        if (parent[x] != x)
+          return find(parent[x]);
+
+        return parent[x];
+    }
+
+    bool unite(int x, int y)
+    {
+       int rx = find(x);
+       int ry = find(y);
+
+       if (rx == ry)
+         return false;
+    
+       if (rank[rx] > rank[ry])
+       {
+          parent[rx] = ry;
+       }
+       else if (rank[rx] < rank[ry])
+       {
+          parent[ry] = rx;
+       }
+       else
+       {
+          parent[rx] = ry;
+          rank[ry]++;
+       }
+
+       return true;
+    }
+
+    
+};
+/*
+class Solution {
+public:
     int swimInWater(vector<vector<int>>& grid) {
 
         int n = grid.size();
@@ -46,3 +131,5 @@ public:
         return dist[n-1][n-1];
     }
 };
+
+*/
