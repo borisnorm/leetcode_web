@@ -14,8 +14,9 @@ public:
            while(!st.empty() && temperatures[i] > temperatures[st.top()] )
            {
               int idx = st.top();
-              res[idx] = i - idx;
               st.pop(); 
+
+              res[idx] = i - idx;
            }
 
            st.push(i);
