@@ -2,10 +2,8 @@ class Solution {
 public:
    bool find132pattern(vector<int>& nums) {
        int n = nums.size();
-
        if (n < 3)
          return false;
-       
 
        // 132 pattern 的 意思 1st < 3rd < 2nd  按 index 顺序走
        // 不是  1 < 3 < 2, 不是 数字上的按个意思
@@ -19,11 +17,11 @@ public:
            // nums[i] 维护 num_1st,  这一轮 check 1, 3 的关系, 
            //
            // 缺少 1, 3 对比信息的  结果
-           // num_1st < nums_2nd > nums_3rd
+           // num_1st < nums_2nd > nums_3rd     <--- visite seq
            //
            // 补全 1, 3 对比关系的  结果
            //        
-           // 题目要求 num_1st < num_3rd < num_2nd
+           // 题目要求 num_1st < num_3rd < num_2nd   
            //         
            if (nums[i] < third)
              return true;
@@ -38,15 +36,50 @@ public:
              third = max(st.top(), third);
              st.pop();
           }
-
           st.push(nums[i]);
        }
-
        return false;
    }
+};
 
+/*
+class Solution {
+public:
+    bool find132pattern(vector<int>& nums) {
+        int n = nums.size();
 
-   /*
+        //i < j < k
+        // 1st < 2nd < 3rd  : idx 
+        // nums[1st] < nums[3rd] < nums[2rd]  : val
+
+        // nums[1st] < nums[2rd] > nums[3rd]  : visit seq 
+        // front right to left, monolithic decrease 
+
+        int third =  INT_MIN;
+        stack<int> st;
+        for (int i = n - 1; i >= 0; i--)
+        {
+            if (nums[i] < third)
+              return true;
+
+            while(!st.empty() && nums[i] > st.top())
+            {
+                third = st.top();
+                st.pop();
+            }
+           
+           st.push(nums[i]);
+        }
+        return false;
+    }
+};
+*/
+
+/*
+class Solution {
+public:
+   bool find132pattern(vector<int>& nums) {
+
    // 超时
     bool find132pattern(vector<int>& nums) {
         
@@ -69,8 +102,9 @@ public:
 
         return false;
     }
-    */
+
 };
+*/
 
 //错误的 case
 /*
