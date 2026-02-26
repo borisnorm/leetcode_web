@@ -7,22 +7,35 @@ public:
          return false;
        
 
-       // 132 pattern 的 意思 1st < 3rd < 2nd
+       // 132 pattern 的 意思 1st < 3rd < 2nd  按 index 顺序走
        // 不是  1 < 3 < 2, 不是 数字上的按个意思
        // 1 3 2  是 val 的上比较, 按照 i , j, k 排序即可, i 1st, j 2nd, k 3rd 即可
        // 也就是 num[j]最大
        stack<int> st; 
-       int second = INT_MIN;
+       int third = INT_MIN;
        for (int i = n  - 1; i >= 0; i--)
        {
            // 当前 i 是 num_1st, 当前 second 是旧值 
-           if (nums[i] < second)
+           // nums[i] 维护 num_1st,  这一轮 check 1, 3 的关系, 
+           //
+           // 缺少 1, 3 对比信息的  结果
+           // num_1st < nums_2nd > nums_3rd
+           //
+           // 补全 1, 3 对比关系的  结果
+           //        
+           // 题目要求 num_1st < num_3rd < num_2nd
+           //         
+           if (nums[i] < third)
              return true;
 
+           //nums[i] < nums[k] 通过 1st < 3rd check 且 nums[k] < nums[j] 通过单调递减栈  3rd < 2nd
+           // 上面的 nums[j] 代码里的 num[i], nums[k] 是 st.top
           // 单调递减栈, 当前 num[i]是 num_3rd, st.top()是 num_end               
           while (!st.empty() && nums[i] > st.top())
           {
-             second = st.top();
+             // third 维护 num_3rd,  nums[i] 维护 num_2nd
+             // 这一轮 check 2, 3的关系
+             third = max(st.top(), third);
              st.pop();
           }
 
