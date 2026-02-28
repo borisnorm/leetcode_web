@@ -16,10 +16,19 @@ public:
 
         ListNode* rHead = reverseList(head);
 
-        ListNode dummy(0);
+       
+        /*
         ListNode* prev = rHead;
         ListNode* cur = rHead->next;
         int maxVal = rHead->val;
+        */
+
+       ListNode dummy(0);
+       dummy.next = rHead;
+       ListNode* prev = &dummy;
+       ListNode* cur = rHead;
+       int maxVal = INT_MIN;
+
         while (cur)
         {
            if (maxVal > cur->val)
@@ -35,7 +44,7 @@ public:
            }
         }
 
-        return reverseList(rHead);
+        return reverseList(dummy.next);
     }
 
     ListNode* reverseList(ListNode* head)
