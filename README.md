@@ -161,6 +161,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0256-paint-house](https://github.com/borisnorm/leetcode_web/tree/master/0256-paint-house) |
+| [0276-paint-fence](https://github.com/borisnorm/leetcode_web/tree/master/0276-paint-fence) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0487-max-consecutive-ones-ii](https://github.com/borisnorm/leetcode_web/tree/master/0487-max-consecutive-ones-ii) |
 | [2426-maximum-profit-from-trading-stocks](https://github.com/borisnorm/leetcode_web/tree/master/2426-maximum-profit-from-trading-stocks) |
