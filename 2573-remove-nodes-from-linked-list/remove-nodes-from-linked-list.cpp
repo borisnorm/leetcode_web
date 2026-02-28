@@ -15,20 +15,21 @@ public:
     ListNode* removeNodes(ListNode* head) {
 
         ListNode* rHead = reverseList(head);
-
-       
-        /*
+    
         ListNode* prev = rHead;
         ListNode* cur = rHead->next;
         int maxVal = rHead->val;
-        */
-
+       
+       /*
+       // 也可以 work
        ListNode dummy(0);
        dummy.next = rHead;
        ListNode* prev = &dummy;
        ListNode* cur = rHead;
        int maxVal = INT_MIN;
 
+        return reverseList(dummy.next);
+       */
         while (cur)
         {
            if (maxVal > cur->val)
@@ -44,7 +45,7 @@ public:
            }
         }
 
-        return reverseList(dummy.next);
+        return reverseList(rHead);
     }
 
     ListNode* reverseList(ListNode* head)
