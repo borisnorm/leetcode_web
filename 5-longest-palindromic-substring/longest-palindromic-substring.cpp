@@ -1,8 +1,10 @@
 class Solution {
 public:
     string longestPalindrome(string s) {
-       string t = "#";
-       
+
+       string t = "^";
+
+       t += "#";
        //原字符串长度: n
        //预处理后长度: 2n + 1  (永远是奇数!)
        for (char c: s)
@@ -10,6 +12,7 @@ public:
            t += c;
            t += '#';
        }
+       t += "$";
 
        int n = t.size();
        //p[i] = 以i为中心的最大半径
@@ -21,7 +24,7 @@ public:
        int maxLen = 0;
        int maxCenter = 0;
 
-       for (int i = 0; i < n; i++)
+       for (int i = 1; i < n-1; i++)
        {
           int mirror = 2 * center - i;
 
@@ -29,9 +32,8 @@ public:
             p[i] = min(right - i, p[mirror]);
         
            
-           while(i - p[i] - 1 >= 0 && i + p[i] + 1 < n && 
-                t[i-p[i]-1] == t[i+p[i]+1])
-              p[i]++;
+           while(t[i-p[i]-1] == t[i+p[i]+1])
+             p[i]++;
         
           if (i + p[i] > right)
           { 
