@@ -1,14 +1,69 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+       string t = "#";
+       
+       //原字符串长度: n
+       //预处理后长度: 2n + 1  (永远是奇数!)
+       for (char c: s)
+       {
+           t += c;
+           t += '#';
+       }
 
+       int n = t.size();
+       //p[i] = 以i为中心的最大半径
+       vector<int> p(n, 0);
+
+       int center = 0;
+       int right = 0;
+
+       int maxLen = 0;
+       int maxCenter = 0;
+
+       for (int i = 0; i < n; i++)
+       {
+          int mirror = 2 * center - i;
+
+          if (i < right)
+            p[i] = min(right - i, p[mirror]);
+        
+           
+           while(i - p[i] - 1 >= 0 && i + p[i] + 1 < n && 
+                t[i-p[i]-1] == t[i+p[i]+1])
+              p[i]++;
+        
+          if (i + p[i] > right)
+          { 
+            center = i;
+            right = i + p[i];
+          }
+
+          if (p[i] > maxLen)
+          {
+             maxLen = p[i];
+             maxCenter = i;
+          }
+       }
+
+       int start = (maxCenter - maxLen) / 2;
+       return s.substr(start, maxLen);
+    }
+};
+
+
+/*
 class Solution {
 public:
     string longestPalindrome(string s) {
         if (s.empty())
           return "";
-        
+
+        // Time: O(n^2) 
+        // Space: O(1)       
         int n = s.size();
 
-        int len = 0;
-        int maxLen = INT_MIN;
+        int maxLen = 0;
         int start = 0;
 
         for (int i = 0; i < n; i++)
@@ -18,7 +73,7 @@ public:
            // even number
            int len2 = expand(s, i, i+1);
         
-           len = max(len1, len2);
+           int len = max(len1, len2);
            if (len > maxLen)
            {
               maxLen = len;
@@ -49,9 +104,10 @@ public:
         // 退出时 l 先--, r 先++了
         // [l+1, r-1]
         // len = (r-1) - (l+1) +1 = r - l - 1
-        return r - l -1;
+        return r - l - 1;
     }
 };
+*/
 /*
 class Solution {
 public:
