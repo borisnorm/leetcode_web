@@ -8,10 +8,63 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+ 
+class Solution {
+public:
+    ListNode* removeNodes(ListNode* head) {
+
+        ListNode* rHead = reverseList(head);
+
+        ListNode dummy(0);
+        ListNode* prev = rHead;
+        ListNode* cur = rHead->next;
+        int maxVal = rHead->val;
+        while (cur)
+        {
+           if (maxVal > cur->val)
+           {
+              prev->next = cur->next;
+              cur = cur->next;
+           }
+           else
+           {
+              maxVal = cur->val;
+              prev = cur;
+              cur = cur->next;
+           }
+        }
+
+        return reverseList(rHead);
+    }
+
+    ListNode* reverseList(ListNode* head)
+    {
+        if (!head)
+           return head;
+
+        ListNode* pre = nullptr;
+        ListNode* cur = head;
+        ListNode* nxt = nullptr;
+
+        while(cur)
+        {
+           nxt = cur->next;
+           cur->next = pre;
+           pre = cur;
+           cur = nxt;
+        }
+
+        return pre;
+    }
+};
+/* 
 class Solution {
 public:
     ListNode* removeNodes(ListNode* head) {
         
+        // Time: O(n)
+        // Space: O(n)
         ListNode* cur = head;
         stack<ListNode*> st;
         while (cur)
@@ -36,3 +89,5 @@ public:
         return pre;
     }
 };
+
+*/
