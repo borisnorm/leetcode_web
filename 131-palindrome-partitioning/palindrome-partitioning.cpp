@@ -13,7 +13,9 @@ public:
         {
           for (int j = i; j < n; j++)
           {
-             dp[i][j] = (s[i] == s[j]) && (j-i <= 2|| dp[i+1][j-1]);
+             if (s[i] == s[j])
+               // 单个字符串 或是 2个字符串相同的时候, dp 为 true
+               dp[i][j] = (j-i <= 2 || dp[i+1][j-1]);
           }
         }
         backtrack(s, 0);
