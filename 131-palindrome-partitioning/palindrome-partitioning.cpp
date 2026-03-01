@@ -13,7 +13,7 @@ public:
         {
           for (int j = i; j < n; j++)
           {
-             dp[i][j] = (s[i] == s[j]) && (j-i < 2 || dp[i+1][j-1]);
+             dp[i][j] = (s[i] == s[j]) && (i+1 > j-1|| dp[i+1][j-1]);
           }
         }
         backtrack(s, 0);
