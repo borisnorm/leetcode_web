@@ -1,5 +1,48 @@
 class Solution {
 public:
+
+    vector<vector<bool>> dp;
+    vector<vector<string>> res;
+    vector<string> path;
+
+    vector<vector<string>> partition(string s) {
+        int n = s.size();
+        dp.assign(n, vector<bool>(n, false));
+
+        for (int i = n-1; i >= 0; i--)
+        {
+          for (int j = i; j < n; j++)
+          {
+             dp[i][j] = (s[i] == s[j]) && (j-i < 2 || dp[i+1][j-1]);
+          }
+        }
+        backtrack(s, 0);
+        return res;
+    }
+
+    void backtrack(string& s, int start)
+    {
+        int n = s.size();
+        if (start == n)
+        {
+           res.push_back(path);
+           return;
+        }
+
+        for (int i = start; i < n; i++)
+        {
+            if (dp[start][i])
+            {
+                path.push_back(s.substr(start, i-start+1));
+                backtrack(s, i+1);
+                path.pop_back();
+            }
+        }
+    }
+};
+/*
+class Solution {
+public:
     vector<vector<string>> partition(string s) {
         if (s.empty())
           return {};
@@ -49,6 +92,7 @@ public:
     }
 };
 
+*/
 
 /*
 class Solution {
