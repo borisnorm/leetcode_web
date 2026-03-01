@@ -1,13 +1,11 @@
 class Solution {
 public:
 
-    vector<vector<bool>> dp;
-    vector<vector<string>> res;
-    vector<string> path;
-
     vector<vector<string>> partition(string s) {
         int n = s.size();
-        dp.assign(n, vector<bool>(n, false));
+        vector<vector<bool>> dp(n, vector<bool>(n, false));
+        vector<string> path;
+        vector<vector<string>> res;
 
         for (int i = n-1; i >= 0; i--)
         {
@@ -18,11 +16,11 @@ public:
                dp[i][j] = (j-i <= 2 || dp[i+1][j-1]);
           }
         }
-        backtrack(s, 0);
+        backtrack(s, 0, path, res, dp);
         return res;
     }
 
-    void backtrack(string& s, int start)
+    void backtrack(string& s, int start, vector<string>& path, vector<vector<string>>& res, vector<vector<bool>>& dp)
     {
         int n = s.size();
         if (start == n)
@@ -36,7 +34,7 @@ public:
             if (dp[start][i])
             {
                 path.push_back(s.substr(start, i-start+1));
-                backtrack(s, i+1);
+                backtrack(s, i+1, path, res, dp);
                 path.pop_back();
             }
         }
