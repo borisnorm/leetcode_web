@@ -1,3 +1,51 @@
+
+class Solution
+{
+public:
+    int minCut(string s)
+    {
+        if (s.empty())                                  // 如果是空串
+        {
+            return 0;                                   // 不需要切
+        }
+
+        int n = (int)s.size();                          // 字符串长度
+        const int INF = 1000000000;                     // 无穷大
+        vector<int> dp(n + 1, INF);                     // dp[i]：前 i 个字符最少回文段数(pieces)
+        dp[0] = 0;                                      // 空前缀需要 0 段
+
+        for (int c = 0; c < n; c++)                     // 关键：同一个 c 内同时做奇回文 + 偶回文
+        {
+            // ---------- 1) 奇数长度回文扩展：中心在 c ----------
+            {
+                int l = c;                              // 左指针从中心开始
+                int r = c;                              // 右指针从中心开始
+                while (l >= 0 && r < n && s[l] == s[r]) // 扩展条件：不越界且相等
+                {
+                    dp[r + 1] = min(dp[r + 1], dp[l] + 1); // s[l..r] 是回文 => dp[r+1] 可由 dp[l]+1 转移
+                    l--;                                // 左扩
+                    r++;                                // 右扩
+                }
+            }
+
+            // ---------- 2) 偶数长度回文扩展：中心在 (c, c+1) ----------
+            {
+                int l = c;                              // 左中心
+                int r = c + 1;                          // 右中心
+                while (l >= 0 && r < n && s[l] == s[r]) // 扩展条件
+                {
+                    dp[r + 1] = min(dp[r + 1], dp[l] + 1); // s[l..r] 是回文 => 更新 dp[r+1]
+                    l--;                                // 左扩
+                    r++;                                // 右扩
+                }
+            }
+        }
+
+        return dp[n] - 1;                               // dp[n] 是段数 => cuts = 段数 - 1
+    }
+};
+
+/*
 class Solution
 {
 public:
@@ -47,6 +95,7 @@ public:
         return dp[n - 1];
     }
 };
+*/
 /*
 class Solution {
 public:
