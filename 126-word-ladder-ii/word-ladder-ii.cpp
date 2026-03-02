@@ -1,3 +1,110 @@
+
+class Solution
+{
+public:
+    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList){
+        unordered_set<string> dict(wordList.begin(), wordList.end());
+
+        vector<vector<string>> res;
+        if (!dict.count(endWord))
+          return {};
+        
+        unordered_map<string, int> dist;
+        unordered_map<string, vector<string>> par;
+
+        queue<string> q;
+        q.push(beginWord);
+        dist[beginWord] = 0;
+
+        int L = (int)beginWord.size();
+        int foundEndDist = -1;
+
+        while(!q.empty())
+        {
+           int q_sz = q.size();
+           for (int i = 0; i < q_sz; i++)
+           {
+              string cur = q.front();
+              q.pop();
+
+              int curDist = dist[cur];
+              
+              if (foundEndDist != -1 && curDist >= foundEndDist)
+                continue;
+
+              //go throgh current word 
+              string nxt = cur;
+              for (int p = 0; p < L; p++)
+              {
+                  char old = nxt[p];
+                  for (char c = 'a'; c <= 'z'; c++)
+                  {
+                    if (c == old)
+                      continue;
+                    
+                    nxt[p] = c;
+
+                    if (!dict.count(nxt))
+                       continue;
+                    
+                    if (!dist.count(nxt))
+                    {
+                       dist[nxt] = curDist + 1;
+                       par[nxt].push_back(cur);
+                       q.push(nxt);
+
+                       if (nxt == endWord)
+                         foundEndDist = dist[nxt];
+                    }
+                    else if (dist[nxt] == curDist + 1)
+                    {
+                        par[nxt].push_back(cur);
+                    }
+                  }
+
+                  nxt[p] = old;
+              }
+           }
+
+           if (foundEndDist != - 1)
+             break;
+        }
+
+        if(foundEndDist == - 1)
+          return res;
+        
+        vector<string> path;
+        path.push_back(endWord);
+        dfs(endWord, beginWord, par, path, res);
+
+        return res;
+    }
+
+    void dfs(string& cur, string& beginWord, unordered_map<string, vector<string>>& par, vector<string>& path, vector<vector<string>>& res)
+    {
+       if (cur == beginWord)
+       {
+          vector<string> one = path;
+          reverse(one.begin(), one.end());
+          res.push_back(one);
+          return;
+       }
+
+       if (!par.count(cur))
+         return;
+
+       vector<string>& ps = par[cur];
+       for (int i = 0; i < ps.size(); i++)
+       {
+           string& pre = ps[i];
+           path.push_back(pre);
+           dfs(pre, beginWord, par, path, res);
+           path.pop_back();
+       }
+    }
+
+};
+/*
 class Solution
 {
 public:
@@ -93,3 +200,5 @@ public:
         return res;
     }
 };
+
+*/
