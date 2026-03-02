@@ -93,10 +93,10 @@ public:
        if (!par.count(cur))
          return;
 
-       vector<string>& ps = par[cur];
-       for (int i = 0; i < ps.size(); i++)
+       vector<string>& parList = par[cur];
+       for (int i = 0; i < parList.size(); i++)
        {
-           string& pre = ps[i];
+           string& pre = parList[i];
            path.push_back(pre);
            dfs(pre, beginWord, par, path, res);
            path.pop_back();
