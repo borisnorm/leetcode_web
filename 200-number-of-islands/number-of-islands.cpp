@@ -1,9 +1,15 @@
 class Solution {
 public:
- 
+    // 时间复杂度：O(m * n * α(mn))
+    // 扫描网格 O(mn) 
+    // 每次 union/find 近似常数 α(mn)
+
+    //空间复杂度：O(m * n)
+    //parent、rank 数组大小都是 mn
     vector<int> parent;
     vector<int> rank;
     int cnt;
+
     void uf_init(vector<vector<char>>& grid)
     {
        int m = grid.size();
@@ -71,13 +77,14 @@ public:
 
         uf_init(grid);
 
-
         vector<pair<int, int>> dirs = {{0, 1},  {1, 0}};
        
         for (int i = 0; i < m; i++)
         {
           for (int j = 0; j < n; j++)
           {
+             int id = i * n + j;
+
              if (grid[i][j] == '1')
              {
                  for (auto dir : dirs)
@@ -88,10 +95,15 @@ public:
                     if (nx < 0 || nx >= m || ny < 0 || ny >= n)
                       continue;
 
+                    //这个check很重要
                     if (grid[nx][ny] != '1')
                       continue;
                     
-                    if (unite(i * n + j, nx * n + ny))
+                    // id/nid 是竞赛常见命名
+                    // u/v 是模板常见命名
+                    // cur/nei 是面试最清晰命名
+                    int nid = nx * n + ny;
+                    if (unite(id, nid))
                       cnt--;
                  }
                 
