@@ -1,3 +1,80 @@
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        if (grid.empty() || grid[0].empty())
+          return 0;
+        
+        // 时间 O(m × n) — 每个格子最多访问一次
+        // 空间 O(min(m,n)) — BFS 队列最坏情况（蛇形岛屿）
+        int m = grid.size();
+        int n = grid[0].size();
+
+        int cnt = 0;
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (grid[i][j] == '1')
+                {
+                    bfs(grid, i, j);
+                    cnt++;
+                }
+            }
+        }
+
+        return cnt;
+    }
+
+    int bfs(vector<vector<char>>& grid, int i, int j) {
+        if (grid.empty() || grid[0].empty())
+          return 0;
+        
+        int m = grid.size();
+        int n = grid[0].size();
+
+        vector<pair<int, int>> dirs = {
+                {-1, 0},
+            {0, -1},  {0, 1},
+                {1, 0}
+        };
+
+        queue<pair<int, int>> q;
+        q.push({i, j});
+
+        //初始化染色很重要,不能少
+        grid[i][j] = '0';
+
+        int cnt = 0;
+        while(!q.empty())
+        {
+            int q_sz = q.size();
+            // 可以不使用这个 for 循环的
+            //for (int i = 0; i < q_sz; i++)
+            {
+                auto [x, y] = q.front();
+                q.pop();
+
+                for(auto& d: dirs)
+                {
+                   int nx = x + d.first;
+                   int ny = y + d.second;
+
+                   if (nx < 0 || nx >= m || ny < 0 || ny >= n)
+                     continue;
+
+                   if (grid[nx][ny] == '1')
+                   {
+                      grid[nx][ny] = '0';
+                      q.push({nx, ny});
+                   }
+                    
+                }
+            }
+        }
+
+        return cnt;
+    }
+};
 
 
 /*
@@ -189,83 +266,6 @@ public:
 */
 
 
-class Solution {
-public:
-    int numIslands(vector<vector<char>>& grid) {
-        if (grid.empty() || grid[0].empty())
-          return 0;
-        
-        // 时间 O(m × n) — 每个格子最多访问一次
-        // 空间 O(min(m,n)) — BFS 队列最坏情况（蛇形岛屿）
-        int m = grid.size();
-        int n = grid[0].size();
-
-        int cnt = 0;
-        for (int i = 0; i < m; i++)
-        {
-            for (int j = 0; j < n; j++)
-            {
-                if (grid[i][j] == '1')
-                {
-                    bfs(grid, i, j);
-                    cnt++;
-                }
-            }
-        }
-
-        return cnt;
-    }
-
-    int bfs(vector<vector<char>>& grid, int i, int j) {
-        if (grid.empty() || grid[0].empty())
-          return 0;
-        
-        int m = grid.size();
-        int n = grid[0].size();
-
-        vector<pair<int, int>> dirs = {
-                {-1, 0},
-            {0, -1},  {0, 1},
-                {1, 0}
-        };
-
-        queue<pair<int, int>> q;
-        q.push({i, j});
-
-        //初始化染色很重要,不能少
-        grid[i][j] = '0';
-
-        int cnt = 0;
-        while(!q.empty())
-        {
-            int q_sz = q.size();
-            // 可以不使用这个 for 循环的
-            //for (int i = 0; i < q_sz; i++)
-            {
-                auto [x, y] = q.front();
-                q.pop();
-
-                for(auto& d: dirs)
-                {
-                   int nx = x + d.first;
-                   int ny = y + d.second;
-
-                   if (nx < 0 || nx >= m || ny < 0 || ny >= n)
-                     continue;
-
-                   if (grid[nx][ny] == '1')
-                   {
-                      grid[nx][ny] = '0';
-                      q.push({nx, ny});
-                   }
-                    
-                }
-            }
-        }
-
-        return cnt;
-    }
-};
 
 
 /*
