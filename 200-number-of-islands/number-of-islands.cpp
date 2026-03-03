@@ -1,4 +1,5 @@
 
+/*
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
@@ -76,9 +77,9 @@ public:
         return cnt;
     }
 };
+*/
 
 
-/*
 class Solution {
 public:
     // 时间复杂度：O(m * n * α(mn))
@@ -111,10 +112,13 @@ public:
                 // 1 1 要是合并 就是 3个   第一行 向右 +1  向下 +1
                 // 1 1 但是实际上只有 1个   第二行 向右 +1
                 cnt++;
-                parent[i * n + j] = i * n + j;
+                // 与下面的初始化 是一个作用
+                //parent[i * n + j] = i * n + j;
              }
           }
        }
+       for (int i  = 0; i < m * n; i++)
+         parent[i] = i;
     }
 
     int find(int x)
@@ -161,7 +165,7 @@ public:
 
         uf_init(grid);
 
-        vector<pair<int, int>> dirs = {{0, 1},  {1, 0}, {0, -1}, {-1, 0}};
+        vector<pair<int, int>> dirs = {{0, 1},  {1, 0}};
        
         for (int i = 0; i < m; i++)
         {
@@ -197,7 +201,7 @@ public:
         return cnt;
     }
 };
-*/
+
 
 /*
 class Solution {
