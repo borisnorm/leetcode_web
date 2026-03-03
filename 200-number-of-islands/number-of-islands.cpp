@@ -1,4 +1,108 @@
+class Solution {
+public:
+ 
+    vector<int> parent;
+    vector<int> rank;
+    int cnt;
+    void uf_init(vector<vector<char>>& grid)
+    {
+       int m = grid.size();
+       int n = grid[0].size();
 
+       cnt = 0;
+       parent.assign(m * n, 0);
+       rank.assign(m * n, 0);
+       //rank.resize(m * n);
+
+       for(int i = 0; i < m; i++)
+       {
+          for (int j = 0; j < n; j++)
+          {
+             if (grid[i][j] == '1')
+             {
+                cnt++;
+                parent[i * n + j] = i * n + j;
+             }
+          }
+       }
+    }
+
+    int find(int x)
+    {
+       if (parent[x] != x)
+         parent[x] = find(parent[x]);
+     
+       return parent[x];
+    }
+
+    bool unite(int x, int y)
+    {
+       int rx = find(x);
+       int ry = find(y);
+       
+       // 不能 unite, 两者 有相同的 root, 不能再 unite 了
+       if (rx == ry)
+         return false;
+
+       if (rank[rx] < rank[ry])
+       {
+          parent[rx] = ry;
+       }
+       else if (rank[rx] > rank[ry])
+       {
+          parent[ry] = rx;
+       }
+       else
+       {
+          parent[ry] = rx;
+          rank[rx]++;
+       }
+
+       // unite 完毕了, 返回 true
+       return true;
+    }
+
+    int numIslands(vector<vector<char>>& grid) {
+        if (grid.empty() || grid[0].empty())
+          return 0;
+        
+        int m = grid.size();
+        int n = grid[0].size();
+
+        uf_init(grid);
+
+
+        vector<pair<int, int>> dirs = {{0, 1},  {1, 0}};
+       
+        for (int i = 0; i < m; i++)
+        {
+          for (int j = 0; j < n; j++)
+          {
+             if (grid[i][j] == '1')
+             {
+                 for (auto dir : dirs)
+                 {
+                    int nx = i + dir.first;
+                    int ny = j + dir.second;
+
+                    if (nx < 0 || nx >= m || ny < 0 || ny >= n)
+                      continue;
+
+                    if (grid[nx][ny] != '1')
+                      continue;
+                    
+                    if (unite(i * n + j, nx * n + ny))
+                      cnt--;
+                 }
+                
+             }
+          }
+        }
+
+        return cnt;
+    }
+};
+/*
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
@@ -62,6 +166,8 @@ public:
         }
     }
 };
+
+*/
 
 /*
 class Solution {
@@ -140,7 +246,12 @@ public:
 
         return cnt;
     }
+}
+*/
 
+/*
+class Solution {
+public:
 
     // 时间复杂度 O(m x n)
     // 空间复杂度 O(m x n) at worst case
@@ -168,18 +279,13 @@ public:
 
     void dfs(vector<vector<char>>& grid, int i, int j)
     { 
-        //if (i < 0 || j < 0 || i >= grid.size() || j >= grid[0].size()) 
-        //  return;
-        int n_row = grid.size();
-        if (i < 0 || i >= n_row)
+         int m = grid.size();
+         int n = grid[0].size();
+
+        if (i < 0 || i >= m || j < 0 || j >= n)
           return;
 
-        int n_col = grid[0].size();
-        if (j < 0 || j >= n_col)
-          return;
-        
-
-        if (grid[i][j]=='0')
+        if (grid[i][j] != '1')
           return;
 
         grid[i][j] = '0';
