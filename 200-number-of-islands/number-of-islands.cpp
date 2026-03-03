@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
@@ -75,9 +76,9 @@ public:
         return cnt;
     }
 };
+*/
 
 
-/*
 class Solution {
 public:
     // 时间复杂度：O(m * n * α(mn))
@@ -160,7 +161,7 @@ public:
 
         uf_init(grid);
 
-        vector<pair<int, int>> dirs = {{0, 1},  {1, 0}};
+        vector<pair<int, int>> dirs = {{0, 1},  {1, 0}, {0, -1}, {-1, 0}};
        
         for (int i = 0; i < m; i++)
         {
@@ -196,7 +197,7 @@ public:
         return cnt;
     }
 };
-*/
+
 
 /*
 class Solution {
