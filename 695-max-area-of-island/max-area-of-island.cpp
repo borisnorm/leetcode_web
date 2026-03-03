@@ -57,6 +57,32 @@ public:
         return area;
         
     }
+};
+
+
+/*
+class Solution {
+public:
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+
+        if (grid.empty() || grid[0].empty())
+          return 0;
+
+        int m = grid.size();
+        int n = grid[0].size();
+
+        int maxArea = 0;
+        for (int i = 0; i < m; i++)
+          for (int j = 0; j < n; j++)
+            if (grid[i][j] == 1)
+            {
+               int area = bfs(grid, i, j);
+                maxArea = max(maxArea, area); 
+            }  
+
+        return maxArea;
+    }
+
     int dfs(vector<vector<int>>& grid, int i, int j)
     {
         int m = grid.size();
@@ -80,5 +106,5 @@ public:
 
         return area;
     }
-    
 };
+*/
