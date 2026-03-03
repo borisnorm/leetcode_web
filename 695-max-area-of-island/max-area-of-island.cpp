@@ -28,11 +28,12 @@ public:
         if (i >= m || i < 0 || j >= n || j < 0)
           return 0;
 
-        if (grid[i][j] == 0)
+        if (grid[i][j] != 1)
           return 0;
 
         grid[i][j] = 0;
-
+       
+        // area 是当前 i, j 的 面积, 算是初始化
         int area = 1;
 
         area += dfs(grid, i-1, j);
