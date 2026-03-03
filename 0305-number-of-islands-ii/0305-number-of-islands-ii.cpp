@@ -17,8 +17,13 @@ public:
             int x = positions[i][0];
             int y = positions[i][1];
 
+           
             int id = x * n + y;
             parent[id] = id;
+            // è¿ä¸ªåå§å, æ¯éè¯¯ç
+            //è¿éç i æ¯ positions çä¸æ 
+            //ä½åé¢ unite(id, nid) ä¼ è¿å»ç id/nid æ¯æ ¼å­ç 1D ç¼å· = x*n+yï¼èå´æ¯ [0, m*n-1]
+            //parent[i] = i;
         }
     }
 
@@ -56,7 +61,6 @@ public:
           uf_init(m, n, positions);
 
           vector<pair<int, int>> dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-          int ops_cnt = 0;
 
           int nIsland = 0;
           vector<int> res(cnt);
@@ -75,7 +79,6 @@ public:
             }
 
             grid[x][y] = 1;
-            ops_cnt++;
             nIsland++;
 
             int united_cnt = 0;
@@ -94,13 +97,11 @@ public:
 
                if (unite(id, nid))
                {
-                 //united_cnt++;
                  nIsland--;
                }
             }
 
             res[i] = nIsland;
-            //res[i] = ops_cnt - united_cnt;
           }
           
        return res;
