@@ -18,6 +18,8 @@ public:
          queue<pair<int, int>> q;
          q.push({sr, sc});
          // 染色第一个节点, 初始化染色
+         // 在没有任何 neighbor 的时候, 如果不染色第一个节点, 就是错误了
+         // pop 这个节点后, 它就没有 neighbor 了
          image[sr][sc] = color;
 
          vector<pair<int, int>> dirs = {
@@ -51,12 +53,13 @@ public:
                 }
             }
          }
-
          return image;
-         
     }
+};
 
 /*
+class Solution {
+public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
              if(image.empty() || image[0].empty())
                return {};
@@ -93,6 +96,5 @@ public:
         dfs(image, r, c+1, origin, color);
         dfs(image, r, c-1, origin, color);
     }
-
-    */
 };
+*/
