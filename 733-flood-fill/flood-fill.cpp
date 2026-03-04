@@ -10,12 +10,14 @@ public:
          if (sr < 0 || sr >= m || sc < 0 || sc >= n)
            return {};
         
+         // check original color
          int origin = image[sr][sc];
          if (origin == color)
            return image;
         
          queue<pair<int, int>> q;
          q.push({sr, sc});
+         // 染色第一个节点, 初始化染色
          image[sr][sc] = color;
 
          vector<pair<int, int>> dirs = {
@@ -26,8 +28,9 @@ public:
 
          while(!q.empty())
          {
-            int q_sz = q.size();
-            for (int i = 0; i < q_sz; i++)
+            // 不需要这个 q_sz layered loop
+            //int q_sz = q.size();
+            //for (int i = 0; i < q_sz; i++)
             {
                 auto [x, y] = q.front();
                 q.pop();
