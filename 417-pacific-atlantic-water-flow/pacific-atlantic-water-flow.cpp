@@ -2,55 +2,65 @@
 class Solution {
 public:
     vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
-         if (heights.empty() || heights[0].empty())
-           return {};
+      if (heights.empty() || heights[0].empty())
+        return {};
 
-         int m = heights.size();
-         int n = heights[0].size();
+      int m = heights.size();
+      int n = heights[0].size();
 
-         vector<vector<int>> pac(m, vector<int>(n, 0));
-         vector<vector<int>> alt(m, vector<int>(n, 0));
+      vector<vector<int>> pacific(m, vector<int>(n, 0));
+      vector<vector<int>> atlantic(m, vector<int>(n, 0));
 
-    //pac 
-    for (int r = 0; r < m; r++)
-      dfs(r, 0, pac, heights);
+      //pacific ocean
+      // the most left col  
+      for (int i = 0; i < m; i++)
+        dfs(i, 0, pacific, heights);
+     
+      // the top row
+      for (int j = 0; j < n; j++)
+        dfs(0, j, pacific, heights);
+
+      //atlantic ocean
+      // the bottom row
+      for (int i = 0; i < m; i++)
+        dfs(i, n-1, atlantic, heights);
     
-    for (int c = 0; c < n; c++)
-      dfs(0, c, pac, heights);
+      for (int j = 0; j < n; j++)
+        dfs(m-1, j, atlantic, heights);
 
-    //alt
-    for (int r = 0; r < m; r++)
-      dfs(r, n-1, alt, heights);
-    
-    for (int c = 0; c < n; c++)
-      dfs(m-1, c, alt, heights);
+      vector<vector<int>> res;
 
-    vector<vector<int>> ans;
+     for (int i = 0; i < m; i++)
+     {
+       for (int j = 0; j < n; j++)
+       {
+          if (pacific[i][j] && atlantic[i][j])
+            res.push_back({i, j});
+       }
+     }
 
-    for (int r = 0; r < m; r++)
-      for (int c = 0; c < n; c++)
-         if (pac[r][c] && alt[r][c])
-           ans.push_back({r, c});
-
-    return ans;
+     return res;
   }
 
     void dfs(int r, int c, vector<vector<int>>& vis, vector<vector<int>>& heights)
     {
-        vis[r][c] = 1;
+
         static int dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         
         int m = vis.size();
         int n = vis[0].size();
 
-        for (auto& d : dirs)
+        vis[r][c] = 1;
+
+        for (auto& dir : dirs)
         {
-          int nr = r + d[0];
-          int nc = c + d[1];
+          int nr = r + dir[0];
+          int nc = c + dir[1];
 
           if (nr < 0 || nr >= m || nc < 0 || nc >= n)
             continue;
 
+          //                    中心          >=   边沿
           if (!vis[nr][nc] && heights[nr][nc] >= heights[r][c])
             dfs(nr, nc, vis, heights);
         }
