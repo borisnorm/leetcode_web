@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/walls-and-gates">286. Walls and Gates</a></h2><h3>Medium</h3><hr><p>You are given an <code>m x n</code> grid <code>rooms</code>&nbsp;initialized with these three possible values.</p>
+<h2><a href="https://leetcode.com/problems/walls-and-gates/">286. Walls and Gates</a></h2><h3>Medium</h3><hr><p>You are given an <code>m x n</code> grid <code>rooms</code>&nbsp;initialized with these three possible values.</p>
 
 <ul>
 	<li><code>-1</code>&nbsp;A wall or an obstacle.</li>
