@@ -34,7 +34,8 @@ public:
            {
              if (grid[i][j] == 1)
              {
-                cnt += dfs(grid, i, j);
+                //cnt += dfs(grid, i, j);
+                cnt++;
              }
            }
         }
