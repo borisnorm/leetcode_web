@@ -1,4 +1,97 @@
+class Solution
+{
+public:
+    vector<vector<string>> findLadders(string begin, string end, vector<string>& wordList)
+    {
+        unordered_set<string> dict(wordList.begin(), wordList.end());
+        vector<vector<string>> res;
 
+        if (!dict.count(end)) return res;
+
+        // parent[w] = 所有在最短路上能"一步走到 w"的词
+        unordered_map<string, unordered_set<string>> parent;
+
+        // cur = 当前 BFS 层的词集合
+        unordered_set<string> cur;
+        cur.insert(begin);
+
+        // visited = 已经处理过的词（防止回头）
+        unordered_set<string> visited;
+        visited.insert(begin);
+
+        bool found = false;
+
+        // --- BFS 逐层扩展，建 parent 图 ---
+        while (!cur.empty() && !found)
+        {
+            // 本层所有词先从 dict 移除，防止同层词互连
+            for (const string& w : cur) dict.erase(w);
+
+            unordered_set<string> nxt; // 下一层词集合
+
+            for (const string& w : cur)
+            {
+                string tmp = w;
+                for (int i = 0; i < (int)tmp.size(); i++)
+                {
+                    char orig = tmp[i];
+                    for (char c = 'a'; c <= 'z'; c++)
+                    {
+                        if (c == orig) continue;
+                        tmp[i] = c;
+
+                        // tmp 必须在字典中（已移除当前层，所以不会回头到同层）
+                        if (dict.count(tmp))
+                        {
+                            nxt.insert(tmp);          // 加入下一层
+                            parent[tmp].insert(w);    // w 是 tmp 的父节点
+
+                            if (tmp == end) found = true; // 找到终点，本层处理完停止
+                        }
+
+                        tmp[i] = orig;
+                    }
+                }
+            }
+            cur = nxt;
+        }
+
+        if (!found) return res;
+
+        // --- DFS 从 end 回溯到 begin ---
+        vector<string> path = {end};
+        dfs(parent, begin, end, path, res);
+
+        // 路径是 end→begin，反转
+        for (auto& p : res) reverse(p.begin(), p.end());
+
+        return res;
+    }
+
+private:
+    void dfs(
+        unordered_map<string, unordered_set<string>>& parent,
+        const string& begin,
+        const string& cur,
+        vector<string>& path,
+        vector<vector<string>>& res)
+    {
+        if (cur == begin)           // 回溯到起点，收录路径
+        {
+            res.push_back(path);
+            return;
+        }
+
+        for (const string& p : parent[cur]) // 枚举所有父节点
+        {
+            path.push_back(p);
+            dfs(parent, begin, p, path, res);
+            path.pop_back();        // 回溯
+        }
+    }
+};
+
+/*
 class Solution
 {
 public:
@@ -17,6 +110,7 @@ public:
         dist[beginWord] = 0;
 
         int L = (int)beginWord.size();
+        //记录第一次到达 endWord 时的最短距离
         int foundEndDist = -1;
 
         while(!q.empty())
@@ -29,6 +123,8 @@ public:
 
               int curDist = dist[cur];
               
+              //BFS 剪枝:  当前节点的层数 ≥ 已经找到的最短终点层数
+              // endWord 在被找到的时候会更新 foundEndDist
               if (foundEndDist != -1 && curDist >= foundEndDist)
                 continue;
 
@@ -104,6 +200,9 @@ public:
     }
 
 };
+*/
+
+
 /*
 class Solution
 {
