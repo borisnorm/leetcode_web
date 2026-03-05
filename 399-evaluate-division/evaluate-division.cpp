@@ -27,7 +27,7 @@ public:
         for (auto& q: queries)
         {
            string start = q[0];
-           string end = q[1];
+           string end   = q[1];
 
            unordered_set<string> visited;
 
@@ -43,7 +43,7 @@ public:
     double dfs(unordered_map<string, vector<pair<string, double>>>& graph,
                const string& cur, const string& target, unordered_set<string>& visited)
     {
-
+        // check target 是否存在 
         if (!graph.count(cur) || !graph.count(target))
            return -1.0;
 
@@ -63,6 +63,8 @@ public:
             //(cur / target) = (cur / next) * (next / target)
             //               =     weight   * sub
             double sub = dfs(graph, next, target, visited);
+            // 成功找到 target
+            // 从 next → target 存在一条路径
             if (sub != -1.0)
             {
                 return sub * weight;
@@ -70,6 +72,7 @@ public:
         }
         
         // 没有关联的, 比如 a, b, c, d   a/b = 2, b/c= 2,  然后木诶呦 b/d 或是 c/d 的关系
+        //从 cur 出发， 遍历了所有 neighbor， 所有可能路径都尝试过， 仍然无法到达 target
         return -1.0;
     }
 };
