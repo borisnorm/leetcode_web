@@ -1,3 +1,66 @@
+class Solution
+{
+public:
+
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat)
+    {
+        int m = mat.size();                         // 行数
+        int n = mat[0].size();                      // 列数
+
+        queue<pair<int,int>> q;                     // BFS 队列
+
+        // Step1 初始化
+        for(int i = 0; i < m; i++)                  // 遍历所有行
+        {
+            for(int j = 0; j < n; j++)              // 遍历所有列
+            {
+                if(mat[i][j] == 0)                  // 如果是0
+                {
+                    q.push({i,j});                  // 入队作为 BFS 起点
+                }
+                else
+                {
+                    mat[i][j] = INT_MAX;            // 1 标记为 INF（未访问）
+                }
+            }
+        }
+
+        // 四个方向
+        int dirs[4][2] =
+        {
+            {1,0},
+            {-1,0},
+            {0,1},
+            {0,-1}
+        };
+
+        // Step2 BFS
+        while(!q.empty())
+        {
+            auto [x,y] = q.front();                 // 取出队头
+            q.pop();                                // 弹出
+
+            for(auto &d : dirs)                     // 遍历四个方向
+            {
+                int nx = x + d[0];                  // 新坐标
+                int ny = y + d[1];
+
+                if(nx < 0 || nx >= m || ny < 0 || ny >= n)
+                    continue;                       // 越界跳过
+
+                // 如果找到更短路径
+                if(mat[nx][ny] > mat[x][y] + 1)
+                {
+                    mat[nx][ny] = mat[x][y] + 1;    // 更新距离
+                    q.push({nx,ny});                // 入队继续扩散
+                }
+            }
+        }
+
+        return mat;                                 // mat 已经变成 dist
+    }
+};
+/*
 class Solution {
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
@@ -43,6 +106,7 @@ public:
         return res;
     }
 };
+*/
 
 /*
 class Solution {
@@ -195,8 +259,6 @@ public:
                   dp[i][j] = min(dp[i][j], dp[i][j+1] + 1);
              }
           }
-
-
         return dp;
     }
 };
