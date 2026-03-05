@@ -6,7 +6,7 @@ public:
           return 0;
         
         unordered_set<string> front = {beginWord};
-        unordered_set<string> back = {endWord};
+        unordered_set<string> back  = {endWord};
 
         if (dict.count(beginWord))
           dict.erase(beginWord);
@@ -18,6 +18,7 @@ public:
         while(!front.empty() && !back.empty())
         {
           // 确保 front 里面 单词是少数
+          // swap 确保 可以从 front 扩展, 也可以从 back 进行扩展
           if (front.size() > back.size())
             swap(front, back);
           
@@ -35,6 +36,7 @@ public:
                    
                    word[i] = c;
 
+                   //只要有一个次相遇 就立即返回
                    if (back.count(word))
                       return step + 1;
                     
