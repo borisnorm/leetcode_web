@@ -1,13 +1,18 @@
 class Solution {
 public:
+    
     int orangesRotting(vector<vector<int>>& grid) {
-        int m = grid.size();
-        if (!m)
+        if (grid.empty() || grid[0].empty())
           return 0;
-
+        
+        // 0 - empty
+        // 1 - fresh orange
+        // 2 - rotten 
+        int m = grid.size();
         int n = grid[0].size();
-        if (!n)
-          return 0;  
+
+        // each min, 2.rotten adjacent fresh become rotten
+        // return min minutes to have all rotten oranges
 
         queue<pair<int, int>> q; // 多源BFS 起点
         int nfresh = 0;
@@ -16,7 +21,7 @@ public:
           for (int j = 0; j < n; j++)
           {
              if (grid[i][j] == 2)
-               q.push(make_pair(i,j));
+               q.push({i, j});
              else if (grid[i][j] == 1)
                nfresh++;
           }
@@ -29,10 +34,10 @@ public:
 
         while (!q.empty())
         {
-           int q_size = q.size();
+           int q_sz = q.size();
            bool infected = false;
 
-           for (int k = 0; k < q_size; k++) 
+           for (int k = 0; k < q_sz; k++) 
            {
              pair<int, int>  cur = q.front();
              q.pop();
@@ -50,13 +55,12 @@ public:
                 if (grid[nx][ny] != 1)
                   continue;
 
-                grid[nx][ny] = 2;
-                
-                nfresh--;
-
                 infected = true;
 
-                q.push(make_pair(nx, ny));
+                grid[nx][ny] = 2;
+                nfresh--;
+
+                q.push({nx, ny});
              }
            }    
 
@@ -64,6 +68,7 @@ public:
              minutes++;
         }
 
-        return (nfresh == 0) ? minutes : -1;
+        // 原来只有1个 rotten orange, 返回 minutes 0
+        return (nfresh > 0) ? -1 : minutes;
     }
 };
