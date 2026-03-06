@@ -61,7 +61,7 @@ public:
                   // a/b =  w1,  b/c = w2  quesiton: a/c
                   // 
                   visited.insert(next);
-                  //if (graph.count(next))
+                  if (graph.count(next))
                   {
                     q.push({next, nxt_weight * cur_weight});
                   }
@@ -144,6 +144,9 @@ public:
             // 从 next → target 存在一条路径
             if (sub != -1.0)
             {
+                // 返回的是 边权 累乘
+                // a/b = w1, b/c = w2
+                // a/c = a/b * b/c = w1 * w2; 
                 return sub * weight;
             }
         }
