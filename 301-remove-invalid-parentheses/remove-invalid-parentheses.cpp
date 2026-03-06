@@ -31,7 +31,10 @@ public:
 
         q.push(s);
         visited.insert(s);
-
+     // BFS 按删除数量分层：
+     // 第0层：原字符串（删0个）
+     // 第1层：所有删1个括号的字符串
+     // 第2层：所有删2个括号的字符串
         vector<string> res;
         while (!q.empty())
         {
