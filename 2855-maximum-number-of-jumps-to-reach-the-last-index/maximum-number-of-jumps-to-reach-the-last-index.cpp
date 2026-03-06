@@ -17,8 +17,9 @@ public:
        {
           for (int i = 0; i < j; i++)
           {
-             //并不是 i 之前的 每个 dp[j] 都是有效的 会被计算的
-             if (dp[i] == -1 )
+             //从语义上来讲, 对于每个 dp[j] 并不是没有 dp[i]都是有效的.
+             //从计算顺序上来讲, 并不是 i 之前的 每个 pre dp[j] 都是有效的 都会会被计算的
+             if (dp[i] == -1)
                continue;
 
              if (llabs((long long)nums[j]-nums[i]) <= target)
