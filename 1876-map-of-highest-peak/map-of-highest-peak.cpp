@@ -34,6 +34,59 @@ public:
               if (nx < 0 || nx >= m || ny < 0 || ny >= n)
                 continue;
               
+              if (height[nx][ny] != INT_MAX)
+                continue;
+
+              //防止重复访问
+              if (height[nx][ny] > height[x][y] + 1)
+              {
+                 height[nx][ny] = height[x][y] + 1;
+                 q.push({nx, ny});
+              }
+           }
+        }
+
+        return height;
+    }
+};
+/*
+// 使用 isWater[nx][ny] 作为 isVisited 的判定条件
+class Solution {
+public:
+    vector<vector<int>> highestPeak(vector<vector<int>>& isWater) {
+        int m = isWater.size();
+        int n = isWater[0].size();
+
+        vector<vector<int>> height(m, vector<int>(n, INT_MAX));
+
+        queue<pair<int, int>> q;
+        
+        for (int i = 0; i < m; i++)
+        {
+          for (int j = 0; j < n; j++)
+          {
+              if (isWater[i][j] == 1)
+              {
+                  height[i][j] = 0;
+                  q.push({i, j});
+              }
+          }
+        }
+
+        vector<pair<int, int>> dirs = {{0,1}, {0, -1}, {1, 0}, {-1, 0}};
+        while (!q.empty())
+        {
+           auto [x, y] = q.front();
+           q.pop();
+
+           for (auto dir: dirs)
+           {
+              int nx = x + dir.first;
+              int ny = y + dir.second;
+
+              if (nx < 0 || nx >= m || ny < 0 || ny >= n)
+                continue;
+              
               if (isWater[nx][ny] != 0)
                 continue;
 
@@ -50,3 +103,5 @@ public:
         return height;
     }
 };
+
+*/
