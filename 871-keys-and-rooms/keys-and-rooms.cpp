@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //时间O(N + K)，N = 房间数，K = 所有钥匙总数（即边数）
+    //空间O(N)，visited 数组 + 队列最多存 N 个节点
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
         int n = rooms.size();
         vector<bool> visited(n, false);
