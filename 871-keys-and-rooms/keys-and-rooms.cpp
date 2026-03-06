@@ -19,12 +19,10 @@ public:
     {
         if (visited[curRoom])
           return;
-
-        vector<int> room = rooms[curRoom];
-
+ 
         visited[curRoom] = true;
     
-        for (int key: room)
+        for (int key: rooms[curRoom])
         {
            dfs(rooms, key, visited);
         }
