@@ -22,7 +22,7 @@ public:
              return true;
            
            vector<int> dirs = {arr[cur_idx], -arr[cur_idx]};
-           for (int dir: dirs)
+           for (int& dir: dirs)
            {
               int nxt_idx = cur_idx + dir;
               if (nxt_idx < 0 || nxt_idx >= n)
@@ -30,13 +30,11 @@ public:
               
               if (visited[nxt_idx])
                 continue;
-                
+
               visited[nxt_idx] = true;
               q.push(nxt_idx);
            }
         }
-
-
         return false;
     }
 };
