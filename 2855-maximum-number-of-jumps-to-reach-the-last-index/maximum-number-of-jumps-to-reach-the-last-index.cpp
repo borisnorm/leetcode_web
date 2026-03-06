@@ -1,3 +1,4 @@
+
 class Solution {
 public:
     int maximumJumps(vector<int>& nums, int target) {
@@ -10,13 +11,14 @@ public:
        //if (cur_idx < j && nums[cur_idx] - target <= nums[j] && nums[j] <= nums[i] + target)
        // dp[i] 到达 index i 最大的跳数, 
       
-       vector<int> dp(n, INT_MIN);
+       vector<int> dp(n, -1);
        dp[0] = 0;
-       for (int i = 0; i < n; i++)
+       for (int j = 1; j < n; j++)
        {
-          for (int j = i + 1; j < n; j++)
+          for (int i = 0; i < j; i++)
           {
-             if (dp[i] == INT_MIN )
+             //并不是 i 之前的 每个 dp[j] 都是有效的 会被计算的
+             if (dp[i] == -1 )
                continue;
 
              if (llabs((long long)nums[j]-nums[i]) <= target)
@@ -26,9 +28,46 @@ public:
           }
        }
 
-       return dp[n-1] == INT_MIN ? -1 : dp[n-1];
+       return dp[n-1] == -1 ? -1 : dp[n-1];
     }
 };
+
+/*
+class Solution {
+public:
+    int maximumJumps(vector<int>& nums, int target) {
+      
+
+       int n = nums.size();
+       if (n <= 1)
+         return 1;
+       //
+       //if (cur_idx < j && nums[cur_idx] - target <= nums[j] && nums[j] <= nums[i] + target)
+       // dp[i] 到达 index i 最大的跳数, 
+      
+       vector<int> dp(n, -1;
+       dp[0] = 0;
+       for (int i = 0; i < n; i++)
+       {
+          for (int j = i + 1; j < n; j++)
+          {
+             //并不是 i 之前的 每个 dp[j] 都是有效的 会被计算的
+             if (dp[i] == -1 )
+               continue;
+
+             if (llabs((long long)nums[j]-nums[i]) <= target)
+             {
+               dp[j] = max(dp[j], dp[i] + 1);
+             }
+          }
+       }
+
+       return dp[n-1] == -1 ? -1 : dp[n-1];
+    }
+};
+
+*/
+
 /*
 错误解法
 class Solution {
