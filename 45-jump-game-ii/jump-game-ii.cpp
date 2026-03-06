@@ -5,7 +5,11 @@ public:
          if (n <= 1)
            return 0;
         
-         vector<int> dp(n, INT_MAX);
+         //防止 dp[i] + 1 溢出
+         // 错误书写
+         //const int INF INT_MAX/2;
+         const int INF = INT_MAX/2;
+         vector<int> dp(n, INF);
          dp[0] = 0;
 
          for (int j = 1; j < n; j++)
