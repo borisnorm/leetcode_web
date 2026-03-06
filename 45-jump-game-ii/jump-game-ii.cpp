@@ -1,34 +1,62 @@
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+         int n = nums.size();
+         if (n <= 1)
+           return 0;
+        
+         vector<int> dp(n, INT_MAX);
+         dp[0] = 0;
 
-#include <bits/stdc++.h>
-using namespace std;
+         for (int j = 1; j < n; j++)
+         {
+            for (int  i = 0; i < j; i++)
+            {
+               if (j > i + nums[i])
+                 continue;
+               if (dp[i] == INT_MAX)
+                 continue;
+               dp[j] = min(dp[j], dp[i]+1);
+            }
+         }
 
+         return dp[n-1];
+    }
+};
+/*
 class Solution {
 public:
     int jump(vector<int>& nums) {
         int n = (int)nums.size();
-        if (n <= 1) return 0;
+        if (n <= 1) 
+           return 0;
 
         int steps = 0;
-        int end = 0;   // 当前跳跃次数 steps 能覆盖到的最右边界
-        int far = 0;   // 在 [0..end] 扫描过程中，下一跳能到的最远位置
+        int curEnd = 0;   // 当前跳跃次数 steps 能覆盖到的最右边界
+        int farthest = 0;   // 在 [0..end] 扫描过程中，下一跳能到的最远位置
 
-        // 注意：遍历到 n-2 即可，因为到达/越过 n-1 就结束，不需要在最后一个位置再“起跳”
+        // 注意：遍历到 n-2 还能向前跳，因为到达/越过 n-1 就结束，不需要在最后一个位置再“起跳”
+        // n 个节点 , 需要 n-1跳
         for (int i = 0; i < n - 1; i++) {
-            far = max(far, i + nums[i]);
+            farthest = max(farthest, i + nums[i]);
 
             // 走到当前层的边界：必须增加一次跳跃，进入下一层
-            if (i == end) {
+            // far 是 [preEnd+1, curEnd] 这个距离种所累计的 最远跳数
+            if (i == curEnd) {
                 steps++;
-                end = far;
+                curEnd = farthest;
 
                 // 当前层扩展后已覆盖终点
-                if (end >= n - 1) break;
+                // 如果 当前 range 的最远距离已经覆盖了 n-1, 
+                // 那么 可以直接 break了, step 已经++了,直接跳过去就可以了
+                if (curEnd >= n - 1) 
+                  break;
             }
         }
         return steps;
     }
 };
-
+*/
 
 /*
 class Solution {
