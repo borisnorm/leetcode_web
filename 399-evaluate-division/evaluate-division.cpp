@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
@@ -61,7 +62,9 @@ public:
                   // a/b =  w1,  b/c = w2  quesiton: a/c
                   // 
                   visited.insert(next);
-                  if (graph.count(next))
+                  
+                  //不需要这个 check 是因为在 建图的时候, a->b, b->a, 所以必然存在 不需要检查
+                  //if (graph.count(next))
                   {
                     q.push({next, nxt_weight * cur_weight});
                   }
@@ -74,7 +77,8 @@ public:
         return res;
     }
 };
-/*
+*/
+
 class Solution {
 public:
     vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
@@ -107,7 +111,7 @@ public:
            string end   = q[1];
 
            unordered_set<string> visited;
-
+           visited.insert(start);
            double ans = dfs(graph, start, end, visited);
            
            res.push_back(ans);
@@ -129,13 +133,14 @@ public:
            return 1.0;
 
          //相当于染色
-         visited.insert(cur);
+        // visited.insert(cur);
 
         for (auto& [next, weight] : graph[cur])
         {
             if (visited.count(next))
               continue;
 
+            visited.insert(next);
             //sub = (next / target)
             //(cur / target) = (cur / next) * (next / target)
             //               =     weight   * sub
@@ -156,4 +161,3 @@ public:
         return -1.0;
     }
 };
-*/
