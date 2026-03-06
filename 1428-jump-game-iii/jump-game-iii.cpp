@@ -12,7 +12,6 @@ public:
         visited[start] = true;
         q.push(start);
 
-        int nxt_idx = 0;
         while(!q.empty())
         {
            int cur_idx = q.front();
@@ -21,8 +20,10 @@ public:
            if (arr[cur_idx] == 0)
              return true;
            
-           vector<int> dirs = {arr[cur_idx], -arr[cur_idx]};
-           for (int& dir: dirs)
+           //性能瓶颈 每次调用都要不断构建新的
+          // vector<int> dirs = {arr[cur_idx], -arr[cur_idx]};
+          // for (int& dir: dirs)
+           for (int dir: {arr[cur_idx], -arr[cur_idx]})
            {
               int nxt_idx = cur_idx + dir;
               if (nxt_idx < 0 || nxt_idx >= n)
