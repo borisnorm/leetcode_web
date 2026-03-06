@@ -1,3 +1,12 @@
+
+class Solution {
+public:
+    int hammingWeight(int n) {
+       
+       return __builtin_popcount(n);
+    }
+};
+/*
 class Solution {
 public:
     int hammingWeight(int n) {
@@ -11,6 +20,7 @@ public:
         return cnt;
     }
 };
+*/
 
 /*
 class Solution {
