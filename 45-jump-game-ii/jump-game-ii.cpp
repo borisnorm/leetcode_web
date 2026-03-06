@@ -14,8 +14,8 @@ public:
             {
                if (j > i + nums[i])
                  continue;
-               if (dp[i] == INT_MAX)
-                 continue;
+              // if (dp[i] == INT_MAX)
+               //  continue;
                dp[j] = min(dp[j], dp[i]+1);
             }
          }
