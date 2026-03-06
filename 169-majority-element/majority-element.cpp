@@ -1,3 +1,8 @@
+
+/*
+//Sort 解法 
+// Time : O(nLogn)
+// Space: O(1)
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
@@ -10,8 +15,11 @@ public:
        return nums[m/2];
     }
 };
+*/
 
-/*
+// unordered_map 解法
+// Time O(n)
+// Space O(n)
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
@@ -43,5 +51,3 @@ public:
         return majority_num;
     }
 };
-
-*/
