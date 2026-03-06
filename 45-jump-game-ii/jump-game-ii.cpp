@@ -18,7 +18,9 @@ public:
             {
                if (j > i + nums[i])
                  continue;
-              // if (dp[i] == INT_MAX)
+              // 正确情况下 需要下面的 判断, 保证 不可达状态不会传播错误值
+              // 但 INF 保证了 不可达信息不会传播错误值,所以可以不写
+              // if (dp[i] == INT_MAX/2)
                //  continue;
                dp[j] = min(dp[j], dp[i]+1);
             }
