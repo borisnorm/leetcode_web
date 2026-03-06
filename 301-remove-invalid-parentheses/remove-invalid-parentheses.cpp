@@ -19,6 +19,10 @@ public:
         return (cnt == 0) ? true : false;
     }
 
+
+    //N = 字符串长度，最坏情况全是括号
+    //时间O(2^N × N)：每层最多生成 2^N 个子串，每个验证 O(N)
+    //空间O(2^N × N)：visited set 存储所有访问过的字符串
     vector<string> removeInvalidParentheses(string s) {
         int n = s.size();
 
@@ -50,6 +54,10 @@ public:
 
              for (int j = 0; j < cur.size(); j++)
              {
+                //处理字母
+                if (cur[j] != '(' && cur[j] != ')')
+                  continue;
+              
                 string nxt = cur.substr(0, j) + cur.substr(j+1);
 
                 if (visited.count(nxt))
