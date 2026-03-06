@@ -34,8 +34,8 @@ public:
               if (nx < 0 || nx >= m || ny < 0 || ny >= n)
                 continue;
               
-              if (height[nx][ny] != INT_MAX)
-                continue;
+              //if (height[nx][ny] != INT_MAX)
+              //  continue;
 
               //防止重复访问
               if (height[nx][ny] > height[x][y] + 1)
