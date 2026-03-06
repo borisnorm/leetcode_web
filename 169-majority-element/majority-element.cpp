@@ -16,7 +16,7 @@ public:
         {
             if (iter.second > m/2)
             {
-              if (iter.second > majority_cnt)
+             // if (iter.second > majority_cnt)
               {
                  majority_cnt = iter.second;
                  majority_num = iter.first;
