@@ -1,6 +1,83 @@
 class Solution {
 public:
     vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
+        int n = equations.size();
+        unordered_map<string, vector<pair<string, double>>> graph;
+        for (int i=0; i < n; i++)
+        {
+           string a = equations[i][0];
+           string b = equations[i][1];
+           double val = values[i];
+
+           graph[a].push_back({b, val});
+           graph[b].push_back({a, 1.0/val});
+        }
+
+        vector<double> res;
+        for (auto& query: queries)
+        {
+           string start = query[0];
+           string end   = query[1];
+          
+           if (!graph.count(start) || !graph.count(end))
+           {
+              res.push_back(-1.0);
+              continue;
+           }  
+           
+           if (start == end)
+           {
+              res.push_back(1.0);
+              continue;
+           }
+
+           unordered_set<string> visited;
+           queue<pair<string, double>> q;
+           q.push({start, 1.0});
+           visited.insert(start);
+
+           double ans = -1.0;
+           while(!q.empty())
+           {
+              auto [cur, cur_weight] = q.front();
+              q.pop();
+
+              
+              if(cur == end)
+              {
+                 ans = cur_weight;
+                 break;
+              }
+
+              for (auto [next, nxt_weight]: graph[cur])
+              {
+                  if (visited.count(next))
+                    continue;
+
+                  // string      string
+                  //   a  ----->   b * weight
+
+                  // find -> c 
+                  // a/b =  w1,  b/c = w2  quesiton: a/c
+                  // 
+                  visited.insert(next);
+                  //if (graph.count(next))
+                  {
+                    q.push({next, nxt_weight * cur_weight});
+                  }
+              }
+           }
+
+           res.push_back(ans);
+        }
+
+        return res;
+    }
+};
+/*
+class Solution {
+public:
+    vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
         
         int n = equations.size();
 
@@ -76,3 +153,4 @@ public:
         return -1.0;
     }
 };
+*/
