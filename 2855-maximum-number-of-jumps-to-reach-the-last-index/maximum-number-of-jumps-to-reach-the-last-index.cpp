@@ -10,15 +10,15 @@ public:
        //if (cur_idx < j && nums[cur_idx] - target <= nums[j] && nums[j] <= nums[i] + target)
        // dp[i] 到达 index i 最大的跳数, 
       
-       vector<int> dp(n, -1);
+       vector<int> dp(n, INT_MIN);
        dp[0] = 0;
        for (int i = 0; i < n; i++)
        {
           for (int j = i + 1; j < n; j++)
           {
-             if (dp[i] == -1)
+             if (dp[i] == INT_MIN )
                continue;
-               
+
              if (llabs((long long)nums[j]-nums[i]) <= target)
              {
                dp[j] = max(dp[j], dp[i] + 1);
@@ -26,7 +26,7 @@ public:
           }
        }
 
-       return dp[n-1] == -1 ? -1 : dp[n-1];
+       return dp[n-1] == INT_MIN ? -1 : dp[n-1];
     }
 };
 /*
