@@ -6,6 +6,7 @@ public:
 
     int find(int x)
     {
+        //路径压缩
         if (parent[x] != x)
           parent[x] = find(parent[x]);
         
@@ -36,20 +37,21 @@ public:
         return true;
     }
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
-        unordered_map<string, int> id;        // email->id
-        unordered_map<string, string> owner;  // email->name
+        unordered_map<string, int>    email2id;        // email->id
+        unordered_map<string, string> email2name;  // email->name
         int idx = 0;
 
+        //[name, email-1, email-2, email-3, email-4]
         for (auto& acc : accounts)
         {
            const string& name = acc[0];
            for (int i = 1; i < (int)acc.size(); i++)
            {
              const string& email = acc[i];
-             if (!id.count(email))
+             if (!email2id.count(email))
              {
-                id[email] = idx++;
-                owner[email] = name;
+                email2id[email]   = idx++;
+                email2name[email] = name;
              }
            }
         }
@@ -64,16 +66,16 @@ public:
         {
           if (acc.size() < 2)  // 0.name, 1.only email,  --> not necessary for union
             continue;
-          int base = id[acc[1]];
+          int base = email2id[acc[1]];
           for (int i=2; i < (int)acc.size(); i++)
-            unite(base, id[acc[i]]);
+            unite(base, email2id[acc[i]]);
         }
 
         unordered_map<int, vector<string>> groups;
-        for (auto& kv : id)
+        for (auto& kv : email2id)
         {
-          const string& email = kv.first;
-          int root = find(kv.second);
+          const string& email = kv.first; // email
+          int   root = find(kv.second);   // find id
           groups[root].push_back(email);
         }
 
@@ -83,7 +85,7 @@ public:
             auto& emails = g.second;
             sort(emails.begin(), emails.end());
             emails.erase(unique(emails.begin(), emails.end()), emails.end());
-            string name = owner[emails[0]];
+            string name = email2name[emails[0]];
 
             vector<string> row;
             row.push_back(name);
