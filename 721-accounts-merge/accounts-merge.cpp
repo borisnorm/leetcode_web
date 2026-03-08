@@ -1,6 +1,7 @@
 class Solution {
 public:
 
+struct UnionFind {
     vector<int> parent;
     vector<int> rank;
 
@@ -13,6 +14,14 @@ public:
         return parent[x];
     }
 
+    void init(int n)
+    {
+       parent.assign(n, 0);
+       for (int i = 0; i < n; i++)
+         parent[i] = i;
+       rank.assign(n, 0);
+    }
+ 
     bool unite(int x, int y)
     {
         int rx = find(x);
@@ -36,18 +45,28 @@ public:
 
         return true;
     }
+};
+
+    //["John","johnsmith@mail.com","john_newyork@mail.com"],
+    //["John","johnsmith@mail.com","john00@mail.com"]
+    // 有共同的 johnsmith@mail.com, 所以可以 merge, 也就是 他们有共同的 rootID
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
         unordered_map<string, int>    email2id;    // email->id
         unordered_map<string, string> email2name;  // email->name
-        int idx = 0;
+        
+        // account 结构
+        // [name, email-1, email-2, email-3, email-4]
 
-        //[name, email-1, email-2, email-3, email-4]
+        // build email-name map, and email-id map
+        int idx = 0;
         for (auto& acc : accounts)
         {
            const string& name = acc[0];
+           // [email--->name]  每一个 email 映射一个 name,也就是 不用 email --> 同一个 name
            for (int i = 1; i < (int)acc.size(); i++)
            {
              const string& email = acc[i];
+             // 防止重复添加
              if (!email2id.count(email))
              {
                 email2id[email]   = idx++;
@@ -56,29 +75,28 @@ public:
            }
         }
 
-       int n = idx;
-       parent.assign(n, 0);
-       for (int i = 0; i < n; i++)
-         parent[i] = i;
-       rank.assign(n, 0);
+        UnionFind uf;
+        uf.init(idx);
 
+        //unite all emails based on email-id
         for (auto& acc: accounts)
         {
           if (acc.size() < 2)  // 0.name, 1.only email,  --> not necessary for union
             continue;
           int base = email2id[acc[1]];
           for (int i=2; i < (int)acc.size(); i++)
-            unite(base, email2id[acc[i]]);
+            uf.unite(base, email2id[acc[i]]);
         }
 
         unordered_map<int, vector<string>> root2group;
+        // build root2group based on rootId
         for (auto& [email, id] : email2id)
         {
-          int   rootId = find(id); 
+          int rootId = uf.find(id); 
           root2group[rootId].push_back(email);
         }
 
-        vector<vector<string>> ans;
+        vector<vector<string>> res;
         for (auto& [rootId, emails_vec]: root2group)
         {
             sort(emails_vec.begin(), emails_vec.end());
@@ -89,10 +107,10 @@ public:
             vector<string> cur_acc;
             cur_acc.push_back(name);
             cur_acc.insert(cur_acc.end(), emails_vec.begin(), emails_vec.end());
-            ans.push_back(move(cur_acc));
+            res.push_back(move(cur_acc));
         }
 
-        return ans;
+        return res;
         
     }
 };
