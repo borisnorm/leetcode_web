@@ -1,4 +1,3 @@
-/*
 class Solution {
 public:
 
@@ -98,8 +97,9 @@ public:
         
     }
 };
-*/
 
+
+/*
 class UnionFind
 {
 public:
@@ -152,9 +152,12 @@ public:
         UnionFind uf;                                       // 创建并查集对象
         unordered_map<string, string> email2Name;          // 记录 email -> name
 
+        // email -> name
+        // uf.add email as union-find set
+        // unite(firstEmail, otherEmail)
         for (const auto& acc : accounts)                    // 遍历每个账户
         {
-            const string& name = acc[0];                    // 账户名
+            const string& name       = acc[0];              // 账户名
             const string& firstEmail = acc[1];              // 该账户的第一个 email
 
             uf.add(firstEmail);                             // 确保第一个 email 在并查集中
@@ -165,10 +168,12 @@ public:
                 const string& email = acc[i];               // 当前 email
                 uf.add(email);                              // 确保当前 email 在并查集中
                 email2Name[email] = name;                  // 记录当前 email 对应的 name
+
                 uf.unite(firstEmail, email);                // 把当前 email 和第一个 email 合并
             }
         }
 
+        // build root(email)->email_group from email2Name
         unordered_map<string, vector<string>> groups;       // root -> 所有属于该组的 emails
 
         for (const auto& [email, name] : email2Name)       // 遍历所有出现过的 email
@@ -178,18 +183,16 @@ public:
         }
 
         vector<vector<string>> res;                         // 最终结果数组
-
+        // go through root-groups
         for (auto& [root, emails] : groups)                 // 遍历每个分组
         {
             sort(emails.begin(), emails.end());             // 题目要求按字典序排序 email
 
+            //build email vector
             vector<string> cur;                             // 当前合并后的账户
-            cur.push_back(email2Name[root]);               // 先放名字，root 对应 email 一定能找到名字
-
+            cur.push_back(email2Name[root]);                // 先放名字，root 对应 email 一定能找到名字
             for (const string& email : emails)              // 再把排序后的 emails 放进去
-            {
                 cur.push_back(email);                       // 加入当前结果
-            }
 
             res.push_back(cur);                             // 放入总结果
         }
@@ -197,7 +200,7 @@ public:
         return res;                                         // 返回最终答案
     }
 };
-
+*/
 
 /*
 class Solution {
