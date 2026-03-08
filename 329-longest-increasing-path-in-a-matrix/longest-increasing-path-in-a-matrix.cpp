@@ -10,8 +10,7 @@ public:
         int n = matrix[0].size();
 
         vector<vector<int>> memo(m, vector<int>(n, -1));
-        int maxLen = 1;
-        int len = 1; // len 要包括第一个节点的, 包括它自己
+        int maxLen = 1; // len 要包括第一个节点的, 包括它自己
 
         for (int i = 0; i < m; i++)
         {
