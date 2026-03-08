@@ -89,6 +89,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
+| [0547-number-of-provinces](https://github.com/borisnorm/leetcode_web/tree/master/0547-number-of-provinces) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
 | [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
@@ -183,6 +184,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0286-walls-and-gates](https://github.com/borisnorm/leetcode_web/tree/master/0286-walls-and-gates) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0323-number-of-connected-components-in-an-undirected-graph](https://github.com/borisnorm/leetcode_web/tree/master/0323-number-of-connected-components-in-an-undirected-graph) |
+| [0547-number-of-provinces](https://github.com/borisnorm/leetcode_web/tree/master/0547-number-of-provinces) |
 | [0550-shortest-path-to-get-food](https://github.com/borisnorm/leetcode_web/tree/master/0550-shortest-path-to-get-food) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
 | [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
@@ -251,10 +253,15 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0305-number-of-islands-ii](https://github.com/borisnorm/leetcode_web/tree/master/0305-number-of-islands-ii) |
+| [0547-number-of-provinces](https://github.com/borisnorm/leetcode_web/tree/master/0547-number-of-provinces) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
 | [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 ## Hash Function
 |  |
 | ------- |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
+## Graph Theory
+|  |
+| ------- |
+| [0547-number-of-provinces](https://github.com/borisnorm/leetcode_web/tree/master/0547-number-of-provinces) |
 <!---LeetCode Topics End-->
