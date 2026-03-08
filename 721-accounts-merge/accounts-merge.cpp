@@ -74,12 +74,12 @@ public:
         unordered_map<int, vector<string>> root2group;
         for (auto& [email, id] : email2id)
         {
-          int   root = find(id); 
-          root2group[root].push_back(email);
+          int   rootId = find(id); 
+          root2group[rootId].push_back(email);
         }
 
         vector<vector<string>> ans;
-        for (auto& [root, emails_vec]: root2group)
+        for (auto& [rootId, emails_vec]: root2group)
         {
             sort(emails_vec.begin(), emails_vec.end());
             emails_vec.erase(unique(emails_vec.begin(), emails_vec.end()), emails_vec.end());
