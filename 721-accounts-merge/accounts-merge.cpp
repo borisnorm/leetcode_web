@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-struct UnionFind {
+  struct UnionFind {
     vector<int> parent;
     vector<int> rank;
 
@@ -43,9 +43,9 @@ struct UnionFind {
            rank[ry]++;
         }
 
-        return true;
-    }
-};
+       return true;
+      }
+    };
 
     //["John","johnsmith@mail.com","john_newyork@mail.com"],
     //["John","johnsmith@mail.com","john00@mail.com"]
@@ -57,7 +57,7 @@ struct UnionFind {
         // account 结构
         // [name, email-1, email-2, email-3, email-4]
 
-        // build email-name map, and email-id map
+        // 1. build email-name map, and email-id map
         int idx = 0;
         for (auto& acc : accounts)
         {
@@ -78,7 +78,7 @@ struct UnionFind {
         UnionFind uf;
         uf.init(idx);
 
-        //unite all emails based on email-id
+        //2. unite all emails based on emailId via email2Id
         for (auto& acc: accounts)
         {
           if (acc.size() < 2)  // 0.name, 1.only email,  --> not necessary for union
@@ -89,7 +89,7 @@ struct UnionFind {
         }
 
         unordered_map<int, vector<string>> root2group;
-        // build root2group based on rootId
+        // 3. build root2group based on rootId to group all emails via email2Id
         for (auto& [email, id] : email2id)
         {
           int rootId = uf.find(id); 
@@ -97,11 +97,12 @@ struct UnionFind {
         }
 
         vector<vector<string>> res;
+        // 4. collect result from root2group
         for (auto& [rootId, emails_vec]: root2group)
         {
             sort(emails_vec.begin(), emails_vec.end());
-            emails_vec.erase(unique(emails_vec.begin(), emails_vec.end()), emails_vec.end());
-
+            //emails_vec.erase(unique(emails_vec.begin(), emails_vec.end()), emails_vec.end());
+                             
             string name = email2name[emails_vec[0]];
 
             vector<string> cur_acc;
@@ -109,9 +110,7 @@ struct UnionFind {
             cur_acc.insert(cur_acc.end(), emails_vec.begin(), emails_vec.end());
             res.push_back(move(cur_acc));
         }
-
         return res;
-        
     }
 };
 
