@@ -23,6 +23,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0487-max-consecutive-ones-ii](https://github.com/borisnorm/leetcode_web/tree/master/0487-max-consecutive-ones-ii) |
 | [0550-shortest-path-to-get-food](https://github.com/borisnorm/leetcode_web/tree/master/0550-shortest-path-to-get-food) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
+| [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 | [0756-pour-water](https://github.com/borisnorm/leetcode_web/tree/master/0756-pour-water) |
 | [1059-missing-element-in-sorted-array](https://github.com/borisnorm/leetcode_web/tree/master/1059-missing-element-in-sorted-array) |
 | [1126-minimum-cost-to-connect-sticks](https://github.com/borisnorm/leetcode_web/tree/master/1126-minimum-cost-to-connect-sticks) |
@@ -89,6 +90,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
+| [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
 ## Binary Tree
@@ -117,6 +119,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0348-design-tic-tac-toe](https://github.com/borisnorm/leetcode_web/tree/master/0348-design-tic-tac-toe) |
 | [0359-logger-rate-limiter](https://github.com/borisnorm/leetcode_web/tree/master/0359-logger-rate-limiter) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
+| [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 | [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 | [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
@@ -140,6 +143,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
+| [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 ## Queue
 |  |
 | ------- |
@@ -181,6 +185,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0323-number-of-connected-components-in-an-undirected-graph](https://github.com/borisnorm/leetcode_web/tree/master/0323-number-of-connected-components-in-an-undirected-graph) |
 | [0550-shortest-path-to-get-food](https://github.com/borisnorm/leetcode_web/tree/master/0550-shortest-path-to-get-food) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
+| [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 | [1142-minimum-knight-moves](https://github.com/borisnorm/leetcode_web/tree/master/1142-minimum-knight-moves) |
 ## Sorting
 |  |
@@ -189,6 +194,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
+| [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 ## Linked List
 |  |
 | ------- |
@@ -246,6 +252,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0305-number-of-islands-ii](https://github.com/borisnorm/leetcode_web/tree/master/0305-number-of-islands-ii) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
+| [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
 ## Hash Function
 |  |
 | ------- |
