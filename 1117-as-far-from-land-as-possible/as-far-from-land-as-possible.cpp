@@ -53,6 +53,6 @@ public:
            }
         }
 
-        return maxDist;
+        return maxDist == 0 ? -1 : maxDist;
     }
 };
