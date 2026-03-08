@@ -37,7 +37,7 @@ public:
         return true;
     }
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
-        unordered_map<string, int>    email2id;        // email->id
+        unordered_map<string, int>    email2id;    // email->id
         unordered_map<string, string> email2name;  // email->name
         int idx = 0;
 
@@ -71,26 +71,25 @@ public:
             unite(base, email2id[acc[i]]);
         }
 
-        unordered_map<int, vector<string>> groups;
-        for (auto& kv : email2id)
+        unordered_map<int, vector<string>> root2group;
+        for (auto& [email, id] : email2id)
         {
-          const string& email = kv.first; // email
-          int   root = find(kv.second);   // find id
-          groups[root].push_back(email);
+          int   root = find(id); 
+          root2group[root].push_back(email);
         }
 
         vector<vector<string>> ans;
-        for (auto& g: groups)
+        for (auto& [root, emails_vec]: root2group)
         {
-            auto& emails = g.second;
-            sort(emails.begin(), emails.end());
-            emails.erase(unique(emails.begin(), emails.end()), emails.end());
-            string name = email2name[emails[0]];
+            sort(emails_vec.begin(), emails_vec.end());
+            emails_vec.erase(unique(emails_vec.begin(), emails_vec.end()), emails_vec.end());
 
-            vector<string> row;
-            row.push_back(name);
-            row.insert(row.end(), emails.begin(), emails.end());
-            ans.push_back(move(row));
+            string name = email2name[emails_vec[0]];
+
+            vector<string> cur_acc;
+            cur_acc.push_back(name);
+            cur_acc.insert(cur_acc.end(), emails_vec.begin(), emails_vec.end());
+            ans.push_back(move(cur_acc));
         }
 
         return ans;
