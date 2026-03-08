@@ -36,8 +36,8 @@ public:
         if (i < 0 || i >= m || j < 0 || j >= n)
           return 0;
         
-        vector<pair<int, int>> dirs ={ {0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-        //dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        //vector<pair<int, int>> dirs ={ {0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
         for (auto dir : dirs)
         {
