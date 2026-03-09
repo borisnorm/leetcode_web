@@ -78,7 +78,7 @@ public:
             continue;
           
           remain -= sz[i];
-          cnt += (long long)sz[i] * remain;
+          cnt += 1LL * sz[i] * remain;
         }
         return cnt;
     }
