@@ -92,6 +92,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0547-number-of-provinces](https://github.com/borisnorm/leetcode_web/tree/master/0547-number-of-provinces) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
 | [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
+| [0820-find-eventual-safe-states](https://github.com/borisnorm/leetcode_web/tree/master/0820-find-eventual-safe-states) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
 ## Binary Tree
@@ -188,6 +189,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0550-shortest-path-to-get-food](https://github.com/borisnorm/leetcode_web/tree/master/0550-shortest-path-to-get-food) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
 | [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
+| [0820-find-eventual-safe-states](https://github.com/borisnorm/leetcode_web/tree/master/0820-find-eventual-safe-states) |
 | [1142-minimum-knight-moves](https://github.com/borisnorm/leetcode_web/tree/master/1142-minimum-knight-moves) |
 ## Sorting
 |  |
@@ -223,6 +225,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
+| [0820-find-eventual-safe-states](https://github.com/borisnorm/leetcode_web/tree/master/0820-find-eventual-safe-states) |
 ## Concurrency
 |  |
 | ------- |
@@ -264,4 +267,5 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0547-number-of-provinces](https://github.com/borisnorm/leetcode_web/tree/master/0547-number-of-provinces) |
+| [0820-find-eventual-safe-states](https://github.com/borisnorm/leetcode_web/tree/master/0820-find-eventual-safe-states) |
 <!---LeetCode Topics End-->
