@@ -15,35 +15,46 @@ public:
         }
 
         vector<int> dist(n+1, INT_MAX);
-        dist[k] = 0;
-        dist[0] = 0;
+        dist[k] = 0;   // k 到 k 的距离为 0
+        dist[0] = 0;   // 0 不使用
 
+        //             (distance , node)
         using T = pair<int, int>;
         priority_queue<T, vector<T>, greater<>> pq;
+        // k 是起点
         pq.push({0, k});
 
         while (!pq.empty())
         {
-          auto [curCost, u] = pq.top();
+          auto [cur_dist, u] = pq.top();
           pq.pop();
 
-          if (curCost > dist[u])
+          // skip 过时的 curCost 
+          if (cur_dist > dist[u])
             continue;
           
           for (auto [v, cost] : graph[u])
-          {
-             if (dist[v] > curCost + cost)
-             {
-                dist[v] = curCost + cost;
+          {  
+             // min
 
-                pq.push({dist[v], v});
-             }
+             // dist[u] = 从起点 k 到 u 所花的时间
+             // w  = 从 u 到 v 这条边所花的时间
+             // dist[u] + w = 从起点 k 经过 u 再到 v 所花的总时间
+             // 在这道题里，距离 = 时间，是同一个东西。
+
+             if (dist[v] > cur_dist + cost)
+             {
+                dist[v] = cur_dist + cost;
+                pq.push({dist[v], v});             
+              }
           }
         }
 
+        //所有节点都收到信号的时刻 = 最后一个节点收到的时刻 = max(dist[])            
         int maxCost = 0;
         for (int i = 1; i <= n; i++)
         {
+           //节点 不连通
            if (dist[i] == INT_MAX)
              return -1;
             
