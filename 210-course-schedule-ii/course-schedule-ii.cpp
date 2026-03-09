@@ -3,7 +3,10 @@ public:
     
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
 
-         vector<vector<int>> adj(numCourses);
+         if (numCourses == 0)
+           return {};
+
+         vector<vector<int>> graph(numCourses);
          vector<int> indegree(numCourses, 0);
 
          for (auto& pre: prerequisites)
@@ -14,7 +17,7 @@ public:
             int a = pre[0];
             int b = pre[1];
 
-            adj[b].push_back(a);
+            graph[b].push_back(a);
             indegree[a]++;
             
             // 彻底写反了
@@ -32,9 +35,10 @@ public:
         {
           int u = course_queue.front();
           course_queue.pop();
+          
           order.push_back(u);
           // u --> v
-          for (int v: adj[u])
+          for (int v: graph[u])
           { 
              indegree[v]--;
              if (indegree[v]==0)
