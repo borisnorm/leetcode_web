@@ -1,8 +1,8 @@
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
-        //Dijistra
-        //                 dist, node
+
+        // Dijistra       dist, node
         vector<vector<pair<int, int>>> graph(n+1);
 
         for (auto e : times)
@@ -14,11 +14,11 @@ public:
             graph[u].push_back({v, t});
         }
 
-        vector<int> dist(n+1, INT_MAX);
-        dist[k] = 0;   // k 到 k 的距离为 0
-        dist[0] = 0;   // 0 不使用
+        vector<int> distCost(n+1, INT_MAX);
+        distCost[k] = 0;   // k 到 k 的距离为 0
+        //dist[0] = 0;   // 0 不使用
 
-        //             (distance , node)
+        //             (distanceCost , node)
         using T = pair<int, int>;
         priority_queue<T, vector<T>, greater<>> pq;
         // k 是起点
@@ -26,11 +26,11 @@ public:
 
         while (!pq.empty())
         {
-          auto [cur_dist, u] = pq.top();
+          auto [cur_dist_cost, u] = pq.top();
           pq.pop();
 
           // skip 过时的 curCost 
-          if (cur_dist > dist[u])
+          if (cur_dist_cost > distCost[u])
             continue;
           
           for (auto [v, cost] : graph[u])
@@ -42,11 +42,11 @@ public:
              // dist[u] + w = 从起点 k 经过 u 再到 v 所花的总时间
              // 在这道题里，距离 = 时间，是同一个东西。
 
-             if (dist[v] > cur_dist + cost)
+             if (distCost[v] > cur_dist_cost + cost)
              {
-                dist[v] = cur_dist + cost;
-                pq.push({dist[v], v});             
-              }
+                distCost[v] = cur_dist_cost + cost;
+                pq.push({distCost[v], v});             
+             }
           }
         }
 
@@ -55,13 +55,11 @@ public:
         for (int i = 1; i <= n; i++)
         {
            //节点 不连通
-           if (dist[i] == INT_MAX)
+           if (distCost[i] == INT_MAX)
              return -1;
             
-           maxCost = max(maxCost, dist[i]);
+           maxCost = max(maxCost, distCost[i]);
         }
-
         return maxCost;
-
     }
 };
