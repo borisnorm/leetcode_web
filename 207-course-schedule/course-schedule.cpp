@@ -42,7 +42,6 @@ public:
           }
         }
 
-
         color[u] = 2;
         return true;
     }
