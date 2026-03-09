@@ -1,3 +1,49 @@
+class Solution
+{
+public:
+
+    // DFS函数：遍历所有与 city 相连的城市
+    void dfs(vector<vector<int>>& isConnected, int city, vector<bool>& visited)
+    {
+        int n = isConnected.size();                // 城市数量
+        
+        visited[city] = true;                      // 标记当前城市已访问
+        
+        // 遍历所有可能的邻居城市
+        for (int neighbor = 0; neighbor < n; neighbor++)
+        {
+            // 如果两个城市相连 且 neighbor 未访问
+            if (isConnected[city][neighbor] == 1 && !visited[neighbor])
+            {
+                dfs(isConnected, neighbor, visited); // 继续DFS
+            }
+        }
+    }
+
+    int findCircleNum(vector<vector<int>>& isConnected)
+    {
+        int n = isConnected.size();                // 城市数量
+        
+        vector<bool> visited(n, false);            // 访问数组
+        
+        int provinces = 0;                         // 省份数量
+        
+        // 遍历所有城市
+        for (int i = 0; i < n; i++)
+        {
+            // 如果该城市没有被访问
+            if (!visited[i])
+            {
+                dfs(isConnected, i, visited);      // DFS遍历整个连通块
+                
+                provinces++;                       // 发现一个新的province
+            }
+        }
+        
+        return provinces;                          // 返回省份数量
+    }
+};
+/*
 class Solution {
 public:
     struct UnionFind{
@@ -60,8 +106,11 @@ public:
 
     }
 };
+*/
 
 /*
+// Time: O(n^2)
+// Space: O(n)
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
