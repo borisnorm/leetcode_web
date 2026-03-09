@@ -16,7 +16,7 @@ public:
 
         vector<int> distCost(n+1, INT_MAX);
         distCost[k] = 0;   // k 到 k 的距离为 0
-        //dist[0] = 0;   // 0 不使用
+        //distCost[0] = 0; // 0 不使用
 
         //             (distanceCost , node)
         using T = pair<int, int>;
@@ -36,7 +36,6 @@ public:
           for (auto [v, cost] : graph[u])
           {  
              // min
-
              // dist[u] = 从起点 k 到 u 所花的时间
              // w  = 从 u 到 v 这条边所花的时间
              // dist[u] + w = 从起点 k 经过 u 再到 v 所花的总时间
