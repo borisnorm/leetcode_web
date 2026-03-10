@@ -1,6 +1,28 @@
 class Solution {
 public:
     char kthCharacter(int k) {
+       int offset = 0;
+       int len = 1;
+
+       while (len < k)
+         len *= 2;
+       while(k > 1)
+       {
+          len /= 2;
+          if (k > len)
+          {
+             k -= len;
+             offset++;
+          }
+       }
+
+       return 'a' + offset;
+    }
+};
+/*
+class Solution {
+public:
+    char kthCharacter(int k) {
         
         string s1  = "a";
         int totalLen = 0;
@@ -29,3 +51,5 @@ public:
         return s1[k-1];
     }
 };
+
+*/
