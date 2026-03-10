@@ -23,15 +23,14 @@ private:
 
         while (i < n)                                                   // 线性扫描整个字符串
         {
-            int j = i;                                                  // j 用来扩展当前连续段
-
+            int start = i;
+            int j = i + 1;                                             // j 用来扩展当前连续段
             while (j < n && s[j] == s[i])                               // 找到和 s[i] 相同的连续区间
-            {
-                j++;                                                    // 继续向右扩展
-            }
+              j++;                                                    // 继续向右扩展
+            int end = j;
 
-            best = max(best, j - i);                                    // 更新最长连续段
-            i = j;                                                      // 跳到下一段开始位置
+            best = max(best, end - start);                                    // 更新最长连续段
+            i = end;                                                      // 跳到下一段开始位置
         }
 
         return best;                                                    // 返回只有1种字符时的最大长度
@@ -127,3 +126,115 @@ private:
         return best;                                                    // 返回3种字符平衡时的最大长度
     }
 };
+
+
+/*
+class Solution
+{
+public:
+int solve(const string& s, int mask)
+{
+    int n = s.size();
+    // 提取 mask 包含哪些字符
+    // chars[0..k-1] 是参与的字符
+    int chars[3];
+    int k = 0;
+    for (int i = 0; i < 3; i++)
+    {
+        // 1 << 0 : 1   : 001
+        // 1 << 1 : 10  : 010
+        // 1 << 2 : 100 : 100
+        if (mask & (1 << i))
+            chars[k++] = i; // 0='a', 1='b', 2='c'
+    }
+
+    if (k == 1)
+    {
+        // 单字符：找最长连续该字符的段
+        char c = 'a' + chars[0];
+        int best = 0;
+        int cur  = 0;
+        for (char ch : s)
+        {
+          if (ch == c) 
+            cur++;
+          else 
+            cur = 0;
+           best = max(best, cur);
+        }
+
+        for (char ch)
+        return best;
+    }
+
+    // k==2 或 k==3
+    // 前缀差值 key: 用字符串或编码表示
+    // 对 k==2: key = cnt[chars[0]] - cnt[chars[1]]
+    // 对 k==3: key = (d1, d2) where d1=cnt[0]-cnt[1], d2=cnt[0]-cnt[2]
+    // 用 unordered_map<string, int> 存第一次出现的位置
+
+    // cnt[i] = 前缀中字符i出现次数 (i=0,1,2 对应 a,b,c)
+    int cnt[3] = {0, 0, 0};
+    // key 编码函数
+    auto getKey = [&]() -> string
+    {
+        if (k == 2)
+            return to_string(cnt[chars[0]] - cnt[chars[1]]);
+        else
+            return to_string(cnt[chars[0]] - cnt[chars[1]])
+                 + "," + to_string(cnt[chars[0]] - cnt[chars[2]]);
+    };
+
+    unordered_map<string, int> first; // key -> 最早出现的位置
+    first[getKey()] = 0; // 空前缀，位置0
+
+    int best = 0;
+    // 当前段的起始偏移（遇到mask外字符时重置）
+    int base = 0; // 重置点
+
+    for (int i = 0; i < n; i++)
+    {
+        int c = s[i] - 'a'; // 0,1,2
+
+        // 遇到不在 mask 中的字符，必须重置
+        if (!(mask & (1 << c)))
+        {
+            // 清空状态
+            cnt[0] = cnt[1] = cnt[2] = 0;
+            first.clear();
+            first[getKey()] = i + 1; // 新段从 i+1 开始
+            base = i + 1;
+            continue;
+        }
+
+        cnt[c]++;
+        string key = getKey();
+
+        if (first.count(key))
+        {
+            // 从 first[key] 到 i+1 的子串平衡
+            best = max(best, i + 1 - first[key]);
+        }
+        else
+        {
+            first[key] = i + 1; // 记录第一次出现
+        }
+    }
+
+    return best;
+}
+
+int longestBalanced(const string& s)
+{
+    int maxLen = 0;
+    // 枚举所有非空字符集组合 mask 1..7
+    // 共有 2^n - 1中组合 
+    int n  = s.size();
+    // 
+    for (int mask = 1; mask <= 7; mask++)
+        maxLen = max(maxLen, solve(s, mask));
+    return maxLen;
+}
+};
+
+*/
