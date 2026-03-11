@@ -3,6 +3,7 @@ public:
     bool check(vector<int>& nums) {
         int n = nums.size();
 
+        //查找 pivot 的个数
         int pivot = 0;
         for (int i = 0; i < n; i++)
         {
