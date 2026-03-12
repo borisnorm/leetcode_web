@@ -27,7 +27,7 @@ public:
           long long startT = meetings[i][0];
           long long endT   = meetings[i][1];
           long long dur    = endT - startT;
-          // clear busy room
+          // free busy room
           while(!busy.empty() && meetings[i][0] >= busy.top().first)
           {
              roomId = busy.top().second;
