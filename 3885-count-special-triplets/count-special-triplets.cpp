@@ -26,6 +26,9 @@ public:
             
             long long r_cnt = 0;
             r_num2freq[nums[i]]--;
+            // 上面的-- 就够了,即使 count 到, 返回的也是 0, 所以是安全的
+            //if (r_num2freq[nums[i]] <= 0)
+            //    r_num2freq.erase(nums[i]);
 
             if (r_num2freq.count(target))
               r_cnt = r_num2freq[target];
