@@ -13,15 +13,12 @@ public:
         {
            sum += num;
            if (sum2cnt.count(sum-goal))
-           {
               cnt += sum2cnt[sum-goal];
-           }
 
            sum2cnt[sum]++;
         }
 
         return cnt;
-        
     }
 };
 
