@@ -1,3 +1,5 @@
+
+/*
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
@@ -6,7 +8,7 @@ public:
         unordered_map<long long, int> sum2cnt;
         int cnt = 0;
 
-        // 空集 有解
+        // prefixSum 空集 有解
         sum2cnt[0] = 1;
 
         for (int num: nums)
@@ -21,7 +23,39 @@ public:
         return cnt;
     }
 };
+*/
+class Solution {
+public:
+    int numSubarraysWithSum(vector<int>& nums, int goal) {
+        // prefixSum <= gobal
+        return numPrefixSum(nums, goal) - numPrefixSum(nums, goal-1);
+    }
 
+    int numPrefixSum(vector<int>& nums, int goal)
+    {
+        if (goal < 0)
+          return 0;
+        int n = nums.size();
+        int l = 0;
+        int r = 0;
+        int cnt = 0;
+        long long sum = 0;
+        while (r < n)
+        {
+            sum += nums[r];
+            r++;
+
+            while (sum > goal)
+            {
+               sum -= nums[l];
+               l++;
+            }
+
+            cnt += r-l;
+        }
+        return cnt;
+    }
+};
 
 /*
 class Solution {
