@@ -17,7 +17,7 @@ public:
             sum += nums[r];
             r++;
             
-            while (l <= r && sum * (r-l) >= k)
+            while (sum * (r-l) >= k)
             {
                sum -= nums[l];
                l++;
