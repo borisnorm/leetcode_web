@@ -1,6 +1,35 @@
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
+      
+        int sum = 0;
+        unordered_map<long long, int> sum2cnt;
+        int cnt = 0;
+
+        // 空集 有解
+        sum2cnt[0] = 1;
+
+        for (int num: nums)
+        {
+           sum += num;
+           if (sum2cnt.count(sum-goal))
+           {
+              cnt += sum2cnt[sum-goal];
+           }
+
+           sum2cnt[sum]++;
+        }
+
+        return cnt;
+        
+    }
+};
+
+
+/*
+class Solution {
+public:
+    int numSubarraysWithSum(vector<int>& nums, int goal) {
         return atMost(nums, goal) - atMost(nums, goal - 1);
     }
 
@@ -24,48 +53,6 @@ private:
             // 以 r 结尾，且和 <= S 的子数组个数
             cnt += (r - l + 1);
         }
-        return cnt;
-    }
-};
-
-/* 
-// 超时
-class Solution {
-public:
-    int numSubarraysWithSum(vector<int>& nums, int goal) {
-        
-        int n = nums.size();
-        
-        int l = 0;
-        int r = 0;
-
-        int sum = 0;
-        long long cnt = 0;
-
-        
-        while(r < n)
-        {
-           sum += nums[r];
-           r++;
-
-           while (sum > goal)
-           {
-              sum -= nums[l];
-              l++;
-           }
-
-           while (sum == goal)
-           {
-              cnt++;
-    
-              if (nums[l] == 0)
-              {
-                sum -= nums[l];
-                l++;
-              }
-
-           }
-        } 
         return cnt;
     }
 };
