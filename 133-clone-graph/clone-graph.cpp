@@ -37,7 +37,7 @@ public:
             q.pop();
         
             if (!cur2cpy.count(cur))
-               cur2cpy[cur] = new Node(node->val);
+               cur2cpy[cur] = new Node(cur->val);
             Node* cloned_node = cur2cpy[cur];
 
             for (Node* nei : cur->neighbors)
