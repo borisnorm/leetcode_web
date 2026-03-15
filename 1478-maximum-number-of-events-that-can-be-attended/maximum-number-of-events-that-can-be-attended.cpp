@@ -12,7 +12,17 @@ public:
         int day = 0;
         int idx = 0;
         int res = 0;
-        
+
+       /* 
+        while (还有事件没处理)
+        {
+          [今天] 入堆所有今天开始的事件
+          [今天] 清除过期事件
+          [今天] 参加一个事件
+          day++  ← 今天结束，进入明天
+        }
+        */
+
         while (idx < n || !pq.empty())
         {
            // set next event start time
@@ -33,11 +43,11 @@ public:
            // 参加最早结束的 event
            if(!pq.empty())
            {
-              pq.pop();
+              pq.pop();  //这一天 用掉了
               res++;
            }
 
-           day++;
+           day++;  //进入下一天
         }
         return res;
     }
