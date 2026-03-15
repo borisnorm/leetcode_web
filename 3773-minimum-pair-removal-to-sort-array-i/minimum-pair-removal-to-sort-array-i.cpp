@@ -2,7 +2,6 @@ class Solution {
 public:
     int minimumPairRemoval(vector<int>& nums) {
         
-        
         auto sorted = [&]() -> bool {
             int n = nums.size();
             for (int i = 0; i + 1 < n; i++)
