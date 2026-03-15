@@ -22,6 +22,7 @@ public:
           int minIdx = 0;
           for (int i = 0; i + 1 < nums.size(); i++)
           {
+              //               必须加上 long long 防止越界
               long long sum = (long long)nums[i] + nums[i+1];
               if (sum < minVal)
               {
