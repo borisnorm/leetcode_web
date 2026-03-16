@@ -13,7 +13,7 @@ public:
              cur *= 10;
            else
            {
-              while (cur  % 10 == 9 || cur >= n)
+              while (cur  % 10 == 9 || cur + 1 > n)
                 cur /= 10;
               
               cur++;
