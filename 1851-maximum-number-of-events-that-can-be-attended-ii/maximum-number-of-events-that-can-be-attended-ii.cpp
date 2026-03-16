@@ -10,7 +10,8 @@ public:
         sort(events.begin(), events.end(), cmp);
 
         int n = events.size();
-
+        // dp[i][j] = 前i个事件选j个的最大价值
+        // 使用 n+1 行，0行为哨兵（选0个事件）
         vector<vector<int>> dp(n+1, vector<int>(k+1, 0));
 
         for (int i = 1; i <= n; i++)
