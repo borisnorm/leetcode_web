@@ -21,7 +21,7 @@ public:
             if (freq[s[i]-'a'] < k)
             {
                //不包括 s[i]这个位置
-               int mid = i;
+               int mid = i + 1;
                while (mid < r && freq[s[mid]-'a'] < k)
                   mid++;
 
