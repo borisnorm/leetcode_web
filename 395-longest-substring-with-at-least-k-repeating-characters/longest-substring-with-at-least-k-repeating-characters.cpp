@@ -12,12 +12,9 @@ public:
          if (r - l < k)
            return 0;
          
-         //int freq[26];
          int freq[26] = {};
          for (int i = l; i < r; i++)
            freq[s[i]-'a']++;
-
-        unordered_map<char, int> char2freq;
        
         for (int i = l; i < r; i++)
         {
