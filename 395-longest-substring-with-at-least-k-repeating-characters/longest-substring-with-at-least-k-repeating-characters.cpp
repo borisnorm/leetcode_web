@@ -21,8 +21,12 @@ public:
             if (freq[s[i]-'a'] < k)
             {
                //不包括 s[i]这个位置
+               int mid = i;
+               while (mid < r && freq[s[mid]-'a'] < k)
+                  mid++;
+
                int left = dfs(s, l, i, k);
-               int right = dfs(s, i+1, r, k);
+               int right = dfs(s, mid, r, k);
                return max(left, right);
             }
         }
