@@ -11,6 +11,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0252-meeting-rooms](https://github.com/borisnorm/leetcode_web/tree/master/0252-meeting-rooms) |
 | [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
 | [0256-paint-house](https://github.com/borisnorm/leetcode_web/tree/master/0256-paint-house) |
+| [0259-3sum-smaller](https://github.com/borisnorm/leetcode_web/tree/master/0259-3sum-smaller) |
 | [0269-alien-dictionary](https://github.com/borisnorm/leetcode_web/tree/master/0269-alien-dictionary) |
 | [0280-wiggle-sort](https://github.com/borisnorm/leetcode_web/tree/master/0280-wiggle-sort) |
 | [0286-walls-and-gates](https://github.com/borisnorm/leetcode_web/tree/master/0286-walls-and-gates) |
@@ -133,6 +134,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0186-reverse-words-in-a-string-ii](https://github.com/borisnorm/leetcode_web/tree/master/0186-reverse-words-in-a-string-ii) |
 | [0246-strobogrammatic-number](https://github.com/borisnorm/leetcode_web/tree/master/0246-strobogrammatic-number) |
 | [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
+| [0259-3sum-smaller](https://github.com/borisnorm/leetcode_web/tree/master/0259-3sum-smaller) |
 | [0408-valid-word-abbreviation](https://github.com/borisnorm/leetcode_web/tree/master/0408-valid-word-abbreviation) |
 | [1713-dot-product-of-two-sparse-vectors](https://github.com/borisnorm/leetcode_web/tree/master/1713-dot-product-of-two-sparse-vectors) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
@@ -161,6 +163,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 ## Binary Search
 |  |
 | ------- |
+| [0259-3sum-smaller](https://github.com/borisnorm/leetcode_web/tree/master/0259-3sum-smaller) |
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0362-design-hit-counter](https://github.com/borisnorm/leetcode_web/tree/master/0362-design-hit-counter) |
 | [1059-missing-element-in-sorted-array](https://github.com/borisnorm/leetcode_web/tree/master/1059-missing-element-in-sorted-array) |
@@ -197,6 +200,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0252-meeting-rooms](https://github.com/borisnorm/leetcode_web/tree/master/0252-meeting-rooms) |
 | [0253-meeting-rooms-ii](https://github.com/borisnorm/leetcode_web/tree/master/0253-meeting-rooms-ii) |
+| [0259-3sum-smaller](https://github.com/borisnorm/leetcode_web/tree/master/0259-3sum-smaller) |
 | [0280-wiggle-sort](https://github.com/borisnorm/leetcode_web/tree/master/0280-wiggle-sort) |
 | [0314-binary-tree-vertical-order-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0314-binary-tree-vertical-order-traversal) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
