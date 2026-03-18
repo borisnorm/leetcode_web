@@ -32,7 +32,8 @@ public:
           // cur -> child
           cur->next = cur->child;
           cur->child->prev = cur;
-          
+          cur->child = nullptr;
+
            /* child tail */
            while (cur_child->next)
              cur_child = cur_child->next;
@@ -42,9 +43,7 @@ public:
           if (nxt)
             nxt->prev = cur_child;
 
-
-
-          cur->child = nullptr;
+         
         }
         return head;
     }
