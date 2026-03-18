@@ -39,11 +39,12 @@ public:
 
            side[i] += matchsticks[idx];
 
-           res |= dfs(matchsticks, idx+1, side, target);
+           if (dfs(matchsticks, idx+1, side, target))
+             return true;
 
            side[i] -= matchsticks[idx];
         }
 
-        return res;
+        return false;
     }
 };
