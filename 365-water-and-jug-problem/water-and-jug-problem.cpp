@@ -39,8 +39,8 @@ public:
         if (target > j1 + j2) return false;
 
         // BFS 初始化
-        std::queue<std::pair<int,int>> q;
-        std::set<std::pair<int,int>> vis;
+        queue<pair<int,int>> q;
+        set<pair<int,int>> vis;
 
         q.push({0, 0});
         vis.insert({0, 0});
@@ -60,8 +60,8 @@ public:
                 {x, j2},                                        // 装满壶2
                 {0, y},                                         // 倒空壶1
                 {x, 0},                                         // 倒空壶2
-                {x - std::min(x, j2-y), y + std::min(x, j2-y)}, // 壶1倒入壶2
-                {x + std::min(y, j1-x), y - std::min(y, j1-x)}  // 壶2倒入壶1
+                {x - min(x, j2-y), y + min(x, j2-y)}, // 壶1倒入壶2
+                {x + min(y, j1-x), y - min(y, j1-x)}  // 壶2倒入壶1
             };
 
             for (auto& [nx, ny] : nexts)
