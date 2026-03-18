@@ -1,8 +1,9 @@
 class Solution {
 public:
+    // 与 698 相同
     bool makesquare(vector<int>& matchsticks) {
 
-        sort(matchsticks.begin(), matchsticks.end());
+        sort(matchsticks.begin(), matchsticks.end(), greater<int>());
 
         int sum = 0;
         for (int matchstick: matchsticks)
@@ -28,7 +29,7 @@ public:
              return true;
         }
 
-        bool res = false;
+        //轮询4条边
         for (int i = 0; i < 4; i++)
         {
            if (side[i] + matchsticks[idx] > target)
@@ -41,10 +42,9 @@ public:
 
            if (dfs(matchsticks, idx+1, side, target))
              return true;
-
+          // 回溯
            side[i] -= matchsticks[idx];
         }
-
         return false;
     }
 };
