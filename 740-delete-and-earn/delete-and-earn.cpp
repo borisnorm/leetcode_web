@@ -15,9 +15,9 @@ public:
           points[num] += num;
         
         int prev2 = 0;
-        int prev1 = points[0];
+        int prev1 = points[1];
         
-        for (int i = 1; i <= maxVal; i++)
+        for (int i = 2; i <= maxVal; i++)
         {
            int prev = max(prev1, prev2 + points[i]);
            prev2 = prev1;
