@@ -11,6 +11,8 @@ public:
             ops1++;
        }
 
+       // 默认是算 0 在奇数位, 1在偶数的情况,
+       // b 情况就是 反过来的 case
        // cost_b = n - cost_a（互补关系）
        int ops2 = n - ops1;
 
