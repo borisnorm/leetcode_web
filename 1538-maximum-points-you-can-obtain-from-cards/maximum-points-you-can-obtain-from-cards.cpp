@@ -8,6 +8,7 @@ public:
           pre[i+1] = pre[i] + cardPoints[i]; 
         
         int maxScore = 0;
+        // 左边取 i 右边取 k-i
         for (int i = 0; i <= k; i++)
         {
            int left = pre[i];
