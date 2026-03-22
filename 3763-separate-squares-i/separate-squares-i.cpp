@@ -1,7 +1,7 @@
 class Solution {
 public:
     double separateSquares(vector<vector<int>>& squares) {
-        double lo = 1e5;
+        double lo = 1e9; //相当于 INT_MAX
         double hi = 0;
         for (auto& sq: squares)
         {
@@ -51,6 +51,8 @@ public:
              hi = mid;
             
         }
+
+        // 循环退出时 mid 是上一次算的值，不一定是最终 lo 和 hi 的中点：
 
         return (lo + hi)/2.0;
     }
