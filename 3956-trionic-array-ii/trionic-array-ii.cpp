@@ -1,44 +1,89 @@
+#include <vector>
+#include <algorithm>
+#include <climits>
+using namespace std;
+
 class Solution
 {
 public:
     long long maxSumTrionic(vector<int>& nums)
     {
-        int n = static_cast<int>(nums.size());                                   // 数组长度
-        long long neg = numeric_limits<long long>::lowest() / 4;                 // 负无穷，防止后续加法溢出
+        int n = nums.size();
+        int i = 0;
+        long long ans = LLONG_MIN;
 
-        vector<long long> up(n, neg);                                            // up[i]：以 i 结尾的严格递增子数组最大和
-        vector<long long> down(n, neg);                                          // down[i]：以 i 结尾的“递增+递减”子数组最大和
-        vector<long long> up2(n, neg);                                           // up2[i]：以 i 结尾的“递增+递减+递增”子数组最大和
-
-        long long ans = neg;                                                     // 记录最终答案
-
-        for (int i = 1; i < n; i++)                                              // 从第 1 个位置开始，因为要和 i-1 比较
+        while (i < n)
         {
-            if (nums[i - 1] < nums[i])                                           // 当前是上升关系
-            {
-                long long start_up = 1LL * nums[i - 1] + nums[i];                // 新开一个长度为 2 的递增段
-                long long extend_up = (up[i - 1] == neg ? neg : up[i - 1] + nums[i]); // 延长之前的递增段
-                up[i] = max(start_up, extend_up);                                // 更新第一阶段
+            int l = i;
+            i++;
 
-                long long start_up2 = (down[i - 1] == neg ? neg : down[i - 1] + nums[i]); // 从第二阶段切到第三阶段
-                long long extend_up2 = (up2[i - 1] == neg ? neg : up2[i - 1] + nums[i]);  // 延长第三阶段
-                up2[i] = max(start_up2, extend_up2);                             // 更新第三阶段
+            // 找左递增段的末尾 p（i停在第一个不再递增的位置）
+            while (i < n && nums[i - 1] < nums[i])
+            {
+                i++;
             }
 
-            if (nums[i - 1] > nums[i])                                           // 当前是下降关系
+            // 左递增段至少需要2个元素，否则跳过
+            if (i == l + 1)
             {
-                long long start_down = (up[i - 1] == neg ? neg : up[i - 1] + nums[i]);     // 从第一阶段切到第二阶段
-                long long extend_down = (down[i - 1] == neg ? neg : down[i - 1] + nums[i]); // 延长第二阶段
-                down[i] = max(start_down, extend_down);                          // 更新第二阶段
+                continue;
             }
 
-            ans = max(ans, up2[i]);                                              // 只有第三阶段才是完整 trionic，尝试更新答案
+            // p 是峰（左递增段的最后一个元素）
+            int p = i - 1;
+
+            // 核心：从 nums[p-1]+nums[p] 开始（必须包含峰和峰左邻）
+            long long s = (long long)nums[p - 1] + nums[p];
+
+            // 找中间递减段，累加递减段的值
+            while (i < n && nums[i - 1] > nums[i])
+            {
+                s += nums[i];
+                i++;
+            }
+
+            // 递减段至少需要2个元素（p到q），且 q 之后必须还有元素
+            // i==p+1 说明没有下降，i==n 说明右侧没有递增段
+            if (i == p + 1 || i == n || nums[i - 1] == nums[i])
+            {
+                continue;
+            }
+
+            // q 是谷（递减段的最后一个元素）
+            int q = i - 1;
+
+            // 必须包含谷和谷右邻
+            s += nums[i];
+            i++;
+
+            // 右侧递增段：贪心向右累加，只保留正收益的前缀最大值
+            long long mx = 0, t = 0;
+            while (i < n && nums[i - 1] < nums[i])
+            {
+                t += nums[i];
+                i++;
+                mx = max(mx, t);  // 取右侧递增段的最大前缀和
+            }
+            s += mx;
+
+            // 左侧递增段：贪心向左累加，只保留正收益的后缀最大值
+            mx = 0; t = 0;
+            for (int j = p - 2; j >= l; j--)
+            {
+                t += nums[j];
+                mx = max(mx, t);  // 取左侧递增段的最大后缀和
+            }
+            s += mx;
+
+            ans = max(ans, s);
+
+            // 从 q 重新开始（q 可能是下一段的起点）
+            i = q;
         }
 
-        return ans;                                                              // 返回最大 trionic subarray sum
+        return ans;
     }
 };
-
 /*
 class Solution {
 public:
