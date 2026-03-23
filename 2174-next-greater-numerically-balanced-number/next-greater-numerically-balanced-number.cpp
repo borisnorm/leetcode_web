@@ -33,8 +33,8 @@ public:
        }
 
        //出现 0 必然错误
-       if (digit2freq[0] != 0)
-         return false;
+       //if (digit2freq[0] != 0)
+       //  return false;
 
        return true;         
     }
