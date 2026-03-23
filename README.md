@@ -62,6 +62,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0144-binary-tree-preorder-traversal](https://github.com/borisnorm/leetcode_web/tree/master/0144-binary-tree-preorder-traversal) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
+| [0758-convert-binary-search-tree-to-sorted-doubly-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0758-convert-binary-search-tree-to-sorted-doubly-linked-list) |
 | [1909-buildings-with-an-ocean-view](https://github.com/borisnorm/leetcode_web/tree/master/1909-buildings-with-an-ocean-view) |
 ## Tree
 |  |
@@ -74,6 +75,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
+| [0758-convert-binary-search-tree-to-sorted-doubly-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0758-convert-binary-search-tree-to-sorted-doubly-linked-list) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 | [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
@@ -94,6 +96,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0547-number-of-provinces](https://github.com/borisnorm/leetcode_web/tree/master/0547-number-of-provinces) |
 | [0694-number-of-distinct-islands](https://github.com/borisnorm/leetcode_web/tree/master/0694-number-of-distinct-islands) |
 | [0721-accounts-merge](https://github.com/borisnorm/leetcode_web/tree/master/0721-accounts-merge) |
+| [0758-convert-binary-search-tree-to-sorted-doubly-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0758-convert-binary-search-tree-to-sorted-doubly-linked-list) |
 | [0820-find-eventual-safe-states](https://github.com/borisnorm/leetcode_web/tree/master/0820-find-eventual-safe-states) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
@@ -108,6 +111,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
 | [0366-find-leaves-of-binary-tree](https://github.com/borisnorm/leetcode_web/tree/master/0366-find-leaves-of-binary-tree) |
 | [0536-construct-binary-tree-from-string](https://github.com/borisnorm/leetcode_web/tree/master/0536-construct-binary-tree-from-string) |
+| [0758-convert-binary-search-tree-to-sorted-doubly-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0758-convert-binary-search-tree-to-sorted-doubly-linked-list) |
 | [1780-lowest-common-ancestor-of-a-binary-tree-ii](https://github.com/borisnorm/leetcode_web/tree/master/1780-lowest-common-ancestor-of-a-binary-tree-ii) |
 | [1790-lowest-common-ancestor-of-a-binary-tree-iii](https://github.com/borisnorm/leetcode_web/tree/master/1790-lowest-common-ancestor-of-a-binary-tree-iii) |
 | [1816-lowest-common-ancestor-of-a-binary-tree-iv](https://github.com/borisnorm/leetcode_web/tree/master/1816-lowest-common-ancestor-of-a-binary-tree-iv) |
@@ -175,6 +179,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0270-closest-binary-search-tree-value](https://github.com/borisnorm/leetcode_web/tree/master/0270-closest-binary-search-tree-value) |
 | [0285-inorder-successor-in-bst](https://github.com/borisnorm/leetcode_web/tree/master/0285-inorder-successor-in-bst) |
 | [0333-largest-bst-subtree](https://github.com/borisnorm/leetcode_web/tree/master/0333-largest-bst-subtree) |
+| [0758-convert-binary-search-tree-to-sorted-doubly-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0758-convert-binary-search-tree-to-sorted-doubly-linked-list) |
 ## Dynamic Programming
 |  |
 | ------- |
@@ -212,6 +217,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0082-remove-duplicates-from-sorted-list-ii](https://github.com/borisnorm/leetcode_web/tree/master/0082-remove-duplicates-from-sorted-list-ii) |
 | [0369-plus-one-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0369-plus-one-linked-list) |
+| [0758-convert-binary-search-tree-to-sorted-doubly-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0758-convert-binary-search-tree-to-sorted-doubly-linked-list) |
 | [0850-insert-into-a-sorted-circular-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0850-insert-into-a-sorted-circular-linked-list) |
 ## Simulation
 |  |
@@ -278,4 +284,8 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | ------- |
 | [0547-number-of-provinces](https://github.com/borisnorm/leetcode_web/tree/master/0547-number-of-provinces) |
 | [0820-find-eventual-safe-states](https://github.com/borisnorm/leetcode_web/tree/master/0820-find-eventual-safe-states) |
+## Doubly-Linked List
+|  |
+| ------- |
+| [0758-convert-binary-search-tree-to-sorted-doubly-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0758-convert-binary-search-tree-to-sorted-doubly-linked-list) |
 <!---LeetCode Topics End-->
