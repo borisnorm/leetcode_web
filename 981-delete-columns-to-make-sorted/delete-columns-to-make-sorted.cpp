@@ -12,6 +12,7 @@ public:
                if (strs[i][j] > strs[i+1][j])
                {
                  cnt++;
+                 // break 的是 i 的行扫描 循环
                  break;
                }
             }
