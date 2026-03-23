@@ -3,6 +3,132 @@ class Solution
 public:
     int minCost(vector<vector<int>>& grid, int k)
     {
+        int m = (int)grid.size();                                   // 网格行数
+        int n = (int)grid[0].size();                                // 网格列数
+        int maxVal = 0;                                             // 记录网格中的最大值
+
+        for (int i = 0; i < m; ++i)                                 // 遍历每一行
+        {
+            for (int j = 0; j < n; ++j)                             // 遍历每一列
+            {
+                maxVal = max(maxVal, grid[i][j]);                   // 更新最大值
+            }
+        }
+
+        const int INF = numeric_limits<int>::max() / 4;             // 定义无穷大
+
+        vector<vector<vector<int>>> dp(                             // 三维 dp 数组
+            k + 1,
+            vector<vector<int>>(
+                m,
+                vector<int>(n, INF)
+            )
+        );
+
+        dp[0][0][0] = 0;                                            // 起点初始化为 0
+
+        for (int i = 0; i < m; ++i)                                 // 先算 t = 0 的基础层
+        {
+            for (int j = 0; j < n; ++j)                             // 遍历每个格子
+            {
+                if (i == 0 && j == 0)                               // 起点跳过
+                {
+                    continue;                                        // 不更新
+                }
+
+                if (i > 0)                                          // 从上方转移
+                {
+                    dp[0][i][j] = min(
+                        dp[0][i][j],
+                        dp[0][i - 1][j] + grid[i][j]
+                    );
+                }
+
+                if (j > 0)                                          // 从左方转移
+                {
+                    dp[0][i][j] = min(
+                        dp[0][i][j],
+                        dp[0][i][j - 1] + grid[i][j]
+                    );
+                }
+            }
+        }
+
+        for (int t = 1; t <= k; ++t)                                // 枚举 teleport 次数
+        {
+            vector<int> bestAtVal(maxVal + 1, INF);                 // bestAtVal[v] 表示上一层值恰好为 v 的最小代价
+            vector<int> suf(maxVal + 2, INF);                       // suf[v] 表示上一层值 >= v 的最小代价
+
+            for (int i = 0; i < m; ++i)                             // 扫描上一层
+            {
+                for (int j = 0; j < n; ++j)                         // 统计每个值对应的最小 dp
+                {
+                    int v = grid[i][j];                             // 当前格子的值
+                    bestAtVal[v] = min(bestAtVal[v], dp[t - 1][i][j]); // 更新该值对应的最优代价
+                }
+            }
+
+            for (int v = maxVal; v >= 0; --v)                       // 做后缀最小值
+            {
+                suf[v] = min(bestAtVal[v], suf[v + 1]);             // 维护所有 >= v 的最小值
+            }
+
+            for (int i = 0; i < m; ++i)                             // 先做 teleport 转移
+            {
+                for (int j = 0; j < n; ++j)                         // 遍历所有格子
+                {
+                    int v = grid[i][j];                             // 当前格子的值
+                    dp[t][i][j] = suf[v];                           // 这就是 teleport 那一项
+                }
+            }
+
+            dp[t][0][0] = min(dp[t][0][0], 0);                      // 起点仍然保持 0
+
+            for (int i = 0; i < m; ++i)                             // 再做同层普通移动转移
+            {
+                for (int j = 0; j < n; ++j)                         // 遍历所有格子
+                {
+                    if (i == 0 && j == 0)                           // 起点跳过
+                    {
+                        continue;                                    // 不更新
+                    }
+
+                    if (i > 0)                                      // 从上方转移
+                    {
+                        dp[t][i][j] = min(
+                            dp[t][i][j],
+                            dp[t][i - 1][j] + grid[i][j]
+                        );
+                    }
+
+                    if (j > 0)                                      // 从左方转移
+                    {
+                        dp[t][i][j] = min(
+                            dp[t][i][j],
+                            dp[t][i][j - 1] + grid[i][j]
+                        );
+                    }
+                }
+            }
+        }
+
+        int ans = INF;                                              // 初始化答案
+
+        for (int t = 0; t <= k; ++t)                                // 枚举所有层
+        {
+            ans = min(ans, dp[t][m - 1][n - 1]);                    // 取终点最小值
+        }
+        return ans;                                                 // 返回答案
+    }
+};
+
+
+/*
+class Solution
+{
+public:
+    int minCost(vector<vector<int>>& grid, int k)
+    {
         int m = (int)grid.size();                                       // 网格行数
         int n = (int)grid[0].size();                                    // 网格列数
 
@@ -109,3 +235,5 @@ public:
         return ans;                                                     // 返回答案
     }
 };
+
+*/
