@@ -19,7 +19,7 @@ public:
 
     bool isBeatifulNumber(int n)
     {
-       int digit2freq[10] = {};
+       int digit2freq[10] = {0};
        
        string n_str = to_string(n);
        for (char c : n_str)
