@@ -11,28 +11,29 @@ public:
         }
 
         // windowCustomer
-        int windowCust = 0;
-        int maxWinCust = 0;
+        int windowCustCnt = 0;
+        int maxWinCustCnt = 0;
         for (int i = 0; i < minutes; i++)
         {
            if (grumpy[i] == 1)
-             windowCust += customers[i];
+             windowCustCnt += customers[i];
         }
-        maxWinCust = windowCust;
+        maxWinCustCnt = windowCustCnt;
 
         for (int r = minutes; r < n; r++)
         {
            if (grumpy[r] == 1)
-             windowCust += customers[r];
+             windowCustCnt += customers[r];
            
            int l = r - minutes;
            if (grumpy[l] == 1)
-             windowCust -= customers[l];
+             windowCustCnt -= customers[l];
           
-           maxWinCust = max(maxWinCust, windowCust);
+           maxWinCustCnt = max(maxWinCustCnt, windowCustCnt);
         }
 
-        return base + maxWinCust;
+        // minutes 内可以修复 grumpy的老板,所以取的最大数量
+        return base + maxWinCustCnt;
 
     }
 };
