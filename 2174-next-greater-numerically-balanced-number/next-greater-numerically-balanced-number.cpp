@@ -27,14 +27,14 @@ public:
 
        for (int d = 0; d <= 9; d++)
        {
-          // 跳过没有出现过的数字
-          if (digit2freq[d] != 0 && digit2freq[d] != d)
+          // 必须跳过没有出现过的数字
+          if (digit2freq[d] != 0 && digit2freq[d] != d)   
             return false;
        }
 
        //出现 0 必然错误
-       //if (digit2freq[0] != 0)
-       //  return false;
+       if (digit2freq[0] != 0)
+         return false;
 
        return true;         
     }
