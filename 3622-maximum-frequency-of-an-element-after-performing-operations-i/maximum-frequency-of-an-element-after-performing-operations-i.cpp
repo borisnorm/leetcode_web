@@ -1,4 +1,5 @@
-class Solution {
+class Solution
+{
 public:
 int maxFrequency(vector<int>& nums, int k, int numOps)
 {
