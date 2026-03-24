@@ -8,14 +8,14 @@ public:
         // 1 - guard
         // 2 - wall
         // 3 = guarded
-        for (auto wall: walls)
+        for (auto& wall: walls)
         {
           int x = wall[0];
           int y = wall[1];
           grid[x][y] = 2;
         }
 
-        for (auto guard: guards)
+        for (auto& guard: guards)
         {
           int x = guard[0];
           int y = guard[1]; 
@@ -23,12 +23,12 @@ public:
         }
 
         vector<pair<int, int>> dirs = {{0, 1}, {0, -1}, {1, 0},  {-1, 0}};
-        for (auto guard: guards)
+        for (auto& guard: guards)
         {
           int x = guard[0];
           int y = guard[1]; 
 
-          for (auto dir: dirs)
+          for (auto& dir: dirs)
           {
               int nx = x + dir.first;
               int ny = y + dir.second;
