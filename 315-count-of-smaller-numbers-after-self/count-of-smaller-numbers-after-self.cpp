@@ -4,8 +4,10 @@ public:
     vector<int> ans;
     void mergeSort(vector<pair<int, int>>& idx_arr, int l, int r)
     {
+       // 0 个或 1 个元素不需要排序
        if (r - l <= 1)
          return;
+
        int mid = l + (r-l)/2;
        
        // call mergeSort 之前
@@ -38,6 +40,8 @@ public:
 
        while(i < mid)
        {
+         //ans 不是只在这一层更新的
+         //ans[i] 在每一层递归的 merge 里都会累加贡献。
          ans[idx_arr[i].second] += right_picked;
          tmp.push_back(idx_arr[i++]);
        }
@@ -46,6 +50,8 @@ public:
          tmp.push_back(idx_arr[j++]);
 
        for (int k = l; k < r; k++)
+         // tmp 被塞满了 从 [l, mid) 与 [mid, r)的所有元素
+         // 所以 r-1-l 不是越界 
          idx_arr[k] = tmp[k-l];
        
     }
