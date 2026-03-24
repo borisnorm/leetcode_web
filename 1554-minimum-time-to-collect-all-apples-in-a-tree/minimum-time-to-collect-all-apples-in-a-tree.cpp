@@ -4,7 +4,7 @@ public:
         vector<vector<int>> graph(n);
   
         // edges == n -1
-        for (auto edge: edges)
+        for (auto& edge: edges)
         {
            int u = edge[0];
            int v = edge[1];
