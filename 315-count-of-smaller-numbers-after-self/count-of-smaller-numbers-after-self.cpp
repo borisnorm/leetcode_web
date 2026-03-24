@@ -8,8 +8,12 @@ public:
          return;
        int mid = l + (r-l)/2;
        
+       // call mergeSort 之前
+       // [l, mid) 无序, [mid, r) 无序
        mergeSort(idx_arr, l, mid);
        mergeSort(idx_arr, mid, r);
+       // call mergeSort 之后
+       // [l, mid) 有序, [mid, r) 有序
 
        vector<pair<int, int>> tmp;
        int i = l;
@@ -22,6 +26,7 @@ public:
           if (idx_arr[j].first < idx_arr[i].first)
           {
              tmp.push_back(idx_arr[j++]);
+             // 继续 count 比现在 i 要小的数的个数
              right_picked++;
           }
           else
