@@ -14,13 +14,10 @@ public:
     int match(const string& a, const string& b)
     {
         int cnt = 0;                                // 记录匹配位置数
-
         for (int i = 0; i < 6; ++i)                 // 枚举 6 个位置
         {
-            if (a[i] == b[i])                       // 如果当前位置字符相同
-            {
-                cnt++;                              // 匹配数加 1
-            }
+          if (a[i] == b[i])                       // 如果当前位置字符相同
+             cnt++;                              // 匹配数加 1
         }
 
         return cnt;                                 // 返回总匹配数
@@ -45,21 +42,20 @@ public:
                 for (int j = 0; j < (int)cand.size(); ++j)
                 {
                     if (i == j)                     // 自己和自己也可以统计，影响不大
-                    {
                         continue;                   // 这里跳过自己，逻辑更清晰
-                    }
 
                     int m = match(cand[i], cand[j]); // 计算匹配位置数
-                    ++groups[m];                   // 对应组的人数加 1
+                    groups[m]++;                   // 对应组的人数加 1
                 }
 
                 int worst = 0;                     // 假设猜 cand[i] 时，最坏情况下剩余候选数
 
                 // 找出最大的那一组
-                for (const auto& p : groups)
-                {
-                    worst = max(worst, p.second);  // 取所有组中最大的大小
-                }
+                for (const auto& [match_cnt, matched_grp_sz] : groups)
+                  worst = max(worst, matched_grp_sz);  // 取所有组中最大的大小
+
+                // groups 不是 vector, 下面的方法 错误 
+                // worst = *max_element(groups.begin(), groups.end);
 
                 // 选择 worst 最小的单词，也就是 minimax
                 if (worst < bestWorst)
@@ -70,84 +66,20 @@ public:
             }
 
             string guessWord = cand[bestIndex];    // 取出本轮要猜的单词
-            int res = master.guess(guessWord);     // 调用接口，获得匹配位置数
+            int m = master.guess(guessWord);     // 调用接口，获得匹配位置数
 
-            if (res == 6)                          // 如果 6 个位置都匹配，说明猜中了
-            {
+            if (m == 6)                          // 如果 6 个位置都匹配，说明猜中了
                 return;                            // 直接结束
-            }
 
             vector<string> nextCand;               // 下一轮保留下来的候选集合
 
             // 只保留与 guessWord 的匹配数恰好等于 res 的单词
             for (const string& w : cand)
             {
-                if (match(guessWord, w) == res)    // 满足返回值约束，才可能是 secret
-                {
-                    nextCand.push_back(w);         // 放入下一轮候选集合
-                }
+              if (match(guessWord, w) == m)    // 满足返回值约束，才可能是 secret
+                nextCand.push_back(w);         // 放入下一轮候选集合
             }
-
             cand = nextCand;                       // 更新候选集合
         }
     }
 };
-
-/*
-//未知错误
-
-class Solution {
-public:
-    int match(const string& a, const string& b)
-    {
-        int cnt = 0;
-        for (int i = 0; i < 6; i++)
-        {
-            if (a[i] == b[i])
-              cnt++;
-        }
-        return cnt;
-    }
-    void findSecretWord(vector<string>& words, Master& master) {
-        vector<string> cands = words;
-
-        for (int i = 0; i < 10 && !cands.empty(); i++)
-        {
-           string best;
-           int bestMax = INT_MAX;
-
-           for (auto& word: words)
-           {
-              vector<int> buckets(7, 0);
-              for (auto& check_word: cands)
-              {
-                //if (check_word == word)
-                //   continue;
-                buckets[match(word, check_word)]++;
-              }
-              
-              int worst = *max_element(buckets.begin(), buckets.end());
-              if (worst < bestMax)
-              {
-                  bestMax = worst;
-                  best = word;
-              }
-           }
-
-           int m = master.guess(best);
-           if (m == 6)
-             return;
-           
-            vector<string> nxt;
-            for(auto& cand: cands)
-            {
-                if (match(best, cand) == m)
-                  nxt.push_back(cand);
-            }
-
-            cands = nxt;
-        }
-    }
-};
-
-*/
