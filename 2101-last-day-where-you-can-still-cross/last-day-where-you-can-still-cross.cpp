@@ -1,6 +1,6 @@
 class Solution {
 public:
-
+       vector<pair<int, int>> dirs = {{0, 1},  {0, -1},  {1, 0},  {-1, 0}};
     bool canCross(int row, int col, vector<vector<int>>& cells, int mid)
     {
        // 0 - land
@@ -22,7 +22,7 @@ public:
           }
        }
 
-       vector<pair<int, int>> dirs = {{0, 1},  {0, -1},  {1, 0},  {-1, 0}};
+
        while (!q.empty())
        {
           auto [x, y] = q.front();
