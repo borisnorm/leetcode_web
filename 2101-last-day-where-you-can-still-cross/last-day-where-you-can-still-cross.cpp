@@ -13,14 +13,12 @@ public:
        }
 
        queue<pair<int, int>> q;
-       vector<vector<int>> vis(row, vector<int>(col, 0));
 
        for (int j = 0; j < col; j++)
        {
           if (grid[0][j] == 0)
           {
              q.push({0, j});
-             vis[0][j] = 1;
           }
        }
 
@@ -41,10 +39,10 @@ public:
              if (nx < 0 || nx >= row || ny < 0 || ny >= col)
                continue;
               
-             if (grid[nx][ny] != 0 || vis[nx][ny])
+             if (grid[nx][ny] != 0)
                 continue;
 
-              vis[nx][ny] = 1;
+              grid[nx][ny] = 1;
               q.push({nx, ny});
           }
           
