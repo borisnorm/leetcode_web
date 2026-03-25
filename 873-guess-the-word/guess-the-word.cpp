@@ -7,6 +7,7 @@
  * };
  */
 
+/*
 class Solution
 {
 public:
@@ -71,15 +72,70 @@ public:
             if (m == 6)                          // 如果 6 个位置都匹配，说明猜中了
                 return;                            // 直接结束
 
-            vector<string> nextCand;               // 下一轮保留下来的候选集合
-
             // 只保留与 guessWord 的匹配数恰好等于 res 的单词
+            vector<string> nextCand;               // 下一轮保留下来的候选集合
             for (const string& w : cand)
             {
               if (match(guessWord, w) == m)    // 满足返回值约束，才可能是 secret
                 nextCand.push_back(w);         // 放入下一轮候选集合
             }
             cand = nextCand;                       // 更新候选集合
+        }
+    }
+};
+*/
+
+
+class Solution {
+public:
+    int match(const string& a, const string& b)
+    {
+        int cnt = 0;
+        for (int i = 0; i < 6; i++)
+        {
+            if (a[i] == b[i])
+              cnt++;
+        }
+        return cnt;
+    }
+    void findSecretWord(vector<string>& words, Master& master) {
+        vector<string> cands = words;
+
+        for (int i = 0; i < 30 && !cands.empty(); i++)
+        {
+           string best;
+           int bestMax = INT_MAX;
+
+           for (auto& word: words)
+           {
+              vector<int> buckets(7, 0);
+              for (auto& check_word: cands)
+              {
+                if (check_word == word)
+                   continue;
+                buckets[match(word, check_word)]++;
+              }
+              
+              int worst = *max_element(buckets.begin(), buckets.end());
+              if (worst < bestMax)
+              {
+                  bestMax = worst;
+                  best = word;
+              }
+           }
+
+           int m = master.guess(best);
+           if (m == 6)
+             return;
+           
+            vector<string> nxt;
+            for(auto& cand: cands)
+            {
+                if (match(best, cand) == m)
+                  nxt.push_back(cand);
+            }
+
+            cands = nxt;
         }
     }
 };
