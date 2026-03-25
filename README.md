@@ -288,4 +288,12 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0758-convert-binary-search-tree-to-sorted-doubly-linked-list](https://github.com/borisnorm/leetcode_web/tree/master/0758-convert-binary-search-tree-to-sorted-doubly-linked-list) |
+## Backtracking
+|  |
+| ------- |
+| [0865-robot-room-cleaner](https://github.com/borisnorm/leetcode_web/tree/master/0865-robot-room-cleaner) |
+## Interactive
+|  |
+| ------- |
+| [0865-robot-room-cleaner](https://github.com/borisnorm/leetcode_web/tree/master/0865-robot-room-cleaner) |
 <!---LeetCode Topics End-->
