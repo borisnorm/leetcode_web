@@ -1,106 +1,94 @@
-
-class UnionFind
-{
-private:
-    vector<int> p;      // p[x] 表示节点 x 的父节点
-    vector<int> sz;     // sz[x] 表示以 x 为根的集合大小（仅根节点有效）
-
+class Solution {
 public:
-    UnionFind(int n)
-    {
-        p.resize(n + 1);                    // 因为题目节点是 1-based，所以开到 n + 1
-        sz.assign(n + 1, 1);                // 初始每个集合大小为 1
-        iota(p.begin(), p.end(), 0);        // 初始化父节点，自己指向自己
-    }
 
-    int find(int x)
-    {
-        if (p[x] != x)                      // 如果 x 不是根
+    struct UnionFind{
+      vector<int> parent;
+      vector<int> rank;
+
+      UnionFind(int n){
+         parent.assign(n, 0);
+         iota(parent.begin(), parent.end(), 0);
+         rank.assign(n, 0);
+      }
+
+      int find(int x)
+      {
+         if (parent[x] != x)
+           parent[x] = find(parent[x]);
+          
+         return parent[x];
+      }
+
+      void unite(int x, int y)
+      {
+        int rx = find(x);
+        int ry = find(y);
+
+        if (rx == ry)
+          return;
+        
+        // rx 变成大树
+        if (rank[rx] < rank[ry])
+         swap(parent[rx], parent[ry]);
+        
+        parent[ry] = rx;
+        rank[rx] += rank[ry];
+        
+      }
+    };
+    vector<int> processQueries(int c, vector<vector<int>>& connections, vector<vector<int>>& queries) {
+        UnionFind uf(c+1);
+        vector<int> status(c+1, 1);
+        for(auto connection: connections)
         {
-            p[x] = find(p[x]);              // 路径压缩
-        }
-        return p[x];                        // 返回根节点
-    }
-
-    void unite(int a, int b)
-    {
-        int pa = find(a);                   // 找到 a 的根
-        int pb = find(b);                   // 找到 b 的根
-
-        if (pa == pb)                       // 如果已经在同一个集合中
-        {
-            return;                         // 直接返回
-        }
-
-        if (sz[pa] < sz[pb])                // 按大小合并，小树挂到大树上
-        {
-            swap(pa, pb);                   // 保证 pa 是更大的根
-        }
-
-        p[pb] = pa;                         // 把 pb 挂到 pa 上
-        sz[pa] += sz[pb];                   // 更新集合大小
-    }
-};
-
-class Solution
-{
-public:
-    vector<int> processQueries(int c, vector<vector<int>>& connections, vector<vector<int>>& queries)
-    {
-        UnionFind uf(c);                                    // 创建并查集
-        vector<int> ans;                                    // 存储所有 type-1 查询结果
-        vector<bool> online(c + 1, true);                   // online[x] 表示 x 当前是否在线
-
-        for (const auto& e : connections)                   // 遍历所有连接
-        {
-            int u = e[0];                                   // 连接的一个端点
-            int v = e[1];                                   // 连接的另一个端点
-            uf.unite(u, v);                                 // 合并这两个点所属集合
+           int u = connection[0];
+           int v = connection[1];
+           uf.unite(u, v);
         }
 
-        vector<set<int>> groups(c + 1);                     // groups[root] 存这个连通块里当前在线的所有点
+        int n = queries.size();
+        vector<int> res;
+        vector<set<int>> group(c+1);
 
-        for (int i = 1; i <= c; ++i)                        // 遍历所有站点
+        for (int i = 1; i <= c; i++)
         {
-            int root = uf.find(i);                          // 找到 i 所属连通块根节点
-            groups[root].insert(i);                         // 初始所有点都在线，加入对应 set
+           int root = uf.find(i);
+           group[root].insert(i);
         }
 
-        for (const auto& q : queries)                       // 按顺序处理所有查询
+        for (auto query: queries)
         {
-            int type = q[0];                                // 查询类型
-            int x = q[1];                                   // 查询涉及的站点
+            int type = query[0];
+            int station = query[1];
 
-            int root = uf.find(x);                          // 找到 x 所属连通块根节点
+            int root = uf.find(station);
 
-            if (type == 1)                                  // 如果是查询操作
+            if (type == 1)
             {
-                if (online[x])                              // 如果 x 当前在线
-                {
-                    ans.push_back(x);                       // 它自己处理，直接返回 x
-                }
-                else                                        // 如果 x 当前离线
-                {
-                    if (groups[root].empty())               // 如果整个连通块已经没有在线点
-                    {
-                        ans.push_back(-1);                  // 返回 -1
-                    }
-                    else                                    // 否则还有在线点
-                    {
-                        ans.push_back(*groups[root].begin()); // set 最小元素就是最小在线 id
-                    }
-                }
+               if (status[station])
+               {
+                 res.push_back(station);
+               }
+               else if (group[root].empty())
+               {
+                 res.push_back(-1);
+               }
+               else
+               {
+                 int lowest_station = *group[root].begin();
+                 res.push_back(lowest_station);
+               }
             }
-            else                                            // 否则是 type == 2，下线操作
+            else if (type == 2)
             {
-                if (online[x])                              // 只有当前在线才需要处理
-                {
-                    online[x] = false;                      // 标记为离线
-                    groups[root].erase(x);                  // 从所属连通块的在线集合中删掉
-                }
+               if (status[station])
+               {
+                  status[station] = 0;
+                  group[root].erase(station);
+               }
             }
         }
 
-        return ans;                                         // 返回所有 type-1 查询结果
+        return res;
     }
 };
