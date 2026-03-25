@@ -3,12 +3,12 @@ public:
 
     struct UnionFind{
       vector<int> parent;
-      vector<int> rank;
+      vector<int> sz;
 
       UnionFind(int n){
          parent.assign(n, 0);
          iota(parent.begin(), parent.end(), 0);
-         rank.assign(n, 0);
+         sz.assign(n, 1);
       }
 
       int find(int x)
@@ -28,11 +28,11 @@ public:
           return;
         
         // rx 变成大树
-        if (rank[rx] < rank[ry])
-         swap(parent[rx], parent[ry]);
+        if (sz[rx] < sz[ry])
+         swap(rx, ry);
         
         parent[ry] = rx;
-        rank[rx] += rank[ry];
+        sz[rx] += sz[ry];
         
       }
     };
@@ -88,7 +88,6 @@ public:
                }
             }
         }
-
         return res;
     }
 };
