@@ -3,10 +3,15 @@ public:
     vector<int> smallestRange(vector<vector<int>>& nums) {
                        //val, list_idx, ele_idx
         using T = tuple<int, int, int>;
+        /*
+        // 正确
         auto cmp = [](const T& a, const T& b){
            return  get<0>(a) > get<0>(b);
         };
-        priority_queue<T, vector<T>, decltype(cmp)> pq;
+         priority_queue<T, vector<T>, decltype(cmp)> pq;
+        */
+         priority_queue<T, vector<T>, greater<T>> pq;
+       
         
         int n = nums.size();
         int curMax = INT_MIN;
