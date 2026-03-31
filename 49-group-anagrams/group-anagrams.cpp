@@ -1,3 +1,4 @@
+#include <array>
 class Solution{
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs){
@@ -15,12 +16,12 @@ public:
         vector<vector<string>> res;
         unordered_map<array<int, 26>, vector<string>, decltype(hash_fn)> key2group(0, hash_fn);
 
-        for (string& s: strs)
+        for (string& str: strs)
         {
            array<int, 26> cnt = {0};
-           for (char& c: s)
+           for (char& c: str)
              cnt[c-'a']++;
-           key2group[cnt].push_back(s);
+           key2group[cnt].push_back(str);
         }
 
         for (auto& [key, group]: key2group)
