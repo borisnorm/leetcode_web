@@ -1,6 +1,76 @@
 class ExamRoom
 {
 public:
+   int n;
+   set<int> seats;
+
+   struct cmp
+   {
+      int n;
+      cmp(int n): n(n){}
+
+      //pos, dist
+      pair<int, int> best(int l, int r) const
+      {
+          if (l == -1)
+            return {0, r};
+          if (r == n)
+            return  {n-1, n-1-l};
+          
+          return {l + (r-l)/2, (r-l)/2};
+      }
+
+      bool operator()(pair<int, int> a, pair<int, int> b) const
+      {
+         auto [pos_a, dist_a] = best(a.first, a.second);
+         auto [pos_b, dist_b] = best(b.first, b.second);
+         if (dist_a != dist_b)
+           return dist_a > dist_b;  // dist 大的拍在前面
+         
+         return pos_a < pos_b;
+      }
+   };
+
+   set<pair<int, int>, cmp> gaps;
+
+   ExamRoom(int n): n(n), gaps(cmp(n))
+   {
+      seats.insert(-1);
+      seats.insert(n);
+      gaps.insert({-1, n});
+   }
+
+   int seat()
+   {
+      auto [l, r] = *gaps.begin();
+      auto [pos, dist] = gaps.key_comp().best(l, r);
+
+      gaps.erase(gaps.begin());
+      gaps.insert({l, pos});
+      gaps.insert({pos, r});
+      seats.insert(pos);
+
+      return pos;
+   }
+
+   void leave(int p)
+   {
+      auto it = seats.find(p);
+      int l = *prev(it);
+      int r = *next(it);
+
+      gaps.erase({l, p});
+      gaps.erase({p, r});
+
+      gaps.insert({l, r});
+
+      seats.erase(it);
+   }
+};
+/*
+class ExamRoom
+{
+public:
     int n;
     set<int> seats; // 已占座位（含哨兵 -1 和 n）
 
@@ -9,13 +79,21 @@ public:
     // left 越小越靠前（相同 dist 取编号小的）
     set<tuple<int,int,int>> gaps;
 
+    // {-11, -1, 2, 3, 4, 5}
+
+    // -{-11, -1, 2, 3, 4, 5}
+    // {11, 1, 2, -2, -3, -4, -5}
+
     // 计算间隔 (l, r) 的最优座位和距离
+    // 返回的是{pos, dist}
+    // {最优作为 pos, 该间隔的最优距离 dist}
     pair<int,int> best(int l, int r)
     {
         if (l == -1)
             return {0, r};          // 左边界
         if (r == n)
             return {n-1, n-1-l};    // 右边界
+
         return {l+(r-l)/2, (r-l)/2}; // 中间取中点
     }
 
@@ -42,7 +120,7 @@ public:
     {
         auto [neg_dist, l, r] = *gaps.begin(); // 取最优间隔
         auto [pos, dist] = best(l, r);
-
+        // pos 坐进间隔 (l, r) 后，原来的一个大间隔被分成两个小间隔：
         rmGap(l, r);          // 删掉旧间隔
         addGap(l, pos);       // 加入左半段
         addGap(pos, r);       // 加入右半段
@@ -68,6 +146,9 @@ public:
         seats.erase(it);
     }
 };
+
+*/
+
 /*
 class ExamRoom {
 public:
