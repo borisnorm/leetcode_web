@@ -1,119 +1,107 @@
 class Solution
 {
 public:
-    // 判断是否是质数
-    bool isPrime(int x)
-    {
-        if (x < 2) return false;
-        for (int i = 2; (long long)i * i <= x; i++)
-            if (x % i == 0) return false;
-        return true;
-    }
-
     int minJumps(vector<int>& nums)
     {
-        int n = nums.size();
+        int n = (int)nums.size();                                  // 数组长度
 
-        // prime p -> 虚节点编号(从n开始)
-        unordered_map<int, int> pId;
-        int vCnt = n;
-
-        // 虚节点 -> 所有 nums[j] % p == 0 的实节点j
-        unordered_map<int, vector<int>> pNodes;
-
-        // 建虚节点：遍历所有j，找哪些质数能"传送到j"
-        // 即对每个j，枚举nums[j]的质因子p
-        // 因为只有nums[i]==p时才能传送，所以p必须出现在nums里
-        // 但建图时：虚节点p -> j 的条件是 nums[j]%p==0
-        // 发起端：只有nums[i]是质数时，i才能连到虚节点nums[i]
-
-        // 第一步：找所有出现在nums里的质数p，作为虚节点
-        // 第二步：对每个j，枚举nums[j]的质因子，若该质因子在nums中出现过，建虚→实边
-
-        // 收集nums中所有质数
-        unordered_map<int, bool> primeInNums;
-        for (int i = 0; i < n; i++)
+        if (n == 1)                                                // 只有一个位置，已经在终点
         {
-            if (isPrime(nums[i]))
-                primeInNums[nums[i]] = true;
+            return 0;                                              // 不需要跳
         }
 
-        // 对每个j，枚举质因子p，若p在nums中作为质数出现，建虚节点p->j
-        for (int j = 0; j < n; j++)
+        int mx = 0;                                                // 数组中的最大值
+        for (int x : nums)                                         // 遍历数组
         {
-            int x = nums[j];
-            // 分解质因子
-            vector<int> factors;
-            for (int f = 2; (long long)f * f <= x; f++)
-            {
-                if (x % f == 0)
-                {
-                    factors.push_back(f);
-                    while (x % f == 0) x /= f;
-                }
-            }
-            if (x > 1) factors.push_back(x);
-
-            for (int p : factors)
-            {
-                if (!primeInNums.count(p)) continue; // 该质数未在nums出现，无法传送
-                if (!pId.count(p))
-                    pId[p] = vCnt++;          // 分配虚节点编号
-                pNodes[pId[p]].push_back(j);  // 虚节点p -> 实节点j
-            }
+            mx = max(mx, x);                                       // 更新最大值
         }
 
-        // 0-1 BFS
-        vector<int> dist(vCnt, INT_MAX);
-        dist[0] = 0;
-        deque<pair<int,int>> dq; // {dist, node}
-        dq.push_back({0, 0});
+        vector<int> spf(mx + 1, 0);                                // spf[x] 表示 x 的最小质因子
 
-        while (!dq.empty())
+        for (int i = 2; i <= mx; i++)                              // 从 2 开始筛
         {
-            auto [d, u] = dq.front();
-            dq.pop_front();
-
-            if (d > dist[u]) continue; // 过期节点跳过
-
-            if (u < n)
+            if (spf[i] == 0)                                       // 如果还没有被标记，说明 i 是质数
             {
-                // 实→实 i±1，代价1
-                for (int nb : {u-1, u+1})
+                spf[i] = i;                                        // 质数的最小质因子就是自己
+
+                if ((long long)i * i <= mx)                        // 防止越界，并且从 i*i 开始筛
                 {
-                    if (nb >= 0 && nb < n && dist[nb] > d + 1)
+                    for (long long j = 1LL * i * i; j <= mx; j += i) // 枚举 i 的倍数
                     {
-                        dist[nb] = d + 1;
-                        dq.push_back({d+1, nb});
-                    }
-                }
-                // 实→虚：只有nums[u]本身是质数才能传送，代价1
-                if (isPrime(nums[u]) && pId.count(nums[u]))
-                {
-                    int v = pId[nums[u]];
-                    if (dist[v] > d + 1)
-                    {
-                        dist[v] = d + 1;
-                        dq.push_back({d+1, v});
+                        if (spf[(int)j] == 0)                      // 如果该数还没被标记
+                        {
+                            spf[(int)j] = i;                       // 它的最小质因子记为 i
+                        }
                     }
                 }
             }
-            else
+        }
+
+        vector<vector<int>> bucket(mx + 1);                        // bucket[p] = 所有 nums[idx] 能被质数 p 整除的下标
+
+        for (int i = 0; i < n; i++)                                // 遍历每个下标
+        {
+            int x = nums[i];                                       // 当前值
+            while (x > 1)                                          // 开始分解质因子
             {
-                // 虚→实，代价0，队头
-                auto& nb = pNodes[u];
-                for (int r : nb)
+                int p = spf[x];                                    // 取当前最小质因子
+                bucket[p].push_back(i);                            // 说明 nums[i] 能被 p 整除，下标 i 放入 bucket[p]
+
+                while (x % p == 0)                                 // 跳过同一个质因子的重复次数
                 {
-                    if (dist[r] > d)
-                    {
-                        dist[r] = d;
-                        dq.push_front({d, r});
-                    }
+                    x /= p;                                        // 不断除掉 p
                 }
-                nb.clear(); // 防重复遍历
             }
         }
 
-        return dist[n-1] == INT_MAX ? -1 : dist[n-1];
+        vector<int> dist(n, -1);                                   // dist[i] = 从 0 跳到 i 的最少步数
+        vector<char> usedPrime(mx + 1, 0);                         // usedPrime[p] = prime p 的传送是否已经处理过
+        queue<int> q;                                              // BFS 队列
+
+        dist[0] = 0;                                               // 起点距离为 0
+        q.push(0);                                                 // 起点入队
+
+        while (!q.empty())                                         // 标准 BFS
+        {
+            int i = q.front();                                     // 取出当前下标
+            q.pop();                                               // 出队
+
+            int d = dist[i];                                       // 当前下标的最短距离
+
+            if (i == n - 1)                                        // 如果已经到终点
+            {
+                return d;                                          // 直接返回最少步数
+            }
+
+            if (i - 1 >= 0 && dist[i - 1] == -1)                   // 尝试向左走一步
+            {
+                dist[i - 1] = d + 1;                               // 记录距离
+                q.push(i - 1);                                     // 入队
+            }
+
+            if (i + 1 < n && dist[i + 1] == -1)                    // 尝试向右走一步
+            {
+                dist[i + 1] = d + 1;                               // 记录距离
+                q.push(i + 1);                                     // 入队
+            }
+
+            int val = nums[i];                                     // 当前下标对应的值
+
+            if (val >= 2 && spf[val] == val && !usedPrime[val])    // 只有当前值本身是质数，且这个 prime 还没用过，才能传送
+            {
+                usedPrime[val] = 1;                                // 标记这个 prime 已经处理过
+
+                for (int nxt : bucket[val])                        // 枚举所有能被 val 整除的位置
+                {
+                    if (dist[nxt] == -1)                           // 如果该位置还没访问过
+                    {
+                        dist[nxt] = d + 1;                         // 传送一次，距离加 1
+                        q.push(nxt);                               // 入队
+                    }
+                }
+            }
+        }
+
+        return -1;                                                 // 理论上一定可达，这里只是保险返回
     }
 };
