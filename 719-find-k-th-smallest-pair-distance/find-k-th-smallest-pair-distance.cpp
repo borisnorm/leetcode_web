@@ -19,6 +19,7 @@ public:
 
        return cnt;
     }
+
     int smallestDistancePair(vector<int>& nums, int k) {
         sort(nums.begin(), nums.end());
         int lo = 0;
@@ -27,12 +28,12 @@ public:
         while (lo < hi)
         {
            int mid = lo + (hi-lo)/2;
+           // 二分答案：找最小的 mid 使得 countPairs >= k
            if (countPairs(nums, mid) >= k)
              hi = mid;
            else
              lo = mid + 1;
         }
-
         return lo;
     }
 };
