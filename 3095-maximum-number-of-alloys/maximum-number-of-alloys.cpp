@@ -31,7 +31,7 @@ public:
         for (int i = 0; i < k; i++)
         {
            long long lo = 0;
-            long long hi = 1000000000LL;
+           long long hi = 1'000'000'000LL;
 
            while (lo < hi)
            {
