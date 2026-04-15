@@ -21,7 +21,34 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-// error 
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k) {
+       stack<TreeNode*> st;
+       TreeNode* cur = root;
+
+       while (cur || !st.empty())
+       {
+          while (cur)
+          {
+             st.push(cur);
+             cur = cur->left;
+          }
+
+          cur = st.top();
+          st.pop();
+
+          k--;
+          if (k == 0)
+            return cur->val;
+
+          cur = cur->right;
+       }
+
+       return -1;
+    }
+};
+ /*
 class Solution {
 public:
    
@@ -43,11 +70,13 @@ public:
         if (!root)
           return;
         
+        //防御性退出
         if (rank >= k)
           return;
 
         traverse(root->left, k);
         
+        //防御性退出
         if (rank >= k)
           return;
 
@@ -59,5 +88,6 @@ public:
         }
         traverse(root->right, k);
     }
-
 };
+
+*/
