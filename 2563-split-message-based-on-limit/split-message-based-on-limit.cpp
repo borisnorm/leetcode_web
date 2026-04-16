@@ -1,4 +1,79 @@
+class Solution
+{
+public:
+    // 计算位数：1~9→1, 10~99→2, ...
+    int digs(int n)
+    {
+        if (n <= 9)    return 1;
+        if (n <= 99)   return 2;
+        if (n <= 999)  return 3;
+        if (n <= 9999) return 4;
+        return 5;
+    }
 
+    // suffix "<i/k>" 长度 = 1 + digs(i) + 1 + digs(k) + 1 = digs(i) + digs(k) + 3
+    int suffixLen(int i, int k)
+    {
+        return digs(i) + digs(k) + 3;
+    }
+
+    vector<string> splitMessage(const string& msg, int limit)
+    {
+        int n = msg.size();
+
+        // ---- 第一阶段：找最小可行 k ----
+        // maxK 是当前枚举的 k 上界（9, 99, 999...）
+        // 当 a > maxK 时，说明当前位数不够，升一个量级
+        int maxK  = 9;
+        int pos   = 0; // 模拟消耗 message 的位置
+        int a     = 1; // 当前段编号
+
+        while (pos < n)
+        {
+            // 当前位数已经不够用，升一个量级
+            if (a > maxK)
+            {
+                maxK = maxK * 10 + 9; // 9 → 99 → 999 → ...
+
+                // 剪枝：suffix "<1/maxK>" 已经超过 limit，无解
+                if (suffixLen(1, maxK) >= limit)
+                    return {};
+
+                // 重新从头模拟
+                pos = 0;
+                a   = 1;
+                continue;
+            }
+
+            int avail = limit - suffixLen(a, maxK); // 这段能装多少字符
+            if (avail <= 0) return {};               // 无解
+
+            pos += avail;
+            a++;
+        }
+
+        int k = a - 1; // 最小可行 k
+
+        // ---- 第二阶段：按 k 切割 message ----
+        vector<string> res;
+        string ks = to_string(k);
+        pos = 0;
+
+        for (int i = 1; i <= k; i++)
+        {
+            int avail = limit - suffixLen(i, k);
+            int take  = min(avail, n - pos);         // 最后一段可能不足 avail
+            res.push_back(msg.substr(pos, take) + "<" + to_string(i) + "/" + ks + ">");
+            pos += take;
+        }
+
+        return res;
+    }
+};
+
+
+
+/*
 class Solution
 {
 public:
@@ -90,3 +165,5 @@ public:
         return {};
     }
 };
+
+*/
