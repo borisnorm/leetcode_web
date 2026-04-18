@@ -76,16 +76,20 @@ public:
                   if (dist[nx][ny] != INF)
                     continue; 
 
+                  // 人到到终点的时间
                   int arrT = dist[x][y] + 1;
 
                   if (nx == m-1 && ny == n-1)
                   {
+                     // < 人比火先到终点
+                     // = 人和火同时到到终点
                      if (arrT <= fireT[nx][ny])
                        return true;
                      else
                        continue;
                   }
 
+                  // fireT 火从所有火源同时出发, 经过多源 BFS 扩散, 到到格子(nx, ny)的最早时刻
                   if (arrT >= fireT[nx][ny])
                     continue;
                   
