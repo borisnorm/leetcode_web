@@ -1,46 +1,41 @@
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
+        //p is the pattern
+        
         vector<int> res;
+        int n = s.size();
+        int m = p.size();
 
-        int n = s.size(); //string
-        int m = p.size(); //pattern
         if (n < m)
           return res;
+        
         vector<int> need(26, 0);
         vector<int> window(26, 0);
-
+        
         for (char c: p)
           need[c-'a']++;
 
-        int left = 0;
-        int right = 0;
-        int valid_cnt = 0;
+        int l = 0;
+        int r = 0;
 
-        while (right < n)
+        while (r < n)
         {
-          char c = s[right];
-          right++;
-          window[c-'a']++;
+           char c = s[r];
+           window[c-'a']++;
+           r++;
 
-          //if (window[c-'a'] == need[c-'a'])
-          //  valid_cnt++;
-          
-          while (right-left > p.size())
-          {
-             char d = s[left];
-             left++;
-            // if (window[d-'a'] == need[d-'a'])
-            //   valid_cnt--;
-             window[d-'a']--;
-          }
+           while(r-l > m)
+           {
+              char d = s[l];
+              window[d-'a']--;
+              l++;
+           }
 
-          if (right-left == m && window == need)
-            res.push_back(left); 
-
+           if (window == need)
+             res.push_back(l);
         }
 
         return res;
     }
-
 };
