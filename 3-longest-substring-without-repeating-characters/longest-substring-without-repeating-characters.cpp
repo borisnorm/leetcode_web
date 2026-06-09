@@ -1,36 +1,34 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        
         if (s.empty())
           return 0;
- 
+        
+        unordered_map<char, int> char2freq;
+        
+        int l = 0;
+        int r = 0;
         int n = s.size();
-
-        int left = 0;
-        int right = 0;
-
-        // 使用 char c 作为index 也是可以的
-        //int char2freq[128] = {0};
-          int window[128] = {0};
-        //unordered_map<char, int> window;
-
         int maxLen = 0;
-        while (right < s.size())
+
+        while (r < n)
         {
-            char c = s[right];
-            right++;
-            window[c]++;
+           char c = s[r];
+           char2freq[c]++;
+           r++;
 
-            while (window[c] > 1)
-            {
-              char d = s[left];
-              left++;
-              window[d]--;
-            }
+           while (char2freq[c] > 1)
+           {
+              char d = s[l];
+              char2freq[d]--;
+              if (char2freq[d] == 0)
+                char2freq.erase(d);
+              l++;
+           }
 
-            maxLen = max(maxLen, right-left);
+           maxLen = max(maxLen, r - l);
         }
+
         return maxLen;
     }
 };
