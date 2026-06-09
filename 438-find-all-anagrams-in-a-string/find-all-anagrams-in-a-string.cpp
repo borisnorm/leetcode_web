@@ -23,15 +23,15 @@ public:
           right++;
           window[c-'a']++;
 
-          if (window[c-'a'] == need[c-'a'])
-            valid_cnt++;
+          //if (window[c-'a'] == need[c-'a'])
+          //  valid_cnt++;
           
           while (right-left > p.size())
           {
              char d = s[left];
              left++;
-             if (window[d-'a'] == need[d-'a'])
-               valid_cnt--;
+            // if (window[d-'a'] == need[d-'a'])
+            //   valid_cnt--;
              window[d-'a']--;
           }
 
